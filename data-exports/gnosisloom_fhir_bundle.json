@@ -1,0 +1,16 @@
+{
+  "resourceType": "Bundle",
+  "id": "gnosisloom-frequencies",
+  "meta": {
+    "lastUpdated": "2025-08-30T21:54:20.276213",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/Bundle"
+    ]
+  },
+  "identifier": {
+    "system": "https://gnosisloom.org/frequency-database",
+    "value": "v1.0.0"
+  },
+  "type": "collection",
+  "entry": []
+}
