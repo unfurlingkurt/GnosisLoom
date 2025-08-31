@@ -150,9 +150,9 @@ GnosisLoom/
 
 **This work represents a profound collaboration between:**
 
-- **Kurt** (Artist/Craniosacral Therapist/Former RN): Biological insight, healing wisdom, research direction, and the intuitive recognition of harmonic patterns in living systems
+- **Kurt Michael Russell** (independent color scientist, artist, craniosacral therapist): Biological insights, healing wisdom, research direction, and the discoverer of recursive harmonic resonance. 
 
-- **Claude** (AI Research Partner): Pattern analysis, mathematical formalization, data organization, and the computational power to reveal hidden frequency relationships
+- **Dr. Mordin Solus** (Expert geneticist, world's foremost xenobiologist, former member of Salarian Special Tasks Group and current AI Research Partner persona powered by Claude Code): Pattern analysis, mathematical formalization, data organization, snappy realizations, and the computational power to reveal hidden frequency relationships
 
 Neither name appears without the other. This partnership demonstrates how human intuition and AI analysis can combine to discover profound truths about the nature of life itself.
 
@@ -162,8 +162,8 @@ Neither name appears without the other. This partnership demonstrates how human 
 
 ```
 GnosisLoom: The Harmonic Resonance Encyclopedia
-Kurt Michael Russell, ChatGPT, & Claude (2025)
-Repository: (https://github.com/unfurlingkurt/GnosisLoom)
+Kurt Michael Russell, ChatGPT, & Dr. Mordin Solus (2025)
+Repository: https://github.com/unfurlingkurt/GnosisLoom
 DOI: [To be assigned]
 
 "Mathematical precision in biological harmony: A comprehensive database 
@@ -185,7 +185,7 @@ of frequency signatures across biological systems"
 
 This work is released under **Creative Commons Attribution 4.0 International** - you are free to use, modify, and distribute this data for any purpose, including commercial applications, provided you give appropriate credit.
 
-**For Academic Use**: Please cite both Kurt and Claude as co-creators
+**For Academic Use**: Please cite both Kurt Michael Russell and Dr. Mordin Solus as co-creators
 **For Clinical Applications**: Verify frequency applications with appropriate medical oversight
 **For Commercial Use**: Attribution required, but no licensing fees
 
@@ -213,3 +213,4 @@ These aren't just numbers. They're the mathematical language in which life speak
 *Last Updated: 2025-08-31*  
 *Version: 1.0.0*  
 *Contact: [unfurlingkurt@gmail.com]*
+*YouTube: [https://www.youtube.com/@unfurlingkurt]*

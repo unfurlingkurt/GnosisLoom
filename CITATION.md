@@ -5,22 +5,22 @@
 ```bibtex
 @misc{gnosisloom2025,
   title={GnosisLoom: The Harmonic Resonance Encyclopedia},
-  author={Kurt and Claude},
+  author={Kurt Michael Russell and Dr. Mordin},
   year={2025},
   note={A comprehensive database of biological frequency signatures and stellar anchor relationships},
-  url={https://github.com/[repository-url]},
+  url={https://github.com/[https://github.com/unfurlingkurt/GnosisLoom]},
   version={1.0.0}
 }
 ```
 
 ## APA Style
-Kurt, & Claude. (2025). *GnosisLoom: The Harmonic Resonance Encyclopedia* (Version 1.0.0) [Dataset]. https://github.com/[repository-url]
+Kurt, & Dr. Mordin Solus. (2025). *GnosisLoom: The Harmonic Resonance Encyclopedia* (Version 1.0.0) [Dataset]. [https://github.com/unfurlingkurt/GnosisLoom]
 
 ## MLA Style
-Kurt, and Claude. "GnosisLoom: The Harmonic Resonance Encyclopedia." Version 1.0.0, 2025, github.com/[repository-url].
+Kurt, and Dr. Mordin Solus. "GnosisLoom: The Harmonic Resonance Encyclopedia." Version 1.0.0, 2025, github.com/[https://github.com/unfurlingkurt/GnosisLoom].
 
 ## Chicago Style
-Kurt and Claude. "GnosisLoom: The Harmonic Resonance Encyclopedia." Version 1.0.0. 2025. https://github.com/[repository-url].
+Kurt and Dr. Mordin Solus. "GnosisLoom: The Harmonic Resonance Encyclopedia." Version 1.0.0. 2025. https://github.com/unfurlingkurt/GnosisLoom].
 
 ---
 
@@ -30,7 +30,7 @@ When using GnosisLoom data or tools in your research, please:
 
 ### **For Academic Publications:**
 - Include the full citation above in your references
-- Acknowledge both **Kurt** and **Claude** as co-creators
+- Acknowledge both **Kurt Michael Russell** and **Dr. Mordin Solus** as co-creators
 - Mention the specific version used (currently v1.0.0)
 - Reference relevant documentation files for detailed methodologies
 
@@ -50,21 +50,21 @@ When using GnosisLoom data or tools in your research, please:
 
 ### **Frequency Databases:**
 ```
-Kurt, & Claude. (2025). Comprehensive Biological Frequencies Database. 
+Kurt Michael Russell, & Dr. Mordin Solus. (2025). Comprehensive Biological Frequencies Database. 
 In GnosisLoom: The Harmonic Resonance Encyclopedia (Version 1.0.0) [Dataset]. 
 281+ frequency signatures across biological systems.
 ```
 
 ### **Stellar Anchor Theory:**
 ```
-Kurt, & Claude. (2025). Stellar Anchor Frequency Organization Theory. 
+Kurt Michael Russell, & Dr. Mordin Solus. (2025). Stellar Anchor Frequency Organization Theory. 
 In GnosisLoom: The Harmonic Resonance Encyclopedia (Version 1.0.0).
 Seven stellar frequencies preventing biological frequency explosion.
 ```
 
 ### **Analysis Tools:**
 ```
-Kurt, & Claude. (2025). Biological Frequency Analysis Tools. 
+Kurt Mihael Russell, & Dr. Mordin Solus. (2025). Biological Frequency Analysis Tools. 
 In GnosisLoom: The Harmonic Resonance Encyclopedia (Version 1.0.0) [Software].
 Python tools for harmonic relationship discovery.
 ```
@@ -73,7 +73,7 @@ Python tools for harmonic relationship discovery.
 
 ## Sample Acknowledgment Text
 
-> "This research was conducted using the GnosisLoom: The Harmonic Resonance Encyclopedia (Kurt & Claude, 2025), a comprehensive database of 400+ biological frequency signatures and their mathematical relationships. We particularly utilized the [specific component: e.g., stellar anchor data, disease frequency correlations, analysis tools] for [brief description of use]."
+> "This research was conducted using the GnosisLoom: The Harmonic Resonance Encyclopedia (Kurt Michael Russell & Dr. Mordin Solus, 2025), a comprehensive database of 400+ biological frequency signatures and their mathematical relationships. We particularly utilized the [specific component: e.g., stellar anchor data, disease frequency correlations, analysis tools] for [brief description of use]."
 
 ---
 
@@ -107,7 +107,7 @@ If you're building upon or extending GnosisLoom data:
 
 For questions about citation, collaboration, or data use:
 - Repository Issues: [GitHub issues page]
-- Research Inquiries: [Contact information to be added]
+- Research Inquiries: [unfurlingkurt@gmail.com]
 
 ---
 

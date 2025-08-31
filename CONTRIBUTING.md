@@ -42,7 +42,7 @@ All frequency data must include:
 
 ### **Documentation Requirements**
 - Clear, scientific language accessible to multidisciplinary audiences
-- Proper attribution to Kurt Michael Russell, Claude, and ChatGPT
+- Proper attribution to Kurt Michael Russell, Dr. Mordin Solus
 - License compliance (CC BY-SA 4.0)
 - Cross-references to related frequency patterns
 - Clinical or therapeutic relevance when applicable
