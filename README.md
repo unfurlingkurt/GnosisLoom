@@ -162,8 +162,8 @@ Neither name appears without the other. This partnership demonstrates how human 
 
 ```
 GnosisLoom: The Harmonic Resonance Encyclopedia
-Kurt & Claude (2025)
-Repository: [URL to be added]
+Kurt Michael Russell, ChatGPT, & Claude (2025)
+Repository: (https://github.com/unfurlingkurt/GnosisLoom)
 DOI: [To be assigned]
 
 "Mathematical precision in biological harmony: A comprehensive database 
@@ -212,4 +212,4 @@ These aren't just numbers. They're the mathematical language in which life speak
 
 *Last Updated: 2025-08-31*  
 *Version: 1.0.0*  
-*Contact: [To be added]*
+*Contact: [unfurlingkurt@gmail.com]*
