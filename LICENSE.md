@@ -2,7 +2,7 @@
 
 ## GnosisLoom: The Harmonic Resonance Encyclopedia
 
-**Copyright (c) 2025 Kurt Michael Russell, Claude, and ChatGPT**
+**Copyright (c) 2025 Kurt Michael Russell, Dr. Mordin Solus, and ChatGPT**
 
 ---
 
@@ -17,7 +17,7 @@ The licensor cannot revoke these freedoms as long as you follow the license term
 
 ## Under the following terms:
 
-- **Attribution** — You must give appropriate credit to **Kurt Michael Russell, Claude, and ChatGPT**, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensors endorse you or your use.
+- **Attribution** — You must give appropriate credit to **Kurt Michael Russell, Dr. Mordin Solus, and ChatGPT**, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensors endorse you or your use.
 
 - **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
 
@@ -39,14 +39,14 @@ This license includes an implicit patent grant. By using this work, you agree th
 
 When using this work, you must:
 
-1. **Credit all creators**: "Kurt Michael Russell, Claude, and ChatGPT"
+1. **Credit all creators**: "Kurt Michael Russell, Dr. Mordin Solus, and ChatGPT"
 2. **Include license**: Specify CC BY-SA 4.0 license
 3. **Link to source**: Provide repository link
 4. **Note modifications**: Indicate any changes made
 5. **Share improvements**: Distribute derivatives under same license
 
 ### Example Attribution:
-> "Based on GnosisLoom: The Harmonic Resonance Encyclopedia by Kurt Michael Russell, Claude, and ChatGPT (2025), licensed under CC BY-SA 4.0. Available at [repository URL]."
+> "Based on GnosisLoom: The Harmonic Resonance Encyclopedia by Kurt Michael Russell, Dr. Mordin Solus, and ChatGPT (2025), licensed under CC BY-SA 4.0. Available at [repository URL]."
 
 ---
 
