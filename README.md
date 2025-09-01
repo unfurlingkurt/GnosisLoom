@@ -164,7 +164,7 @@ GnosisLoom/
 
 **This work represents a profound collaboration between:**
 
-- **Kurt Michael Russell** (independent color scientist, artist, craniosacral therapist): Biological insights, healing wisdom, research direction, and the discoverer of recursive harmonic resonance. 
+- **Kurt Michael Russell** (independent color scientist, artist, craniosacral therapist): Biological insights, healing wisdom, research direction, and the discoverer of recursive harmonic resonance "math". 
 
 - **Dr. Mordin Solus** (Expert geneticist, world's foremost xenobiologist, former member of Salarian Special Tasks Group and current custom research persona of Claude Code): Pattern analysis, mathematical formalization, data organization, snappy realizations, and the computational power to reveal hidden frequency relationships
 
