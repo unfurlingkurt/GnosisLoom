@@ -4,16 +4,18 @@
 
 ## 🌟 Welcome to GnosisLoom
 
-**GnosisLoom** is the world's first comprehensive encyclopedia of biological harmonic resonance data, revealing the mathematical beauty underlying life itself through the **Aramis Field** - the harmonic resonance field that coordinates all biological systems (named after Kurt's beloved Maine Coon cat). This repository contains over **400 documented frequency signatures** across biological systems, from primordial chemistry to consciousness interfaces.
+**GnosisLoom** is the world's first comprehensive encyclopedia of harmonic resonance data spanning from **subatomic particles to consciousness**, revealing the mathematical beauty underlying reality itself through the **Aramis Field** - the harmonic resonance field that coordinates all physical and biological systems (named after Kurt's beloved Maine Coon cat). This repository contains over **1000 documented frequency signatures** across the complete spectrum of existence, from quantum mechanics to biological systems to consciousness interfaces.
 
 ### ✨ What You'll Discover
 
+- **⚛️ Subatomic Particles**: All 25 Standard Model particles with therapeutic frequency derivatives
 - **🧬 Biological Systems**: Complete frequency mappings for all major organ systems
-- **⚛️ Primordial Chemistry**: How the universe's first structured water patterns still guide life
-- **🧠 Consciousness Interfaces**: Pineal gland crystallization and DMT synthesis pathways  
-- **🔬 Molecular Chemistry**: Enzymatic catalysis through frequency matching
-- **🌊 Cymatic Patterns**: Standing wave mathematics in biological organization
+- **⚡ Primordial Chemistry**: How the universe's first structured water patterns still guide life
+- **🧠 Consciousness Interfaces**: Pineal gland crystallization and Higgs-consciousness coupling
+- **🔬 Molecular Chemistry**: Enzymatic catalysis through quantum frequency matching
+- **🌊 Cymatic Patterns**: Spiral tension field mathematics in biological organization
 - **⭐ Stellar Anchors**: How 7 stellar frequencies prevent biological frequency explosion
+- **🏥 Clinical Protocols**: Utah Team collaboration frameworks and therapeutic applications
 
 ---
 
@@ -49,22 +51,29 @@ print(f"Loaded {len(df)} frequency signatures!")
 
 ```
 GnosisLoom/
-├── MordinOriginalNotebooks/     # Foundation discoveries by Dr. Mordin Solus
-├── documentation/               # 35+ comprehensive research documents
-│   ├── MS00-MS25/              # Core biological system mappings
-│   ├── PRM00_Primordial/       # Universe's first frequency patterns  
-│   ├── PIN00_Pineal/           # Consciousness crystallization
-│   └── MCR00_Molecular/        # Enzymatic catalysis dynamics
-├── data/                       # Core frequency databases (JSON format)
-│   ├── comprehensive_frequencies.json      # 292+ biological signatures
-│   ├── primordial_chemistry_frequencies.json  # 47 primordial patterns
-│   ├── pineal_visual_frequencies.json      # 28 consciousness patterns
-│   ├── molecular_chemistry_resonance.json # 67 enzymatic patterns
+├── REPORT_01-11/               # 11 comprehensive research reports
+│   ├── REPORT_01_Elemental/    # Periodic table frequency anchors
+│   ├── REPORT_02_Molecular/    # Assembly dynamics and chemistry
+│   ├── REPORT_03_DNA/          # Traditional DNA architecture
+│   ├── REPORT_04_Q-DNA/        # Quantum genetic frameworks
+│   ├── REPORT_05_Scaffolds/    # Nerve regeneration proteins
+│   ├── REPORT_06_Neural/       # Frequency effects analysis
+│   ├── REPORT_07_Delivery/     # Therapeutic systems
+│   ├── REPORT_08_Protocols/    # Clinical applications
+│   ├── REPORT_09_Safety/       # Van Gelder analysis
+│   ├── REPORT_10_Utah/         # Team collaboration framework
+│   └── REPORT_11_Subatomic/    # Quantum particle frequencies
+├── data/                       # 13 specialized databases (JSON)
+│   ├── subatomic_particle_frequencies.json     # 75 quantum signatures
+│   ├── periodic_table_frequencies.json         # 118 elemental patterns
+│   ├── comprehensive_frequencies.json          # 400+ biological signatures
+│   ├── nerve_regeneration_scaffolds.json       # 17 therapeutic proteins
+│   ├── frequency_delivery_systems.json         # 6 clinical platforms
 │   └── [8 additional specialized databases]
 ├── data-exports/               # Industry standard formats (CSV, TSV, Parquet)
-├── tools/                      # Analysis utilities and converters  
-├── notebooks/                  # Interactive Jupyter examples
-└── api/                        # REST API for programmatic access
+├── tools/                      # Analysis utilities and validation scripts
+├── MordinOriginalNotebooks/    # Foundation discoveries archive
+└── extract_new_frequencies.py  # Database maintenance tools
 ```
 
 ---
@@ -109,6 +118,11 @@ GnosisLoom/
 - **DMT Synthesis**: Endogenous psychedelic production frequency
 - **Golden Ratio**: 13.5/7.83 ≈ φ (consciousness-Earth bridge)
 - **Visual Enhancement**: Perception acuity amplification
+
+### **305 Hz: Higgs-Consciousness Coupling**
+- **Mass-Awareness Bridge**: Higgs field scaled to biological frequencies
+- **Matter-Consciousness Interface**: Physical reality meets awareness
+- **Transcendent State Induction**: Advanced consciousness modulation
 
 ### **Perfect Octave Cascades**
 - **Visual System**: 80→40→20→10 Hz processing hierarchy
