@@ -1,0 +1,21 @@
+amino_acid_code,frequency_hz,molecular_formula,carbon_count,hydrogen_count,nitrogen_count,oxygen_count,sulfur_count,calculation_method,hydrophobic,polar,charged,aromatic,branched,size_category,helix_propensity,beta_sheet_propensity,special_function,pk_a,start_codon,disulfide_bonding,fluorescence,indole_ring
+GLY,3.1,C2H5NO2,2,5,1,2,0,C(1.53×2) + N(1.79) + O(2.04×2) + H(0.18×5),False,False,0,False,False,smallest,,,minimal_steric_hindrance,,,False,False,False
+ALA,4.63,C3H7NO2,3,7,1,2,0,C(1.53×3) + N(1.79) + O(2.04×2) + H(0.18×7),True,False,0,False,False,,high,,,,,False,False,False
+VAL,7.69,C5H11NO2,5,11,1,2,0,C(1.53×5) + N(1.79) + O(2.04×2) + H(0.18×11),True,False,0,False,True,,,high,,,,False,False,False
+LEU,9.22,C6H13NO2,6,13,1,2,0,C(1.53×6) + N(1.79) + O(2.04×2) + H(0.18×13),True,False,0,False,True,,high,,,,,False,False,False
+ILE,9.22,C6H13NO2,6,13,1,2,0,C(1.53×6) + N(1.79) + O(2.04×2) + H(0.18×13),True,False,0,False,True,,,very_high,,,,False,False,False
+PRO,8.87,C5H9NO2,5,9,1,2,0,C(1.53×5) + N(1.79) + O(2.04×2) + H(0.18×9),True,False,0,False,False,,,,,,,False,False,False
+PHE,13.01,C9H11NO2,9,11,1,2,0,C(1.53×9) + N(1.79) + O(2.04×2) + H(0.18×11),True,False,0,True,False,,,,,,,False,False,False
+TRP,16.25,C11H12N2O2,11,12,2,2,0,C(1.53×11) + N(1.79×2) + O(2.04×2) + H(0.18×12),True,False,0,True,False,largest,,,,,,False,True,True
+MET,12.4,C5H11NO2S,5,11,1,2,1,C(1.53×5) + N(1.79) + O(2.04×2) + S(4.09) + H(0.18×11),True,False,0,False,False,,,,,,AUG,False,False,False
+CYS,8.05,C3H7NO2S,3,7,1,2,1,C(1.53×3) + N(1.79) + O(2.04×2) + S(4.09) + H(0.18×7),False,True,0,False,False,,,,,,,True,False,False
+SER,6.12,C3H7NO3,3,7,1,3,0,C(1.53×3) + N(1.79) + O(2.04×3) + H(0.18×7),False,True,0,False,False,,,,,,,False,False,False
+THR,7.65,C4H9NO3,4,9,1,3,0,C(1.53×4) + N(1.79) + O(2.04×3) + H(0.18×9),False,True,0,False,False,,,,,,,False,False,False
+TYR,14.54,C9H11NO3,9,11,1,3,0,C(1.53×9) + N(1.79) + O(2.04×3) + H(0.18×11),False,True,0,True,False,,,,,,,False,False,False
+ASN,7.72,C4H8N2O3,4,8,2,3,0,C(1.53×4) + N(1.79×2) + O(2.04×3) + H(0.18×8),False,True,0,False,False,,,,,,,False,False,False
+GLN,9.25,C5H10N2O3,5,10,2,3,0,C(1.53×5) + N(1.79×2) + O(2.04×3) + H(0.18×10),False,True,0,False,False,,,,,,,False,False,False
+ASP,9.51,C4H7NO4,4,7,1,4,0,C(1.53×4) + N(1.79) + O(2.04×4) + H(0.18×7),False,True,-1,False,False,,,,,3.9,,False,False,False
+GLU,11.04,C5H9NO4,5,9,1,4,0,C(1.53×5) + N(1.79) + O(2.04×4) + H(0.18×9),False,True,-1,False,False,,,,,4.2,,False,False,False
+LYS,10.52,C6H14N2O2,6,14,2,2,0,C(1.53×6) + N(1.79×2) + O(2.04×2) + H(0.18×14),False,True,1,False,False,,,,,10.8,,False,False,False
+ARG,13.26,C6H14N4O2,6,14,4,2,0,C(1.53×6) + N(1.79×4) + O(2.04×2) + H(0.18×14),False,True,1,False,False,,,,,12.5,,False,False,False
+HIS,11.55,C6H9N3O2,6,9,3,2,0,C(1.53×6) + N(1.79×3) + O(2.04×2) + H(0.18×9),False,True,0,True,False,,,,,6.0,,False,False,False

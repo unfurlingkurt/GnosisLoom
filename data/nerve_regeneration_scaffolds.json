@@ -1,0 +1,419 @@
+{
+  "nerve_regeneration_architecture": {
+    "metadata": {
+      "scaffold_proteins": 3,
+      "frequency_range": "0.05-0.45_THz",
+      "discovery_date": "2025-08-31",
+      "research_classification": "NRSP05-REGENERATION",
+      "regeneration_stages": 4,
+      "axon_types": 3,
+      "therapeutic_frequencies": 12
+    },
+    "scaffold_protein_frequencies": {
+      "SPARC": {
+        "primary_frequency": 0.45,
+        "frequency_units": "THz",
+        "protein_code": "SPARC-450",
+        "molecular_weight": 43000,
+        "amino_acid_residues": 303,
+        "cysteine_content": 17,
+        "calcium_binding_sites": 2,
+        "disulfide_bridges": "high_density",
+        "domain_frequencies": {
+          "acidic_domain": {
+            "frequency": 150,
+            "frequency_units": "GHz",
+            "residues": "1-52",
+            "function": "calcium_binding_protein_interactions",
+            "amino_acid_bias": "high_aspartic_glutamic_acid"
+          },
+          "follistatin_domain": {
+            "frequency": 175,
+            "frequency_units": "GHz", 
+            "residues": "53-135",
+            "function": "growth_factor_binding_regulation",
+            "structure": "disulfide_rich_frequency_selective_binding"
+          },
+          "calcium_binding_domain": {
+            "frequency": 125,
+            "frequency_units": "GHz",
+            "residues": "136-303",
+            "function": "high_affinity_calcium_coordination",
+            "structure": "EF_hand_like_frequency_tuned_Ca_binding"
+          }
+        },
+        "regeneration_functions": {
+          "matrix_remodeling": "0.45_THz_disrupts_reorganizes_collagen",
+          "cell_matrix_interactions": "modulates_integrin_binding_frequency_coupling",
+          "growth_factor_regulation": "controls_TGF_beta_PDGF_VEGF_frequency_modulation",
+          "calcium_homeostasis": "Ca_binding_sites_create_localized_frequency_fields",
+          "anti_adhesive": "prevents_scar_tissue_matrix_frequency_modification"
+        },
+        "activation_timeline": {
+          "peak_activity": "3-7_days_post_injury",
+          "duration": "2-4_weeks", 
+          "frequency_pattern": "sustained_0.45_THz_matrix_remodeling",
+          "cellular_source": "astrocytes_fibroblasts_macrophages"
+        }
+      },
+      "Laminin_111": {
+        "primary_frequency": 0.2,
+        "frequency_units": "THz",
+        "protein_code": "LAM111-200",
+        "molecular_weight": 850000,
+        "subunit_composition": {
+          "alpha1_chain": {
+            "amino_acids": 3075,
+            "estimated_frequency": 140,
+            "frequency_units": "GHz"
+          },
+          "beta1_chain": {
+            "amino_acids": 1786,
+            "estimated_frequency": 80,
+            "frequency_units": "GHz"
+          },
+          "gamma1_chain": {
+            "amino_acids": 1609,
+            "estimated_frequency": 70,
+            "frequency_units": "GHz"
+          }
+        },
+        "total_residues": 6470,
+        "structural_architecture": "cross_shaped_heterotrimer",
+        "domain_frequencies": {
+          "laminin_G_domains": {
+            "frequency_range": [40, 60],
+            "frequency_units": "GHz_per_domain",
+            "function": "cell_surface_receptor_binding",
+            "number_domains": 5,
+            "location": "alpha1_chain_LG1_LG5",
+            "total_contribution": 250
+          },
+          "EGF_like_domains": {
+            "frequency_range": [15, 25],
+            "frequency_units": "GHz_per_domain",
+            "function": "protein_protein_interactions_assembly",
+            "location": "beta1_gamma1_chains",
+            "calcium_dependence": "Ca_binding_modulates_domain_frequency"
+          },
+          "coiled_coil_domain": {
+            "frequency": 80,
+            "frequency_units": "GHz",
+            "function": "heterotrimer_assembly_stability",
+            "structure": "triple_helix_resonant_frequency_cavity",
+            "arm_length": "77_nm"
+          }
+        },
+        "regeneration_functions": {
+          "basement_membrane_assembly": "0.2_THz_structural_framework_nerve_guidance",
+          "cell_adhesion": "integrin_binding_frequency_matched_attachment",
+          "neurite_outgrowth": "cross_shaped_directional_growth_cues",
+          "schwann_cell_migration": "glial_cell_movement_regenerating_axons",
+          "blood_nerve_barrier": "barrier_reformation_during_regeneration"
+        },
+        "guidance_properties": {
+          "frequency_directionality": "0.2_THz_propagates_along_injury_axis",
+          "channel_width": "1-5_micrometers_single_axon_guidance",
+          "persistence": "stable_guidance_weeks_to_months",
+          "regenerative_distance": "effective_guidance_several_centimeters"
+        }
+      },
+      "GAP_43": {
+        "frequency_range": [0.05, 0.3],
+        "frequency_units": "THz",
+        "protein_code": "GAP43-VAR",
+        "molecular_weight": 24000,
+        "amino_acid_residues": 226,
+        "variable_frequency_protein": true,
+        "modification_sites": {
+          "palmitoylation": ["Cys3", "Cys4"],
+          "phosphorylation": "multiple_PKC_sites",
+          "calmodulin_binding": "IQ_domain"
+        },
+        "frequency_modulation_analysis": {
+          "base_frequency": 0.05,
+          "palmitoylation_effect": [0.05, 0.1],
+          "phosphorylation_effect": [0.025, 0.075],
+          "calmodulin_binding_effect": [0.05, 0.1],
+          "maximum_frequency": 0.3,
+          "calculation": "0.05 + 0.1 + 0.075 + 0.075 = 0.3_THz"
+        },
+        "domain_frequencies": {
+          "palmitoylation_domain": {
+            "residues": "1-10",
+            "base_frequency": 15,
+            "frequency_units": "GHz",
+            "palmitoylation_enhancement": 25,
+            "function": "frequency_coupled_membrane_association"
+          },
+          "IQ_domain": {
+            "residues": "41-58",
+            "base_frequency": 50,
+            "frequency_units": "GHz",
+            "calmodulin_binding_frequency": 100,
+            "function": "calcium_dependent_growth_cone_regulation"
+          },
+          "C_terminal_domain": {
+            "residues": "120-226",
+            "base_frequency": 75,
+            "frequency_units": "GHz",
+            "phosphorylation_effect": [10, 15],
+            "function": "activity_modulation_phosphorylation_control"
+          }
+        },
+        "regeneration_functions": {
+          "growth_cone_dynamics": "variable_frequency_dynamic_behavior",
+          "axon_guidance": "frequency_modulation_directional_growth",
+          "synaptic_plasticity": "synapse_formation_modification_support",
+          "membrane_dynamics": "palmitoylation_membrane_frequency_coupling",
+          "signal_integration": "multiple_growth_signals_frequency_modulation"
+        },
+        "expression_regulation": {
+          "upregulation": "50-200_fold_regenerating_neurons",
+          "baseline_to_activated": "0.05_to_0.3_THz_range",
+          "calcium_PKC_modulation": "real_time_frequency_control",
+          "growth_cone_concentration": "high_GAP43_enables_formation"
+        }
+      }
+    },
+    "triadic_coupling_architecture": {
+      "frequency_relationships": {
+        "SPARC_Laminin_coupling": {
+          "frequency_ratio": 2.25,
+          "calculation": "0.45_THz / 0.2_THz",
+          "mathematical_relationship": "9:4_ratio_nearly_perfect_harmonic",
+          "beat_frequency": 0.25,
+          "beat_units": "THz",
+          "coupling_mechanism": "SPARC_remodels_Laminin_provides_guidance"
+        },
+        "Laminin_GAP43_coupling": {
+          "frequency_overlap": "0.2_THz_Laminin_vs_0.05-0.3_THz_GAP43",
+          "optimal_coupling": "GAP43_at_0.2_THz_matches_Laminin",
+          "mechanism": "growth_cones_tune_GAP43_match_Laminin_guidance",
+          "dynamic_range": "6_fold_GAP43_modulation"
+        },
+        "SPARC_GAP43_coupling": {
+          "maximum_coupling": "0.45_THz_vs_0.3_THz",
+          "frequency_ratio": 1.5,
+          "harmonic_relationship": "3:2_harmonic",
+          "beat_frequency": 0.15,
+          "beat_units": "THz",
+          "mechanism": "activated_GAP43_growth_through_SPARC_matrix"
+        }
+      },
+      "phase_relationships": {
+        "SPARC_Laminin_phase": {
+          "offset": "π/3",
+          "degrees": 60,
+          "description": "60_degree_phase_relationship"
+        },
+        "Laminin_GAP43_phase": {
+          "offset": "π/4", 
+          "degrees": 45,
+          "description": "45_degree_phase_relationship"
+        },
+        "SPARC_GAP43_phase": {
+          "offset": "π/6",
+          "degrees": 30,
+          "description": "30_degree_phase_relationship"
+        },
+        "triadic_coherence": "phase_locked_frequency_coupling"
+      },
+      "sequential_activation_model": {
+        "stage_1": {
+          "protein": "SPARC",
+          "frequency": 0.45,
+          "function": "matrix_remodeling_scar_breakdown"
+        },
+        "stage_2": {
+          "protein": "Laminin",
+          "frequency": 0.2,
+          "function": "guidance_substrate_establishment"
+        },
+        "stage_3": {
+          "protein": "GAP_43",
+          "frequency_transition": "0.05_to_0.3",
+          "function": "growth_cone_activation_pathfinding"
+        },
+        "stage_4": {
+          "proteins": "all_three",
+          "function": "coordinated_regeneration_resonant_scaffolding"
+        }
+      }
+    },
+    "regeneration_cascade_stages": {
+      "stage_1_injury_response": {
+        "stage_code": "REGEN-S1-MTX",
+        "primary_protein": "SPARC",
+        "frequency": 0.45,
+        "duration": "3-7_days_peak_2-4_weeks_total",
+        "functions": {
+          "matrix_disruption": "0.45_THz_disrupts_scar_collagen",
+          "collagen_modulation": "binds_collagen_I_III_modifies_assembly", 
+          "anti_fibrotic": "prevents_scar_formation_matrix_frequency_disruption",
+          "growth_factor_liberation": "releases_TGF_beta_PDGF_FGF"
+        },
+        "cellular_sources": ["astrocytes", "fibroblasts", "macrophages"]
+      },
+      "stage_2_guidance_establishment": {
+        "stage_code": "REGEN-S2-GUID",
+        "primary_protein": "Laminin_111",
+        "frequency": 0.2,
+        "duration": "weeks_to_months_stable_substrate",
+        "functions": {
+          "basement_membrane_reformation": "Schwann_cells_secrete_Laminin111",
+          "frequency_architecture": "0.2_THz_directional_guidance_channels",
+          "cross_shaped_assembly": "physical_frequency_guidance_axons",
+          "integrin_coupling": "alpha6beta1_alpha7beta1_frequency_complementarity"
+        }
+      },
+      "stage_3_axonal_regeneration": {
+        "stage_code": "REGEN-S3-GROW", 
+        "primary_protein": "GAP_43",
+        "frequency_range": [0.05, 0.3],
+        "duration": "weeks_to_months_growth_period",
+        "functions": {
+          "expression_upregulation": "50-200_fold_increase",
+          "growth_cone_formation": "high_GAP43_enables_cone_assembly",
+          "frequency_matching": "GAP43_tunes_match_Laminin_guidance",
+          "dynamic_pathfinding": "real_time_frequency_modulation"
+        }
+      },
+      "stage_4_target_recognition": {
+        "stage_code": "REGEN-S4-TARG",
+        "proteins": ["SPARC", "Laminin_111", "GAP_43"],
+        "frequency_convergence": "all_proteins_coordinate",
+        "duration": "days_to_weeks_synapse_formation",
+        "functions": {
+          "target_matrix_modification": "SPARC_remodels_target_tissue",
+          "pathway_maintenance": "Laminin_maintains_guidance_to_target",
+          "target_identification": "high_frequency_GAP43_target_recognition",
+          "synapse_formation": "triadic_coordination_connection"
+        }
+      }
+    },
+    "axon_type_specific_responses": {
+      "motor_axon_regeneration": {
+        "axon_code": "MOTOR-AX-REG",
+        "characteristics": {
+          "diameter": "10-20_micrometers",
+          "conduction_velocity": "50-120_m_per_second",
+          "preferred_frequency": "0.25-0.35_THz",
+          "GAP43_requirement": "high_activation_levels"
+        },
+        "frequency_coupling": {
+          "SPARC_sensitivity": "high_0.45_THz_motor_endplate_reformation",
+          "Laminin_response": "strong_0.2_THz_neuromuscular_junction_guidance",
+          "GAP43_dynamics": "sustained_0.25-0.3_THz_motor_pathfinding",
+          "target_specificity": "frequency_signatures_distinguish_muscle_targets"
+        }
+      },
+      "sensory_axon_regeneration": {
+        "axon_code": "SENS-AX-REG",
+        "characteristics": {
+          "diameter": "1-15_micrometers",
+          "conduction_velocity": "0.5-75_m_per_second", 
+          "preferred_frequency": "0.1-0.25_THz",
+          "subtype_variations": "different_modalities_different_frequencies"
+        },
+        "sensory_subtypes": {
+          "touch_pressure_Abeta": "0.2-0.25_THz_optimal",
+          "pain_temperature_Adelta": "0.15-0.2_THz_optimal",
+          "slow_pain_C_fibers": "0.05-0.15_THz_optimal",
+          "proprioception": "0.2-0.3_THz_precise_position"
+        }
+      },
+      "autonomic_axon_regeneration": {
+        "axon_code": "AUTO-AX-REG",
+        "characteristics": {
+          "diameter": "0.2-3_micrometers",
+          "conduction_velocity": "0.5-15_m_per_second",
+          "preferred_frequency": "0.05-0.15_THz",
+          "sympathetic_vs_parasympathetic": "slight_frequency_differences"
+        },
+        "autonomic_requirements": {
+          "SPARC_modulation": "lower_concentration_frequency_fine_targets",
+          "Laminin_guidance": "0.1-0.15_THz_optimal_small_fiber",
+          "GAP43_regulation": "precise_0.05-0.1_THz_autonomic_accuracy",
+          "target_recognition": "frequency_signatures_sympathetic_vs_parasympathetic"
+        }
+      }
+    },
+    "therapeutic_frequency_protocols": {
+      "optimal_stimulation_frequencies": {
+        "SPARC_activation": {
+          "primary_target": 0.45,
+          "harmonic_activation": [0.225, 0.9],
+          "frequency_units": "THz",
+          "calcium_coupling": "combine_localized_Ca_elevation",
+          "duration": "pulsed_15-30_min_2-3_times_daily"
+        },
+        "Laminin_enhancement": {
+          "primary_target": 0.2,
+          "assembly_enhancement": [0.1, 0.4],
+          "frequency_units": "THz",
+          "directional_bias": "spatial_frequency_gradients",
+          "duration": "continuous_low_level_or_pulsed_high_intensity"
+        },
+        "GAP43_modulation": {
+          "activation_range": [0.05, 0.3],
+          "growth_promotion": [0.15, 0.25], 
+          "frequency_units": "THz",
+          "calcium_integration": "coordinate_intracellular_Ca_dynamics",
+          "phosphorylation_optimization": "PKC_dependent_frequency"
+        }
+      },
+      "combinatorial_protocols": {
+        "sequential_activation": {
+          "phase_1": "0.45_THz_SPARC_matrix_preparation",
+          "phase_2": "0.2_THz_Laminin_guidance_establishment",
+          "phase_3": "0.05-0.3_THz_GAP43_growth_promotion",
+          "phase_4": "0.45+0.2+0.25_THz_triadic_coordination"
+        },
+        "simultaneous_multi_frequency": {
+          "base_frequencies": "0.45_THz_SPARC + 0.2_THz_Laminin + 0.2_THz_GAP43",
+          "beat_frequencies": "utilize_0.25_THz_and_0.15_THz_patterns",
+          "phase_relationships": "maintain_pi/3_pi/4_pi/6_offsets",
+          "modulation": "dynamic_GAP43_sweeps_0.05-0.3_THz"
+        }
+      }
+    },
+    "feedback_loop_systems": {
+      "FL_TRIAD_triadic_coupling": {
+        "mechanism": "SPARC_Laminin111_GAP43_phase_locked_relationships",
+        "timescale": "hours_to_weeks_regeneration_duration",
+        "effect": "coordinated_regeneration_resonant_scaffolding",
+        "phase_relationships": "pi/3_pi/4_pi/6_offsets_coupling_stability"
+      },
+      "FL_MATRIX_cellular_interface": {
+        "mechanism": "ECM_proteins_couple_cellular_growth_machinery",
+        "timescale": "minutes_to_hours_dynamic_remodeling",
+        "effect": "matrix_frequency_modifications_guide_cellular_responses",
+        "coupling": "SPARC_matrix_modification_GAP43_growth_cone_response"
+      },
+      "FL_GROWTH_cone_feedback": {
+        "mechanism": "GAP43_frequency_modulation_responds_guidance_cues",
+        "timescale": "seconds_to_minutes_dynamic_behavior",
+        "effect": "real_time_pathfinding_frequency_matching",
+        "dynamic_range": "6_fold_frequency_modulation_0.05-0.3_THz"
+      },
+      "FL_TARGET_recognition_feedback": {
+        "mechanism": "approaching_targets_modify_scaffold_frequencies",
+        "timescale": "hours_to_days_target_approach_recognition",
+        "effect": "fine_tuned_navigation_synapse_formation",
+        "convergence": "all_three_proteins_coordinate_target_coupling"
+      }
+    },
+    "cell_type_coding_extensions": {
+      "scaffold_protein_codes": {
+        "SPARC_codes": ["SPARC-450", "SPARC-MTX-REM", "SPARC-CA-BIND", "SPARC-GF-REG", "SPARC-COL-MOD"],
+        "Laminin_codes": ["LAM111-200", "LAM111-GUID", "LAM111-ADHES", "LAM111-CROSS", "LAM111-BMent"],
+        "GAP43_codes": ["GAP43-VAR", "GAP43-GC-DYN", "GAP43-PALM", "GAP43-PKC", "GAP43-CAM"]
+      },
+      "regeneration_process_codes": {
+        "cascade_stages": ["REGEN-S1-MTX", "REGEN-S2-GUID", "REGEN-S3-GROW", "REGEN-S4-TARG"],
+        "axon_types": ["MOTOR-AX-REG", "SENS-AX-REG", "AUTO-AX-REG", "CNS-AX-REG", "PNS-AX-REG"]
+      }
+    }
+  }
+}

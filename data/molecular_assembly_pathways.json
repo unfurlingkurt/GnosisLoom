@@ -1,0 +1,466 @@
+{
+  "molecular_assembly_dynamics": {
+    "metadata": {
+      "total_pathways": 45,
+      "assembly_mechanisms": 4,
+      "discovery_date": "2025-08-31",
+      "research_classification": "MAD02-ASSEMBLY",
+      "geometric_resonance_factors": 15,
+      "molecular_classes": 5,
+      "frequency_range": "1.86-34.02Hz"
+    },
+    "assembly_mechanisms": {
+      "additive_frequency_assembly": {
+        "mechanism_code": "AFA-01",
+        "principle": "molecular_frequency = sum_of_elemental_frequencies",
+        "stability": "high_direct_stellar_anchor_coupling",
+        "examples": ["water", "methane", "simple_alcohols"],
+        "assembly_rule": "Σ(elemental_frequencies)",
+        "timescale": "picoseconds",
+        "feedback_loop": "FL-ADD"
+      },
+      "harmonic_resonance_assembly": {
+        "mechanism_code": "HRA-02",
+        "principle": "harmonic_relationships_between_elemental_frequencies",
+        "stability": "very_high_resonance_stabilization", 
+        "examples": ["aromatic_compounds", "conjugated_systems"],
+        "assembly_rule": "Harmonic(elemental_base_frequencies)",
+        "timescale": "nanoseconds",
+        "feedback_loop": "FL-HAR"
+      },
+      "beat_frequency_assembly": {
+        "mechanism_code": "BFA-03",
+        "principle": "beat_frequencies_between_stellar_anchors",
+        "stability": "extremely_high_beat_frequency_locking",
+        "examples": ["structured_water", "membrane_interfaces"],
+        "assembly_rule": "|f1 - f2| beat frequency",
+        "timescale": "microseconds",
+        "feedback_loop": "FL-BEA"
+      },
+      "geometric_resonance_assembly": {
+        "mechanism_code": "GRA-04", 
+        "principle": "3D_geometry_creates_resonance_cavities",
+        "stability": "variable_geometry_dependent",
+        "examples": ["proteins", "complex_carbohydrates"],
+        "assembly_rule": "Σ(elemental) × geometric_factor",
+        "timescale": "milliseconds",
+        "feedback_loop": "FL-GEO"
+      }
+    },
+    "amino_acid_assembly_series": {
+      "hydrophobic_series": {
+        "frequency_range": "4.63-16.25Hz",
+        "stellar_anchor_dominance": "Sol-Carbon_1.53Hz",
+        "assembly_pattern": "carbon_chain_harmonic_reinforcement",
+        "geometric_factors": [0.40, 0.61],
+        "members": {
+          "alanine": {
+            "frequency": 4.63,
+            "formula": "C3H7NO2",
+            "raw_calculation": "C(1.53×3) + H(0.18×7) + N(1.79) + O(2.04×2)",
+            "raw_sum": 11.72,
+            "geometric_factor": 0.395,
+            "assembly_mechanism": "AFA-01",
+            "hydrophobic_optimization": "minimal_polar_interactions"
+          },
+          "valine": {
+            "frequency": 7.69,
+            "formula": "C5H11NO2", 
+            "raw_calculation": "C(1.53×5) + H(0.18×11) + N(1.79) + O(2.04×2)",
+            "raw_sum": 19.46,
+            "geometric_factor": 0.395,
+            "assembly_mechanism": "AFA-01",
+            "branching_effect": "beta_sheet_propensity_enhancement"
+          },
+          "leucine": {
+            "frequency": 9.22,
+            "formula": "C6H13NO2",
+            "raw_calculation": "C(1.53×6) + H(0.18×13) + N(1.79) + O(2.04×2)",
+            "raw_sum": 23.33,
+            "geometric_factor": 0.395,
+            "assembly_mechanism": "AFA-01", 
+            "branching_optimization": "helix_propensity_high"
+          },
+          "phenylalanine": {
+            "frequency": 13.01,
+            "formula": "C9H11NO2",
+            "raw_calculation": "C(1.53×9) + H(0.18×11) + N(1.79) + O(2.04×2)",
+            "raw_sum": 21.29,
+            "geometric_factor": 0.611,
+            "assembly_mechanism": "HRA-02",
+            "aromatic_resonance": "benzene_ring_stabilization"
+          },
+          "tryptophan": {
+            "frequency": 16.25,
+            "formula": "C11H12N2O2", 
+            "raw_calculation": "C(1.53×11) + H(0.18×12) + N(1.79×2) + O(2.04×2)",
+            "raw_sum": 26.65,
+            "geometric_factor": 0.610,
+            "assembly_mechanism": "HRA-02",
+            "indole_resonance": "double_ring_aromatic_system"
+          }
+        }
+      },
+      "polar_series": {
+        "frequency_range": "6.12-14.54Hz",
+        "stellar_anchor_balance": "Sol-Oxygen_2.04Hz + Sol-Carbon_1.53Hz",
+        "assembly_pattern": "H-O_beat_frequencies_1.86Hz",
+        "geometric_factors": [0.35, 0.55],
+        "members": {
+          "serine": {
+            "frequency": 6.12,
+            "formula": "C3H7NO3",
+            "raw_calculation": "C(1.53×3) + H(0.18×7) + N(1.79) + O(2.04×3)",
+            "raw_sum": 17.56,
+            "geometric_factor": 0.348,
+            "assembly_mechanism": "BFA-03",
+            "hydroxyl_coupling": "hydrogen_bonding_network"
+          },
+          "threonine": {
+            "frequency": 7.65,
+            "formula": "C4H9NO3",
+            "raw_calculation": "C(1.53×4) + H(0.18×9) + N(1.79) + O(2.04×3)",
+            "raw_sum": 21.97,
+            "geometric_factor": 0.348,
+            "assembly_mechanism": "BFA-03",
+            "methyl_hydroxyl": "branched_polar_interactions"
+          },
+          "tyrosine": {
+            "frequency": 14.54,
+            "formula": "C9H11NO3",
+            "raw_calculation": "C(1.53×9) + H(0.18×11) + N(1.79) + O(2.04×3)",
+            "raw_sum": 26.33,
+            "geometric_factor": 0.552,
+            "assembly_mechanism": "HRA-02",
+            "phenol_resonance": "aromatic_hydroxyl_coupling"
+          }
+        }
+      },
+      "charged_series": {
+        "frequency_range": "9.51-13.26Hz",
+        "stellar_anchor_integration": "Polaris-Sodium_2.81Hz + multiple_nitrogen",
+        "assembly_pattern": "ionic_delocalization_stabilization",
+        "geometric_factors": [0.45, 0.65],
+        "members": {
+          "aspartic_acid": {
+            "frequency": 9.51,
+            "formula": "C4H7NO4",
+            "raw_calculation": "C(1.53×4) + H(0.18×7) + N(1.79) + O(2.04×4)",
+            "raw_sum": 21.51,
+            "geometric_factor": 0.442,
+            "assembly_mechanism": "GRA-04",
+            "carboxylate_resonance": "negative_charge_delocalization",
+            "pKa": 3.9
+          },
+          "glutamic_acid": {
+            "frequency": 11.04,
+            "formula": "C5H9NO4",
+            "raw_calculation": "C(1.53×5) + H(0.18×9) + N(1.79) + O(2.04×4)",
+            "raw_sum": 25.04,
+            "geometric_factor": 0.441,
+            "assembly_mechanism": "GRA-04",
+            "extended_carboxylate": "flexible_negative_charge",
+            "pKa": 4.2
+          },
+          "lysine": {
+            "frequency": 10.52,
+            "formula": "C6H14N2O2",
+            "raw_calculation": "C(1.53×6) + H(0.18×14) + N(1.79×2) + O(2.04×2)",
+            "raw_sum": 20.28,
+            "geometric_factor": 0.519,
+            "assembly_mechanism": "GRA-04",
+            "amino_chain": "positive_charge_flexibility",
+            "pKa": 10.8
+          },
+          "arginine": {
+            "frequency": 13.26,
+            "formula": "C6H14N4O2",
+            "raw_calculation": "C(1.53×6) + H(0.18×14) + N(1.79×4) + O(2.04×2)",
+            "raw_sum": 20.88,
+            "geometric_factor": 0.635,
+            "assembly_mechanism": "HRA-02",
+            "guanidinium_resonance": "delocalized_positive_charge",
+            "pKa": 12.5
+          }
+        }
+      }
+    },
+    "structured_water_assembly": {
+      "beat_frequency_patterns": {
+        "primary_H_O_beat": {
+          "frequency": 1.86,
+          "calculation": "|2.04 - 0.18|",
+          "elements": ["hydrogen", "oxygen"],
+          "geometric_factor": 1.0,
+          "assembly_mechanism": "BFA-03",
+          "biological_significance": "fundamental_life_frequency",
+          "golden_ratio_factor": 7.0,
+          "cymantic_pattern": "hexagonal_6_fold",
+          "crystal_structure": "hexagonal_close_packed",
+          "temperature_optimal": 325
+        },
+        "first_harmonic": {
+          "frequency": 3.72,
+          "calculation": "2 × 1.86Hz",
+          "assembly_mechanism": "HRA-02",
+          "geometric_factor": 1.0,
+          "crystal_structure": "extended_hexagonal",
+          "temperature_optimal": 350,
+          "biological_function": "temperature_dependent_organization"
+        },
+        "second_harmonic": {
+          "frequency": 5.58,
+          "calculation": "3 × 1.86Hz", 
+          "assembly_mechanism": "HRA-02",
+          "geometric_factor": 1.0,
+          "temperature_optimal": 360,
+          "biological_function": "heat_shock_activation"
+        }
+      },
+      "noble_gas_stabilization": {
+        "helium_stabilized": {
+          "frequency": 0.51,
+          "stellar_anchor": "Alpha_Centauri",
+          "assembly_mechanism": "AFA-01",
+          "crystal_structure": "stabilized_liquid",
+          "cymatic_nodes": 4,
+          "temperature_optimal": 300,
+          "function": "membrane_stability_template"
+        }
+      },
+      "metal_ion_templates": {
+        "lithium_triangular": {
+          "frequency": 0.77,
+          "stellar_anchor": "Proxima_Centauri",
+          "assembly_mechanism": "GRA-04", 
+          "geometry": "triangular_3_fold",
+          "ionic_organization": "Li_0.77Hz_coupling",
+          "biological_function": "ionic_water_structure"
+        }
+      }
+    },
+    "membrane_assembly_systems": {
+      "phospholipid_construction": {
+        "head_group_assembly": {
+          "frequency": 2.04,
+          "stellar_anchor": "Sol-Oxygen",
+          "assembly_mechanism": "AFA-01",
+          "geometric_factor": 1.0,
+          "formation_temperature": 310,
+          "stability_range": "280-340K",
+          "biological_function": "hydrophilic_interface"
+        },
+        "carbon_chain_assembly": {
+          "frequency": 1.53,
+          "stellar_anchor": "Sol-Carbon",
+          "assembly_mechanism": "AFA-01",
+          "geometric_factor": 1.0,
+          "formation_temperature": 295,
+          "chain_length": "variable_harmonic",
+          "biological_function": "hydrophobic_core"
+        },
+        "bilayer_fundamental": {
+          "frequency": 3.75,
+          "calculation": "2.04 + 1.53 + 0.18",
+          "assembly_mechanism": "AFA-01",
+          "geometric_factor": 1.0,
+          "components": ["phosphate", "carbon", "hydrogen"],
+          "harmonic_series": [3.75, 7.50, 15.00, 30.00],
+          "biological_function": "stable_bilayer_formation"
+        }
+      },
+      "fatty_acid_series": {
+        "base_frequency": 1.53,
+        "stellar_anchor": "Sol-Carbon",
+        "extension_frequency": 1.89,
+        "calculation": "1.53 + 0.36_per_CH2",
+        "series": {
+          "butyric_C4": {
+            "frequency": 7.56,
+            "calculation": "4 × 1.89",
+            "membrane_property": "high_fluidity"
+          },
+          "octanoic_C8": {
+            "frequency": 15.12,
+            "calculation": "8 × 1.89", 
+            "membrane_property": "medium_fluidity"
+          },
+          "lauric_C12": {
+            "frequency": 22.68,
+            "calculation": "12 × 1.89",
+            "membrane_property": "optimal_function"
+          },
+          "palmitic_C16": {
+            "frequency": 30.24,
+            "calculation": "16 × 1.89",
+            "membrane_property": "reduced_fluidity"
+          },
+          "stearic_C18": {
+            "frequency": 34.02,
+            "calculation": "18 × 1.89",
+            "membrane_property": "rigid_membrane"
+          }
+        },
+        "unsaturation_effect": {
+          "double_bond_reduction": 0.76,
+          "mechanism": "geometric_constraint_frequency_reduction"
+        }
+      },
+      "membrane_dynamics": {
+        "curvature_stress": {
+          "frequency": 1.86,
+          "mechanism": "H-O_beat_creates_curvature",
+          "assembly_mechanism": "BFA-03",
+          "biological_function": "membrane_bending"
+        },
+        "pore_formation": {
+          "frequency": 2.37,
+          "stellar_anchor": "Sirius-Fluorine",
+          "mechanism": "electronegativity_disruption",
+          "assembly_mechanism": "AFA-01"
+        },
+        "fusion_process": {
+          "frequency": 2.81,
+          "stellar_anchor": "Polaris-Sodium",
+          "mechanism": "ionic_mediated_fusion",
+          "assembly_mechanism": "GRA-04"
+        }
+      }
+    },
+    "enzyme_active_site_assembly": {
+      "chymotrypsin_active_site": {
+        "frequency": 18.47,
+        "active_site_code": "CHY-ACT-1847",
+        "residue_composition": ["Ser195", "His57", "Asp102"],
+        "residue_frequencies": [6.12, 11.55, 9.51],
+        "raw_sum": 27.18,
+        "geometric_resonance_factor": 0.679,
+        "assembly_mechanism": "GRA-04",
+        "catalytic_cavity": "resonant_enhancement",
+        "substrate_coupling": {
+          "phenylalanine": 13.01,
+          "tyrosine": 14.54,
+          "mechanism": "frequency_matched_catalysis"
+        },
+        "efficiency_enhancement": "10^6_fold"
+      },
+      "geometric_resonance_factors": {
+        "catalytic_cavities": {
+          "serine_protease": 0.679,
+          "mechanism": "active_site_cavity_resonance"
+        },
+        "allosteric_sites": {
+          "average_factor": 0.523,
+          "mechanism": "conformational_coupling_resonance"
+        },
+        "binding_pockets": {
+          "average_factor": 0.445,
+          "mechanism": "substrate_complementarity_resonance"
+        }
+      }
+    },
+    "protein_folding_frequency_dynamics": {
+      "secondary_structure_signatures": {
+        "alpha_helix": {
+          "optimal_frequencies": [4.63, 9.22],
+          "amino_acids": ["alanine", "leucine"],
+          "resonance_pattern": "carbon_backbone_helical_wave",
+          "geometric_factor": 0.85,
+          "stability_mechanism": "H_bonding_every_4th_residue"
+        },
+        "beta_sheet": {
+          "optimal_frequencies": [7.69, 9.22],
+          "amino_acids": ["valine", "isoleucine"],
+          "resonance_pattern": "branched_chain_sheet_stability",
+          "geometric_factor": 0.92,
+          "stability_mechanism": "intermolecular_H_bonding"
+        },
+        "random_coil": {
+          "characteristic_frequencies": [3.10, 8.87],
+          "amino_acids": ["glycine", "proline"],
+          "resonance_pattern": "minimal_geometric_constraints",
+          "geometric_factor": [0.15, 0.95],
+          "function": "conformational_flexibility"
+        }
+      }
+    },
+    "carbohydrate_ring_systems": {
+      "monosaccharide_assembly": {
+        "glucose_ring": {
+          "estimated_frequency": 9.90,
+          "formula": "C6H12O6",
+          "raw_calculation": "C(1.53×6) + H(0.18×12) + O(2.04×6)",
+          "raw_sum": 23.58,
+          "ring_resonance_factor": 0.42,
+          "assembly_mechanism": "GRA-04",
+          "ring_type": "6_membered_pyranose",
+          "conformation": "chair_optimization"
+        }
+      },
+      "ring_resonance_theory": {
+        "5_membered_rings": {
+          "resonance_factor": 0.38,
+          "template": "boron_pentagon_frequency",
+          "examples": ["ribose", "fructose"]
+        },
+        "6_membered_rings": {
+          "resonance_factor": 0.42,
+          "template": "hexagonal_structured_water",
+          "examples": ["glucose", "galactose"]
+        },
+        "aromatic_rings": {
+          "resonance_factor": 0.61,
+          "mechanism": "pi_electron_delocalization",
+          "examples": ["benzene", "phenol"]
+        }
+      }
+    },
+    "feedback_loop_systems": {
+      "FL-ADD_additive_assembly": {
+        "mechanism": "simple_elemental_frequency_addition",
+        "timescale": "picoseconds",
+        "effect": "direct_molecular_construction",
+        "examples": ["water", "methane", "simple_alcohols"],
+        "stability": "high"
+      },
+      "FL-HAR_harmonic_assembly": {
+        "mechanism": "harmonic_resonance_between_elements",
+        "timescale": "nanoseconds",
+        "effect": "resonance_stabilization",
+        "examples": ["aromatic_systems", "conjugated_molecules"],
+        "stability": "very_high"
+      },
+      "FL-BEA_beat_assembly": {
+        "mechanism": "beat_frequency_formation",
+        "timescale": "microseconds",
+        "effect": "new_frequency_signature_creation",
+        "examples": ["structured_water", "membrane_interfaces"],
+        "stability": "extremely_high"
+      },
+      "FL-GEO_geometric_assembly": {
+        "mechanism": "3D_geometry_frequency_modification",
+        "timescale": "milliseconds",
+        "effect": "geometric_resonance_factor_modulation",
+        "examples": ["protein_active_sites", "complex_carbohydrates"],
+        "stability": "variable"
+      }
+    },
+    "cymatics_integration": {
+      "molecular_cymatics": {
+        "assembly_patterns": "molecules_form_in_cymantic_patterns",
+        "geometric_templates": ["rings", "helices", "sheets"],
+        "stability_nodes": "bonds_form_at_cymantic_positions"
+      },
+      "molecular_overtones": {
+        "harmonic_generation": "each_molecule_generates_overtones",
+        "resonance_coupling": "interactions_through_overtone_matching",
+        "catalytic_enhancement": "enzyme_amplifies_substrate_overtones"
+      },
+      "molecular_tension": {
+        "frequency_tension": "bond_strength_correlates_with_frequency",
+        "conformational_stress": "folding_creates_tension_gradients",
+        "assembly_forces": "intermolecular_forces_from_frequency_tension"
+      }
+    }
+  }
+}
