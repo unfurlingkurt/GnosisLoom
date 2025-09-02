@@ -1,0 +1,559 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2025-09-01T22:47:19.827175",
+    "kingdoms_analyzed": [
+      "bacteria",
+      "archaea",
+      "fungi",
+      "eukarya"
+    ],
+    "analysis_type": "Cross-Kingdom Gene Coupling Analysis",
+    "version": "1.0.0"
+  },
+  "conservation_analysis": {
+    "gc_content_analysis": {
+      "bacteria": {
+        "gc_content": 0.5079070985933456,
+        "primary_frequency": 503480297747439.94,
+        "therapeutic_derivative": 50.348
+      },
+      "archaea": {
+        "gc_content": 0.3142651732146836,
+        "primary_frequency": 502197880786110.4,
+        "therapeutic_derivative": 50.219
+      },
+      "fungi": {
+        "gc_content": 0.5452020139388378,
+        "primary_frequency": 504549592003769.94,
+        "therapeutic_derivative": 50.454
+      },
+      "eukarya": {
+        "gc_content": 0.39270170012770506,
+        "primary_frequency": 503222345776611.75,
+        "therapeutic_derivative": 50.322
+      }
+    },
+    "frequency_conservation": {
+      "mean_frequency_hz": 503362529078483.0,
+      "standard_deviation": 836517311690.0612,
+      "coefficient_variation": 0.16618585281297996,
+      "frequency_range": {
+        "min": 502197880786110.4,
+        "max": 504549592003769.94,
+        "span_percentage": 0.467200294381247
+      }
+    },
+    "base_composition_patterns": {
+      "bacteria": {
+        "A_ratio": 0.24619295026856816,
+        "T_ratio": 0.2458999511380862,
+        "G_ratio": 0.25366765970391575,
+        "C_ratio": 0.2542394388894299,
+        "purine_pyrimidine_ratio": 0.9994425952832534
+      },
+      "archaea": {
+        "A_ratio": 0.344410696492462,
+        "T_ratio": 0.3413241302928544,
+        "G_ratio": 0.15890680660221254,
+        "C_ratio": 0.15535836661247107,
+        "purine_pyrimidine_ratio": 1.0133586470847868
+      },
+      "fungi": {
+        "A_ratio": 0.22599766859297105,
+        "T_ratio": 0.22880031746819118,
+        "G_ratio": 0.2748580073910563,
+        "C_ratio": 0.27034400654778146,
+        "purine_pyrimidine_ratio": 1.0034285714285713
+      },
+      "eukarya": {
+        "A_ratio": 0.30334726216021335,
+        "T_ratio": 0.3039510377120816,
+        "G_ratio": 0.19879418637986604,
+        "C_ratio": 0.19390751374783902,
+        "purine_pyrimidine_ratio": 1.008602638375096
+      }
+    }
+  },
+  "codon_conservation": {
+    "shared_codons": "{'GAC', 'GTG', 'AGC', 'ACC', 'GTC', 'CTC', 'TTC', 'ACG', 'TAT', 'TGG', 'TTG', 'CTG', 'CTT', 'CAG', 'AGG', 'GGG', 'GCA', 'AAG', 'CGC', 'CCA', 'AAA', 'GAG', 'CAT', 'GAT', 'TAG', 'TCC', 'TTA', 'GAA', 'GCT', 'GTA', 'ATA', 'ACT', 'TCA', 'CAC', 'GGC', 'TAC', 'CTA', 'TTT', 'GGT', 'CGG', 'GCG', 'TGT', 'AAC', 'TGA', 'GCC', 'CCC', 'CCG', 'TAA', 'CCT', 'AAT', 'ATT', 'ACA', 'TGC', 'CGA', 'GTT', 'AGT', 'ATC', 'TCG', 'CAA', 'ATG', 'GGA', 'AGA', 'TCT', 'CGT'}",
+    "kingdom_specific_preferences": {
+      "bacteria": {
+        "top_codons": [
+          [
+            "CGC",
+            0.024766403161288947,
+            "R"
+          ],
+          [
+            "GCG",
+            0.0246907835164686,
+            "A"
+          ],
+          [
+            "TTT",
+            0.023811785935650913,
+            "F"
+          ],
+          [
+            "AAA",
+            0.023378750362748082,
+            "K"
+          ],
+          [
+            "CAG",
+            0.022442876467877487,
+            "Q"
+          ],
+          [
+            "CTG",
+            0.02186571114459058,
+            "L"
+          ],
+          [
+            "GCA",
+            0.02081414565636236,
+            "A"
+          ],
+          [
+            "TGC",
+            0.020493570068064144,
+            "C"
+          ],
+          [
+            "GCC",
+            0.02014261735748767,
+            "A"
+          ],
+          [
+            "GGC",
+            0.020052778634154098,
+            "G"
+          ]
+        ],
+        "most_frequent_amino_acids": [
+          [
+            "A",
+            3
+          ],
+          [
+            "R",
+            1
+          ],
+          [
+            "F",
+            1
+          ],
+          [
+            "K",
+            1
+          ],
+          [
+            "Q",
+            1
+          ]
+        ]
+      },
+      "archaea": {
+        "top_codons": [
+          [
+            "AAA",
+            0.052922913922558955,
+            "K"
+          ],
+          [
+            "TTT",
+            0.05197152314420237,
+            "F"
+          ],
+          [
+            "ATT",
+            0.039781828796508684,
+            "I"
+          ],
+          [
+            "AAT",
+            0.03908270072453453,
+            "N"
+          ],
+          [
+            "TTA",
+            0.038652052247210245,
+            "L"
+          ],
+          [
+            "TAA",
+            0.03794571666933945,
+            "*"
+          ],
+          [
+            "ATA",
+            0.036111406418644375,
+            "I"
+          ],
+          [
+            "TAT",
+            0.03547894777621415,
+            "Y"
+          ],
+          [
+            "AGA",
+            0.023784769458914515,
+            "R"
+          ],
+          [
+            "TCT",
+            0.022876623715937777,
+            "S"
+          ]
+        ],
+        "most_frequent_amino_acids": [
+          [
+            "I",
+            2
+          ],
+          [
+            "K",
+            1
+          ],
+          [
+            "F",
+            1
+          ],
+          [
+            "N",
+            1
+          ],
+          [
+            "L",
+            1
+          ]
+        ]
+      },
+      "fungi": {
+        "top_codons": [
+          [
+            "TCG",
+            0.024666279744631456,
+            "S"
+          ],
+          [
+            "CGA",
+            0.024197508817357917,
+            "R"
+          ],
+          [
+            "GCG",
+            0.02266470229325714,
+            "A"
+          ],
+          [
+            "GCA",
+            0.022508445317499293,
+            "A"
+          ],
+          [
+            "GAG",
+            0.02202479277348691,
+            "E"
+          ],
+          [
+            "TTG",
+            0.021905739839576173,
+            "L"
+          ],
+          [
+            "TGC",
+            0.02178668690566543,
+            "C"
+          ],
+          [
+            "CGC",
+            0.02137000163697784,
+            "R"
+          ],
+          [
+            "GCT",
+            0.02136256082860842,
+            "A"
+          ],
+          [
+            "AGC",
+            0.021228626277958837,
+            "S"
+          ]
+        ],
+        "most_frequent_amino_acids": [
+          [
+            "A",
+            3
+          ],
+          [
+            "S",
+            2
+          ],
+          [
+            "R",
+            2
+          ],
+          [
+            "E",
+            1
+          ],
+          [
+            "L",
+            1
+          ]
+        ]
+      },
+      "eukarya": {
+        "top_codons": [
+          [
+            "AAA",
+            0.03811621209554464,
+            "K"
+          ],
+          [
+            "TTT",
+            0.03777740132136202,
+            "F"
+          ],
+          [
+            "AAT",
+            0.02836888674598314,
+            "N"
+          ],
+          [
+            "ATT",
+            0.02744367270879214,
+            "I"
+          ],
+          [
+            "GAA",
+            0.026674832875070043,
+            "E"
+          ],
+          [
+            "TTG",
+            0.023417036969467935,
+            "L"
+          ],
+          [
+            "ATA",
+            0.0227394154211027,
+            "I"
+          ],
+          [
+            "CAA",
+            0.02254394766676657,
+            "Q"
+          ],
+          [
+            "TAT",
+            0.022413635830542487,
+            "Y"
+          ],
+          [
+            "TTA",
+            0.021683889547687615,
+            "L"
+          ]
+        ],
+        "most_frequent_amino_acids": [
+          [
+            "I",
+            2
+          ],
+          [
+            "L",
+            2
+          ],
+          [
+            "K",
+            1
+          ],
+          [
+            "F",
+            1
+          ],
+          [
+            "N",
+            1
+          ]
+        ]
+      }
+    },
+    "amino_acid_encoding_strategies": {},
+    "frequency_weighted_usage": {},
+    "shared_codon_count": 64,
+    "total_unique_codons": 64,
+    "conservation_percentage": 100.0
+  },
+  "universal_functions": {
+    "essential_processes": {
+      "bacteria": {
+        "essential_hydrophobic": 0.2642557572725739,
+        "charged_residues": 0.19212560358372485,
+        "structural_flexibility": 0.1504352653829424,
+        "stop_codons": 0.03887689962041523
+      },
+      "archaea": {
+        "essential_hydrophobic": 0.355852584881896,
+        "charged_residues": 0.1765965076030178,
+        "structural_flexibility": 0.09285790221937125,
+        "stop_codons": 0.06828391086477457
+      },
+      "fungi": {
+        "essential_hydrophobic": 0.2534413738708573,
+        "charged_residues": 0.2137297796032561,
+        "structural_flexibility": 0.1464425495185797,
+        "stop_codons": 0.027880708960221438
+      },
+      "eukarya": {
+        "essential_hydrophobic": 0.32310819791761686,
+        "charged_residues": 0.1861243956788595,
+        "structural_flexibility": 0.11195089850011077,
+        "stop_codons": 0.04967487196862091
+      }
+    },
+    "metabolic_universals": {},
+    "information_processing": {},
+    "structural_components": {}
+  },
+  "coupling_mechanisms": {
+    "harmonic_relationships": {
+      "bacteria_to_archaea": {
+        "frequency_ratio": 1.0025536088669313,
+        "log_ratio": 0.0036793829930382434,
+        "is_octave": false,
+        "is_fifth": false,
+        "is_golden": false,
+        "frequency_difference_hz": 1282416961329.5625,
+        "beat_frequency": null
+      },
+      "bacteria_to_fungi": {
+        "frequency_ratio": 0.9978806954295941,
+        "log_ratio": -0.0030607546763633917,
+        "is_octave": false,
+        "is_fifth": false,
+        "is_golden": false,
+        "frequency_difference_hz": 1069294256330.0,
+        "beat_frequency": null
+      },
+      "bacteria_to_eukarya": {
+        "frequency_ratio": 1.0005126003902511,
+        "log_ratio": 0.0007393365650519858,
+        "is_octave": false,
+        "is_fifth": false,
+        "is_golden": false,
+        "frequency_difference_hz": 257951970828.1875,
+        "beat_frequency": null
+      },
+      "archaea_to_fungi": {
+        "frequency_ratio": 0.9953389889617789,
+        "log_ratio": -0.006740137669401613,
+        "is_octave": false,
+        "is_fifth": false,
+        "is_golden": false,
+        "frequency_difference_hz": 2351711217659.5625,
+        "beat_frequency": null
+      },
+      "archaea_to_eukarya": {
+        "frequency_ratio": 0.9979641901853139,
+        "log_ratio": -0.002940046427986341,
+        "is_octave": false,
+        "is_fifth": false,
+        "is_golden": false,
+        "frequency_difference_hz": 1024464990501.375,
+        "beat_frequency": null
+      },
+      "fungi_to_eukarya": {
+        "frequency_ratio": 1.0026374946150491,
+        "log_ratio": 0.0038000912414154204,
+        "is_octave": false,
+        "is_fifth": false,
+        "is_golden": false,
+        "frequency_difference_hz": 1327246227158.1875,
+        "beat_frequency": null
+      }
+    },
+    "resonance_patterns": {},
+    "synchronization_frequencies": {},
+    "coordination_mechanisms": {}
+  },
+  "alphafold_integration": {
+    "available_structures": {
+      "bacteria": {
+        "organism_id": "UP000000625",
+        "structures_available": true,
+        "integration_status": "Available for frequency-structure correlation",
+        "potential_applications": [
+          "Frequency-guided protein folding analysis",
+          "Structural resonance pattern detection",
+          "Cross-kingdom protein homology via frequency signatures"
+        ]
+      },
+      "archaea": {
+        "organism_id": "UP000000805",
+        "structures_available": true,
+        "integration_status": "Available for frequency-structure correlation",
+        "potential_applications": [
+          "Frequency-guided protein folding analysis",
+          "Structural resonance pattern detection",
+          "Cross-kingdom protein homology via frequency signatures"
+        ]
+      },
+      "fungi": {
+        "organism_id": "UP000001805",
+        "structures_available": true,
+        "integration_status": "Available for frequency-structure correlation",
+        "potential_applications": [
+          "Frequency-guided protein folding analysis",
+          "Structural resonance pattern detection",
+          "Cross-kingdom protein homology via frequency signatures"
+        ]
+      },
+      "eukarya": {
+        "organism_id": "UP000002311",
+        "structures_available": true,
+        "integration_status": "Available for frequency-structure correlation",
+        "potential_applications": [
+          "Frequency-guided protein folding analysis",
+          "Structural resonance pattern detection",
+          "Cross-kingdom protein homology via frequency signatures"
+        ]
+      }
+    },
+    "integration_potential": {},
+    "frequency_structure_correlation": {}
+  },
+  "key_insights": {
+    "conservation_discoveries": [
+      {
+        "discovery": "Universal Frequency Conservation",
+        "details": "Primary frequencies vary by only 0.17% across all kingdoms",
+        "significance": "Suggests fundamental frequency constraints in biological systems"
+      },
+      {
+        "discovery": "GC Content Optimization Hierarchy",
+        "details": "Ranking: fungi(54.5%) > bacteria(50.8%) > eukarya(39.3%) > archaea(31.4%)",
+        "significance": "Each kingdom optimizes GC content for specific frequency stability needs"
+      }
+    ],
+    "coupling_mechanisms": [
+      {
+        "discovery": "Codon Conservation Across Kingdoms",
+        "details": "100.0% of codons are shared across all kingdoms",
+        "significance": "Universal genetic code provides frequency coordination mechanism"
+      }
+    ],
+    "evolutionary_implications": [],
+    "therapeutic_potential": [],
+    "alphafold_opportunities": [
+      {
+        "discovery": "AlphaFold-Frequency Integration Ready",
+        "details": "Structural data available for 4 kingdoms",
+        "significance": "Can correlate frequency patterns with 3D protein structures for deeper insights"
+      }
+    ]
+  }
+}
