@@ -1,0 +1,17 @@
+lipid_id,frequency_hz,component,stellar_anchor,formation_temperature_k,stability_range_k,chain_length,bond_strength,stability_function,calculation_method,mechanism,membrane_function
+MEM-PHO-204,2.04,Phospholipid head group,Sol-Oxygen,310,280-340K,,,,,,
+MEM-CAR-153,1.53,Fatty acid carbon chain,Sol-Carbon,295,,variable,,,,,
+MEM-HYD-018,0.18,Hydrogen bonding,Sol-Hydrogen,273,,,optimal,,,,
+MEM-BEA-051,0.51,Membrane stability beat,,0,,,,membrane_integrity,,,
+MEM-BIL-375,3.75,Bilayer fundamental,,0,,,,,2.04 + 1.53 + 0.18 = 3.75Hz,,
+MEM-HAR-750,7.5,First harmonic bilayer,,0,,,,,2 × 3.75Hz,,
+MEM-HAR-1500,15.0,Second harmonic bilayer,,0,,,,,4 × 3.75Hz,,
+MEM-HAR-3000,30.0,Third harmonic bilayer,,0,,,,,8 × 3.75Hz,,
+MEM-CUR-VAT,1.86,Membrane curvature,,0,,,,,,,
+MEM-POR-FOR,2.37,Pore formation,Sirius-Fluorine,0,,,,,,electronegativity_disruption,
+MEM-FUS-ION,2.81,Membrane fusion,Polaris-Sodium,0,,,,,,ionic_mediated_fusion,
+MEM-ASY-MET,0.0,Asymmetric membrane,,0,,,,,,Different inner/outer leaflet composition,
+MEM-LAT-DIF,0.33,Lateral diffusion,,0,,,,,|2.04 - 1.71| average motion,,
+MEM-PHA-TRA,4.09,Phase transitions,Sol-Sulfur,0,,,,,,,
+MEM-CHO-INT,3.07,Cholesterol interaction,Betelgeuse-Magnesium,0,,,,,,,membrane_fluidity
+MEM-LIP-RAF,0.0,Lipid rafts,,0,,,,,,Phosphate-Mg-Sulfur clustering,

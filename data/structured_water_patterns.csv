@@ -1,0 +1,13 @@
+pattern_id,frequency_hz,pattern_type,formation_mechanism,temperature_optimal_k,crystallization_type,cymatic_nodes,golden_ratio_factor,symmetry,bond_angle_degrees,frequencies_list,primary_beat,secondary_beats,complexity,ratio_relationships
+WAT-STR-186,1.86,H-O beat frequency,Hydrogen(0.18Hz) + Oxygen(2.04Hz) interference,325,hexagonal_close_packed,6,7.0,,0.0,[],0.0,[],,[]
+WAT-STR-051,0.51,Helium stabilization,Noble gas structural template,300,stabilized_liquid,4,0.0,,0.0,[],0.0,[],,[]
+WAT-STR-372,3.72,First harmonic of H-O beat,2 × 1.86Hz harmonic resonance,350,extended_hexagonal,0,0.0,,0.0,[],0.0,[],,[]
+WAT-STR-558,5.58,Second harmonic of H-O beat,3 × 1.86Hz harmonic resonance,360,,0,0.0,,0.0,[],0.0,[],,[]
+WAT-STR-HEX-060,1.86,Hexagonal ice template,60-degree phase relationships,0,,0,0.0,6-fold,109.5,[],0.0,[],,[]
+WAT-STR-HEX-120,3.72,Double hexagonal,120-degree extended symmetry,0,,0,0.0,,0.0,[],0.0,[],,[]
+WAT-STR-TRI-077,0.77,Lithium triangular template,Li(0.77Hz) ionic organization,0,,0,0.0,,0.0,[],0.0,[],,[]
+WAT-STR-TET-109,1.09,Beryllium tetrahedral,Be(1.09Hz) 4-coordinate,0,,0,0.0,,0.0,[],0.0,[],,[]
+WAT-STR-PEN-128,1.28,Boron pentagonal,B(1.28Hz) electron deficient,0,,0,0.0,,0.0,[],0.0,[],,[]
+WAT-STR-SOL-SERIES,0.0,Sol anchor harmonic progression,Primary structural elements,0,,0,0.0,,0.0,"[0.18, 1.53, 1.79, 2.04, 3.58, 3.83, 4.09]",0.0,[],,[]
+WAT-STR-BEAT-COMPLEX,0.0,Multi-frequency interference,,0,,0,0.0,,0.0,[],1.86,"[0.33, 0.51, 0.26]",advanced_cymatics,[]
+WAT-STR-GOLDEN-RATIO,1.86,,,0,,0,0.0,,0.0,[],0.0,[],,"[{'elements': 'H-O', 'ratio': 11.33, 'golden_factor': 7.0}, {'elements': 'Li-O', 'ratio': 2.65, 'golden_factor': 1.64}]"
