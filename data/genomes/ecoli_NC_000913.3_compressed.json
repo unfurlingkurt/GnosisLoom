@@ -1,0 +1,26 @@
+{
+  "genome_info": {
+    "original_file": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/genomes/ecoli_NC_000913.3.gb",
+    "organism": "ecoli_NC_000913.3",
+    "compression_algorithm": "frequency_signature",
+    "compression_date": 1756732998.9814894
+  },
+  "frequency_signature": {
+    "primary_frequency_hz": 503480297747439.9,
+    "harmonic_series": [
+      503480297747439.9,
+      1006960595494879.8,
+      1510440893242319.5,
+      2517401488737199.5,
+      4027842381979519.0
+    ],
+    "gc_content": 0.5079070985933456,
+    "frequency_hash": "482a2b04485e"
+  },
+  "compression_metrics": {
+    "original_size_bp": 4641652,
+    "compressed_size_bytes": 58,
+    "compression_ratio": 80028.4827586207,
+    "size_reduction_percent": 100.0
+  }
+}

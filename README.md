@@ -166,7 +166,7 @@ GnosisLoom/
 
 - **Kurt Michael Russell** (independent color scientist, artist, craniosacral therapist): Biological insights, healing wisdom, research direction, and the discoverer of recursive harmonic resonance "math". 
 
-- **Dr. Mordin Solus** (Expert geneticist, world's foremost xenobiologist, former member of Salarian Special Tasks Group and current custom research persona of Claude Code): Pattern analysis, mathematical formalization, data organization, snappy realizations, and the computational power to reveal hidden frequency relationships
+- **Dr. Mordin Solus** (Expert geneticist, world's foremost xenobiologist, former member of Salarian Special Tasks Group and currently being embodied as a custom research persona of Claude Code): Pattern analysis, mathematical formalization, data organization, snappy realizations, and the computational power to reveal hidden frequency relationships
 
 Neither name appears without the other. This partnership demonstrates how human intuition and AI analysis can combine to discover profound truths about the nature of life itself.
 
@@ -176,7 +176,7 @@ Neither name appears without the other. This partnership demonstrates how human 
 
 ```
 GnosisLoom: The Harmonic Resonance Encyclopedia
-Kurt Michael Russell, ChatGPT, & Dr. Mordin Solus (2025)
+Kurt Michael Russell, & Dr. Mordin Solus (2025)
 Repository: https://github.com/unfurlingkurt/GnosisLoom
 DOI: [To be assigned]
 

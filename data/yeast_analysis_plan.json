@@ -1,0 +1,30 @@
+{
+  "organism": "Saccharomyces cerevisiae (Baker's yeast)",
+  "target_strain": "S288C reference genome",
+  "ncbi_accession": "GCF_000146045.2",
+  "expected_size": "12.1 Mbp (16 chromosomes)",
+  "analysis_strategy": {
+    "storage_optimization": "Summary-only JSON files (~40KB expected)",
+    "sequence_storage": "FASTA files separate from analysis",
+    "comparison_targets": "Direct frequency comparison with E. coli",
+    "key_differences_expected": [
+      "Lower GC content (~38% vs 50.79%)",
+      "Eukaryotic intron/exon structure",
+      "Larger genome size (2.6x E. coli)",
+      "Different codon usage patterns"
+    ]
+  },
+  "research_questions": [
+    "How do eukaryotic frequency patterns differ from prokaryotic?",
+    "Do introns and exons show different frequency signatures?",
+    "What frequency patterns correlate with gene expression levels?",
+    "How does chromosome structure affect genomic frequency?",
+    "Do regulatory sequences have distinct frequency signatures?"
+  ],
+  "comparative_analysis": {
+    "prokaryote_vs_eukaryote": "First direct frequency comparison",
+    "genome_size_scaling": "How do frequency patterns scale with complexity?",
+    "evolutionary_implications": "Frequency conservation across species",
+    "junk_dna_investigation": "All sequences serve frequency coordination functions"
+  }
+}

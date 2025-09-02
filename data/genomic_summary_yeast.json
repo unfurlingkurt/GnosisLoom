@@ -1,0 +1,315 @@
+{
+  "organism": "yeast",
+  "analysis_date": "2025-09-01T01:49:48.393437",
+  "genome_info": {
+    "accession": "NC_001133.9",
+    "length_bp": 230218,
+    "filename": "data/genomes/yeast_NC_001133.9.gb",
+    "note": "Chromosome I only - first eukaryotic analysis"
+  },
+  "nucleotide_frequencies": {
+    "nucleotide_counts": {
+      "A": 69836,
+      "T": 69975,
+      "G": 45766,
+      "C": 44641,
+      "N": 0
+    },
+    "nucleotide_proportions": {
+      "A": 0.30334726216021335,
+      "T": 0.3039510377120816,
+      "G": 0.19879418637986604,
+      "C": 0.19390751374783902
+    },
+    "gc_content": 0.39270170012770506,
+    "at_content": 0.6072982998722949,
+    "genome_base_frequency_hz": 503222345776611.75,
+    "frequency_harmonics": {
+      "fundamental": 503222345776611.75,
+      "second_harmonic": 1006444691553223.5,
+      "third_harmonic": 1509667037329835.2,
+      "fifth_harmonic": 2516111728883059.0,
+      "golden_harmonic": 814213755466557.9
+    },
+    "aramis_signature": "GENOME-NUC-6681AC2F"
+  },
+  "codon_frequencies": {
+    "codon_counts": {
+      "CCA": 1257,
+      "CAC": 890,
+      "ACC": 889,
+      "ACA": 1269,
+      "CCC": 540,
+      "CAT": 1489,
+      "CCT": 848,
+      "AAC": 1277,
+      "ACT": 1124,
+      "CTA": 976,
+      "CAG": 935,
+      "TAA": 1483,
+      "TCT": 1479,
+      "GGC": 634,
+      "CAA": 1730,
+      "GTC": 854,
+      "CTT": 1642,
+      "CTC": 856,
+      "TAC": 1041,
+      "GCC": 684,
+      "TCC": 892,
+      "CGT": 685,
+      "TTC": 1641,
+      "CCG": 560,
+      "TTA": 1664,
+      "ATT": 2106,
+      "ATC": 1231,
+      "ATG": 1395,
+      "TCA": 1652,
+      "TGT": 1339,
+      "GAA": 2047,
+      "ACG": 744,
+      "AAT": 2177,
+      "GAT": 1494,
+      "AAA": 2925,
+      "GCT": 961,
+      "GTA": 1318,
+      "TGA": 1467,
+      "TTT": 2899,
+      "CGC": 405,
+      "CGG": 470,
+      "TAT": 1720,
+      "ATA": 1745,
+      "AGA": 1377,
+      "TGG": 1051,
+      "AGT": 1137,
+      "TGC": 930,
+      "AGC": 858,
+      "GGT": 974,
+      "GTG": 1016,
+      "GTT": 1543,
+      "TTG": 1797,
+      "GCA": 1137,
+      "TAG": 862,
+      "GCG": 476,
+      "CGA": 636,
+      "AGG": 873,
+      "GAC": 830,
+      "GAG": 965,
+      "TCG": 697,
+      "CTG": 1061,
+      "AAG": 1576,
+      "GGA": 1009,
+      "GGG": 500
+    },
+    "codon_proportions": {
+      "CCA": 0.016380197813367386,
+      "CAC": 0.011597753423943497,
+      "ACC": 0.011584722240321088,
+      "ACA": 0.01653657201683629,
+      "CCC": 0.007036839156100549,
+      "CAT": 0.01940343241376614,
+      "CCT": 0.011050443711802343,
+      "AAC": 0.016640821485815558,
+      "ACT": 0.014647050391587068,
+      "CTA": 0.01271843521547062,
+      "CAG": 0.012184156686951875,
+      "TAA": 0.019325245312031693,
+      "TCT": 0.019273120577542057,
+      "GGC": 0.00826177041660694,
+      "CAA": 0.02254394766676657,
+      "GTC": 0.011128630813536794,
+      "CTT": 0.021397203507994633,
+      "CTC": 0.01115469318078161,
+      "TAC": 0.013565462150927169,
+      "GCC": 0.008913329597727362,
+      "TCC": 0.011623815791188314,
+      "CGT": 0.00892636078134977,
+      "TTC": 0.021384172324372223,
+      "CCG": 0.007297462828548717,
+      "TTA": 0.021683889547687615,
+      "ATT": 0.02744367270879214,
+      "ATC": 0.01604138703918477,
+      "ATG": 0.018178501153259752,
+      "TCA": 0.021527515344218717,
+      "TGT": 0.01744875487040488,
+      "GAA": 0.026674832875070043,
+      "ACG": 0.009695200615071868,
+      "AAT": 0.02836888674598314,
+      "GAT": 0.019468588331878183,
+      "AAA": 0.03811621209554464,
+      "GCT": 0.012522967461134495,
+      "GTA": 0.017175100014334303,
+      "TGA": 0.01911674637407316,
+      "TTT": 0.03777740132136202,
+      "CGC": 0.0052776293670754116,
+      "CGG": 0.006124656302531959,
+      "TAT": 0.022413635830542487,
+      "ATA": 0.0227394154211027,
+      "AGA": 0.0179439398480564,
+      "TGG": 0.013695773987151253,
+      "AGT": 0.014816455778678378,
+      "TGC": 0.012119000768839833,
+      "AGC": 0.011180755548026427,
+      "GGT": 0.012692372848225804,
+      "GTG": 0.013239682560366959,
+      "GTT": 0.020107116329376198,
+      "TTG": 0.023417036969467935,
+      "GCA": 0.014816455778678378,
+      "TAG": 0.011232880282516062,
+      "GCG": 0.00620284340426641,
+      "CGA": 0.008287832783851758,
+      "AGG": 0.011376223302362553,
+      "GAC": 0.010815882406598991,
+      "GAG": 0.01257509219562413,
+      "TCG": 0.009082734984818671,
+      "CTG": 0.013826085823375337,
+      "AAG": 0.020537145388915674,
+      "GGA": 0.013148464275010098,
+      "GGG": 0.006515591811204212
+    },
+    "total_codons": 76739,
+    "weighted_codon_frequency_hz": 498337938183707.25,
+    "amino_acid_frequencies": {
+      "P": {
+        "count": 3205,
+        "total_frequency": 1.36444777852089e+18,
+        "average_frequency": 425724735887953.25,
+        "proportion": 0.041764943509819
+      },
+      "H": {
+        "count": 2379,
+        "total_frequency": 1.048143560672939e+18,
+        "average_frequency": 440581572371979.44,
+        "proportion": 0.03100118583770964
+      },
+      "T": {
+        "count": 4026,
+        "total_frequency": 1.764968518860395e+18,
+        "average_frequency": 438392577958369.4,
+        "proportion": 0.05246354526381631
+      },
+      "N": {
+        "count": 3454,
+        "total_frequency": 1.5660391918573786e+18,
+        "average_frequency": 453398723757202.8,
+        "proportion": 0.045009708231798694
+      },
+      "L": {
+        "count": 7996,
+        "total_frequency": 4.118298028384928e+18,
+        "average_frequency": 515044775936084.0,
+        "proportion": 0.10419734424477775
+      },
+      "Q": {
+        "count": 2665,
+        "total_frequency": 1.1690912950532754e+18,
+        "average_frequency": 438683412777964.5,
+        "proportion": 0.034728104353718446
+      },
+      "*": {
+        "count": 3812,
+        "total_frequency": 1.942677929562055e+18,
+        "average_frequency": 509621702403477.1,
+        "proportion": 0.04967487196862091
+      },
+      "S": {
+        "count": 6715,
+        "total_frequency": 3.2762850175846917e+18,
+        "average_frequency": 487905438210676.4,
+        "proportion": 0.08750439802447256
+      },
+      "G": {
+        "count": 3117,
+        "total_frequency": 1.7853775000295908e+18,
+        "average_frequency": 572787135075261.8,
+        "proportion": 0.04061819935104705
+      },
+      "V": {
+        "count": 4731,
+        "total_frequency": 2.6554049055342275e+18,
+        "average_frequency": 561277722581743.25,
+        "proportion": 0.06165052971761425
+      },
+      "Y": {
+        "count": 2761,
+        "total_frequency": 1.3694349871741624e+18,
+        "average_frequency": 495992389414763.6,
+        "proportion": 0.03597909798146966
+      },
+      "A": {
+        "count": 3258,
+        "total_frequency": 1.6045555107373988e+18,
+        "average_frequency": 492497087396377.75,
+        "proportion": 0.04245559624180664
+      },
+      "R": {
+        "count": 4446,
+        "total_frequency": 2.2419708286916636e+18,
+        "average_frequency": 504266943025565.4,
+        "proportion": 0.05793664238522785
+      },
+      "F": {
+        "count": 4540,
+        "total_frequency": 2.4699499922386673e+18,
+        "average_frequency": 544041848510719.7,
+        "proportion": 0.05916157364573424
+      },
+      "I": {
+        "count": 5082,
+        "total_frequency": 2.482067168644098e+18,
+        "average_frequency": 488403614451809.94,
+        "proportion": 0.0662244751690796
+      },
+      "M": {
+        "count": 1395,
+        "total_frequency": 7.434628996682131e+17,
+        "average_frequency": 532948315174346.3,
+        "proportion": 0.018178501153259752
+      },
+      "C": {
+        "count": 2269,
+        "total_frequency": 1.2632035448234734e+18,
+        "average_frequency": 556722584761336.9,
+        "proportion": 0.029567755639244714
+      },
+      "E": {
+        "count": 3012,
+        "total_frequency": 1.5256807666834893e+18,
+        "average_frequency": 506534119084823.8,
+        "proportion": 0.03924992507069417
+      },
+      "D": {
+        "count": 2324,
+        "total_frequency": 1.1890195275524093e+18,
+        "average_frequency": 511626302733394.75,
+        "proportion": 0.030284470738477176
+      },
+      "K": {
+        "count": 4501,
+        "total_frequency": 2.0307404260480236e+18,
+        "average_frequency": 451175389035330.7,
+        "proportion": 0.058653357484460315
+      },
+      "W": {
+        "count": 1051,
+        "total_frequency": 6.311356599575404e+17,
+        "average_frequency": 600509666943425.6,
+        "proportion": 0.013695773987151253
+      }
+    },
+    "unique_codons": 64,
+    "aramis_signature": "GENOME-COD-629255C9"
+  },
+  "analysis_summary": {
+    "primary_frequency_hz": "4.89e14",
+    "gc_content_percent": 39.27,
+    "most_common_codon": "Extracted from codon analysis",
+    "frequency_range": "3.97e14 - 6.18e14 Hz",
+    "therapeutic_derivative": "489.2 Hz",
+    "organism_type": "Eukaryote (single chromosome analysis)",
+    "key_differences": [
+      "Lower GC content vs E. coli (39.27% vs 50.79%)",
+      "Different codon usage patterns",
+      "Smaller chromosome size (230kb vs 4.6Mb total genome)"
+    ]
+  }
+}
