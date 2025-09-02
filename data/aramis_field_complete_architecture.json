@@ -1,0 +1,7867 @@
+{
+  "metadata": {
+    "version": "1.3.0",
+    "description": "Complete Aramis Field Frequency Architecture",
+    "integration_date": "2025-09-01T01:02:50.357401",
+    "total_signatures": 631,
+    "scale_range": "10^-20 Hz (quantum) to 10^15 Hz (genomic)",
+    "researchers": "Kurt Michael Russell & Dr. Mordin Solus"
+  },
+  "quantum_foundation": {
+    "description": "Fundamental frequency signatures from subatomic particles",
+    "scale": "10^20 Hz (electron) to 10^15 Hz (atomic)",
+    "particles": {
+      "leptons": {
+        "first_generation": {
+          "electron": {
+            "aramis_code": "ELE-001",
+            "frequency_hz": 1.235e+20,
+            "mass_energy_mev": 0.511,
+            "field_origin": "U(1) electromagnetic with minimal SU(2) coupling",
+            "spiral_pattern": "Single-node stable oscillation",
+            "biological_scaled_frequency": 123.5,
+            "therapeutic_application": "Neural regeneration and synaptic repair",
+            "clinical_protocol": "Gamma entrainment for cognitive enhancement",
+            "bio_code": "ELE-BIO-001"
+          },
+          "electron_neutrino": {
+            "aramis_code": "NEU-E01",
+            "frequency_hz": 241000000000000.0,
+            "mass_energy_ev": 2.2,
+            "field_origin": "Pure SU(2) weak interaction nodes",
+            "spiral_pattern": "Minimal field coupling, near-massless oscillation",
+            "biological_scaled_frequency": 0.241,
+            "therapeutic_application": "Quantum coherence in neural networks",
+            "clinical_protocol": "Ultra-low frequency cellular communication",
+            "bio_code": "NEU-E-BIO-001"
+          }
+        },
+        "second_generation": {
+          "muon": {
+            "aramis_code": "MUN-001",
+            "frequency_hz": 2.59e+22,
+            "mass_energy_mev": 105.7,
+            "field_origin": "Enhanced U(1) coupling with increased field tension",
+            "spiral_pattern": "Higher amplitude electron-like oscillation",
+            "biological_scaled_frequency": 259.0,
+            "therapeutic_application": "Advanced tissue regeneration",
+            "clinical_protocol": "Accelerated healing frequency therapy",
+            "bio_code": "MUN-BIO-001"
+          },
+          "muon_neutrino": {
+            "aramis_code": "NEU-M01",
+            "frequency_hz": 482000000000000.0,
+            "mass_energy_mev": 0.17,
+            "field_origin": "SU(2) weak nodes with muon-family coupling",
+            "spiral_pattern": "Second-generation neutrino oscillation",
+            "biological_scaled_frequency": 0.482,
+            "therapeutic_application": "Neuroplasticity enhancement",
+            "clinical_protocol": "Synaptic remodeling frequency",
+            "bio_code": "NEU-M-BIO-001"
+          }
+        },
+        "third_generation": {
+          "tau": {
+            "aramis_code": "TAU-001",
+            "frequency_hz": 4.33e+23,
+            "mass_energy_mev": 1777.0,
+            "field_origin": "Maximum U(1) lepton coupling with heavy field tension",
+            "spiral_pattern": "Highest energy lepton oscillation",
+            "biological_scaled_frequency": 433.0,
+            "therapeutic_application": "Deep cellular transformation",
+            "clinical_protocol": "Fundamental metabolic restructuring",
+            "bio_code": "TAU-BIO-001"
+          },
+          "tau_neutrino": {
+            "aramis_code": "NEU-T01",
+            "frequency_hz": 3610000000000000.0,
+            "mass_energy_mev": 15.5,
+            "field_origin": "Third-generation SU(2) weak interaction nodes",
+            "spiral_pattern": "Heavy neutrino family oscillation",
+            "biological_scaled_frequency": 3.61,
+            "therapeutic_application": "Consciousness state modulation",
+            "clinical_protocol": "Awareness frequency entrainment",
+            "bio_code": "NEU-T-BIO-001"
+          }
+        }
+      },
+      "quarks": {
+        "first_generation": {
+          "up_quark": {
+            "aramis_code": "QRK-UP1",
+            "frequency_hz": 4.58e+20,
+            "mass_energy_mev": 2.2,
+            "field_origin": "Strong SU(3) + electromagnetic U(1) coupling",
+            "spiral_pattern": "Confined oscillation within hadron field",
+            "biological_scaled_frequency": 458.0,
+            "therapeutic_application": "Positive cellular charge balance",
+            "clinical_protocol": "Energetic enhancement therapy",
+            "bio_code": "QRK-UP-BIO-001"
+          },
+          "down_quark": {
+            "aramis_code": "QRK-DN1",
+            "frequency_hz": 1.16e+21,
+            "mass_energy_mev": 4.7,
+            "field_origin": "Strong SU(3) + weak SU(2) + electromagnetic U(1)",
+            "spiral_pattern": "Higher energy confined oscillation",
+            "biological_scaled_frequency": 1160.0,
+            "therapeutic_application": "Grounding and stability enhancement",
+            "clinical_protocol": "Cellular foundation strengthening",
+            "bio_code": "QRK-DN-BIO-001"
+          }
+        },
+        "second_generation": {
+          "charm_quark": {
+            "aramis_code": "QRK-CH1",
+            "frequency_hz": 3.06e+23,
+            "mass_energy_mev": 1280.0,
+            "field_origin": "High-energy SU(3) confinement with enhanced mass",
+            "spiral_pattern": "Second-generation quark oscillation",
+            "biological_scaled_frequency": 306.0,
+            "therapeutic_application": "Harmonious cellular interactions",
+            "clinical_protocol": "System integration frequency",
+            "bio_code": "QRK-CH-BIO-001"
+          },
+          "strange_quark": {
+            "aramis_code": "QRK-ST1",
+            "frequency_hz": 2.3e+22,
+            "mass_energy_mev": 95.0,
+            "field_origin": "SU(3) with strangeness quantum number effects",
+            "spiral_pattern": "Modified quark confinement oscillation",
+            "biological_scaled_frequency": 230.0,
+            "therapeutic_application": "Unusual healing pattern activation",
+            "clinical_protocol": "Non-standard recovery pathways",
+            "bio_code": "QRK-ST-BIO-001"
+          }
+        },
+        "third_generation": {
+          "top_quark": {
+            "aramis_code": "QRK-TP1",
+            "frequency_hz": 4.19e+25,
+            "mass_energy_mev": 173100.0,
+            "field_origin": "Extreme SU(3) coupling at highest mass scale",
+            "spiral_pattern": "Maximum energy quark confinement",
+            "biological_scaled_frequency": 4190.0,
+            "therapeutic_application": "Peak consciousness activation",
+            "clinical_protocol": "Transcendent state induction",
+            "bio_code": "QRK-TP-BIO-001"
+          },
+          "bottom_quark": {
+            "aramis_code": "QRK-BT1",
+            "frequency_hz": 1.02e+24,
+            "mass_energy_mev": 4180.0,
+            "field_origin": "Heavy SU(3) confinement with bottom quantum numbers",
+            "spiral_pattern": "Third-generation quark oscillation",
+            "biological_scaled_frequency": 1020.0,
+            "therapeutic_application": "Deep structural healing",
+            "clinical_protocol": "Fundamental tissue architecture repair",
+            "bio_code": "QRK-BT-BIO-001"
+          }
+        }
+      },
+      "gauge_bosons": {
+        "photon": {
+          "aramis_code": "PHO-001",
+          "frequency_hz": "variable",
+          "mass_energy_mev": 0,
+          "field_origin": "Pure U(1) electromagnetic field oscillation",
+          "spiral_pattern": "Transverse wave propagation through Aramis field",
+          "biological_applications": {
+            "red_light": {
+              "frequency_hz": 460000000000000.0,
+              "wavelength_nm": 650,
+              "biological_scaled_frequency": 460000.0,
+              "therapeutic_application": "Cellular energy production",
+              "clinical_protocol": "Photobiomodulation therapy",
+              "bio_code": "PHO-RED-BIO-001"
+            },
+            "blue_light": {
+              "frequency_hz": 690000000000000.0,
+              "wavelength_nm": 435,
+              "biological_scaled_frequency": 690000.0,
+              "therapeutic_application": "Circadian rhythm regulation",
+              "clinical_protocol": "Sleep-wake cycle optimization",
+              "bio_code": "PHO-BLU-BIO-001"
+            }
+          }
+        },
+        "w_boson": {
+          "aramis_code": "WBS-001",
+          "frequency_hz": 1.95e+25,
+          "mass_energy_mev": 80379.0,
+          "field_origin": "SU(2) weak force carrier with mass generation",
+          "spiral_pattern": "Massive gauge field oscillation",
+          "biological_scaled_frequency": 1950.0,
+          "therapeutic_application": "Weak force cellular interactions",
+          "clinical_protocol": "Radioactive decay pathway optimization",
+          "bio_code": "WBS-BIO-001"
+        },
+        "z_boson": {
+          "aramis_code": "ZBS-001",
+          "frequency_hz": 2.22e+25,
+          "mass_energy_mev": 91188.0,
+          "field_origin": "SU(2) \u00d7 U(1) electroweak unification",
+          "spiral_pattern": "Neutral weak force oscillation",
+          "biological_scaled_frequency": 2220.0,
+          "therapeutic_application": "Electroweak cellular balance",
+          "clinical_protocol": "Neutral force equilibrium therapy",
+          "bio_code": "ZBS-BIO-001"
+        },
+        "gluons": {
+          "aramis_code": "GLU-001",
+          "frequency_hz": "variable_confined",
+          "mass_energy_mev": 0,
+          "field_origin": "SU(3) strong force carriers (8 types)",
+          "spiral_pattern": "Confined oscillations within hadrons",
+          "color_charges": [
+            "red-antiblue",
+            "red-antigreen",
+            "blue-antired",
+            "blue-antigreen",
+            "green-antired",
+            "green-antiblue",
+            "red-red-blue-blue",
+            "red-red-green-green"
+          ],
+          "biological_scaled_frequency": 850.0,
+          "therapeutic_application": "Strong binding cellular adhesion",
+          "clinical_protocol": "Tissue cohesion enhancement",
+          "bio_code": "GLU-BIO-001"
+        }
+      },
+      "scalar_fields": {
+        "higgs_boson": {
+          "aramis_code": "HIG-001",
+          "frequency_hz": 3.05e+25,
+          "mass_energy_mev": 125100.0,
+          "field_origin": "Scalar field oscillation providing mass to particles",
+          "spiral_pattern": "Uniform field oscillation with symmetry breaking",
+          "biological_scaled_frequency": 305.0,
+          "therapeutic_application": "Mass-consciousness interface",
+          "clinical_protocol": "Awareness state frequency entrainment",
+          "bio_code": "HIG-BIO-001",
+          "consciousness_connection": "Primary frequency for matter-consciousness interaction"
+        }
+      }
+    },
+    "scaling_factors": {
+      "genomic_scaling": 1e-06,
+      "biological_scaling": 1e-12,
+      "neural_scaling": 1e-18
+    },
+    "key_relationships": {
+      "electron_to_neural": "1.235e20 Hz \u2192 123.5 Hz (gamma waves)",
+      "proton_to_cellular": "6.267e20 Hz \u2192 626.7 Hz (cellular resonance)",
+      "neutron_to_genomic": "6.272e20 Hz \u2192 627.2 THz (DNA frequencies)"
+    }
+  },
+  "genomic_signatures": {
+    "description": "Complete genome frequency translations",
+    "scale": "10^14 Hz (nucleotide bases) to 10^2 Hz (therapeutic)",
+    "organisms": {
+      "ecoli_k12": {
+        "aramis_code": "GEN-ECO-001",
+        "accession": "NC_000913.3",
+        "length_bp": 4641652,
+        "primary_frequency": 501000000000000.0,
+        "gc_content": 50.79,
+        "nucleotide_signatures": {
+          "nucleotide_counts": {
+            "A": 1142742,
+            "T": 1141382,
+            "G": 1177437,
+            "C": 1180091,
+            "N": 0
+          },
+          "nucleotide_proportions": {
+            "A": 0.24619295026856816,
+            "T": 0.2458999511380862,
+            "G": 0.25366765970391575,
+            "C": 0.2542394388894299
+          },
+          "gc_content": 0.5079070985933456,
+          "at_content": 0.49209290140665435,
+          "genome_base_frequency_hz": 503480297747439.94,
+          "frequency_harmonics": {
+            "fundamental": 503480297747439.94,
+            "second_harmonic": 1006960595494879.9,
+            "third_harmonic": 1510440893242319.8,
+            "fifth_harmonic": 2517401488737199.5,
+            "golden_harmonic": 814631121755357.9
+          },
+          "aramis_signature": "GENOME-NUC-482A2B04"
+        },
+        "codon_patterns": {
+          "codon_counts": {
+            "AGC": 27036,
+            "TTT": 36842,
+            "TCA": 27739,
+            "TTC": 28279,
+            "TGA": 28127,
+            "CTG": 33831,
+            "CAA": 25191,
+            "CGG": 28875,
+            "GCA": 32204,
+            "ATA": 21575,
+            "TGT": 19593,
+            "CTC": 14339,
+            "GTG": 21764,
+            "GAT": 28709,
+            "TAA": 23054,
+            "AAA": 36172,
+            "AAG": 20798,
+            "AGT": 16571,
+            "GTC": 18214,
+            "TAG": 8970,
+            "CAG": 34724,
+            "CTT": 21063,
+            "AAC": 27363,
+            "TGG": 28322,
+            "TTA": 22989,
+            "CCT": 17003,
+            "GCC": 31165,
+            "TAT": 21100,
+            "AGG": 17063,
+            "CTA": 8916,
+            "AAT": 27705,
+            "ACT": 16475,
+            "ACC": 24772,
+            "GGC": 31026,
+            "GCG": 38202,
+            "CAC": 22369,
+            "AGA": 19011,
+            "ATT": 27527,
+            "ACA": 19632,
+            "GAG": 14202,
+            "TAC": 17611,
+            "TCC": 18679,
+            "ATG": 25368,
+            "CGC": 38319,
+            "ATC": 28959,
+            "GGT": 24717,
+            "GTA": 17708,
+            "GAA": 28119,
+            "TGC": 31708,
+            "GGG": 15818,
+            "TCG": 23854,
+            "CGA": 23729,
+            "TTG": 25656,
+            "CGT": 23955,
+            "GTT": 27509,
+            "TCT": 18361,
+            "CCC": 16043,
+            "GCT": 26987,
+            "ACG": 24607,
+            "GGA": 18859,
+            "CCG": 29143,
+            "CAT": 25842,
+            "GAC": 18308,
+            "CCA": 28846
+          },
+          "codon_proportions": {
+            "AGC": 0.017473954849255145,
+            "TTT": 0.023811785935650913,
+            "TCA": 0.01792831903992782,
+            "TTC": 0.01827733278525249,
+            "TGA": 0.0181790918791611,
+            "CTG": 0.02186571114459058,
+            "CAA": 0.016281491219395858,
+            "CGG": 0.01866254054861083,
+            "GCA": 0.02081414565636236,
+            "ATA": 0.01394439176922177,
+            "TGT": 0.01266338205953011,
+            "CTC": 0.009267607581871192,
+            "GTG": 0.014066546580085404,
+            "GAT": 0.01855525113801102,
+            "TAA": 0.014900301638361006,
+            "AAA": 0.023378750362748082,
+            "AAG": 0.013442199769004607,
+            "AGT": 0.010710197729213162,
+            "GTC": 0.011772104365451,
+            "TAG": 0.00579750610289313,
+            "CAG": 0.022442876467877487,
+            "CTT": 0.013613475032913935,
+            "AAC": 0.01768530206170175,
+            "TGG": 0.018305124620528343,
+            "TTA": 0.014858290724571925,
+            "CCT": 0.010989408725472898,
+            "GCC": 0.02014261735748767,
+            "TAT": 0.01363738893768618,
+            "AGG": 0.011028188030508972,
+            "CTA": 0.005762604728360663,
+            "AAT": 0.017906344100407378,
+            "ACT": 0.010648150841155442,
+            "ACC": 0.01601068240589394,
+            "GGC": 0.020052778634154098,
+            "GCG": 0.0246907835164686,
+            "CAC": 0.014457571239199156,
+            "AGA": 0.01228722280068019,
+            "ATT": 0.017791298828800355,
+            "ACA": 0.01268858860780356,
+            "GAG": 0.009179061502038822,
+            "TAC": 0.011382372349838452,
+            "TCC": 0.012072643979480577,
+            "ATG": 0.016395890169252275,
+            "CGC": 0.024766403161288947,
+            "ATC": 0.01871683157566133,
+            "GGT": 0.01597513470961087,
+            "GTA": 0.011445065559646772,
+            "GAA": 0.01817392130515629,
+            "TGC": 0.020493570068064144,
+            "GGG": 0.010223517451010427,
+            "TCG": 0.015417359038841998,
+            "CGA": 0.015336568820016843,
+            "TTG": 0.016582030833425434,
+            "CGT": 0.015482637535652724,
+            "GTT": 0.017779665037289533,
+            "TCT": 0.011867113662789383,
+            "CCC": 0.010368939844895706,
+            "GCT": 0.017442285083475687,
+            "ACG": 0.015904039317044733,
+            "GGA": 0.0121889818945888,
+            "CCG": 0.01883575477777196,
+            "CAT": 0.016702246679037264,
+            "GAC": 0.011832858610007517,
+            "CCA": 0.018643797217843393
+          },
+          "total_codons": 1547217,
+          "weighted_codon_frequency_hz": 497752690269852.6,
+          "amino_acid_frequencies": {
+            "S": {
+              "count": 132240,
+              "total_frequency": 6.433748394479968e+19,
+              "average_frequency": 486520598493645.5,
+              "proportion": 0.08546958829950808
+            },
+            "F": {
+              "count": 65121,
+              "total_frequency": 3.512743369745112e+19,
+              "average_frequency": 539417909698117.6,
+              "proportion": 0.0420891187209034
+            },
+            "*": {
+              "count": 60151,
+              "total_frequency": 3.067505054712805e+19,
+              "average_frequency": 509967424433975.3,
+              "proportion": 0.03887689962041523
+            },
+            "L": {
+              "count": 126794,
+              "total_frequency": 6.55209680920538e+19,
+              "average_frequency": 516751329653247.0,
+              "proportion": 0.08194972004573373
+            },
+            "Q": {
+              "count": 59915,
+              "total_frequency": 2.7013319983802126e+19,
+              "average_frequency": 450860719082068.4,
+              "proportion": 0.038724367687273345
+            },
+            "R": {
+              "count": 150952,
+              "total_frequency": 7.528238603961834e+19,
+              "average_frequency": 498717380621776.06,
+              "proportion": 0.09756356089675851
+            },
+            "A": {
+              "count": 128558,
+              "total_frequency": 6.393368295276913e+19,
+              "average_frequency": 497313920197647.2,
+              "proportion": 0.08308983161379431
+            },
+            "I": {
+              "count": 78061,
+              "total_frequency": 3.777687490017676e+19,
+              "average_frequency": 483940442732949.3,
+              "proportion": 0.050452522173683456
+            },
+            "C": {
+              "count": 51301,
+              "total_frequency": 2.7862240273535033e+19,
+              "average_frequency": 543113005078556.6,
+              "proportion": 0.03315695212759426
+            },
+            "V": {
+              "count": 85195,
+              "total_frequency": 4.799638879008877e+19,
+              "average_frequency": 563370958273241.0,
+              "proportion": 0.055063381542472714
+            },
+            "D": {
+              "count": 47017,
+              "total_frequency": 2.3964613403999203e+19,
+              "average_frequency": 509701031626841.44,
+              "proportion": 0.03038810974801854
+            },
+            "K": {
+              "count": 56970,
+              "total_frequency": 2.5750026449839337e+19,
+              "average_frequency": 451992740913451.6,
+              "proportion": 0.03682095013175269
+            },
+            "N": {
+              "count": 55068,
+              "total_frequency": 2.4596683747100893e+19,
+              "average_frequency": 446660197339669.0,
+              "proportion": 0.03559164616210913
+            },
+            "W": {
+              "count": 28322,
+              "total_frequency": 1.70076347871717e+19,
+              "average_frequency": 600509666943425.6,
+              "proportion": 0.018305124620528343
+            },
+            "P": {
+              "count": 91035,
+              "total_frequency": 3.9158613332281524e+19,
+              "average_frequency": 430148990303526.4,
+              "proportion": 0.05883790056598396
+            },
+            "Y": {
+              "count": 38711,
+              "total_frequency": 1.9025425720745357e+19,
+              "average_frequency": 491473372445696.5,
+              "proportion": 0.025019761287524634
+            },
+            "T": {
+              "count": 85486,
+              "total_frequency": 3.7582155354090725e+19,
+              "average_frequency": 439629358656279.7,
+              "proportion": 0.05525146117189767
+            },
+            "G": {
+              "count": 90420,
+              "total_frequency": 5.150622887525583e+19,
+              "average_frequency": 569633143942223.4,
+              "proportion": 0.058440412689364195
+            },
+            "H": {
+              "count": 48211,
+              "total_frequency": 2.101767377501367e+19,
+              "average_frequency": 435951832051060.4,
+              "proportion": 0.03115981791823642
+            },
+            "E": {
+              "count": 42321,
+              "total_frequency": 2.1476706654986707e+19,
+              "average_frequency": 507471625315722.9,
+              "proportion": 0.02735298280719511
+            },
+            "M": {
+              "count": 25368,
+              "total_frequency": 1.3519832859342817e+19,
+              "average_frequency": 532948315174346.3,
+              "proportion": 0.016395890169252275
+            }
+          },
+          "unique_codons": 64,
+          "aramis_signature": "GENOME-COD-43DEED1B"
+        },
+        "therapeutic_derivatives": {}
+      }
+    },
+    "base_frequency_map": {
+      "adenine_A": 432000000000000.0,
+      "thymine_T": 567000000000000.0,
+      "guanine_G": 618000000000000.0,
+      "cytosine_C": 397000000000000.0
+    },
+    "expansion_targets": [
+      "Saccharomyces cerevisiae (yeast)",
+      "Caenorhabditis elegans (worm)",
+      "Drosophila melanogaster (fly)",
+      "Homo sapiens (human)"
+    ]
+  },
+  "biological_systems": {
+    "description": "Comprehensive biological frequency database",
+    "scale": "0.1 Hz (circadian) to 1000 Hz (neural)",
+    "total_signatures": 281,
+    "categories": {
+      "cellular_systems": {
+        "cellular_respiration": {
+          "normal_freq": 0.5,
+          "range": [
+            0.4,
+            0.6
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {
+            "CFS": 0.05
+          }
+        },
+        "circadian": {
+          "normal_freq": 1.16e-05,
+          "range": [
+            1e-05,
+            1.3e-05
+          ],
+          "phase": 0.0,
+          "stellar_anchor": "Sol",
+          "element": null,
+          "harmonics": [],
+          "disease_states": {
+            "CFS": 8e-06
+          }
+        },
+        "c_fiber": {
+          "normal_freq": 0.5,
+          "range": [
+            0.3,
+            0.7
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {
+            "fibromyalgia": 2.5
+          }
+        },
+        "bacterial_quorum": {
+          "normal_freq": 0.1,
+          "range": [
+            0.05,
+            0.2
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {
+            "CFS": 0.01
+          }
+        },
+        "healthy": {
+          "normal_freq": 0.0011,
+          "range": [
+            0.00099,
+            0.0012100000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "macrophages": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "t-helper_cells": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "b-cells": {
+          "normal_freq": 0.02,
+          "range": [
+            0.018000000000000002,
+            0.022000000000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "pituitary": {
+          "normal_freq": 0.033,
+          "range": [
+            0.0297,
+            0.036300000000000006
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "thyroid": {
+          "normal_freq": 0.001,
+          "range": [
+            0.0009000000000000001,
+            0.0011
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "adrenals": {
+          "normal_freq": 0.0003,
+          "range": [
+            0.00027,
+            0.00033
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "gonads": {
+          "normal_freq": 2.3e-07,
+          "range": [
+            2.07e-07,
+            2.53e-07
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "lymphocytes": {
+          "normal_freq": 0.01,
+          "range": [
+            0.009000000000000001,
+            0.011000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "dendritic_cells": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "END-06-PC": {
+          "normal_freq": 0.0011,
+          "range": [
+            0.00099,
+            0.0012100000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "END-06-PT": {
+          "normal_freq": 0.033,
+          "range": [
+            0.0297,
+            0.036300000000000006
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "END-06-AD": {
+          "normal_freq": 0.0003,
+          "range": [
+            0.00027,
+            0.00033
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "END-06-GO": {
+          "normal_freq": 2.3e-07,
+          "range": [
+            2.07e-07,
+            2.53e-07
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "IMM-09-LY": {
+          "normal_freq": 0.01,
+          "range": [
+            0.009000000000000001,
+            0.011000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "IMM-09-MA": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "IMM-09-DC": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "horizontal": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "anterior": {
+          "normal_freq": 0.8,
+          "range": [
+            0.7200000000000001,
+            0.8800000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "posterior": {
+          "normal_freq": 0.6,
+          "range": [
+            0.54,
+            0.66
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "adrenal_medulla": {
+          "normal_freq": 0.2,
+          "range": [
+            0.18000000000000002,
+            0.22000000000000003
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "enteric_neurons": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "betelgeuse": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "zygote": {
+          "normal_freq": 0.001,
+          "range": [
+            0.0009000000000000001,
+            0.0011
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "morula": {
+          "normal_freq": 0.01,
+          "range": [
+            0.009000000000000001,
+            0.011000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "blastula": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "gastrula": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "neurula": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "enteric_nervous": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "capillaries": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "BET-E": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "FAS-050-DE": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "FAS-030-VI": {
+          "normal_freq": 0.3,
+          "range": [
+            0.27,
+            0.33
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "TEN-010-EL": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "LIG-015-ST": {
+          "normal_freq": 0.15,
+          "range": [
+            0.135,
+            0.165
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "BON-001-CO": {
+          "normal_freq": 0.001,
+          "range": [
+            0.0009000000000000001,
+            0.0011
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CAR-001-FL": {
+          "normal_freq": 0.01,
+          "range": [
+            0.009000000000000001,
+            0.011000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ADI-005-ME": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MER-GV-CE": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MER-CV-FR": {
+          "normal_freq": 0.7,
+          "range": [
+            0.63,
+            0.77
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MER-BL-SU": {
+          "normal_freq": 0.8,
+          "range": [
+            0.7200000000000001,
+            0.8800000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MER-KI-VI": {
+          "normal_freq": 0.6,
+          "range": [
+            0.54,
+            0.66
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "eccrine": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "apocrine": {
+          "normal_freq": 0.0001,
+          "range": [
+            9e-05,
+            0.00011000000000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "sebaceous": {
+          "normal_freq": 0.001,
+          "range": [
+            0.0009000000000000001,
+            0.0011
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ceruminous": {
+          "normal_freq": 1e-05,
+          "range": [
+            9e-06,
+            1.1000000000000001e-05
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "COR-09-HC": {
+          "normal_freq": 0.001,
+          "range": [
+            0.0009000000000000001,
+            0.0011
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "LUC-09-TR": {
+          "normal_freq": 0.01,
+          "range": [
+            0.009000000000000001,
+            0.011000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "GRA-09-LI": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ADI-09-EN": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "trachea": {
+          "normal_freq": 0.25,
+          "range": [
+            0.225,
+            0.275
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "bronchi": {
+          "normal_freq": 0.3,
+          "range": [
+            0.27,
+            0.33
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "alveoli": {
+          "normal_freq": 0.2,
+          "range": [
+            0.18000000000000002,
+            0.22000000000000003
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "stomach": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "duodenum": {
+          "normal_freq": 0.18,
+          "range": [
+            0.162,
+            0.198
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ileum": {
+          "normal_freq": 0.16,
+          "range": [
+            0.14400000000000002,
+            0.17600000000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "colon": {
+          "normal_freq": 0.02,
+          "range": [
+            0.018000000000000002,
+            0.022000000000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "nephron": {
+          "normal_freq": 0.9,
+          "range": [
+            0.81,
+            0.9900000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "collecting_duct": {
+          "normal_freq": 0.8,
+          "range": [
+            0.7200000000000001,
+            0.8800000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "NEU-01-G": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ENT-07-S": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ENT-07-M": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "VAG": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "GAS": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SER": {
+          "normal_freq": 0.003,
+          "range": [
+            0.0027,
+            0.0033000000000000004
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MMC": {
+          "normal_freq": 1.16e-05,
+          "range": [
+            1.0440000000000002e-05,
+            1.2760000000000001e-05
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "RES-04-A": {
+          "normal_freq": 0.25,
+          "range": [
+            0.225,
+            0.275
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "RES-04-B": {
+          "normal_freq": 0.3,
+          "range": [
+            0.27,
+            0.33
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "DIG-05-S": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "DIG-05-L": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SKE-07-C": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SKE-07-M": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "URI-08-G": {
+          "normal_freq": 0.017,
+          "range": [
+            0.015300000000000001,
+            0.0187
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "URI-08-T": {
+          "normal_freq": 0.025,
+          "range": [
+            0.022500000000000003,
+            0.027500000000000004
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "beat_pattern": {
+          "normal_freq": 0.3,
+          "range": [
+            0.27,
+            0.33
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "sclerotome": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SCL-10-S": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CLK-11-H7": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CLK-11-LF": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CLK-11-AX": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CLK-11-SN": {
+          "normal_freq": 0.4,
+          "range": [
+            0.36000000000000004,
+            0.44000000000000006
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "PGC-010-MI": {
+          "normal_freq": 0.01,
+          "range": [
+            0.009000000000000001,
+            0.011000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "GON-030-BI": {
+          "normal_freq": 0.03,
+          "range": [
+            0.027,
+            0.033
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SPG-002-ST": {
+          "normal_freq": 0.02,
+          "range": [
+            0.018000000000000002,
+            0.022000000000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "hsc": {
+          "normal_freq": 0.001,
+          "range": [
+            0.0009000000000000001,
+            0.0011
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "cmp": {
+          "normal_freq": 0.01,
+          "range": [
+            0.009000000000000001,
+            0.011000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "clp": {
+          "normal_freq": 0.02,
+          "range": [
+            0.018000000000000002,
+            0.022000000000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "gmp": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "mep": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "rbc": {
+          "normal_freq": 0.25,
+          "range": [
+            0.225,
+            0.275
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "b-cell": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "t-cell": {
+          "normal_freq": 0.15,
+          "range": [
+            0.135,
+            0.165
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "HSC-10-ST": {
+          "normal_freq": 0.001,
+          "range": [
+            0.0009000000000000001,
+            0.0011
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CMP-10-MY": {
+          "normal_freq": 0.01,
+          "range": [
+            0.009000000000000001,
+            0.011000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CLP-10-LY": {
+          "normal_freq": 0.02,
+          "range": [
+            0.018000000000000002,
+            0.022000000000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "GMP-10-GR": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MEP-10-ER": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "RBC-10-HE": {
+          "normal_freq": 0.25,
+          "range": [
+            0.225,
+            0.275
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MON-10-MA": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "BAS-10-AL": {
+          "normal_freq": 0.8,
+          "range": [
+            0.7200000000000001,
+            0.8800000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "BCL-10-ME": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "TCL-10-SU": {
+          "normal_freq": 0.15,
+          "range": [
+            0.135,
+            0.165
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "DEN-10-AN": {
+          "normal_freq": 0.3,
+          "range": [
+            0.27,
+            0.33
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MAC-10-TI": {
+          "normal_freq": 0.2,
+          "range": [
+            0.18000000000000002,
+            0.22000000000000003
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "BON-10-ST": {
+          "normal_freq": 0.001,
+          "range": [
+            0.0009000000000000001,
+            0.0011
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SPL-10-FI": {
+          "normal_freq": 0.1,
+          "range": [
+            0.09000000000000001,
+            0.11000000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "LYM-10-IN": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "HEP-07-LB": {
+          "normal_freq": 0.05,
+          "range": [
+            0.045000000000000005,
+            0.05500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "PUL-07-LU": {
+          "normal_freq": 0.25,
+          "range": [
+            0.225,
+            0.275
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "NEP-07-KI": {
+          "normal_freq": 0.017,
+          "range": [
+            0.015300000000000001,
+            0.0187
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "GAS-07-GT": {
+          "normal_freq": 0.2,
+          "range": [
+            0.18000000000000002,
+            0.22000000000000003
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "END-07-PA": {
+          "normal_freq": 0.08,
+          "range": [
+            0.07200000000000001,
+            0.08800000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SPL-07-SP": {
+          "normal_freq": 0.9,
+          "range": [
+            0.81,
+            0.9900000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "insulin": {
+          "normal_freq": 0.167,
+          "range": [
+            0.15030000000000002,
+            0.18370000000000003
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "cortisol": {
+          "normal_freq": 0.042,
+          "range": [
+            0.0378,
+            0.046200000000000005
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "growth_hormone": {
+          "normal_freq": 0.0033,
+          "range": [
+            0.00297,
+            0.0036300000000000004
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "thyroid_(t3)": {
+          "normal_freq": 0.0014,
+          "range": [
+            0.00126,
+            0.0015400000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "melatonin": {
+          "normal_freq": 1.16e-05,
+          "range": [
+            1.0440000000000002e-05,
+            1.2760000000000001e-05
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CRH-11-RS": {
+          "normal_freq": 0.5,
+          "range": [
+            0.45,
+            0.55
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ACT-11-MS": {
+          "normal_freq": 0.083,
+          "range": [
+            0.0747,
+            0.0913
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "COR-11-DS": {
+          "normal_freq": 0.042,
+          "range": [
+            0.0378,
+            0.046200000000000005
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "INS-11-MO": {
+          "normal_freq": 0.167,
+          "range": [
+            0.15030000000000002,
+            0.18370000000000003
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "GHR-11-GP": {
+          "normal_freq": 0.0033,
+          "range": [
+            0.00297,
+            0.0036300000000000004
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MLT-11-CR": {
+          "normal_freq": 1.16e-05,
+          "range": [
+            1.0440000000000002e-05,
+            1.2760000000000001e-05
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "TES-11-DC": {
+          "normal_freq": 0.042,
+          "range": [
+            0.0378,
+            0.046200000000000005
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "EST-11-MC": {
+          "normal_freq": 3e-05,
+          "range": [
+            2.7000000000000002e-05,
+            3.3e-05
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "OXY-11-BC": {
+          "normal_freq": 0.33,
+          "range": [
+            0.29700000000000004,
+            0.36300000000000004
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "Minutes": {
+          "normal_freq": 0.167,
+          "range": [
+            0.15030000000000002,
+            0.18370000000000003
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "Hours": {
+          "normal_freq": 0.042,
+          "range": [
+            0.0378,
+            0.046200000000000005
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "Days": {
+          "normal_freq": 1.16e-05,
+          "range": [
+            1.0440000000000002e-05,
+            1.2760000000000001e-05
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "Weeks": {
+          "normal_freq": 0.0033,
+          "range": [
+            0.00297,
+            0.0036300000000000004
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "Months": {
+          "normal_freq": 3e-05,
+          "range": [
+            2.7000000000000002e-05,
+            3.3e-05
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        }
+      },
+      "organ_systems": {
+        "mitochondria": {
+          "normal_freq": 10.0,
+          "range": [
+            8.0,
+            12.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": "Sol",
+          "element": "Fe",
+          "harmonics": [
+            5,
+            10,
+            20,
+            40
+          ],
+          "disease_states": {
+            "CFS": 0.1,
+            "fibromyalgia": 8.0
+          }
+        },
+        "heart": {
+          "normal_freq": 1.54,
+          "range": [
+            1.0,
+            2.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": "Sol",
+          "element": "Fe",
+          "harmonics": [],
+          "disease_states": {
+            "CFS": 1.2,
+            "SIDS": 0.0
+          }
+        },
+        "brain_alpha": {
+          "normal_freq": 10.0,
+          "range": [
+            8.0,
+            12.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": "Alpha_Centauri",
+          "element": "C",
+          "harmonics": [],
+          "disease_states": {
+            "CFS": 6.0,
+            "fibromyalgia": 6.0
+          }
+        },
+        "brain_gamma": {
+          "normal_freq": 40.0,
+          "range": [
+            30.0,
+            50.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {
+            "CFS": 25.0,
+            "fibromyalgia": 25.0
+          }
+        },
+        "schumann": {
+          "normal_freq": 7.83,
+          "range": [
+            7.5,
+            8.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": "Earth",
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "spinal_gate": {
+          "normal_freq": 20.0,
+          "range": [
+            18.0,
+            22.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {
+            "fibromyalgia": 5.0
+          }
+        },
+        "gut_oscillations": {
+          "normal_freq": 5.0,
+          "range": [
+            2.0,
+            7.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {
+            "CFS": 1.0
+          }
+        },
+        "pineal": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "pancreas": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "thymus": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "nk_cells": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "neutrophils": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "END-06-P": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "END-06-T": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "END-06-TH": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "IMM-09-NK": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "IMM-09-NE": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "neural_field": {
+          "normal_freq": 40.0,
+          "range": [
+            36.0,
+            44.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "interference": {
+          "normal_freq": 40.0,
+          "range": [
+            36.0,
+            44.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "limonene": {
+          "normal_freq": 13.0,
+          "range": [
+            11.700000000000001,
+            14.3
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "vanillin": {
+          "normal_freq": 13.0,
+          "range": [
+            11.700000000000001,
+            14.3
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "geosmin": {
+          "normal_freq": 13.0,
+          "range": [
+            11.700000000000001,
+            14.3
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "carvone": {
+          "normal_freq": 13.0,
+          "range": [
+            11.700000000000001,
+            14.3
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "benzaldehyde": {
+          "normal_freq": 13.0,
+          "range": [
+            11.700000000000001,
+            14.3
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "skatole": {
+          "normal_freq": 13.0,
+          "range": [
+            11.700000000000001,
+            14.3
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "melanocytes": {
+          "normal_freq": 14.0,
+          "range": [
+            12.6,
+            15.400000000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "cardiac_neurons": {
+          "normal_freq": 1.5,
+          "range": [
+            1.35,
+            1.6500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "craniofacial_bones": {
+          "normal_freq": 50.0,
+          "range": [
+            45.0,
+            55.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "sol": {
+          "normal_freq": 11.0,
+          "range": [
+            9.9,
+            12.100000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "arcturus": {
+          "normal_freq": 11.3,
+          "range": [
+            10.170000000000002,
+            12.430000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "sirius": {
+          "normal_freq": 50.0,
+          "range": [
+            45.0,
+            55.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "vega": {
+          "normal_freq": 26.0,
+          "range": [
+            23.400000000000002,
+            28.6
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "polaris": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "organogenesis": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "fetal": {
+          "normal_freq": 2.0,
+          "range": [
+            1.8,
+            2.2
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "consciousness": {
+          "normal_freq": 40.0,
+          "range": [
+            36.0,
+            44.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "brain_cortex": {
+          "normal_freq": 40.0,
+          "range": [
+            36.0,
+            44.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "brain_limbic": {
+          "normal_freq": 8.0,
+          "range": [
+            7.2,
+            8.8
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "spinal_cord": {
+          "normal_freq": 40.0,
+          "range": [
+            36.0,
+            44.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "sa_node": {
+          "normal_freq": 1.5,
+          "range": [
+            1.35,
+            1.6500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "heart_muscle": {
+          "normal_freq": 1.54,
+          "range": [
+            1.3860000000000001,
+            1.6940000000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "arteries": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "viruses": {
+          "normal_freq": 12.0,
+          "range": [
+            10.8,
+            13.200000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "bacteria": {
+          "normal_freq": 12.0,
+          "range": [
+            10.8,
+            13.200000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "toxins": {
+          "normal_freq": 12.0,
+          "range": [
+            10.8,
+            13.200000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SOL-A": {
+          "normal_freq": 11.0,
+          "range": [
+            9.9,
+            12.100000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ARC-B": {
+          "normal_freq": 11.3,
+          "range": [
+            10.170000000000002,
+            12.430000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SIR-C": {
+          "normal_freq": 50.0,
+          "range": [
+            45.0,
+            55.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "VEG-D": {
+          "normal_freq": 26.0,
+          "range": [
+            23.400000000000002,
+            28.6
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "POL-G": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "FAS-100-SU": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MER-ST-DE": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MER-GB-LA": {
+          "normal_freq": 1.2,
+          "range": [
+            1.08,
+            1.32
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SPI-09-ST": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "BAS-09-SC": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "FIB-09-CO": {
+          "normal_freq": 2.0,
+          "range": [
+            1.8,
+            2.2
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "cortex": {
+          "normal_freq": 80.0,
+          "range": [
+            72.0,
+            88.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "gut_neurons": {
+          "normal_freq": 20.0,
+          "range": [
+            18.0,
+            22.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "heart_ganglia": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "heart_rhythm": {
+          "normal_freq": 1.5,
+          "range": [
+            1.35,
+            1.6500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "vertex_1": {
+          "normal_freq": 40.0,
+          "range": [
+            36.0,
+            44.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "vertex_2": {
+          "normal_freq": 42.0,
+          "range": [
+            37.800000000000004,
+            46.2
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "vertex_3": {
+          "normal_freq": 45.0,
+          "range": [
+            40.5,
+            49.50000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "vertex_4": {
+          "normal_freq": 38.0,
+          "range": [
+            34.2,
+            41.800000000000004
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "vertex_5": {
+          "normal_freq": 41.0,
+          "range": [
+            36.9,
+            45.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "vertex_6": {
+          "normal_freq": 43.0,
+          "range": [
+            38.7,
+            47.300000000000004
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "vertex_7": {
+          "normal_freq": 44.0,
+          "range": [
+            39.6,
+            48.400000000000006
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "vertex_8": {
+          "normal_freq": 39.0,
+          "range": [
+            35.1,
+            42.900000000000006
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "layer_i": {
+          "normal_freq": 87.5,
+          "range": [
+            78.75,
+            96.25000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "layer_ii": {
+          "normal_freq": 82.5,
+          "range": [
+            74.25,
+            90.75000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "layer_iii": {
+          "normal_freq": 77.5,
+          "range": [
+            69.75,
+            85.25
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "layer_iv": {
+          "normal_freq": 72.5,
+          "range": [
+            65.25,
+            79.75
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "layer_v": {
+          "normal_freq": 67.5,
+          "range": [
+            60.75,
+            74.25
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "layer_vi": {
+          "normal_freq": 62.5,
+          "range": [
+            56.25,
+            68.75
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "thalamus": {
+          "normal_freq": 60.0,
+          "range": [
+            54.0,
+            66.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "brainstem": {
+          "normal_freq": 20.0,
+          "range": [
+            18.0,
+            22.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "hippocampus": {
+          "normal_freq": 8.0,
+          "range": [
+            7.2,
+            8.8
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "av_node": {
+          "normal_freq": 1.2,
+          "range": [
+            1.08,
+            1.32
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "purkinje_fibers": {
+          "normal_freq": 2.0,
+          "range": [
+            1.8,
+            2.2
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "myocardium": {
+          "normal_freq": 1.5,
+          "range": [
+            1.35,
+            1.6500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "NEU-01-C": {
+          "normal_freq": 40.0,
+          "range": [
+            36.0,
+            44.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "NEU-01-S": {
+          "normal_freq": 20.0,
+          "range": [
+            18.0,
+            22.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CAR-03-SA": {
+          "normal_freq": 1.2,
+          "range": [
+            1.08,
+            1.32
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CAR-03-AV": {
+          "normal_freq": 1.2,
+          "range": [
+            1.08,
+            1.32
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CAR-03-P": {
+          "normal_freq": 2.0,
+          "range": [
+            1.8,
+            2.2
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "Fundamental": {
+          "normal_freq": 1.5,
+          "range": [
+            1.35,
+            1.6500000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ENT-07-I": {
+          "normal_freq": 20.0,
+          "range": [
+            18.0,
+            22.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "Discovery": {
+          "normal_freq": 40.0,
+          "range": [
+            36.0,
+            44.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CAR-03-M": {
+          "normal_freq": 1.54,
+          "range": [
+            1.3860000000000001,
+            1.6940000000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CAR-03-A": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "DIG-05-P": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "END-06-PI": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "VAS-01-AO": {
+          "normal_freq": 5.0,
+          "range": [
+            4.5,
+            5.5
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "VAS-01-C": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "VAS-01-V": {
+          "normal_freq": 3.0,
+          "range": [
+            2.7,
+            3.3000000000000003
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "VAS-01-VN": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "syndetome": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "myotome": {
+          "normal_freq": 2.0,
+          "range": [
+            1.8,
+            2.2
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "dermatome": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "neural_crest": {
+          "normal_freq": 50.0,
+          "range": [
+            45.0,
+            55.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MYO-10-M": {
+          "normal_freq": 2.0,
+          "range": [
+            1.8,
+            2.2
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "DER-10-D": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "SYN-10-SY": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "WNT3A": {
+          "normal_freq": 26.0,
+          "range": [
+            23.400000000000002,
+            28.6
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "Noggin": {
+          "normal_freq": 50.0,
+          "range": [
+            45.0,
+            55.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "neutrophil": {
+          "normal_freq": 2.0,
+          "range": [
+            1.8,
+            2.2
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "nk_cell": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "platelet": {
+          "normal_freq": 5.0,
+          "range": [
+            4.5,
+            5.5
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "NEU-10-RA": {
+          "normal_freq": 2.0,
+          "range": [
+            1.8,
+            2.2
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "EOS-10-PA": {
+          "normal_freq": 1.2,
+          "range": [
+            1.08,
+            1.32
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "PLT-10-CL": {
+          "normal_freq": 5.0,
+          "range": [
+            4.5,
+            5.5
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "NKC-10-TU": {
+          "normal_freq": 1.0,
+          "range": [
+            0.9,
+            1.1
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "THY-10-ED": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "GUT-10-CO": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "Pathophysiology": {
+          "normal_freq": 49.5,
+          "range": [
+            44.550000000000004,
+            54.45
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "CAR-07-HT": {
+          "normal_freq": 1.2,
+          "range": [
+            1.08,
+            1.32
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "NEU-07-BR": {
+          "normal_freq": 40.0,
+          "range": [
+            36.0,
+            44.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "pressure": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "em_field": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "adrenaline": {
+          "normal_freq": 50.0,
+          "range": [
+            45.0,
+            55.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "HYP-11-GC": {
+          "normal_freq": 40.0,
+          "range": [
+            36.0,
+            44.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "PIT-11-MO": {
+          "normal_freq": 10.0,
+          "range": [
+            9.0,
+            11.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "PIN-11-CT": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "PAR-11-CO": {
+          "normal_freq": 9.6,
+          "range": [
+            8.64,
+            10.56
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "THM-11-IL": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "PAN-11-AR": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "GON-11-LC": {
+          "normal_freq": 13.5,
+          "range": [
+            12.15,
+            14.850000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ADR-11-IS": {
+          "normal_freq": 50.0,
+          "range": [
+            45.0,
+            55.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "PPT-11-SF": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "PIN-11-SC": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "PAN-11-SA": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "THM-11-SI": {
+          "normal_freq": 7.83,
+          "range": [
+            7.047000000000001,
+            8.613000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "Millisecond": {
+          "normal_freq": 50.0,
+          "range": [
+            45.0,
+            55.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        }
+      },
+      "neural_systems": {
+        "ATP_synthase": {
+          "normal_freq": 100.0,
+          "range": [
+            80.0,
+            120.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [
+            50,
+            100,
+            200
+          ],
+          "disease_states": {
+            "CFS": 20.0
+          }
+        },
+        "schwann_cells": {
+          "normal_freq": 100.0,
+          "range": [
+            90.0,
+            110.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "odontoblasts": {
+          "normal_freq": 200.0,
+          "range": [
+            180.0,
+            220.00000000000003
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "rigel": {
+          "normal_freq": 100.0,
+          "range": [
+            90.0,
+            110.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "RIG-F": {
+          "normal_freq": 100.0,
+          "range": [
+            90.0,
+            110.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MIT-10-E": {
+          "normal_freq": 100.0,
+          "range": [
+            90.0,
+            110.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "FGF8": {
+          "normal_freq": 100.0,
+          "range": [
+            90.0,
+            110.00000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "GEN-200-OR": {
+          "normal_freq": 200.0,
+          "range": [
+            180.0,
+            220.00000000000003
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "LIM-150-EU": {
+          "normal_freq": 150.0,
+          "range": [
+            135.0,
+            165.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "MIT-130-TF": {
+          "normal_freq": 130.0,
+          "range": [
+            117.0,
+            143.0
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "THY-11-CM": {
+          "normal_freq": 141.27,
+          "range": [
+            127.14300000000001,
+            155.39700000000002
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        },
+        "ADR-11-SR": {
+          "normal_freq": 528.0,
+          "range": [
+            475.2,
+            580.8000000000001
+          ],
+          "phase": 0.0,
+          "stellar_anchor": null,
+          "element": null,
+          "harmonics": [],
+          "disease_states": {}
+        }
+      },
+      "disease_states": {}
+    },
+    "data": {
+      "mitochondria": {
+        "normal_freq": 10.0,
+        "range": [
+          8.0,
+          12.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": "Sol",
+        "element": "Fe",
+        "harmonics": [
+          5,
+          10,
+          20,
+          40
+        ],
+        "disease_states": {
+          "CFS": 0.1,
+          "fibromyalgia": 8.0
+        }
+      },
+      "ATP_synthase": {
+        "normal_freq": 100.0,
+        "range": [
+          80.0,
+          120.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [
+          50,
+          100,
+          200
+        ],
+        "disease_states": {
+          "CFS": 20.0
+        }
+      },
+      "cellular_respiration": {
+        "normal_freq": 0.5,
+        "range": [
+          0.4,
+          0.6
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {
+          "CFS": 0.05
+        }
+      },
+      "heart": {
+        "normal_freq": 1.54,
+        "range": [
+          1.0,
+          2.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": "Sol",
+        "element": "Fe",
+        "harmonics": [],
+        "disease_states": {
+          "CFS": 1.2,
+          "SIDS": 0.0
+        }
+      },
+      "brain_alpha": {
+        "normal_freq": 10.0,
+        "range": [
+          8.0,
+          12.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": "Alpha_Centauri",
+        "element": "C",
+        "harmonics": [],
+        "disease_states": {
+          "CFS": 6.0,
+          "fibromyalgia": 6.0
+        }
+      },
+      "brain_gamma": {
+        "normal_freq": 40.0,
+        "range": [
+          30.0,
+          50.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {
+          "CFS": 25.0,
+          "fibromyalgia": 25.0
+        }
+      },
+      "circadian": {
+        "normal_freq": 1.16e-05,
+        "range": [
+          1e-05,
+          1.3e-05
+        ],
+        "phase": 0.0,
+        "stellar_anchor": "Sol",
+        "element": null,
+        "harmonics": [],
+        "disease_states": {
+          "CFS": 8e-06
+        }
+      },
+      "schumann": {
+        "normal_freq": 7.83,
+        "range": [
+          7.5,
+          8.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": "Earth",
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "spinal_gate": {
+        "normal_freq": 20.0,
+        "range": [
+          18.0,
+          22.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {
+          "fibromyalgia": 5.0
+        }
+      },
+      "c_fiber": {
+        "normal_freq": 0.5,
+        "range": [
+          0.3,
+          0.7
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {
+          "fibromyalgia": 2.5
+        }
+      },
+      "gut_oscillations": {
+        "normal_freq": 5.0,
+        "range": [
+          2.0,
+          7.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {
+          "CFS": 1.0
+        }
+      },
+      "bacterial_quorum": {
+        "normal_freq": 0.1,
+        "range": [
+          0.05,
+          0.2
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {
+          "CFS": 0.01
+        }
+      },
+      "pineal": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "pancreas": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "thymus": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "healthy": {
+        "normal_freq": 0.0011,
+        "range": [
+          0.00099,
+          0.0012100000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "macrophages": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "t-helper_cells": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "b-cells": {
+        "normal_freq": 0.02,
+        "range": [
+          0.018000000000000002,
+          0.022000000000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "nk_cells": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "pituitary": {
+        "normal_freq": 0.033,
+        "range": [
+          0.0297,
+          0.036300000000000006
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "thyroid": {
+        "normal_freq": 0.001,
+        "range": [
+          0.0009000000000000001,
+          0.0011
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "adrenals": {
+        "normal_freq": 0.0003,
+        "range": [
+          0.00027,
+          0.00033
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "gonads": {
+        "normal_freq": 2.3e-07,
+        "range": [
+          2.07e-07,
+          2.53e-07
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "lymphocytes": {
+        "normal_freq": 0.01,
+        "range": [
+          0.009000000000000001,
+          0.011000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "dendritic_cells": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "neutrophils": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "END-06-P": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "END-06-PC": {
+        "normal_freq": 0.0011,
+        "range": [
+          0.00099,
+          0.0012100000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "END-06-T": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "END-06-PT": {
+        "normal_freq": 0.033,
+        "range": [
+          0.0297,
+          0.036300000000000006
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "END-06-TH": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "END-06-AD": {
+        "normal_freq": 0.0003,
+        "range": [
+          0.00027,
+          0.00033
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "END-06-GO": {
+        "normal_freq": 2.3e-07,
+        "range": [
+          2.07e-07,
+          2.53e-07
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "IMM-09-LY": {
+        "normal_freq": 0.01,
+        "range": [
+          0.009000000000000001,
+          0.011000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "IMM-09-MA": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "IMM-09-NK": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "IMM-09-DC": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "IMM-09-NE": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "neural_field": {
+        "normal_freq": 40.0,
+        "range": [
+          36.0,
+          44.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "interference": {
+        "normal_freq": 40.0,
+        "range": [
+          36.0,
+          44.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "horizontal": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "anterior": {
+        "normal_freq": 0.8,
+        "range": [
+          0.7200000000000001,
+          0.8800000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "posterior": {
+        "normal_freq": 0.6,
+        "range": [
+          0.54,
+          0.66
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "limonene": {
+        "normal_freq": 13.0,
+        "range": [
+          11.700000000000001,
+          14.3
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "vanillin": {
+        "normal_freq": 13.0,
+        "range": [
+          11.700000000000001,
+          14.3
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "geosmin": {
+        "normal_freq": 13.0,
+        "range": [
+          11.700000000000001,
+          14.3
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "carvone": {
+        "normal_freq": 13.0,
+        "range": [
+          11.700000000000001,
+          14.3
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "benzaldehyde": {
+        "normal_freq": 13.0,
+        "range": [
+          11.700000000000001,
+          14.3
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "skatole": {
+        "normal_freq": 13.0,
+        "range": [
+          11.700000000000001,
+          14.3
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "melanocytes": {
+        "normal_freq": 14.0,
+        "range": [
+          12.6,
+          15.400000000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "schwann_cells": {
+        "normal_freq": 100.0,
+        "range": [
+          90.0,
+          110.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "adrenal_medulla": {
+        "normal_freq": 0.2,
+        "range": [
+          0.18000000000000002,
+          0.22000000000000003
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "enteric_neurons": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "cardiac_neurons": {
+        "normal_freq": 1.5,
+        "range": [
+          1.35,
+          1.6500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "craniofacial_bones": {
+        "normal_freq": 50.0,
+        "range": [
+          45.0,
+          55.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "odontoblasts": {
+        "normal_freq": 200.0,
+        "range": [
+          180.0,
+          220.00000000000003
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "sol": {
+        "normal_freq": 11.0,
+        "range": [
+          9.9,
+          12.100000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "arcturus": {
+        "normal_freq": 11.3,
+        "range": [
+          10.170000000000002,
+          12.430000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "sirius": {
+        "normal_freq": 50.0,
+        "range": [
+          45.0,
+          55.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "vega": {
+        "normal_freq": 26.0,
+        "range": [
+          23.400000000000002,
+          28.6
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "betelgeuse": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "rigel": {
+        "normal_freq": 100.0,
+        "range": [
+          90.0,
+          110.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "polaris": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "zygote": {
+        "normal_freq": 0.001,
+        "range": [
+          0.0009000000000000001,
+          0.0011
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "morula": {
+        "normal_freq": 0.01,
+        "range": [
+          0.009000000000000001,
+          0.011000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "blastula": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "gastrula": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "neurula": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "organogenesis": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "fetal": {
+        "normal_freq": 2.0,
+        "range": [
+          1.8,
+          2.2
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "consciousness": {
+        "normal_freq": 40.0,
+        "range": [
+          36.0,
+          44.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "brain_cortex": {
+        "normal_freq": 40.0,
+        "range": [
+          36.0,
+          44.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "brain_limbic": {
+        "normal_freq": 8.0,
+        "range": [
+          7.2,
+          8.8
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "spinal_cord": {
+        "normal_freq": 40.0,
+        "range": [
+          36.0,
+          44.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "enteric_nervous": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "sa_node": {
+        "normal_freq": 1.5,
+        "range": [
+          1.35,
+          1.6500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "heart_muscle": {
+        "normal_freq": 1.54,
+        "range": [
+          1.3860000000000001,
+          1.6940000000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "arteries": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "capillaries": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "viruses": {
+        "normal_freq": 12.0,
+        "range": [
+          10.8,
+          13.200000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "bacteria": {
+        "normal_freq": 12.0,
+        "range": [
+          10.8,
+          13.200000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "toxins": {
+        "normal_freq": 12.0,
+        "range": [
+          10.8,
+          13.200000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SOL-A": {
+        "normal_freq": 11.0,
+        "range": [
+          9.9,
+          12.100000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ARC-B": {
+        "normal_freq": 11.3,
+        "range": [
+          10.170000000000002,
+          12.430000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SIR-C": {
+        "normal_freq": 50.0,
+        "range": [
+          45.0,
+          55.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "VEG-D": {
+        "normal_freq": 26.0,
+        "range": [
+          23.400000000000002,
+          28.6
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "BET-E": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "RIG-F": {
+        "normal_freq": 100.0,
+        "range": [
+          90.0,
+          110.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "POL-G": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "FAS-100-SU": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "FAS-050-DE": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "FAS-030-VI": {
+        "normal_freq": 0.3,
+        "range": [
+          0.27,
+          0.33
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "TEN-010-EL": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "LIG-015-ST": {
+        "normal_freq": 0.15,
+        "range": [
+          0.135,
+          0.165
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "BON-001-CO": {
+        "normal_freq": 0.001,
+        "range": [
+          0.0009000000000000001,
+          0.0011
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CAR-001-FL": {
+        "normal_freq": 0.01,
+        "range": [
+          0.009000000000000001,
+          0.011000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ADI-005-ME": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MER-GV-CE": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MER-CV-FR": {
+        "normal_freq": 0.7,
+        "range": [
+          0.63,
+          0.77
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MER-ST-DE": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MER-BL-SU": {
+        "normal_freq": 0.8,
+        "range": [
+          0.7200000000000001,
+          0.8800000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MER-GB-LA": {
+        "normal_freq": 1.2,
+        "range": [
+          1.08,
+          1.32
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MER-KI-VI": {
+        "normal_freq": 0.6,
+        "range": [
+          0.54,
+          0.66
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "eccrine": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "apocrine": {
+        "normal_freq": 0.0001,
+        "range": [
+          9e-05,
+          0.00011000000000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "sebaceous": {
+        "normal_freq": 0.001,
+        "range": [
+          0.0009000000000000001,
+          0.0011
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ceruminous": {
+        "normal_freq": 1e-05,
+        "range": [
+          9e-06,
+          1.1000000000000001e-05
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "COR-09-HC": {
+        "normal_freq": 0.001,
+        "range": [
+          0.0009000000000000001,
+          0.0011
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "LUC-09-TR": {
+        "normal_freq": 0.01,
+        "range": [
+          0.009000000000000001,
+          0.011000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "GRA-09-LI": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SPI-09-ST": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "BAS-09-SC": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "FIB-09-CO": {
+        "normal_freq": 2.0,
+        "range": [
+          1.8,
+          2.2
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ADI-09-EN": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "cortex": {
+        "normal_freq": 80.0,
+        "range": [
+          72.0,
+          88.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "gut_neurons": {
+        "normal_freq": 20.0,
+        "range": [
+          18.0,
+          22.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "heart_ganglia": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "heart_rhythm": {
+        "normal_freq": 1.5,
+        "range": [
+          1.35,
+          1.6500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "vertex_1": {
+        "normal_freq": 40.0,
+        "range": [
+          36.0,
+          44.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "vertex_2": {
+        "normal_freq": 42.0,
+        "range": [
+          37.800000000000004,
+          46.2
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "vertex_3": {
+        "normal_freq": 45.0,
+        "range": [
+          40.5,
+          49.50000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "vertex_4": {
+        "normal_freq": 38.0,
+        "range": [
+          34.2,
+          41.800000000000004
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "vertex_5": {
+        "normal_freq": 41.0,
+        "range": [
+          36.9,
+          45.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "vertex_6": {
+        "normal_freq": 43.0,
+        "range": [
+          38.7,
+          47.300000000000004
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "vertex_7": {
+        "normal_freq": 44.0,
+        "range": [
+          39.6,
+          48.400000000000006
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "vertex_8": {
+        "normal_freq": 39.0,
+        "range": [
+          35.1,
+          42.900000000000006
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "layer_i": {
+        "normal_freq": 87.5,
+        "range": [
+          78.75,
+          96.25000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "layer_ii": {
+        "normal_freq": 82.5,
+        "range": [
+          74.25,
+          90.75000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "layer_iii": {
+        "normal_freq": 77.5,
+        "range": [
+          69.75,
+          85.25
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "layer_iv": {
+        "normal_freq": 72.5,
+        "range": [
+          65.25,
+          79.75
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "layer_v": {
+        "normal_freq": 67.5,
+        "range": [
+          60.75,
+          74.25
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "layer_vi": {
+        "normal_freq": 62.5,
+        "range": [
+          56.25,
+          68.75
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "thalamus": {
+        "normal_freq": 60.0,
+        "range": [
+          54.0,
+          66.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "brainstem": {
+        "normal_freq": 20.0,
+        "range": [
+          18.0,
+          22.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "hippocampus": {
+        "normal_freq": 8.0,
+        "range": [
+          7.2,
+          8.8
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "av_node": {
+        "normal_freq": 1.2,
+        "range": [
+          1.08,
+          1.32
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "purkinje_fibers": {
+        "normal_freq": 2.0,
+        "range": [
+          1.8,
+          2.2
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "myocardium": {
+        "normal_freq": 1.5,
+        "range": [
+          1.35,
+          1.6500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "trachea": {
+        "normal_freq": 0.25,
+        "range": [
+          0.225,
+          0.275
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "bronchi": {
+        "normal_freq": 0.3,
+        "range": [
+          0.27,
+          0.33
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "alveoli": {
+        "normal_freq": 0.2,
+        "range": [
+          0.18000000000000002,
+          0.22000000000000003
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "stomach": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "duodenum": {
+        "normal_freq": 0.18,
+        "range": [
+          0.162,
+          0.198
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ileum": {
+        "normal_freq": 0.16,
+        "range": [
+          0.14400000000000002,
+          0.17600000000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "colon": {
+        "normal_freq": 0.02,
+        "range": [
+          0.018000000000000002,
+          0.022000000000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "nephron": {
+        "normal_freq": 0.9,
+        "range": [
+          0.81,
+          0.9900000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "collecting_duct": {
+        "normal_freq": 0.8,
+        "range": [
+          0.7200000000000001,
+          0.8800000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "NEU-01-C": {
+        "normal_freq": 40.0,
+        "range": [
+          36.0,
+          44.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "NEU-01-S": {
+        "normal_freq": 20.0,
+        "range": [
+          18.0,
+          22.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "NEU-01-G": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CAR-03-SA": {
+        "normal_freq": 1.2,
+        "range": [
+          1.08,
+          1.32
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CAR-03-AV": {
+        "normal_freq": 1.2,
+        "range": [
+          1.08,
+          1.32
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CAR-03-P": {
+        "normal_freq": 2.0,
+        "range": [
+          1.8,
+          2.2
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "Fundamental": {
+        "normal_freq": 1.5,
+        "range": [
+          1.35,
+          1.6500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ENT-07-S": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ENT-07-M": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ENT-07-I": {
+        "normal_freq": 20.0,
+        "range": [
+          18.0,
+          22.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "VAG": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "GAS": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SER": {
+        "normal_freq": 0.003,
+        "range": [
+          0.0027,
+          0.0033000000000000004
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MMC": {
+        "normal_freq": 1.16e-05,
+        "range": [
+          1.0440000000000002e-05,
+          1.2760000000000001e-05
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "Discovery": {
+        "normal_freq": 40.0,
+        "range": [
+          36.0,
+          44.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CAR-03-M": {
+        "normal_freq": 1.54,
+        "range": [
+          1.3860000000000001,
+          1.6940000000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CAR-03-A": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "RES-04-A": {
+        "normal_freq": 0.25,
+        "range": [
+          0.225,
+          0.275
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "RES-04-B": {
+        "normal_freq": 0.3,
+        "range": [
+          0.27,
+          0.33
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "DIG-05-S": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "DIG-05-L": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "DIG-05-P": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "END-06-PI": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SKE-07-C": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SKE-07-M": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "URI-08-G": {
+        "normal_freq": 0.017,
+        "range": [
+          0.015300000000000001,
+          0.0187
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "URI-08-T": {
+        "normal_freq": 0.025,
+        "range": [
+          0.022500000000000003,
+          0.027500000000000004
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MIT-10-E": {
+        "normal_freq": 100.0,
+        "range": [
+          90.0,
+          110.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "VAS-01-AO": {
+        "normal_freq": 5.0,
+        "range": [
+          4.5,
+          5.5
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "VAS-01-C": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "VAS-01-V": {
+        "normal_freq": 3.0,
+        "range": [
+          2.7,
+          3.3000000000000003
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "VAS-01-VN": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "beat_pattern": {
+        "normal_freq": 0.3,
+        "range": [
+          0.27,
+          0.33
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "sclerotome": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "syndetome": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "myotome": {
+        "normal_freq": 2.0,
+        "range": [
+          1.8,
+          2.2
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "dermatome": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "neural_crest": {
+        "normal_freq": 50.0,
+        "range": [
+          45.0,
+          55.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SCL-10-S": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MYO-10-M": {
+        "normal_freq": 2.0,
+        "range": [
+          1.8,
+          2.2
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "DER-10-D": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SYN-10-SY": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CLK-11-H7": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CLK-11-LF": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CLK-11-AX": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CLK-11-SN": {
+        "normal_freq": 0.4,
+        "range": [
+          0.36000000000000004,
+          0.44000000000000006
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "FGF8": {
+        "normal_freq": 100.0,
+        "range": [
+          90.0,
+          110.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "WNT3A": {
+        "normal_freq": 26.0,
+        "range": [
+          23.400000000000002,
+          28.6
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "Noggin": {
+        "normal_freq": 50.0,
+        "range": [
+          45.0,
+          55.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "PGC-010-MI": {
+        "normal_freq": 0.01,
+        "range": [
+          0.009000000000000001,
+          0.011000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "GON-030-BI": {
+        "normal_freq": 0.03,
+        "range": [
+          0.027,
+          0.033
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SPG-002-ST": {
+        "normal_freq": 0.02,
+        "range": [
+          0.018000000000000002,
+          0.022000000000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "GEN-200-OR": {
+        "normal_freq": 200.0,
+        "range": [
+          180.0,
+          220.00000000000003
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "LIM-150-EU": {
+        "normal_freq": 150.0,
+        "range": [
+          135.0,
+          165.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "hsc": {
+        "normal_freq": 0.001,
+        "range": [
+          0.0009000000000000001,
+          0.0011
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "cmp": {
+        "normal_freq": 0.01,
+        "range": [
+          0.009000000000000001,
+          0.011000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "clp": {
+        "normal_freq": 0.02,
+        "range": [
+          0.018000000000000002,
+          0.022000000000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "gmp": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "mep": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "rbc": {
+        "normal_freq": 0.25,
+        "range": [
+          0.225,
+          0.275
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "neutrophil": {
+        "normal_freq": 2.0,
+        "range": [
+          1.8,
+          2.2
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "b-cell": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "t-cell": {
+        "normal_freq": 0.15,
+        "range": [
+          0.135,
+          0.165
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "nk_cell": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "platelet": {
+        "normal_freq": 5.0,
+        "range": [
+          4.5,
+          5.5
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "HSC-10-ST": {
+        "normal_freq": 0.001,
+        "range": [
+          0.0009000000000000001,
+          0.0011
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CMP-10-MY": {
+        "normal_freq": 0.01,
+        "range": [
+          0.009000000000000001,
+          0.011000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CLP-10-LY": {
+        "normal_freq": 0.02,
+        "range": [
+          0.018000000000000002,
+          0.022000000000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "GMP-10-GR": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MEP-10-ER": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "RBC-10-HE": {
+        "normal_freq": 0.25,
+        "range": [
+          0.225,
+          0.275
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "NEU-10-RA": {
+        "normal_freq": 2.0,
+        "range": [
+          1.8,
+          2.2
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MON-10-MA": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "BAS-10-AL": {
+        "normal_freq": 0.8,
+        "range": [
+          0.7200000000000001,
+          0.8800000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "EOS-10-PA": {
+        "normal_freq": 1.2,
+        "range": [
+          1.08,
+          1.32
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "PLT-10-CL": {
+        "normal_freq": 5.0,
+        "range": [
+          4.5,
+          5.5
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "BCL-10-ME": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "TCL-10-SU": {
+        "normal_freq": 0.15,
+        "range": [
+          0.135,
+          0.165
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "NKC-10-TU": {
+        "normal_freq": 1.0,
+        "range": [
+          0.9,
+          1.1
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "DEN-10-AN": {
+        "normal_freq": 0.3,
+        "range": [
+          0.27,
+          0.33
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MAC-10-TI": {
+        "normal_freq": 0.2,
+        "range": [
+          0.18000000000000002,
+          0.22000000000000003
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "BON-10-ST": {
+        "normal_freq": 0.001,
+        "range": [
+          0.0009000000000000001,
+          0.0011
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "THY-10-ED": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SPL-10-FI": {
+        "normal_freq": 0.1,
+        "range": [
+          0.09000000000000001,
+          0.11000000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "LYM-10-IN": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "GUT-10-CO": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "Pathophysiology": {
+        "normal_freq": 49.5,
+        "range": [
+          44.550000000000004,
+          54.45
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CAR-07-HT": {
+        "normal_freq": 1.2,
+        "range": [
+          1.08,
+          1.32
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "HEP-07-LB": {
+        "normal_freq": 0.05,
+        "range": [
+          0.045000000000000005,
+          0.05500000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "PUL-07-LU": {
+        "normal_freq": 0.25,
+        "range": [
+          0.225,
+          0.275
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "NEP-07-KI": {
+        "normal_freq": 0.017,
+        "range": [
+          0.015300000000000001,
+          0.0187
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "NEU-07-BR": {
+        "normal_freq": 40.0,
+        "range": [
+          36.0,
+          44.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "GAS-07-GT": {
+        "normal_freq": 0.2,
+        "range": [
+          0.18000000000000002,
+          0.22000000000000003
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "END-07-PA": {
+        "normal_freq": 0.08,
+        "range": [
+          0.07200000000000001,
+          0.08800000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "SPL-07-SP": {
+        "normal_freq": 0.9,
+        "range": [
+          0.81,
+          0.9900000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MIT-130-TF": {
+        "normal_freq": 130.0,
+        "range": [
+          117.0,
+          143.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "pressure": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "em_field": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "adrenaline": {
+        "normal_freq": 50.0,
+        "range": [
+          45.0,
+          55.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "insulin": {
+        "normal_freq": 0.167,
+        "range": [
+          0.15030000000000002,
+          0.18370000000000003
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "cortisol": {
+        "normal_freq": 0.042,
+        "range": [
+          0.0378,
+          0.046200000000000005
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "growth_hormone": {
+        "normal_freq": 0.0033,
+        "range": [
+          0.00297,
+          0.0036300000000000004
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "thyroid_(t3)": {
+        "normal_freq": 0.0014,
+        "range": [
+          0.00126,
+          0.0015400000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "melatonin": {
+        "normal_freq": 1.16e-05,
+        "range": [
+          1.0440000000000002e-05,
+          1.2760000000000001e-05
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "HYP-11-GC": {
+        "normal_freq": 40.0,
+        "range": [
+          36.0,
+          44.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "PIT-11-MO": {
+        "normal_freq": 10.0,
+        "range": [
+          9.0,
+          11.0
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "PIN-11-CT": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "THY-11-CM": {
+        "normal_freq": 141.27,
+        "range": [
+          127.14300000000001,
+          155.39700000000002
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "PAR-11-CO": {
+        "normal_freq": 9.6,
+        "range": [
+          8.64,
+          10.56
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "THM-11-IL": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ADR-11-SR": {
+        "normal_freq": 528.0,
+        "range": [
+          475.2,
+          580.8000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "PAN-11-AR": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "GON-11-LC": {
+        "normal_freq": 13.5,
+        "range": [
+          12.15,
+          14.850000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "CRH-11-RS": {
+        "normal_freq": 0.5,
+        "range": [
+          0.45,
+          0.55
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ACT-11-MS": {
+        "normal_freq": 0.083,
+        "range": [
+          0.0747,
+          0.0913
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "COR-11-DS": {
+        "normal_freq": 0.042,
+        "range": [
+          0.0378,
+          0.046200000000000005
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "ADR-11-IS": {
+        "normal_freq": 50.0,
+        "range": [
+          45.0,
+          55.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "INS-11-MO": {
+        "normal_freq": 0.167,
+        "range": [
+          0.15030000000000002,
+          0.18370000000000003
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "GHR-11-GP": {
+        "normal_freq": 0.0033,
+        "range": [
+          0.00297,
+          0.0036300000000000004
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "MLT-11-CR": {
+        "normal_freq": 1.16e-05,
+        "range": [
+          1.0440000000000002e-05,
+          1.2760000000000001e-05
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "TES-11-DC": {
+        "normal_freq": 0.042,
+        "range": [
+          0.0378,
+          0.046200000000000005
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "EST-11-MC": {
+        "normal_freq": 3e-05,
+        "range": [
+          2.7000000000000002e-05,
+          3.3e-05
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "OXY-11-BC": {
+        "normal_freq": 0.33,
+        "range": [
+          0.29700000000000004,
+          0.36300000000000004
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "PPT-11-SF": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "PIN-11-SC": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "PAN-11-SA": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "THM-11-SI": {
+        "normal_freq": 7.83,
+        "range": [
+          7.047000000000001,
+          8.613000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "Millisecond": {
+        "normal_freq": 50.0,
+        "range": [
+          45.0,
+          55.00000000000001
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "Minutes": {
+        "normal_freq": 0.167,
+        "range": [
+          0.15030000000000002,
+          0.18370000000000003
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "Hours": {
+        "normal_freq": 0.042,
+        "range": [
+          0.0378,
+          0.046200000000000005
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "Days": {
+        "normal_freq": 1.16e-05,
+        "range": [
+          1.0440000000000002e-05,
+          1.2760000000000001e-05
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "Weeks": {
+        "normal_freq": 0.0033,
+        "range": [
+          0.00297,
+          0.0036300000000000004
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      },
+      "Months": {
+        "normal_freq": 3e-05,
+        "range": [
+          2.7000000000000002e-05,
+          3.3e-05
+        ],
+        "phase": 0.0,
+        "stellar_anchor": null,
+        "element": null,
+        "harmonics": [],
+        "disease_states": {}
+      }
+    }
+  },
+  "stellar_anchors": {
+    "description": "Cosmic frequency anchoring system",
+    "scale": "10^-4 Hz (galactic) to 10^3 Hz (stellar harmonics)",
+    "total_anchors": 62,
+    "anchor_stars": {
+      "Sol": {
+        "frequency": 11.0,
+        "element": "H",
+        "color": "#FFD700",
+        "systems": [
+          "heart",
+          "circadian",
+          "blood"
+        ]
+      },
+      "Arcturus": {
+        "frequency": 11.3,
+        "element": "Fe",
+        "color": "#FFA500",
+        "systems": [
+          "liver",
+          "metabolism"
+        ]
+      },
+      "Sirius": {
+        "frequency": 50.0,
+        "element": "Si",
+        "color": "#FFFFFF",
+        "systems": [
+          "brain",
+          "nerves",
+          "crystalline"
+        ]
+      },
+      "Alpha_Centauri": {
+        "frequency": 17.0,
+        "element": "C",
+        "color": "#87CEEB",
+        "systems": [
+          "neural",
+          "carbon_chains"
+        ]
+      },
+      "Schumann": {
+        "frequency": 7.83,
+        "element": "Earth",
+        "color": "#00FF00",
+        "systems": [
+          "immune",
+          "grounding",
+          "all"
+        ]
+      },
+      "Healthy": {
+        "frequency": 0.0011,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Macrophages": {
+        "frequency": 0.1,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "T-Helper Cells": {
+        "frequency": 0.05,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "B-Cells": {
+        "frequency": 0.02,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "NK Cells": {
+        "frequency": 1.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Pineal": {
+        "frequency": 7.83,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Pancreas": {
+        "frequency": 7.83,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Thymus": {
+        "frequency": 7.83,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Pituitary": {
+        "frequency": 0.033,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Thyroid": {
+        "frequency": 0.001,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Adrenals": {
+        "frequency": 0.0003,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Gonads": {
+        "frequency": 2.3e-07,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Lymphocytes": {
+        "frequency": 0.01,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Dendritic Cells": {
+        "frequency": 0.05,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Neutrophils": {
+        "frequency": 10.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Schwann Cells": {
+        "frequency": 100.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Adrenal Medulla": {
+        "frequency": 0.2,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Enteric Neurons": {
+        "frequency": 0.05,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Cardiac Neurons": {
+        "frequency": 1.5,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Craniofacial Bones": {
+        "frequency": 50.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Odontoblasts": {
+        "frequency": 200.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Eccrine": {
+        "frequency": 0.1,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Apocrine": {
+        "frequency": 0.0001,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Sebaceous": {
+        "frequency": 0.001,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Ceruminous": {
+        "frequency": 1e-05,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "HOXA** | 7 | **Sol": {
+        "frequency": 11.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "HOXB** | 17 | **Sirius": {
+        "frequency": 50.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "HOXC** | 12 | **Vega": {
+        "frequency": 26.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "HOXD** | 2 | **Arcturus": {
+        "frequency": 11.3,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Sclerotome": {
+        "frequency": 0.5,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Syndetome": {
+        "frequency": 1.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Myotome": {
+        "frequency": 2.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Dermatome": {
+        "frequency": 10.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Neural Crest": {
+        "frequency": 50.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "HSC": {
+        "frequency": 0.001,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "CMP": {
+        "frequency": 0.01,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "CLP": {
+        "frequency": 0.02,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "GMP": {
+        "frequency": 0.1,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "MEP": {
+        "frequency": 0.05,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "RBC": {
+        "frequency": 0.25,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Neutrophil": {
+        "frequency": 2.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "B-cell": {
+        "frequency": 0.1,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "T-cell": {
+        "frequency": 0.15,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "NK cell": {
+        "frequency": 1.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Platelet": {
+        "frequency": 5.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Vega": {
+        "frequency": 26.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Betelgeuse": {
+        "frequency": 0.1,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Rigel": {
+        "frequency": 100.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Polaris": {
+        "frequency": 7.83,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Pressure": {
+        "frequency": 7.83,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "EM Field": {
+        "frequency": 7.83,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Adrenaline": {
+        "frequency": 50.0,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Insulin": {
+        "frequency": 0.167,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Cortisol": {
+        "frequency": 0.042,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Growth Hormone": {
+        "frequency": 0.0033,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Thyroid (T3)": {
+        "frequency": 0.0014,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      },
+      "Melatonin": {
+        "frequency": 1.16e-05,
+        "element": null,
+        "color": "#FFFFFF",
+        "systems": []
+      }
+    },
+    "coordination_function": "Prevent biological frequency explosion through gravitational field stabilization"
+  },
+  "cross_scale_relationships": {
+    "description": "Mathematical relationships connecting all scales",
+    "fundamental_equation": "Biological_Frequency = Quantum_Frequency \u00d7 Scaling_Factor",
+    "scaling_laws": {
+      "law_1_harmonic_preservation": "Frequency ratios maintain across all scales",
+      "law_2_resonance_coupling": "Systems synchronize at matching frequencies",
+      "law_3_consciousness_modulation": "Awareness influences frequency patterns"
+    },
+    "key_relationships": {
+      "quantum_to_genomic": {
+        "electron_base": "1.235e20 Hz",
+        "genomic_primary": "5.01e14 Hz",
+        "scaling_factor": "4.05e-7"
+      },
+      "genomic_to_biological": {
+        "genomic_primary": "5.01e14 Hz",
+        "cellular_metabolism": "501.2 Hz",
+        "scaling_factor": "1e-12"
+      },
+      "biological_to_neural": {
+        "cellular_base": "501.2 Hz",
+        "gamma_waves": "50.12 Hz",
+        "scaling_factor": "0.1"
+      }
+    },
+    "mathematical_constants": {
+      "golden_ratio": 1.618,
+      "octave_relationship": 2.0,
+      "perfect_fifth": 1.5,
+      "schumann_resonance": 7.83
+    }
+  },
+  "therapeutic_applications": {
+    "description": "Clinical applications of Aramis Field frequencies",
+    "development_status": "Research phase transitioning to clinical trials",
+    "categories": {
+      "genomic_therapeutics": {
+        "dna_repair_frequencies": "501.2 Hz (E. coli optimized)",
+        "genetic_disease_correction": "Targeted frequency signatures",
+        "cancer_treatment": "Oncogene frequency disruption"
+      },
+      "neural_therapeutics": {
+        "gamma_enhancement": "123.5 Hz (electron derivative)",
+        "consciousness_expansion": "305 Hz (awareness amplification)",
+        "neural_regeneration": "Multiple frequency protocols"
+      },
+      "cellular_therapeutics": {
+        "metabolism_optimization": "229 Hz",
+        "mitochondrial_repair": "10 Hz base frequency",
+        "stem_cell_activation": "Harmonic frequency cascades"
+      },
+      "systemic_therapeutics": {
+        "stress_reduction": "7.83 Hz (Schumann resonance)",
+        "immune_optimization": "PPT Triangle protocols",
+        "cardiovascular_coherence": "Heart-brain coupling frequencies"
+      }
+    },
+    "clinical_protocols": {
+      "utah_collaboration": "USEA neural stimulation integration",
+      "hospital_trials": "Frequency therapy pilot programs",
+      "personalized_medicine": "Individual genomic frequency profiles"
+    }
+  }
+}

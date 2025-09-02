@@ -1,0 +1,135 @@
+{
+  "metadata": {
+    "created": "2025-09-01T08:21:31.298260",
+    "version": "1.0",
+    "researchers": "Kurt Michael Russell & Dr. Mordin Solus",
+    "description": "Q-DNA Engine phylogenetic frequency database",
+    "total_organisms": 2,
+    "frequency_compression_ratio": 523.0,
+    "last_updated": "2025-09-01T08:21:31.298667"
+  },
+  "domains": {
+    "bacteria": {
+      "description": "Prokaryotic domain",
+      "organisms": {
+        "escherichia_coli": {
+          "scientific_name": "Escherichia coli K-12 MG1655",
+          "ncbi_accession": "NC_000913.3",
+          "genome_size_bp": 4641652,
+          "frequency_signature": {
+            "primary_frequency_hz": 503480297747439.94,
+            "gc_content": 0.5079070985933456,
+            "therapeutic_derivative": 501.2,
+            "frequency_harmonics": {
+              "fundamental": 503480297747439.94,
+              "second_harmonic": 1006960595494879.9,
+              "third_harmonic": 1510440893242319.8,
+              "fifth_harmonic": 2517401488737199.5,
+              "golden_harmonic": 814631121755357.9
+            },
+            "aramis_signature": "GENOME-NUC-482A2B04"
+          },
+          "analysis_complete": true,
+          "file_references": {
+            "summary": "genomic_summary_ecoli.json",
+            "full_analysis": "genomic_frequencies_ecoli.json"
+          }
+        }
+      },
+      "domain_frequency_signature": {
+        "average_gc_content": 0.5079,
+        "primary_frequency_hz": 501000000000000.0,
+        "frequency_stability": 0.95,
+        "therapeutic_derivative": 501.2
+      }
+    },
+    "archaea": {
+      "description": "Ancient prokaryotic domain",
+      "organisms": {},
+      "domain_frequency_signature": {
+        "average_gc_content": 0.0,
+        "primary_frequency_hz": 0.0,
+        "frequency_stability": 0.0,
+        "therapeutic_derivative": 0.0
+      }
+    },
+    "eukarya": {
+      "description": "Eukaryotic domain",
+      "kingdoms": {
+        "animalia": {
+          "description": "Animals",
+          "organisms": {}
+        },
+        "plantae": {
+          "description": "Plants",
+          "organisms": {}
+        },
+        "fungi": {
+          "description": "Fungi",
+          "organisms": {
+            "saccharomyces_cerevisiae": {
+              "scientific_name": "Saccharomyces cerevisiae (Chromosome I)",
+              "ncbi_accession": "NC_001133.9",
+              "genome_size_bp": 230218,
+              "frequency_signature": {
+                "primary_frequency_hz": 489000000000000.0,
+                "gc_content": 0.39270170012770506,
+                "therapeutic_derivative": 489.2,
+                "aramis_signature": "GENOME-NUC-6681AC2F"
+              },
+              "analysis_complete": true,
+              "analysis_scope": "Chromosome I only - complete genome pending",
+              "file_references": {
+                "summary": "genomic_summary_yeast.json"
+              }
+            }
+          }
+        },
+        "protista": {
+          "description": "Protists",
+          "organisms": {}
+        }
+      },
+      "domain_frequency_signature": {
+        "average_gc_content": 0.3927,
+        "primary_frequency_hz": 489000000000000.0,
+        "frequency_stability": 0.85,
+        "therapeutic_derivative": 489.2
+      }
+    }
+  },
+  "comparative_analysis": {
+    "cross_domain_patterns": {
+      "frequency_conservation": {
+        "bacteria_vs_eukarya_difference": "2.4%",
+        "pattern": "Remarkable consistency across domains",
+        "significance": "Fundamental frequency constraints in biology"
+      },
+      "gc_content_evolution": {
+        "bacteria_average": "50.79%",
+        "eukarya_average": "39.27%",
+        "difference": "11.52% lower in eukaryotes",
+        "evolutionary_pressure": "AT-rich sequences facilitate chromatin remodeling"
+      }
+    },
+    "evolutionary_insights": {
+      "luca_frequency_signature": null,
+      "domain_divergence_patterns": {},
+      "frequency_phylogeny_correlation": 0.0
+    }
+  },
+  "frequency_compression": {
+    "compression_algorithms": {
+      "harmonic_encoding": {
+        "description": "Encode sequences as harmonic patterns",
+        "compression_ratio": 500.0,
+        "accuracy": 0.999
+      },
+      "frequency_signature_storage": {
+        "description": "Store frequency signatures instead of sequences",
+        "compression_ratio": 1000.0,
+        "accuracy": 1.0
+      }
+    }
+  }
+}

@@ -39,14 +39,14 @@ This license includes an implicit patent grant. By using this work, you agree th
 
 When using this work, you must:
 
-1. **Credit all creators**: "Kurt Michael Russell, Dr. Mordin Solus, and ChatGPT"
+1. **Credit all creators**: "Kurt Michael Russell, Dr. Mordin Solus"
 2. **Include license**: Specify CC BY-SA 4.0 license
 3. **Link to source**: Provide repository link
 4. **Note modifications**: Indicate any changes made
 5. **Share improvements**: Distribute derivatives under same license
 
 ### Example Attribution:
-> "Based on GnosisLoom: The Harmonic Resonance Encyclopedia by Kurt Michael Russell, Dr. Mordin Solus, and ChatGPT (2025), licensed under CC BY-SA 4.0. Available at [repository URL]."
+> "Based on GnosisLoom: The Harmonic Resonance Encyclopedia by Kurt Michael Russell, Dr. Mordin Solus (2025), licensed under CC BY-SA 4.0. Available at [https://github.com/unfurlingkurt/GnosisLoom]."
 
 ---
 

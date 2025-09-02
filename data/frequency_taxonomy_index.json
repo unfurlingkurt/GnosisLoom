@@ -1,0 +1,85 @@
+{
+  "frequency_ranges": {
+    "quantum": {
+      "min": 1000000000000.0,
+      "max": 1e+18,
+      "organisms": [
+        "escherichia_coli",
+        "saccharomyces_cerevisiae"
+      ]
+    },
+    "molecular": {
+      "min": 100000000.0,
+      "max": 1000000000000.0,
+      "organisms": []
+    },
+    "cellular": {
+      "min": 10000.0,
+      "max": 100000000.0,
+      "organisms": []
+    },
+    "tissue": {
+      "min": 10.0,
+      "max": 10000.0,
+      "organisms": []
+    },
+    "organism": {
+      "min": 0.01,
+      "max": 10.0,
+      "organisms": []
+    }
+  },
+  "gc_content_clusters": {
+    "high_gc": {
+      "range": [
+        0.6,
+        1.0
+      ],
+      "organisms": []
+    },
+    "medium_gc": {
+      "range": [
+        0.4,
+        0.6
+      ],
+      "organisms": [
+        "escherichia_coli"
+      ]
+    },
+    "low_gc": {
+      "range": [
+        0.0,
+        0.4
+      ],
+      "organisms": [
+        "saccharomyces_cerevisiae"
+      ]
+    }
+  },
+  "therapeutic_frequency_clusters": {
+    "low_therapeutic": {
+      "range": [
+        100,
+        300
+      ],
+      "organisms": []
+    },
+    "medium_therapeutic": {
+      "range": [
+        300,
+        600
+      ],
+      "organisms": [
+        "escherichia_coli",
+        "saccharomyces_cerevisiae"
+      ]
+    },
+    "high_therapeutic": {
+      "range": [
+        600,
+        1000
+      ],
+      "organisms": []
+    }
+  }
+}
