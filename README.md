@@ -35,8 +35,7 @@ df = pd.json_normalize(frequencies['biological_frequencies'])
 print(f"Loaded {len(df)} frequency signatures!")
 ```
 
-### For Medical Professionals
-- **Disease Frequencies**: See MS20-MS25 documentation series
+### For Medical Researchers
 - **Therapeutic Applications**: Frequency-guided healing protocols
 - **Clinical Correlations**: Biomarker-frequency relationships
 
