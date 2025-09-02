@@ -1,0 +1,9 @@
+{
+  "water_patterns": 12,
+  "lipid_formations": 16,
+  "total_primordial_signatures": 28,
+  "frequency_range_hz": {
+    "min": 0.18,
+    "max": 30.0
+  }
+}

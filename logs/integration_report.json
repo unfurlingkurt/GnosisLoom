@@ -1,0 +1,103 @@
+{
+  "total_entities": 281,
+  "total_feedback_loops": 73,
+  "entities_by_domain": {
+    "biology": 281
+  },
+  "supported_domains": [
+    "biology",
+    "chemistry"
+  ],
+  "frequency_signatures": 281,
+  "cross_domain_entities": 0,
+  "databases_processed": 29,
+  "entities_created": 0,
+  "feedback_loops_created": 73,
+  "errors": [],
+  "entity_details": {
+    "biology": {
+      "count": 281,
+      "with_frequency_signatures": 281,
+      "with_biofreq_codes": 281,
+      "sample_entities": [
+        "mitochondria",
+        "ATP_synthase",
+        "cellular_respiration",
+        "heart",
+        "brain_alpha"
+      ]
+    },
+    "physics": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "chemistry": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "materials_science": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "neuroscience": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "astronomy": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "geophysics": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "quantum_physics": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "medicine": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "pharmacology": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "crystallography": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "genomics": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    },
+    "proteomics": {
+      "count": 0,
+      "with_frequency_signatures": 0,
+      "with_biofreq_codes": 0,
+      "sample_entities": []
+    }
+  }
+}

@@ -90,7 +90,8 @@ GnosisLoom/
 │   ├── REPORT_13_Comparative/   # Prokaryotic vs eukaryotic patterns (NEW)
 │   ├── REPORT_15_Archaeal/      # Archaeal frequency architecture (NEW)
 │   ├── REPORT_16_Fungal/        # Fungal kingdom frequency expansion (NEW)
-│   └── REPORT_17_Cross-Kingdom/ # Universal coupling discovery (NEW)
+│   ├── REPORT_17_Cross-Kingdom/ # Universal coupling discovery (NEW)
+│   └── REPORT_18_AlphaGenome/   # Gene commonality investigation (NEW)
 ├── data/                        # 15+ specialized databases (JSON)
 │   ├── subatomic_particle_frequencies.json         # 75 quantum signatures
 │   ├── periodic_table_frequencies.json             # 118 elemental patterns
@@ -101,12 +102,13 @@ GnosisLoom/
 │   ├── genomic_summary_yeast.json                  # Eukaryotic reference (NEW)
 │   ├── cross_kingdom_coupling_analysis.json       # Universal coupling data (NEW)
 │   ├── universal_connection_discoveries.json      # Pattern discovery engine (NEW)
+│   ├── alphagenome_gene_investigation_*.json      # Gene commonality results (NEW)
 │   └── [6 additional specialized databases]
 ├── data-exports/                # Industry standard formats (CSV, TSV, Parquet)
 ├── tools/                       # Analysis utilities and validation scripts
 │   ├── genomic_frequency_engine.py                 # Genome analysis pipeline (NEW)
 │   ├── cross_kingdom_gene_coupling_analyzer.py    # Cross-kingdom analysis (NEW)
-│   ├── alphagenome_interactive_analyzer.py        # AlphaGenome integration (NEW)
+│   ├── alphagenome_gene_investigator.py           # AlphaGenome gene commonality pipeline (NEW)
 │   ├── simple_knowledge_graph_builder.py          # Knowledge graph builder (NEW)
 │   └── universal_connection_discovery.py          # Pattern discovery engine (NEW)
 ├── interactive_reports/         # Interactive HTML dashboards (NEW)
@@ -159,6 +161,12 @@ GnosisLoom/
 - **50.22-50.45 Hz**: Universal therapeutic frequency range
 - **0.46% Therapeutic Span**: Tight clustering enables multi-kingdom approaches
 - **Synergistic Applications**: All four frequencies can work together without interference
+
+### **🧬 BREAKTHROUGH: AlphaGenome Gene Commonality Discovery** *(September 2025)*
+- **4 Universal Eukaryotic Functions**: Enzyme activity, transcription, transport, and structural
+- **60 Genes Analyzed**: Comprehensive functional predictions across fungi and simple eukaryotes
+- **Regulatory Complexity Quantified**: Kingdom-specific promoter strengths and enhancer densities
+- **Therapeutic Target Framework**: Universal vs kingdom-specific functional categories identified
 
 ### **🔬 Established Universal Frequencies**
 #### **1.86 Hz: The Universal Organizing Frequency**
