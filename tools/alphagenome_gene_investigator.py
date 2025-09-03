@@ -32,37 +32,86 @@ class AlphaGenomeGeneInvestigator:
         self.alphagenome_api_key = api_key or os.getenv('ALPHAGENOME_API_KEY')
         self.alphagenome_base_url = "https://api.deepmind.com/alphagenome/v1"  # Hypothetical endpoint
         
-        # Our 6 kingdoms with genome files
+        # TEMPORAL DIVERSITY GENOMES - 3.5 billion year evolutionary journey
+        # Spanning from hyperthermophile archaea to neural complexity revolution
         self.kingdoms = {
+            # 3.5 BILLION YEARS AGO - ARCHAEA: Extremophile Adaptation
+            'archaea_ancient': {
+                'organism': 'Pyrococcus furiosus DSM 3638 - Hyperthermophile',
+                'file': 'genomic_frequencies_pyrococcus.json',
+                'genome_file': 'data/genomes/pyrococcus_NC_003413.1.gb',
+                'age': '3.5 billion years',
+                'innovation': 'Extreme environment survival, hyperthermophile metabolism'
+            },
+            
+            # 3.0 BILLION YEARS AGO - BACTERIA: Single Cell Efficiency 
             'bacteria': {
-                'organism': 'E. coli K-12 MG1655',
+                'organism': 'E. coli K-12 MG1655 - Model Bacterium',
                 'file': 'genomic_frequencies_ecoli.json',
-                'genome_file': 'data/genomes/ecoli_NC_000913.3.gb'
+                'genome_file': 'data/genomes/ecoli_NC_000913.3.gb',
+                'age': '3.0 billion years', 
+                'innovation': 'Balanced single-cell metabolism'
             },
-            'archaea': {
-                'organism': 'M. jannaschii DSM 2661', 
-                'file': 'genomic_frequencies_methanocaldococcus.json',
-                'genome_file': 'data/genomes/methanocaldococcus_NC_000909.1.gb'
-            },
+            
+            # 1.5 BILLION YEARS AGO - FUNGI: Multicellular Coordination
             'fungi': {
-                'organism': 'N. crassa OR74A',
+                'organism': 'N. crassa OR74A - Filamentous Fungi',
                 'file': 'genomic_frequencies_neurospora.json', 
-                'genome_file': 'data/genomes/neurospora_NC_026499.1.gb'
+                'genome_file': 'data/genomes/neurospora_NC_026499.1.gb',
+                'age': '1.5 billion years',
+                'innovation': 'Multicellular coordination, highest frequency optimization'
             },
+            
+            # 1.0 BILLION YEARS AGO - SIMPLE EUKARYOTES: Nuclear Complexity
             'eukarya_simple': {
-                'organism': 'S. cerevisiae S288C',
+                'organism': 'S. cerevisiae S288C - Budding Yeast',
                 'file': 'genomic_summary_yeast.json',
-                'genome_file': 'data/genomes/yeast_NC_001133.9.gb'
+                'genome_file': 'data/genomes/yeast_NC_001133.9.gb',
+                'age': '1.0 billion years',
+                'innovation': 'Nuclear complexity management, chromatin organization'
             },
-            'plants': {
-                'organism': 'A. thaliana',
+            
+            # 450 MILLION YEARS AGO - ANCIENT PLANTS: Terrestrial Adaptation
+            'plants_ancient_chloroplast': {
+                'organism': 'Marchantia polymorpha - Liverwort Chloroplast',
+                'file': 'genomic_frequencies_liverwort_chloroplast.json',
+                'genome_file': 'data/genomes/liverwort_chloroplast_NC_037507.1.gb',
+                'age': '450 million years',
+                'innovation': 'First land plant, photosynthetic terrestrial adaptation'
+            },
+            
+            'plants_ancient_mitochondrial': {
+                'organism': 'Marchantia polymorpha - Liverwort Mitochondrial',
+                'file': 'genomic_frequencies_liverwort_mitochondrial.json',
+                'genome_file': 'data/genomes/liverwort_mitochondrial_NC_037508.1.gb',
+                'age': '450 million years',
+                'innovation': 'Ancient plant energy production, land colonization'
+            },
+            
+            # 500 MILLION YEARS AGO - NEURAL COMPLEXITY REVOLUTION: Distributed Intelligence
+            'animals_neural_revolution': {
+                'organism': 'Octopus bimaculoides - Neural Complexity Master',
+                'file': 'genomic_frequencies_octopus_mitochondrial.json', 
+                'genome_file': 'data/genomes/octopus_mitochondrial_NC_029723.1.gb',
+                'age': '500 million years',
+                'innovation': 'RNA editing mastery, distributed neural intelligence, 33,000+ genes'
+            },
+            
+            # LEGACY GENOMES - for comparison
+            'plants_modern': {
+                'organism': 'A. thaliana - Modern Plant',
                 'file': 'genomic_frequencies_arabidopsis.json',
-                'genome_file': 'data/genomes/arabidopsis_NC_003070.9.gb'
+                'genome_file': 'data/genomes/arabidopsis_NC_003070.9.gb',
+                'age': '150 million years',
+                'innovation': 'Advanced flowering plant complexity'
             },
-            'animals': {
-                'organism': 'C. elegans',
+            
+            'animals_modern': {
+                'organism': 'C. elegans - Modern Animal',
                 'file': 'genomic_frequencies_celegans.json',
-                'genome_file': 'data/genomes/celegans_NC_003279.8.gb'
+                'genome_file': 'data/genomes/celegans_NC_003279.8.gb', 
+                'age': '550 million years',
+                'innovation': 'Simple nervous system, developmental biology model'
             }
         }
         
