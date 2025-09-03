@@ -272,10 +272,8 @@ This work is released under **Creative Commons Attribution 4.0 International** -
 
 ## 🚀 Getting Started
 
-1. **Explore the Documentation**: Start with MS00_Stella_Foundation_Documentation.md
-2. **Load the Data**: Use the JSON files in `/data/` directory
-3. **Try the Examples**: Check out `/notebooks/` for interactive tutorials
-4. **Join the Research**: Contact us for collaboration opportunities
+1. **Load the Data**: Use the JSON files in `/data/` directory
+2. **Join the Research**: Contact us for collaboration opportunities
 
 ---
 
