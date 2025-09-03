@@ -122,10 +122,40 @@ class AramIsFieldGenomeAnalyzer:
         """
         logger.info(f"Downloading genome for {organism}")
         
-        # Predefined high-quality reference genomes
+        # Predefined high-quality reference genomes - TEMPORAL DIVERSITY COLLECTION
+        # Spanning 3.5 billion years of evolution for maximum resonance pattern discovery
         reference_genomes = {
-            'ecoli': 'NC_000913.3',  # E. coli K-12 MG1655
-            'yeast': 'NC_001133.9',  # S. cerevisiae chromosome I (example)
+            # ARCHAEA - 3.5 billion years ago
+            'pyrococcus': 'NC_003413.1',  # Pyrococcus furiosus - hyperthermophile extremophile
+            
+            # BACTERIA - 3.0 billion years ago  
+            'ecoli': 'NC_000913.3',  # E. coli K-12 MG1655 - model organism
+            
+            # FUNGI - 1.5 billion years ago
+            'neurospora': 'NC_026499.1',  # Neurospora crassa - filamentous fungi
+            
+            # SIMPLE EUKARYOTES - 1.0 billion years ago
+            'yeast': 'NC_001133.9',  # S. cerevisiae chromosome I
+            
+            # ANCIENT ANIMALS - 600 million years ago
+            'sponge': 'GCF_000090795.2',  # Amphimedon queenslandica - first animal nervous system
+            
+            # ANCIENT PLANTS - 450 million years ago  
+            'liverwort_chloroplast': 'NC_037507.1',  # Marchantia polymorpha chloroplast
+            'liverwort_mitochondrial': 'NC_037508.1',  # Marchantia polymorpha mitochondrial
+            
+            # NEURAL COMPLEXITY REVOLUTION - 500 million years ago
+            'octopus_mitochondrial': 'NC_029723.1',  # Octopus bimaculoides mitochondrial
+            'octopus': 'GCF_001194135.2',  # Octopus bimaculoides nuclear - RNA editing mastery
+            
+            # VERTEBRATE COMPLEXITY - Phase 1B Strategic Expansion
+            'human_chr1': 'NC_000001.11',  # Homo sapiens chromosome 1 - largest human chromosome
+            'human_chr21': 'NC_000021.9',  # Homo sapiens chromosome 21 - smaller, gene-dense
+            'human_chrX': 'NC_000023.11',  # Homo sapiens chromosome X - sex chromosome
+            'human_chrY': 'NC_000024.10',  # Homo sapiens chromosome Y - male-specific
+            'human_mt': 'NC_012920.1',     # Homo sapiens mitochondrial - maternal inheritance
+            
+            # LEGACY - keeping for compatibility
             'celegans': 'NC_003279.8',  # C. elegans chromosome I
             'drosophila': 'NC_004354.4'  # D. melanogaster chromosome X
         }
@@ -137,21 +167,35 @@ class AramIsFieldGenomeAnalyzer:
             raise ValueError(f"No reference genome found for {organism}. Please provide accession number.")
         
         try:
-            # Download from NCBI - get FASTA format for sequence
-            logger.info(f"Downloading sequence for accession {accession}")
-            handle = Entrez.efetch(db="nucleotide", id=accession, rettype="fasta", retmode="text")
-            fasta_record = SeqIO.read(handle, "fasta")
-            handle.close()
+            # Handle assembly accessions (GCF_) vs sequence accessions (NC_) differently
+            if accession.startswith('GCF_'):
+                logger.info(f"Assembly accession detected: {accession}")
+                logger.warning(f"Assembly-level downloads not yet implemented for {accession}")
+                logger.info(f"Please use individual chromosome/scaffold NC_ accessions")
+                raise ValueError(f"Assembly accession {accession} requires special handling - not yet implemented")
             
-            # Also get GenBank format for annotations
-            logger.info(f"Downloading annotations for accession {accession}")  
+            # Standard sequence download for NC_ accessions
+            logger.info(f"Downloading GenBank record with annotations for {accession}")
             handle = Entrez.efetch(db="nucleotide", id=accession, rettype="gb", retmode="text")
-            gb_record = SeqIO.read(handle, "genbank")
+            record = SeqIO.read(handle, "genbank")
             handle.close()
             
-            # Combine sequence from FASTA with annotations from GenBank
-            record = gb_record
-            record.seq = fasta_record.seq
+            # Verify we got CDS features
+            cds_count = len([f for f in record.features if f.type == "CDS"])
+            gene_count = len([f for f in record.features if f.type == "gene"])
+            logger.info(f"Downloaded record has {len(record.features)} features ({cds_count} CDS, {gene_count} genes)")
+            
+            if cds_count == 0:
+                logger.warning(f"No CDS features found in {accession} - may be sequence-only record")
+                logger.info("Attempting to download from RefSeq with feature annotations...")
+                
+                # Try RefSeq-specific download
+                handle = Entrez.efetch(db="nuccore", id=accession, rettype="gbwithparts", retmode="text")
+                record = SeqIO.read(handle, "genbank")
+                handle.close()
+                
+                cds_count = len([f for f in record.features if f.type == "CDS"])
+                logger.info(f"RefSeq download resulted in {cds_count} CDS features")
             
             # Save to file
             filename = f"data/genomes/{organism}_{accession}.gb"
