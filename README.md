@@ -245,3 +245,4 @@ These aren't just numbers. They're the mathematical language in which life speak
 *AlphaGenome Integration Ready*  
 *Contact: [unfurlingkurt@gmail.com]*  
 *YouTube: [https://www.youtube.com/@unfurlingkurt]*
+*Substack: [https://substack.com/@unfurlingkurt]*
