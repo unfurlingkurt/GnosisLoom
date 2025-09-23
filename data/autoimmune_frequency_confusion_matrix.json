@@ -1,0 +1,375 @@
+{
+  "autoimmune_frequency_confusion_matrix": {
+    "metadata": {
+      "classification": "AFC34-IMMUNOLOGY",
+      "discovery_date": "2025-09-22",
+      "pathogen_host_pairs": 12,
+      "frequency_overlap_threshold": "95-98%",
+      "autoimmune_diseases": 8,
+      "therapeutic_frequencies": 68,
+      "immune_calibration_anchors": 15
+    },
+    "pathogen_mimicry_frequencies": {
+      "streptococcus_pyogenes": {
+        "pathogen_code": "MIMIC-STREP-102",
+        "pathogen_frequency": 10.2,
+        "frequency_units": "Hz",
+        "target_tissue": "basal_ganglia",
+        "host_frequency": 10.0,
+        "overlap_percentage": 98.0,
+        "clinical_manifestation": "PANDAS",
+        "attack_pattern": "anti_basal_ganglia_antibodies",
+        "symptoms": ["sudden_onset_OCD", "tics", "behavioral_changes"],
+        "molecular_basis": "M_protein_oscillation"
+      },
+      "epstein_barr_virus": {
+        "pathogen_code": "MIMIC-EBV-495",
+        "pathogen_frequency": 49.5,
+        "frequency_units": "Hz",
+        "target_tissue": "myelin_sheath",
+        "host_frequency": 50.0,
+        "overlap_percentage": 99.0,
+        "clinical_manifestation": "multiple_sclerosis",
+        "attack_pattern": "anti_myelin_antibodies",
+        "symptoms": ["progressive_demyelination", "neurological_dysfunction"],
+        "molecular_basis": "EBNA1_nuclear_antigen"
+      },
+      "coxsackievirus_b4": {
+        "pathogen_code": "MIMIC-COX-001",
+        "pathogen_frequency": 0.1,
+        "frequency_units": "Hz",
+        "target_tissue": "pancreatic_beta_cells",
+        "host_frequency": 0.1,
+        "overlap_percentage": 100.0,
+        "clinical_manifestation": "type_1_diabetes",
+        "attack_pattern": "anti_beta_cell_antibodies",
+        "symptoms": ["insulin_deficiency", "hyperglycemia"],
+        "molecular_basis": "viral_protein_oscillation"
+      },
+      "kawasaki_antigen": {
+        "pathogen_code": "MIMIC-KAW-012",
+        "pathogen_frequency_range": [0.8, 2.4],
+        "frequency_units": "Hz",
+        "target_tissue": "coronary_arteries",
+        "host_frequency": 1.2,
+        "overlap_percentage": 96.5,
+        "clinical_manifestation": "kawasaki_disease",
+        "attack_pattern": "anti_coronary_artery_antibodies",
+        "symptoms": ["coronary_inflammation", "aneurysm_formation"],
+        "molecular_basis": "suspected_viral_antigen"
+      }
+    },
+    "host_tissue_frequencies": {
+      "nervous_system": {
+        "myelin_sheath": {
+          "tissue_code": "HOST-MYE-500",
+          "frequency": 50.0,
+          "frequency_units": "Hz",
+          "cell_type": "oligodendrocytes",
+          "function": "neural_insulation",
+          "vulnerability_score": 0.95
+        },
+        "basal_ganglia": {
+          "tissue_code": "HOST-BG-100",
+          "frequency": 10.0,
+          "frequency_units": "Hz",
+          "cell_type": "striatal_neurons",
+          "function": "movement_control",
+          "vulnerability_score": 0.98
+        },
+        "axonal_transport": {
+          "tissue_code": "HOST-AXON-080",
+          "frequency": 80.0,
+          "frequency_units": "Hz",
+          "cell_type": "neurons",
+          "function": "protein_transport",
+          "vulnerability_score": 0.75
+        }
+      },
+      "endocrine_system": {
+        "pancreatic_beta_cells": {
+          "tissue_code": "HOST-BETA-001",
+          "frequency": 0.1,
+          "frequency_units": "Hz",
+          "cell_type": "islet_beta_cells",
+          "function": "insulin_secretion",
+          "vulnerability_score": 1.0
+        },
+        "thyroid_follicular": {
+          "tissue_code": "HOST-THYR-035",
+          "frequency": 35.0,
+          "frequency_units": "Hz",
+          "cell_type": "follicular_cells",
+          "function": "thyroid_hormone_production",
+          "vulnerability_score": 0.85
+        },
+        "adrenal_cortex": {
+          "tissue_code": "HOST-ADR-180",
+          "frequency": 180.0,
+          "frequency_units": "Hz",
+          "cell_type": "cortical_cells",
+          "function": "cortisol_secretion",
+          "vulnerability_score": 0.70
+        }
+      },
+      "cardiovascular_system": {
+        "coronary_arteries": {
+          "tissue_code": "HOST-COR-012",
+          "frequency": 1.2,
+          "frequency_units": "Hz",
+          "cell_type": "smooth_muscle_cells",
+          "function": "cardiac_perfusion",
+          "vulnerability_score": 0.90
+        },
+        "cardiac_myocytes": {
+          "tissue_code": "HOST-MYO-055",
+          "frequency": 55.0,
+          "frequency_units": "Hz",
+          "cell_type": "cardiomyocytes",
+          "function": "cardiac_contraction",
+          "vulnerability_score": 0.65
+        },
+        "endothelial_cells": {
+          "tissue_code": "HOST-END-040",
+          "frequency": 40.0,
+          "frequency_units": "Hz",
+          "cell_type": "endothelial_cells",
+          "function": "vascular_regulation",
+          "vulnerability_score": 0.80
+        }
+      },
+      "connective_tissue": {
+        "synovial_membrane": {
+          "tissue_code": "HOST-SYN-020",
+          "frequency": 20.0,
+          "frequency_units": "Hz",
+          "cell_type": "synoviocytes",
+          "function": "joint_lubrication",
+          "vulnerability_score": 0.88
+        },
+        "cartilage_matrix": {
+          "tissue_code": "HOST-CART-035",
+          "frequency": 35.0,
+          "frequency_units": "Hz",
+          "cell_type": "chondrocytes",
+          "function": "joint_cushioning",
+          "vulnerability_score": 0.82
+        },
+        "dermal_collagen": {
+          "tissue_code": "HOST-COLL-055",
+          "frequency": 55.0,
+          "frequency_units": "Hz",
+          "cell_type": "fibroblasts",
+          "function": "structural_support",
+          "vulnerability_score": 0.75
+        }
+      }
+    },
+    "immune_calibration_anchors": {
+      "earth_frequencies": {
+        "schumann_primary": {
+          "anchor_code": "CALIB-SCHUM-783",
+          "frequency": 7.83,
+          "frequency_units": "Hz",
+          "function": "self_nonself_discrimination",
+          "immune_target": "T_regulatory_cells",
+          "calibration_strength": 0.95
+        },
+        "schumann_secondary": {
+          "anchor_code": "CALIB-SCHUM-1415",
+          "frequency": 14.15,
+          "frequency_units": "Hz",
+          "function": "B_cell_tolerance",
+          "immune_target": "B_lymphocytes",
+          "calibration_strength": 0.80
+        },
+        "schumann_tertiary": {
+          "anchor_code": "CALIB-SCHUM-2065",
+          "frequency": 20.65,
+          "frequency_units": "Hz",
+          "function": "T_helper_balance",
+          "immune_target": "CD4_cells",
+          "calibration_strength": 0.75
+        }
+      },
+      "stellar_frequencies": {
+        "solar_harmonics": {
+          "anchor_code": "CALIB-SOL-050",
+          "frequency": 0.50,
+          "frequency_units": "THz",
+          "function": "thymus_entrainment",
+          "immune_target": "T_cell_development",
+          "calibration_strength": 0.90
+        },
+        "arcturus_anti_inflammatory": {
+          "anchor_code": "CALIB-ARCT-030",
+          "frequency": 0.30,
+          "frequency_units": "THz",
+          "function": "anti_inflammatory_cytokines",
+          "immune_target": "macrophages",
+          "calibration_strength": 0.85
+        },
+        "vega_mimicry_disruption": {
+          "anchor_code": "CALIB-VEGA-083",
+          "frequency": 0.83,
+          "frequency_units": "THz",
+          "function": "frequency_discrimination",
+          "immune_target": "antigen_presenting_cells",
+          "calibration_strength": 0.88
+        },
+        "centauri_immune_balance": {
+          "anchor_code": "CALIB-CENT-042",
+          "frequency": 0.42,
+          "frequency_units": "THz",
+          "function": "Th1_Th2_equilibrium",
+          "immune_target": "helper_T_cells",
+          "calibration_strength": 0.82
+        }
+      }
+    },
+    "therapeutic_counter_frequencies": {
+      "pathogen_cancellation": {
+        "anti_streptococcal": {
+          "therapy_code": "THER-ANTI-STREP",
+          "target_frequency": 10.2,
+          "cancellation_method": "counter_phase_180_degrees",
+          "treatment_duration": "30_minutes_2x_daily",
+          "efficacy_rate": 0.85
+        },
+        "anti_ebv": {
+          "therapy_code": "THER-ANTI-EBV",
+          "target_frequency": 49.5,
+          "cancellation_method": "frequency_disruption",
+          "treatment_duration": "45_minutes_daily",
+          "efficacy_rate": 0.78
+        },
+        "anti_coxsackievirus": {
+          "therapy_code": "THER-ANTI-COX",
+          "target_frequency": 0.1,
+          "cancellation_method": "harmonic_interference",
+          "treatment_duration": "60_minutes_daily",
+          "efficacy_rate": 0.92
+        }
+      },
+      "tissue_protection": {
+        "myelin_protection": {
+          "therapy_code": "THER-PROT-MYE",
+          "protection_frequency": 50.0,
+          "method": "harmonic_reinforcement",
+          "treatment_duration": "continuous_low_level",
+          "protection_efficacy": 0.80
+        },
+        "beta_cell_protection": {
+          "therapy_code": "THER-PROT-BETA",
+          "protection_frequency": 0.1,
+          "method": "frequency_stabilization",
+          "treatment_duration": "continuous_monitoring",
+          "protection_efficacy": 0.88
+        },
+        "basal_ganglia_protection": {
+          "therapy_code": "THER-PROT-BG",
+          "protection_frequency": 10.0,
+          "method": "neural_frequency_support",
+          "treatment_duration": "30_minutes_3x_daily",
+          "protection_efficacy": 0.82
+        }
+      }
+    },
+    "autoimmune_feedback_loops": {
+      "frequency_confusion_amplification": {
+        "loop_code": "FL-FREQ-CONF",
+        "mechanism": "pathogen_overlap_immune_confusion_autoantibody_formation",
+        "timescale": "weeks_to_months_initial_years_chronic",
+        "amplification_factor": 2.5,
+        "intervention_points": ["pathogen_elimination", "frequency_discrimination", "tolerance_restoration"]
+      },
+      "schumann_disconnect_spiral": {
+        "loop_code": "FL-SCHUM-DISC",
+        "mechanism": "earth_frequency_disconnection_immune_calibration_loss",
+        "timescale": "months_to_years",
+        "amplification_factor": 1.8,
+        "intervention_points": ["schumann_restoration", "emf_reduction", "earth_grounding"]
+      },
+      "tissue_damage_perpetuation": {
+        "loop_code": "FL-TISSUE-DAM",
+        "mechanism": "autoimmune_attack_frequency_disruption_continued_mimicry",
+        "timescale": "continuous_once_established",
+        "amplification_factor": 3.2,
+        "intervention_points": ["tissue_frequency_restoration", "protective_field_generation"]
+      }
+    },
+    "clinical_protocols": {
+      "pandas_treatment": {
+        "condition": "pediatric_autoimmune_neuropsychiatric_disorders",
+        "pathogen_target": "streptococcus_pyogenes",
+        "phase_1": {
+          "duration": "days_1_30",
+          "primary_intervention": "strep_frequency_cancellation_10_2_Hz",
+          "secondary_intervention": "basal_ganglia_protection_10_0_Hz",
+          "monitoring": "behavioral_assessment_daily"
+        },
+        "phase_2": {
+          "duration": "days_15_60",
+          "primary_intervention": "immune_discrimination_training",
+          "secondary_intervention": "schumann_calibration_7_83_Hz",
+          "monitoring": "antibody_levels_weekly"
+        },
+        "expected_outcome": "70_90_percent_symptom_resolution"
+      },
+      "multiple_sclerosis_treatment": {
+        "condition": "multiple_sclerosis",
+        "pathogen_target": "epstein_barr_virus",
+        "phase_1": {
+          "duration": "days_1_30",
+          "primary_intervention": "ebv_frequency_disruption_49_5_Hz",
+          "secondary_intervention": "myelin_protection_50_0_Hz",
+          "monitoring": "neurological_function_weekly"
+        },
+        "phase_2": {
+          "duration": "days_15_60",
+          "primary_intervention": "demyelination_prevention",
+          "secondary_intervention": "stellar_anti_inflammatory_0_30_THz",
+          "monitoring": "mri_monthly"
+        },
+        "expected_outcome": "demyelination_halt_remyelination_support"
+      },
+      "type_1_diabetes_treatment": {
+        "condition": "type_1_diabetes_mellitus",
+        "pathogen_target": "coxsackievirus_b4",
+        "phase_1": {
+          "duration": "days_1_30",
+          "primary_intervention": "coxsackie_cancellation_0_1_Hz",
+          "secondary_intervention": "beta_cell_protection_0_1_Hz",
+          "monitoring": "glucose_levels_continuous"
+        },
+        "phase_2": {
+          "duration": "days_15_60",
+          "primary_intervention": "beta_cell_regeneration_support",
+          "secondary_intervention": "insulin_function_restoration",
+          "monitoring": "c_peptide_weekly"
+        },
+        "expected_outcome": "beta_cell_preservation_insulin_independence_potential"
+      }
+    },
+    "recovery_timeline": {
+      "30_day_markers": {
+        "autoantibody_reduction": "20_40_percent",
+        "inflammatory_markers": "normalization_trend",
+        "symptom_severity": "initial_improvement",
+        "immune_discrimination": "partial_restoration"
+      },
+      "60_day_markers": {
+        "autoantibody_reduction": "50_70_percent",
+        "functional_capacity": "significant_improvement",
+        "medication_requirements": "reduction_possible",
+        "tissue_protection": "stabilization_achieved"
+      },
+      "90_day_markers": {
+        "symptom_resolution": "70_90_percent",
+        "immune_function": "normalized",
+        "frequency_calibration": "stable",
+        "long_term_prognosis": "remission_potential"
+      }
+    }
+  }
+}
