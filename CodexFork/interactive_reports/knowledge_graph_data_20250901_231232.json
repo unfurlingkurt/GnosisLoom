@@ -1,0 +1,379 @@
+{
+  "graph_data": {
+    "nodes": [
+      {
+        "id": "bacteria",
+        "label": "Bacteria",
+        "type": "kingdom",
+        "color": "#FF6B6B",
+        "size": 30
+      },
+      {
+        "id": "archaea",
+        "label": "Archaea",
+        "type": "kingdom",
+        "color": "#4ECDC4",
+        "size": 30
+      },
+      {
+        "id": "fungi",
+        "label": "Fungi",
+        "type": "kingdom",
+        "color": "#45B7D1",
+        "size": 30
+      },
+      {
+        "id": "eukarya",
+        "label": "Eukarya",
+        "type": "kingdom",
+        "color": "#96CEB4",
+        "size": 30
+      },
+      {
+        "id": "universal_codons",
+        "label": "64 Universal Codons",
+        "type": "universal_mechanism",
+        "color": "#FFEAA7",
+        "size": 50
+      }
+    ],
+    "edges": [
+      {
+        "source": "bacteria",
+        "target": "archaea",
+        "type": "frequency_coupling",
+        "weight": 281.40407046640786,
+        "frequency_ratio": 1.0025536088669313,
+        "conservation_percentage": null
+      },
+      {
+        "source": "bacteria",
+        "target": "fungi",
+        "type": "frequency_coupling",
+        "weight": 320.58427685690276,
+        "frequency_ratio": 0.9978806954295941,
+        "conservation_percentage": null
+      },
+      {
+        "source": "bacteria",
+        "target": "eukarya",
+        "type": "frequency_coupling",
+        "weight": 661.1131442548211,
+        "frequency_ratio": 1.0005126003902511,
+        "conservation_percentage": null
+      },
+      {
+        "source": "bacteria",
+        "target": "universal_codons",
+        "type": "codon_sharing",
+        "weight": 10.0,
+        "frequency_ratio": null,
+        "conservation_percentage": 100.0
+      },
+      {
+        "source": "archaea",
+        "target": "fungi",
+        "type": "frequency_coupling",
+        "weight": 176.6468910320708,
+        "frequency_ratio": 0.9953389889617789,
+        "conservation_percentage": null
+      },
+      {
+        "source": "archaea",
+        "target": "eukarya",
+        "type": "frequency_coupling",
+        "weight": 329.4013989817081,
+        "frequency_ratio": 0.9979641901853139,
+        "conservation_percentage": null
+      },
+      {
+        "source": "archaea",
+        "target": "universal_codons",
+        "type": "codon_sharing",
+        "weight": 10.0,
+        "frequency_ratio": null,
+        "conservation_percentage": 100.0
+      },
+      {
+        "source": "fungi",
+        "target": "eukarya",
+        "type": "frequency_coupling",
+        "weight": 274.91449633018647,
+        "frequency_ratio": 1.0026374946150491,
+        "conservation_percentage": null
+      },
+      {
+        "source": "fungi",
+        "target": "universal_codons",
+        "type": "codon_sharing",
+        "weight": 10.0,
+        "frequency_ratio": null,
+        "conservation_percentage": 100.0
+      },
+      {
+        "source": "eukarya",
+        "target": "universal_codons",
+        "type": "codon_sharing",
+        "weight": 10.0,
+        "frequency_ratio": null,
+        "conservation_percentage": 100.0
+      }
+    ]
+  },
+  "frequency_summary": {
+    "universal_conservation": {
+      "coefficient_variation": 0.16618585281297996,
+      "mean_frequency": 503362529078483.0,
+      "frequency_span_percentage": 0.467200294381247
+    },
+    "kingdom_profiles": {
+      "bacteria": {
+        "primary_frequency_hz": 503480297747439.94,
+        "gc_content_percentage": 50.79070985933456,
+        "therapeutic_frequency_hz": 50.348,
+        "color": "#FF6B6B"
+      },
+      "archaea": {
+        "primary_frequency_hz": 502197880786110.4,
+        "gc_content_percentage": 31.42651732146836,
+        "therapeutic_frequency_hz": 50.219,
+        "color": "#4ECDC4"
+      },
+      "fungi": {
+        "primary_frequency_hz": 504549592003769.94,
+        "gc_content_percentage": 54.52020139388378,
+        "therapeutic_frequency_hz": 50.454,
+        "color": "#45B7D1"
+      },
+      "eukarya": {
+        "primary_frequency_hz": 503222345776611.75,
+        "gc_content_percentage": 39.27017001277051,
+        "therapeutic_frequency_hz": 50.322,
+        "color": "#96CEB4"
+      }
+    }
+  },
+  "codon_summary": {
+    "conservation_percentage": 100.0,
+    "shared_codon_count": 64,
+    "total_unique_codons": 64,
+    "kingdom_strategies": {
+      "bacteria": {
+        "top_codons": [
+          {
+            "codon": "CGC",
+            "proportion": 0.024766403161288947,
+            "amino_acid": "R"
+          },
+          {
+            "codon": "GCG",
+            "proportion": 0.0246907835164686,
+            "amino_acid": "A"
+          },
+          {
+            "codon": "TTT",
+            "proportion": 0.023811785935650913,
+            "amino_acid": "F"
+          },
+          {
+            "codon": "AAA",
+            "proportion": 0.023378750362748082,
+            "amino_acid": "K"
+          },
+          {
+            "codon": "CAG",
+            "proportion": 0.022442876467877487,
+            "amino_acid": "Q"
+          }
+        ],
+        "preferred_amino_acids": [
+          {
+            "amino_acid": "A",
+            "count": 3
+          },
+          {
+            "amino_acid": "R",
+            "count": 1
+          },
+          {
+            "amino_acid": "F",
+            "count": 1
+          }
+        ]
+      },
+      "archaea": {
+        "top_codons": [
+          {
+            "codon": "AAA",
+            "proportion": 0.052922913922558955,
+            "amino_acid": "K"
+          },
+          {
+            "codon": "TTT",
+            "proportion": 0.05197152314420237,
+            "amino_acid": "F"
+          },
+          {
+            "codon": "ATT",
+            "proportion": 0.039781828796508684,
+            "amino_acid": "I"
+          },
+          {
+            "codon": "AAT",
+            "proportion": 0.03908270072453453,
+            "amino_acid": "N"
+          },
+          {
+            "codon": "TTA",
+            "proportion": 0.038652052247210245,
+            "amino_acid": "L"
+          }
+        ],
+        "preferred_amino_acids": [
+          {
+            "amino_acid": "I",
+            "count": 2
+          },
+          {
+            "amino_acid": "K",
+            "count": 1
+          },
+          {
+            "amino_acid": "F",
+            "count": 1
+          }
+        ]
+      },
+      "fungi": {
+        "top_codons": [
+          {
+            "codon": "TCG",
+            "proportion": 0.024666279744631456,
+            "amino_acid": "S"
+          },
+          {
+            "codon": "CGA",
+            "proportion": 0.024197508817357917,
+            "amino_acid": "R"
+          },
+          {
+            "codon": "GCG",
+            "proportion": 0.02266470229325714,
+            "amino_acid": "A"
+          },
+          {
+            "codon": "GCA",
+            "proportion": 0.022508445317499293,
+            "amino_acid": "A"
+          },
+          {
+            "codon": "GAG",
+            "proportion": 0.02202479277348691,
+            "amino_acid": "E"
+          }
+        ],
+        "preferred_amino_acids": [
+          {
+            "amino_acid": "A",
+            "count": 3
+          },
+          {
+            "amino_acid": "S",
+            "count": 2
+          },
+          {
+            "amino_acid": "R",
+            "count": 2
+          }
+        ]
+      },
+      "eukarya": {
+        "top_codons": [
+          {
+            "codon": "AAA",
+            "proportion": 0.03811621209554464,
+            "amino_acid": "K"
+          },
+          {
+            "codon": "TTT",
+            "proportion": 0.03777740132136202,
+            "amino_acid": "F"
+          },
+          {
+            "codon": "AAT",
+            "proportion": 0.02836888674598314,
+            "amino_acid": "N"
+          },
+          {
+            "codon": "ATT",
+            "proportion": 0.02744367270879214,
+            "amino_acid": "I"
+          },
+          {
+            "codon": "GAA",
+            "proportion": 0.026674832875070043,
+            "amino_acid": "E"
+          }
+        ],
+        "preferred_amino_acids": [
+          {
+            "amino_acid": "I",
+            "count": 2
+          },
+          {
+            "amino_acid": "L",
+            "count": 2
+          },
+          {
+            "amino_acid": "K",
+            "count": 1
+          }
+        ]
+      }
+    }
+  },
+  "alphagenome_integration": {
+    "alphagenome_ready": true,
+    "api_endpoint": "https://api.deepmind.com/alphagenome/predict",
+    "capabilities": [
+      "Non-coding DNA regulatory prediction",
+      "Gene expression pattern analysis",
+      "Chromatin accessibility mapping",
+      "Transcription factor binding prediction"
+    ],
+    "kingdom_integration": {
+      "bacteria": {
+        "sequence_analysis_ready": true,
+        "primary_frequency": 503480297747439.94,
+        "gc_content": 0.5079070985933456,
+        "predicted_regulatory_density": 0.07618606478900183,
+        "frequency_stability_score": 0.9920929014066544,
+        "demo_analysis_time_seconds": 0.8
+      },
+      "archaea": {
+        "sequence_analysis_ready": true,
+        "primary_frequency": 502197880786110.4,
+        "gc_content": 0.3142651732146836,
+        "predicted_regulatory_density": 0.04713977598220254,
+        "frequency_stability_score": 0.8142651732146836,
+        "demo_analysis_time_seconds": 0.8
+      },
+      "fungi": {
+        "sequence_analysis_ready": true,
+        "primary_frequency": 504549592003769.94,
+        "gc_content": 0.5452020139388378,
+        "predicted_regulatory_density": 0.08178030209082567,
+        "frequency_stability_score": 0.9547979860611622,
+        "demo_analysis_time_seconds": 0.8
+      },
+      "eukarya": {
+        "sequence_analysis_ready": true,
+        "primary_frequency": 503222345776611.75,
+        "gc_content": 0.39270170012770506,
+        "predicted_regulatory_density": 0.05890525501915576,
+        "frequency_stability_score": 0.8927017001277051,
+        "demo_analysis_time_seconds": 0.8
+      }
+    }
+  }
+}

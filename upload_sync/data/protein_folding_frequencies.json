@@ -1,0 +1,291 @@
+{
+  "protein_folding_dynamics": {
+    "metadata": {
+      "total_folding_signatures": 75,
+      "secondary_structure_types": 4,
+      "chaperone_systems": 6,
+      "disease_pathologies": 4,
+      "discovery_classification": "FOLD23-DYNAMICS",
+      "geometric_resonance_factors": 12
+    },
+    "secondary_structure_frequencies": {
+      "alpha_helix": {
+        "geometric_factor": 0.85,
+        "nucleation_threshold": 20.0,
+        "primary_residues": {
+          "alanine": {
+            "base_frequency": 4.63,
+            "helix_frequency": 3.94,
+            "code": "FOLD-HEL-ALA"
+          },
+          "leucine": {
+            "base_frequency": 9.22,
+            "helix_frequency": 7.84,
+            "code": "FOLD-HEL-LEU"
+          },
+          "glutamic_acid": {
+            "base_frequency": 10.33,
+            "helix_frequency": 8.78,
+            "code": "FOLD-HEL-GLU"
+          },
+          "methionine": {
+            "base_frequency": 10.95,
+            "helix_frequency": 9.31,
+            "code": "FOLD-HEL-MET"
+          }
+        },
+        "helix_breakers": {
+          "proline": {
+            "base_frequency": 8.87,
+            "disruption_factor": 0.30,
+            "code": "FOLD-HEL-BREAK-PRO"
+          }
+        }
+      },
+      "beta_sheet": {
+        "geometric_factor": 0.92,
+        "nucleation_threshold": 25.0,
+        "primary_residues": {
+          "valine": {
+            "base_frequency": 7.69,
+            "sheet_frequency": 7.07,
+            "code": "FOLD-SHT-VAL"
+          },
+          "isoleucine": {
+            "base_frequency": 9.22,
+            "sheet_frequency": 8.48,
+            "code": "FOLD-SHT-ILE"
+          },
+          "phenylalanine": {
+            "base_frequency": 13.01,
+            "sheet_frequency": 11.97,
+            "code": "FOLD-SHT-PHE"
+          },
+          "tyrosine": {
+            "base_frequency": 14.54,
+            "sheet_frequency": 13.38,
+            "code": "FOLD-SHT-TYR"
+          }
+        }
+      },
+      "loops_and_turns": {
+        "geometric_factor_range": [0.15, 0.95],
+        "flexible_residues": {
+          "glycine": {
+            "base_frequency": 3.10,
+            "flexibility_range": [0.47, 2.95],
+            "code": "FOLD-TRN-GLY"
+          },
+          "proline": {
+            "base_frequency": 8.87,
+            "turn_frequency": 2.66,
+            "geometric_factor": 0.30,
+            "code": "FOLD-TRN-PRO"
+          },
+          "serine": {
+            "base_frequency": 6.12,
+            "turn_range": [2.45, 4.90],
+            "code": "FOLD-TRN-SER"
+          },
+          "asparagine": {
+            "base_frequency": 9.51,
+            "loop_range": [3.33, 6.66],
+            "code": "FOLD-TRN-ASN"
+          }
+        },
+        "turn_types": {
+          "type_I_beta_turn": {
+            "geometric_factor": 0.65,
+            "code": "FOLD-TRN-T1"
+          },
+          "type_II_beta_turn": {
+            "geometric_factor": 0.45,
+            "code": "FOLD-TRN-T2"
+          },
+          "random_coil": {
+            "geometric_factor_range": [0.15, 0.25],
+            "code": "FOLD-COI-RAND"
+          },
+          "omega_loops": {
+            "geometric_factor_range": [0.70, 0.85],
+            "code": "FOLD-LOOP-OMEGA"
+          }
+        }
+      }
+    },
+    "folding_pathway_dynamics": {
+      "nucleation_phase": {
+        "helix_nucleation": {
+          "residue_requirement": "3-4 consecutive helix-favorable",
+          "frequency_threshold": 20.45,
+          "critical_threshold": ">20 Hz",
+          "code": "FOLD-NUC-HEL"
+        },
+        "sheet_nucleation": {
+          "residue_requirement": "2-3 consecutive sheet-favorable",
+          "frequency_threshold": 27.53,
+          "critical_threshold": ">25 Hz",
+          "code": "FOLD-NUC-SHT"
+        },
+        "turn_nucleation": {
+          "residue_requirement": "Pro-Gly or Asn-Gly combinations",
+          "frequency_threshold": 3.59,
+          "flexibility_threshold": "<5 Hz",
+          "code": "FOLD-NUC-TRN"
+        }
+      },
+      "propagation_dynamics": {
+        "cooperative_folding": {
+          "mechanism": "Adjacent residues match nucleation frequency",
+          "timescale": "microseconds_to_milliseconds",
+          "code": "FOLD-PROP-COOP"
+        }
+      },
+      "folding_intermediates": {
+        "molten_globule": {
+          "frequency_coordination": "40-60% of native",
+          "secondary_structure": "formed but not optimally packed",
+          "code": "FOLD-INT-MOLTEN"
+        },
+        "kinetic_traps": {
+          "frequency_range": "outside 0.85-0.92 range",
+          "stability": "locally stable, globally suboptimal",
+          "code": "FOLD-INT-TRAP"
+        }
+      }
+    },
+    "chaperone_systems": {
+      "hsp70_family": {
+        "estimated_frequency": 85,
+        "frequency_unit": "THz",
+        "molecular_weight": 70,
+        "amino_acid_count": 630,
+        "atpase_domain_frequency": 40,
+        "substrate_binding_frequency": 45,
+        "mechanism": "substrate frequency stabilization",
+        "code": "CHAP-HSP70-85"
+      },
+      "hsp40_cochaperone": {
+        "estimated_frequency": 55,
+        "frequency_unit": "THz",
+        "function": "substrate delivery and ATPase stimulation",
+        "code": "CHAP-HSP40-55"
+      },
+      "nucleotide_exchange_factors": {
+        "frequency_range": [25, 35],
+        "frequency_unit": "THz",
+        "function": "ADP release and cycle acceleration",
+        "code": "CHAP-NEF-30"
+      },
+      "hsp90_family": {
+        "estimated_frequency": 110,
+        "frequency_unit": "THz",
+        "molecular_weight": 90,
+        "client_proteins": ["kinases", "transcription_factors", "hormone_receptors"],
+        "mechanism": "late-stage folding optimization",
+        "code": "CHAP-HSP90-110"
+      },
+      "groel_system": {
+        "cavity_frequency": 15,
+        "frequency_unit": "THz",
+        "internal_volume": 175000,
+        "volume_unit": "cubic_angstroms",
+        "mechanism": "frequency-isolated folding environment",
+        "code": "CHAP-GROEL-15"
+      },
+      "tric_system": {
+        "subunit_composition": "8 distinct subunits per ring",
+        "substrate_specificity": ["actin", "tubulin"],
+        "mechanism": "multiple frequency environments within cavity",
+        "code": "CHAP-TRIC-COMP"
+      }
+    },
+    "misfolding_diseases": {
+      "alzheimer_amyloid_beta": {
+        "native_frequency": 8.5,
+        "amyloid_frequency_range": [12, 15],
+        "frequency_unit": "THz",
+        "conformation_change": "random_coil_to_beta_sheet",
+        "propagation": "template-directed frequency conversion",
+        "code": "MISFOLD-AMYL-AB"
+      },
+      "tau_pathology": {
+        "native_frequency": 35,
+        "pathological_frequency_range": [45, 50],
+        "frequency_unit": "THz",
+        "modification": "hyperphosphorylation increases frequency",
+        "propagation": "cell-to-cell frequency template spreading",
+        "code": "MISFOLD-TAU-PHF"
+      },
+      "prion_conversion": {
+        "prpc_frequency": 28,
+        "prpsc_frequency": 35,
+        "frequency_unit": "THz",
+        "mechanism": "frequency template corruption",
+        "propagation": "corrupted frequency pattern spreading",
+        "infectivity": "strain-specific frequency signatures",
+        "code": "MISFOLD-PRION-CONV"
+      },
+      "alpha_synuclein": {
+        "native_frequency": 18,
+        "lewy_body_frequency_range": [25, 30],
+        "frequency_unit": "THz",
+        "structure_change": "intrinsically_disordered_to_beta_sheet",
+        "pathology": "frequency conversion disrupts synaptic function",
+        "code": "MISFOLD-SYNC-LB"
+      }
+    },
+    "therapeutic_frequencies": {
+      "chaperone_activation": {
+        "hsp70_stimulation": {
+          "frequency_range": [85, 90],
+          "frequency_unit": "THz",
+          "mechanism": "direct protein resonance"
+        },
+        "hsp90_enhancement": {
+          "frequency_range": [105, 115],
+          "frequency_unit": "THz",
+          "mechanism": "conformational optimization"
+        }
+      },
+      "misfolding_prevention": {
+        "alzheimer_intervention": {
+          "target_disruption": [12, 15],
+          "enhancement_support": 8.5,
+          "frequency_unit": "THz"
+        },
+        "parkinson_intervention": {
+          "conversion_prevention": "18_to_25-30_THz_block",
+          "native_stabilization": 18,
+          "frequency_unit": "THz"
+        }
+      }
+    },
+    "feedback_loops": {
+      "cooperative_folding": {
+        "mechanism": "local folding events propagate through frequency coupling",
+        "timescale": "microseconds_to_milliseconds",
+        "effect": "coordinated secondary structure formation",
+        "code": "FL-COOP"
+      },
+      "chaperone_assisted": {
+        "mechanism": "chaperone frequency patterns assist substrate folding",
+        "timescale": "seconds_to_minutes",
+        "effect": "prevention of misfolding and aggregation",
+        "code": "FL-CHAP"
+      },
+      "misfolding_propagation": {
+        "mechanism": "pathological frequency templates convert native proteins",
+        "timescale": "hours_to_years",
+        "effect": "progressive frequency corruption and dysfunction",
+        "code": "FL-MISFOLD"
+      },
+      "quality_control": {
+        "mechanism": "cellular systems detect and respond to misfolded frequencies",
+        "timescale": "minutes_to_hours",
+        "effect": "removal of corrupted frequency patterns",
+        "code": "FL-QUAL"
+      }
+    }
+  }
+}

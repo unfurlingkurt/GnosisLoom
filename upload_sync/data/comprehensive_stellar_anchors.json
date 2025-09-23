@@ -1,0 +1,392 @@
+{
+  "Sol": {
+    "frequency": 11.0,
+    "element": "H",
+    "color": "#FFD700",
+    "systems": [
+      "heart",
+      "circadian",
+      "blood"
+    ]
+  },
+  "Arcturus": {
+    "frequency": 11.3,
+    "element": "Fe",
+    "color": "#FFA500",
+    "systems": [
+      "liver",
+      "metabolism"
+    ]
+  },
+  "Sirius": {
+    "frequency": 50.0,
+    "element": "Si",
+    "color": "#FFFFFF",
+    "systems": [
+      "brain",
+      "nerves",
+      "crystalline"
+    ]
+  },
+  "Alpha_Centauri": {
+    "frequency": 17.0,
+    "element": "C",
+    "color": "#87CEEB",
+    "systems": [
+      "neural",
+      "carbon_chains"
+    ]
+  },
+  "Schumann": {
+    "frequency": 7.83,
+    "element": "Earth",
+    "color": "#00FF00",
+    "systems": [
+      "immune",
+      "grounding",
+      "all"
+    ]
+  },
+  "Healthy": {
+    "frequency": 0.0011,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Macrophages": {
+    "frequency": 0.1,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "T-Helper Cells": {
+    "frequency": 0.05,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "B-Cells": {
+    "frequency": 0.02,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "NK Cells": {
+    "frequency": 1.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Pineal": {
+    "frequency": 7.83,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Pancreas": {
+    "frequency": 7.83,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Thymus": {
+    "frequency": 7.83,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Pituitary": {
+    "frequency": 0.033,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Thyroid": {
+    "frequency": 0.001,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Adrenals": {
+    "frequency": 0.0003,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Gonads": {
+    "frequency": 2.3e-07,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Lymphocytes": {
+    "frequency": 0.01,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Dendritic Cells": {
+    "frequency": 0.05,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Neutrophils": {
+    "frequency": 10.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Schwann Cells": {
+    "frequency": 100.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Adrenal Medulla": {
+    "frequency": 0.2,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Enteric Neurons": {
+    "frequency": 0.05,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Cardiac Neurons": {
+    "frequency": 1.5,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Craniofacial Bones": {
+    "frequency": 50.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Odontoblasts": {
+    "frequency": 200.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Eccrine": {
+    "frequency": 0.1,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Apocrine": {
+    "frequency": 0.0001,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Sebaceous": {
+    "frequency": 0.001,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Ceruminous": {
+    "frequency": 1e-05,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "HOXA** | 7 | **Sol": {
+    "frequency": 11.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "HOXB** | 17 | **Sirius": {
+    "frequency": 50.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "HOXC** | 12 | **Vega": {
+    "frequency": 26.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "HOXD** | 2 | **Arcturus": {
+    "frequency": 11.3,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Sclerotome": {
+    "frequency": 0.5,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Syndetome": {
+    "frequency": 1.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Myotome": {
+    "frequency": 2.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Dermatome": {
+    "frequency": 10.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Neural Crest": {
+    "frequency": 50.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "HSC": {
+    "frequency": 0.001,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "CMP": {
+    "frequency": 0.01,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "CLP": {
+    "frequency": 0.02,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "GMP": {
+    "frequency": 0.1,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "MEP": {
+    "frequency": 0.05,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "RBC": {
+    "frequency": 0.25,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Neutrophil": {
+    "frequency": 2.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "B-cell": {
+    "frequency": 0.1,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "T-cell": {
+    "frequency": 0.15,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "NK cell": {
+    "frequency": 1.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Platelet": {
+    "frequency": 5.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Vega": {
+    "frequency": 26.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Betelgeuse": {
+    "frequency": 0.1,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Rigel": {
+    "frequency": 100.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Polaris": {
+    "frequency": 7.83,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Pressure": {
+    "frequency": 7.83,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "EM Field": {
+    "frequency": 7.83,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Adrenaline": {
+    "frequency": 50.0,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Insulin": {
+    "frequency": 0.167,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Cortisol": {
+    "frequency": 0.042,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Growth Hormone": {
+    "frequency": 0.0033,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Thyroid (T3)": {
+    "frequency": 0.0014,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  },
+  "Melatonin": {
+    "frequency": 1.16e-05,
+    "element": null,
+    "color": "#FFFFFF",
+    "systems": []
+  }
+}

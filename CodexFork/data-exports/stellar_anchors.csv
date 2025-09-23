@@ -1,0 +1,63 @@
+frequency,element,color,systems,stellar_anchor
+11.0,H,#FFD700,"['heart', 'circadian', 'blood']",Sol
+11.3,Fe,#FFA500,"['liver', 'metabolism']",Arcturus
+50.0,Si,#FFFFFF,"['brain', 'nerves', 'crystalline']",Sirius
+17.0,C,#87CEEB,"['neural', 'carbon_chains']",Alpha_Centauri
+7.83,Earth,#00FF00,"['immune', 'grounding', 'all']",Schumann
+0.0011,,#FFFFFF,[],Healthy
+0.1,,#FFFFFF,[],Macrophages
+0.05,,#FFFFFF,[],T-Helper Cells
+0.02,,#FFFFFF,[],B-Cells
+1.0,,#FFFFFF,[],NK Cells
+7.83,,#FFFFFF,[],Pineal
+7.83,,#FFFFFF,[],Pancreas
+7.83,,#FFFFFF,[],Thymus
+0.033,,#FFFFFF,[],Pituitary
+0.001,,#FFFFFF,[],Thyroid
+0.0003,,#FFFFFF,[],Adrenals
+2.3e-07,,#FFFFFF,[],Gonads
+0.01,,#FFFFFF,[],Lymphocytes
+0.05,,#FFFFFF,[],Dendritic Cells
+10.0,,#FFFFFF,[],Neutrophils
+100.0,,#FFFFFF,[],Schwann Cells
+0.2,,#FFFFFF,[],Adrenal Medulla
+0.05,,#FFFFFF,[],Enteric Neurons
+1.5,,#FFFFFF,[],Cardiac Neurons
+50.0,,#FFFFFF,[],Craniofacial Bones
+200.0,,#FFFFFF,[],Odontoblasts
+0.1,,#FFFFFF,[],Eccrine
+0.0001,,#FFFFFF,[],Apocrine
+0.001,,#FFFFFF,[],Sebaceous
+1e-05,,#FFFFFF,[],Ceruminous
+11.0,,#FFFFFF,[],HOXA** | 7 | **Sol
+50.0,,#FFFFFF,[],HOXB** | 17 | **Sirius
+26.0,,#FFFFFF,[],HOXC** | 12 | **Vega
+11.3,,#FFFFFF,[],HOXD** | 2 | **Arcturus
+0.5,,#FFFFFF,[],Sclerotome
+1.0,,#FFFFFF,[],Syndetome
+2.0,,#FFFFFF,[],Myotome
+10.0,,#FFFFFF,[],Dermatome
+50.0,,#FFFFFF,[],Neural Crest
+0.001,,#FFFFFF,[],HSC
+0.01,,#FFFFFF,[],CMP
+0.02,,#FFFFFF,[],CLP
+0.1,,#FFFFFF,[],GMP
+0.05,,#FFFFFF,[],MEP
+0.25,,#FFFFFF,[],RBC
+2.0,,#FFFFFF,[],Neutrophil
+0.1,,#FFFFFF,[],B-cell
+0.15,,#FFFFFF,[],T-cell
+1.0,,#FFFFFF,[],NK cell
+5.0,,#FFFFFF,[],Platelet
+26.0,,#FFFFFF,[],Vega
+0.1,,#FFFFFF,[],Betelgeuse
+100.0,,#FFFFFF,[],Rigel
+7.83,,#FFFFFF,[],Polaris
+7.83,,#FFFFFF,[],Pressure
+7.83,,#FFFFFF,[],EM Field
+50.0,,#FFFFFF,[],Adrenaline
+0.167,,#FFFFFF,[],Insulin
+0.042,,#FFFFFF,[],Cortisol
+0.0033,,#FFFFFF,[],Growth Hormone
+0.0014,,#FFFFFF,[],Thyroid (T3)
+1.16e-05,,#FFFFFF,[],Melatonin

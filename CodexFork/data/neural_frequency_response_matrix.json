@@ -1,0 +1,346 @@
+{
+  "neural_frequency_responses": {
+    "metadata": {
+      "nerve_types": 8,
+      "frequency_ranges": 12,
+      "discovery_date": "2025-08-31",
+      "research_classification": "NFEA06-NEURAL",
+      "therapeutic_protocols": 15,
+      "clinical_applications": 25,
+      "frequency_range": "0.05-0.55_THz"
+    },
+    "motor_neuron_responses": {
+      "large_alpha_motor": {
+        "axon_diameter": "10-20_micrometers",
+        "conduction_velocity": "80-120_m_per_second",
+        "optimal_frequency": "0.28-0.35_THz",
+        "resonance_mechanism": "high_diameter_couples_higher_frequencies",
+        "sparc_response": {
+          "threshold": 0.35,
+          "optimal": 0.45,
+          "saturation": 0.55,
+          "duration_sensitivity": "20-30_minute_pulses",
+          "mechanism": "matrix_remodeling_endplate_reformation"
+        },
+        "laminin_response": {
+          "frequency": 0.2,
+          "guidance_efficiency": "95%_at_optimal",
+          "directional_fidelity": "±2_degree_deviation",
+          "distance_efficacy": "8-12_cm_range",
+          "persistence": "4-8_weeks_stable"
+        },
+        "gap43_response": {
+          "range": "0.25-0.3_THz",
+          "growth_rate": "3-5_mm_per_day",
+          "pathfinding_accuracy": "92%_correct_targets",
+          "cone_size": "15-25_micrometers",
+          "success_rate": "85%_functional_reconnection"
+        }
+      },
+      "small_gamma_motor": {
+        "axon_diameter": "2-8_micrometers",
+        "conduction_velocity": "15-40_m_per_second",
+        "optimal_frequency": "0.15-0.25_THz",
+        "sensitivity": "higher_sensitivity_lower_frequencies",
+        "muscle_spindle_targeting": "0.18-0.22_THz_optimal_proprioception"
+      },
+      "therapeutic_windows": {
+        "under_stimulation": {
+          "threshold": "less_than_0.3_THz_combined",
+          "outcome": "poor_regeneration_less_30%_recovery"
+        },
+        "optimal_range": {
+          "frequency": "0.4-0.6_THz_combined",
+          "outcome": "good_regeneration_70-90%_recovery"
+        },
+        "over_stimulation": {
+          "threshold": "greater_than_0.8_THz_combined", 
+          "outcome": "aberrant_growth_neuropathic_pain"
+        }
+      }
+    },
+    "sensory_neuron_responses": {
+      "large_myelinated_Abeta": {
+        "axon_diameter": "6-12_micrometers",
+        "conduction_velocity": "35-75_m_per_second",
+        "sensory_modality": "touch_pressure_vibration_proprioception",
+        "optimal_frequency": "0.2-0.28_THz",
+        "precision_requirements": {
+          "frequency_tolerance": "±0.01_THz_much_narrower_motor",
+          "temporal_pattern": "pulsed_rather_continuous",
+          "recovery_metric": "spatial_acuity_vibration_threshold"
+        },
+        "sparc_response": {
+          "threshold": 0.3,
+          "optimal": 0.4,
+          "mechanism": "gentler_matrix_remodeling_preserve_end_organs"
+        },
+        "laminin_response": {
+          "guidance_accuracy": "98%_at_0.2_THz_critical_precision",
+          "target_specificity": "distinguish_multiple_sensory_organs",
+          "branching_support": "complex_arborization_patterns"
+        },
+        "gap43_response": {
+          "range": "0.15-0.25_THz",
+          "growth_pattern": "slower_precise_1-3_mm_per_day",
+          "branching_behavior": "high_frequency_sensory_coverage",
+          "target_recognition": "superior_discrimination_targets"
+        }
+      },
+      "small_myelinated_Adelta": {
+        "axon_diameter": "1-5_micrometers", 
+        "conduction_velocity": "5-30_m_per_second",
+        "sensory_modality": "sharp_pain_cold_light_touch",
+        "optimal_frequency": "0.12-0.2_THz",
+        "temperature_sensitivity": {
+          "cold_response": "frequency_decreases_5-10%_below_15C",
+          "heat_response": "frequency_increases_10-15%_above_40C",
+          "optimal_temperature": "35-37C_stable_coupling"
+        },
+        "pain_pathway_regeneration": {
+          "nociceptor_reconnection": "0.15-0.18_THz_optimal",
+          "central_sensitization_prevention": "controlled_regeneration_prevents_hyperalgesia",
+          "functional_recovery": "60-80%_pain_sensation_restoration"
+        }
+      },
+      "unmyelinated_C_fibers": {
+        "axon_diameter": "0.2-1.5_micrometers",
+        "conduction_velocity": "0.5-2_m_per_second", 
+        "sensory_modality": "burning_pain_warmth_itch_crude_touch",
+        "optimal_frequency": "0.05-0.15_THz",
+        "low_frequency_specialization": {
+          "optimal_range": "0.05-0.1_THz_much_lower_other_fibers",
+          "mechanism": "small_diameter_requires_lower_coupling",
+          "growth_rate": "very_slow_0.5-1.5_mm_per_day_persistent"
+        },
+        "chronic_pain_considerations": {
+          "regenerative_pain": "improper_frequencies_above_0.2_THz_cause_neuropathic",
+          "frequency_window": "narrow_0.08-0.12_THz_pain_free_regeneration",
+          "central_processing": "coordinate_spinal_cord_frequency_environment"
+        },
+        "polymodal_response": {
+          "temperature_integration": "0.05-0.08_THz_thermal_sensation",
+          "chemical_sensing": "0.08-0.12_THz_inflammatory_mediators",
+          "mechanical_sensing": "0.1-0.15_THz_crude_mechanical"
+        }
+      }
+    },
+    "autonomic_responses": {
+      "sympathetic_system": {
+        "preganglionic_fibers": {
+          "diameter": "1-3_micrometers",
+          "optimal_frequency": "0.08-0.15_THz",
+          "conduction_velocity": "3-15_m_per_second"
+        },
+        "postganglionic_fibers": {
+          "diameter": "0.2-2_micrometers", 
+          "optimal_frequency": "0.05-0.12_THz",
+          "neurotransmitter": "noradrenergic_terminals_specific_tuning"
+        },
+        "cardiovascular_innervation": {
+          "cardiac_fibers": "0.1-0.12_THz_SA_node_innervation",
+          "vascular_fibers": "0.08-0.1_THz_smooth_muscle_control",
+          "recovery_timeline": "6-12_weeks_functional_autonomic"
+        },
+        "glandular_innervation": {
+          "sweat_glands": "0.06-0.08_THz_sudomotor_function",
+          "salivary_glands": "0.08-0.1_THz_secretory_control", 
+          "adrenal_medulla": "0.12-0.15_THz_catecholamine_release"
+        },
+        "thermoreceptor_integration": {
+          "vasoconstriction": "0.08-0.1_THz_cold_response",
+          "vasodilation": "0.06-0.08_THz_heat_dissipation",
+          "brown_fat": "0.1-0.12_THz_thermogenesis"
+        }
+      },
+      "parasympathetic_system": {
+        "cranial_parasympathetic": {
+          "frequency": "0.1-0.18_THz",
+          "nerves": "vagus_oculomotor_facial_glossopharyngeal"
+        },
+        "sacral_parasympathetic": {
+          "frequency": "0.05-0.12_THz",
+          "nerves": "pelvic_splanchnic"
+        },
+        "visceral_motor_control": {
+          "gastrointestinal": "0.08-0.12_THz_peristalsis_secretion",
+          "cardiac": "0.12-0.15_THz_heart_rate_reduction",
+          "pulmonary": "0.1-0.14_THz_bronchoconstriction",
+          "genitourinary": "0.06-0.1_THz_bladder_reproductive"
+        },
+        "glandular_secretion": {
+          "lacrimal": "0.14-0.16_THz_tear_production",
+          "salivary": "0.12-0.14_THz_saliva_secretion",
+          "gastric": "0.1-0.12_THz_acid_enzyme_secretion",
+          "pancreatic": "0.08-0.1_THz_digestive_enzymes"
+        },
+        "pupillary_control": {
+          "constriction": "0.15-0.18_THz_bright_light_response",
+          "accommodation": "0.12-0.15_THz_near_vision",
+          "recovery": "2-4_weeks_complete_function"
+        }
+      }
+    },
+    "cns_vs_pns_responses": {
+      "central_nervous_system": {
+        "inhibitory_environment": {
+          "myelin_inhibitors": "NoGo_MAG_OMgp_create_0.8-1.2_THz_inhibitory",
+          "glial_scarring": "astrocytic_scars_0.6-0.9_THz_blocking",
+          "sparc_requirements": "0.6-0.8_THz_overcome_CNS_inhibition"
+        },
+        "spinal_cord_regeneration": {
+          "inhibitory_override": "0.7-0.8_THz_SPARC_required",
+          "guidance_enhancement": "0.25-0.3_THz_Laminin_higher_PNS",
+          "growth_promotion": "0.2-0.35_THz_GAP43_sustained_high",
+          "success_rate": "15-35%_functional_recovery_vs_70-90%_PNS"
+        },
+        "optic_nerve_regeneration": {
+          "distance_challenge": "4-5_cm_retina_to_LGN",
+          "guidance_precision": "0.2_THz_Laminin_99%_directional_accuracy",
+          "target_specificity": "1.2_million_axons_correct_targets",
+          "visual_recovery": "20-40%_functional_vision_restoration"
+        },
+        "cortical_regeneration": {
+          "short_distance": "1-10_mm_regeneration",
+          "high_precision": "0.15-0.25_THz_accurate_cortical_connectivity",
+          "synaptic_specificity": "precise_frequency_matching_circuits",
+          "integration_time": "6_months_to_2_years_maturation"
+        }
+      },
+      "peripheral_nervous_system": {
+        "permissive_environment": {
+          "schwann_cell_support": "produces_0.1-0.3_THz_growth_promoting",
+          "matrix_composition": "less_inhibitory_easier_SPARC_remodeling",
+          "growth_factors": "higher_concentration_regeneration_promoting"
+        },
+        "rapid_regeneration_protocols": {
+          "early_sparc": "0.45_THz_within_24-48_hours_injury",
+          "sustained_laminin": "0.2_THz_continuous_4-8_weeks",
+          "dynamic_gap43": "0.1-0.3_THz_modulated_growth_phase",
+          "acceleration_factor": "2-3x_faster_natural_regeneration"
+        },
+        "long_distance_regeneration": {
+          "frequency_relay": "sequential_activation_along_path",
+          "sustained_support": "continuous_scaffold_activation",
+          "guidance_maintenance": "Laminin_frequency_persist_entire_distance",
+          "success_rate": "70-85%_functional_recovery_up_20_cm"
+        }
+      }
+    },
+    "therapeutic_windows": {
+      "motor_neuron_protocols": {
+        "sparc_activation": {
+          "frequency": "0.45_THz_±0.05_narrow_window",
+          "duration": "20-30_minutes_per_session",
+          "frequency_sessions": "2-3_per_day_1-2_weeks",
+          "rest_period": "4-6_hours_between_sessions"
+        },
+        "laminin_enhancement": {
+          "frequency": "0.2_THz_±0.02_very_narrow",
+          "duration": "continuous_low_level_or_1-2_hour_pulses",
+          "pattern": "maintain_4-8_weeks_post_injury",
+          "spatial": "directional_gradient_injury_to_target"
+        },
+        "gap43_modulation": {
+          "initial": "0.05-0.1_THz_activation_phase",
+          "growth": "0.15-0.25_THz_elongation_phase",
+          "target": "0.25-0.3_THz_recognition_phase",
+          "duration": "dynamic_modulation_6-12_weeks"
+        }
+      },
+      "sensory_neuron_protocols": {
+        "precision_requirements": "±0.01_THz_much_narrower_motor",
+        "temporal_patterns": "pulsed_rather_continuous",
+        "pain_risk_mitigation": "frequencies_above_0.25_THz_increase_pain",
+        "temperature_adjustment": "adjust_frequencies_ambient_temperature",
+        "recovery_balance": "restore_sensation_without_chronic_pain"
+      },
+      "autonomic_protocols": {
+        "cardiovascular_safety": {
+          "safe_range": "0.08-0.15_THz_avoid_arrhythmias",
+          "monitoring": "continuous_cardiovascular_during_treatment",
+          "gradual_restoration": "slow_frequency_increases_prevent_shock"
+        },
+        "visceral_function": {
+          "digestive_system": "0.08-0.12_THz_GI_function",
+          "cardiac_control": "0.12-0.15_THz_heart_rate", 
+          "glandular_function": "0.12-0.16_THz_secretory",
+          "integration_time": "3-8_weeks_autonomic_balance"
+        }
+      }
+    },
+    "frequency_interactions": {
+      "synergistic_combinations": {
+        "mixed_nerve_repair": {
+          "frequency_averaging": "0.2-0.25_THz_both_fiber_types",
+          "sequential_protocols": "motor_first_0.25-0.3_then_sensory_0.15-0.2",
+          "branching_support": "higher_Laminin_sensory_branching",
+          "integration_time": "4-6_months_sensorimotor_restoration"
+        },
+        "autonomic_sensory_integration": {
+          "frequency_overlap": "0.1-0.15_THz_both_systems",
+          "coordinated_regeneration": "simultaneous_motor_sensory_repair",
+          "central_integration": "spinal_cord_frequency_coordination",
+          "recovery_timeline": "6-12_weeks_visceral_sensation"
+        }
+      },
+      "antagonistic_effects": {
+        "competitive_regeneration": {
+          "frequency_conflict": "motor_0.25-0.3_vs_C_fiber_0.05-0.1",
+          "resource_competition": "limited_scaffold_protein_availability",
+          "sequential_treatment": "treat_one_type_time_severe_cases",
+          "proximity_effects": "nerves_within_5_cm_interfere"
+        },
+        "pathological_responses": {
+          "neuropathic_pain": "incorrect_frequencies_create_chronic_pain",
+          "high_risk_range": "0.3-0.5_THz_C_fiber_stimulation",
+          "aberrant_regeneration": "wrong_frequencies_incorrect_connections",
+          "prevention": "precise_frequency_control_monitoring"
+        }
+      }
+    },
+    "clinical_application_phases": {
+      "acute_injury_0_72_hours": {
+        "sparc_early_activation": {
+          "timing": "within_6-24_hours_injury",
+          "frequency": "0.4-0.45_THz_15-20_minutes",
+          "goal": "limit_scar_formation_without_preventing_healing",
+          "monitoring": "bleeding_infection_risk"
+        },
+        "laminin_preparation": {
+          "timing": "24-48_hours_post_injury", 
+          "frequency": "0.15-0.2_THz_low_intensity_continuous",
+          "goal": "begin_guidance_substrate_deposition",
+          "duration": "maintain_until_growth_1-2_weeks"
+        }
+      },
+      "subacute_3_days_6_weeks": {
+        "peak_regeneration_protocol": {
+          "sparc": "0.45_THz_20-30_min_2-3x_daily",
+          "laminin": "0.2_THz_continuous_directional_gradients",
+          "gap43": "0.1_to_0.25_THz_progression_4-6_weeks",
+          "monitoring": "growth_rate_direction_pain_development"
+        },
+        "nerve_type_adjustments": {
+          "motor_nerves": "higher_frequencies_0.25-0.3_THz",
+          "sensory_nerves": "conservative_0.15-0.25_THz",
+          "autonomic_nerves": "lower_0.08-0.15_THz",
+          "progress_metrics": "growth_distance_target_accuracy_function"
+        }
+      },
+      "maturation_6_weeks_6_months": {
+        "synapse_formation": {
+          "coordination": "0.2-0.3_THz_synaptic_coupling",
+          "duration": "2-4_weeks_intensive_stimulation",
+          "monitoring": "electrophysiological_functional_connections"
+        },
+        "functional_recovery": {
+          "frequency_tapering": "gradually_reduce_intensity",
+          "maintenance": "low_level_maintain_connections",
+          "assessment": "functional_testing_3_6_12_months",
+          "success_criteria": "greater_70%_functional_recovery"
+        }
+      }
+    }
+  }
+}

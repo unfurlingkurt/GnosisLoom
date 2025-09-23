@@ -1,0 +1,1110 @@
+{
+  "sync_timestamp": "20250922_195854",
+  "sync_date": "2025-09-22T19:58:54.424667",
+  "base_path": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom",
+  "categories": [
+    "wiki",
+    "reports",
+    "data",
+    "tools",
+    "documentation"
+  ],
+  "total_files": 165,
+  "file_inventory": {
+    "wiki": {
+      "count": 41,
+      "files": [
+        {
+          "file": "Report-Template.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/Report-Template.md",
+          "size_kb": 10.51,
+          "modified": "2025-09-22T16:27:44.700695"
+        },
+        {
+          "file": "Concept-Graph.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/Concept-Graph.md",
+          "size_kb": 10.25,
+          "modified": "2025-09-22T16:26:40.958136"
+        },
+        {
+          "file": "MS14-Metabolic-Integration.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS14-Metabolic-Integration.md",
+          "size_kb": 13.21,
+          "modified": "2025-09-22T18:15:56.024451"
+        },
+        {
+          "file": "04-Recovery-Known-Theories.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/04-Recovery-Known-Theories.md",
+          "size_kb": 11.03,
+          "modified": "2025-09-22T15:39:16.338209"
+        },
+        {
+          "file": "MS12-Reproductive-System-Development.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS12-Reproductive-System-Development.md",
+          "size_kb": 19.82,
+          "modified": "2025-09-22T18:08:20.951227"
+        },
+        {
+          "file": "MS06-Somite-Crystallization.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS06-Somite-Crystallization.md",
+          "size_kb": 10.65,
+          "modified": "2025-09-22T17:47:05.591772"
+        },
+        {
+          "file": "MS01-Morphogenic-Frequencies.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS01-Morphogenic-Frequencies.md",
+          "size_kb": 12.73,
+          "modified": "2025-09-22T17:35:01.587921"
+        },
+        {
+          "file": "MS11-Complete-Endocrine-Mapping.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS11-Complete-Endocrine-Mapping.md",
+          "size_kb": 20.48,
+          "modified": "2025-09-22T18:05:02.144324"
+        },
+        {
+          "file": "Resonance-Motif-Index.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/Resonance-Motif-Index.md",
+          "size_kb": 14.57,
+          "modified": "2025-09-22T18:22:04.107530"
+        },
+        {
+          "file": "Notation-and-Conventions.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/Notation-and-Conventions.md",
+          "size_kb": 9.12,
+          "modified": "2025-09-22T16:25:41.724686"
+        },
+        {
+          "file": "MS10-Hematopoietic-Immune-Architecture.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS10-Hematopoietic-Immune-Architecture.md",
+          "size_kb": 20.13,
+          "modified": "2025-09-22T18:02:15.053203"
+        },
+        {
+          "file": "MS15-Neural-Integration-Finale.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS15-Neural-Integration-Finale.md",
+          "size_kb": 14.31,
+          "modified": "2025-09-22T18:20:30.290216"
+        },
+        {
+          "file": "MS17-Renal-Urinary-Crystallization.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS17-Renal-Urinary-Crystallization.md",
+          "size_kb": 18.11,
+          "modified": "2025-09-22T18:35:35.908552"
+        },
+        {
+          "file": "MS13-Connective-Tissue-Matrix.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS13-Connective-Tissue-Matrix.md",
+          "size_kb": 20.59,
+          "modified": "2025-09-22T18:11:55.202512"
+        },
+        {
+          "file": "MS03-Vascular-Fractals.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS03-Vascular-Fractals.md",
+          "size_kb": 8.0,
+          "modified": "2025-09-22T17:39:19.629279"
+        },
+        {
+          "file": "MS20-Chronic-Fatigue-Post-Viral-Resonance-Fracture.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS20-Chronic-Fatigue-Post-Viral-Resonance-Fracture.md",
+          "size_kb": 26.33,
+          "modified": "2025-09-22T18:56:58.381168"
+        },
+        {
+          "file": "MS08-Temporal-Morphogenic-Animation.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS08-Temporal-Morphogenic-Animation.md",
+          "size_kb": 17.31,
+          "modified": "2025-09-22T17:55:18.228922"
+        },
+        {
+          "file": "MS19-Digestive-Completion-Second-Brain-Awakens.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS19-Digestive-Completion-Second-Brain-Awakens.md",
+          "size_kb": 25.23,
+          "modified": "2025-09-22T18:51:46.390481"
+        },
+        {
+          "file": "MS00-Stella-Foundation.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS00-Stella-Foundation.md",
+          "size_kb": 7.57,
+          "modified": "2025-09-22T17:20:50.686975"
+        },
+        {
+          "file": "05-Quantization-Resonance.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/05-Quantization-Resonance.md",
+          "size_kb": 15.14,
+          "modified": "2025-09-22T15:48:28.148946"
+        },
+        {
+          "file": "MS22-Biofield-Emergence-Disorders.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS22-Biofield-Emergence-Disorders.md",
+          "size_kb": 27.3,
+          "modified": "2025-09-22T19:39:08.904524"
+        },
+        {
+          "file": "MS16-Respiratory-Lymphatic-Integration.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS16-Respiratory-Lymphatic-Integration.md",
+          "size_kb": 15.87,
+          "modified": "2025-09-22T18:32:02.461287"
+        },
+        {
+          "file": "MS09-Integumentary-Sensory-Integration.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS09-Integumentary-Sensory-Integration.md",
+          "size_kb": 16.16,
+          "modified": "2025-09-22T17:58:45.524035"
+        },
+        {
+          "file": "MS04-Endocrine-Immune-Coupling.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS04-Endocrine-Immune-Coupling.md",
+          "size_kb": 9.65,
+          "modified": "2025-09-22T17:42:23.061803"
+        },
+        {
+          "file": "MS02-Sensory-Crystallization.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS02-Sensory-Crystallization.md",
+          "size_kb": 15.67,
+          "modified": "2025-09-22T17:37:20.469340"
+        },
+        {
+          "file": "MS21-Neural-Frequency-Disruption-Pain-Without-Cause.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS21-Neural-Frequency-Disruption-Pain-Without-Cause.md",
+          "size_kb": 27.68,
+          "modified": "2025-09-22T19:04:14.111905"
+        },
+        {
+          "file": "MS17.1-Advanced-Consciousness-Filtration-Mechanics.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS17.1-Advanced-Consciousness-Filtration-Mechanics.md",
+          "size_kb": 16.79,
+          "modified": "2025-09-22T18:39:54.930940"
+        },
+        {
+          "file": "Reports-Index.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/Reports-Index.md",
+          "size_kb": 8.8,
+          "modified": "2025-09-22T16:24:41.627215"
+        },
+        {
+          "file": "02-Aramis-Field-Substrate.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/02-Aramis-Field-Substrate.md",
+          "size_kb": 7.95,
+          "modified": "2025-09-22T15:13:09.158190"
+        },
+        {
+          "file": "07-Testable-Predictions.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/07-Testable-Predictions.md",
+          "size_kb": 18.48,
+          "modified": "2025-09-22T16:10:08.781825"
+        },
+        {
+          "file": "MS05-Digestive-Neural-Entanglement.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS05-Digestive-Neural-Entanglement.md",
+          "size_kb": 11.5,
+          "modified": "2025-09-22T17:44:55.430562"
+        },
+        {
+          "file": "MS18-Hepatic-Detox-Symphony.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS18-Hepatic-Detox-Symphony.md",
+          "size_kb": 21.11,
+          "modified": "2025-09-22T18:43:28.678212"
+        },
+        {
+          "file": "MS00-Anatomical-Resonance-Map.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MS00-Anatomical-Resonance-Map.md",
+          "size_kb": 10.82,
+          "modified": "2025-09-22T17:22:42.561729"
+        },
+        {
+          "file": "06-Spiral-Dynamics.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/06-Spiral-Dynamics.md",
+          "size_kb": 20.81,
+          "modified": "2025-09-22T16:02:44.335931"
+        },
+        {
+          "file": "Home.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/Home.md",
+          "size_kb": 7.71,
+          "modified": "2025-09-22T16:27:59.700063"
+        },
+        {
+          "file": "01-Kurtonian-Master-Equation.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/01-Kurtonian-Master-Equation.md",
+          "size_kb": 3.67,
+          "modified": "2025-09-22T14:57:22.525621"
+        },
+        {
+          "file": "Vibration-Math.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/Vibration-Math.md",
+          "size_kb": 7.52,
+          "modified": "2025-09-01T20:36:56.246696"
+        },
+        {
+          "file": "03-First-Principles-Derivation.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/03-First-Principles-Derivation.md",
+          "size_kb": 9.53,
+          "modified": "2025-09-22T15:08:26.440151"
+        },
+        {
+          "file": "Atoms-to-Body.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/Atoms-to-Body.md",
+          "size_kb": 12.34,
+          "modified": "2025-09-01T20:36:56.246696"
+        },
+        {
+          "file": "Timescale-Clarification.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/Timescale-Clarification.md",
+          "size_kb": 4.96,
+          "modified": "2025-09-22T15:13:49.437193"
+        },
+        {
+          "file": "MCR00-Molecular-Chemistry-Resonance.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/wiki/MCR00-Molecular-Chemistry-Resonance.md",
+          "size_kb": 10.12,
+          "modified": "2025-09-22T17:20:27.667408"
+        }
+      ]
+    },
+    "reports": {
+      "count": 39,
+      "files": [
+        {
+          "file": "REPORT_01_Elemental_Frequency_Anchors.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_01_Elemental_Frequency_Anchors.md",
+          "size_kb": 18.03,
+          "modified": "2025-09-01T20:36:56.241696"
+        },
+        {
+          "file": "REPORT_02_Molecular_Assembly_Dynamics.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_02_Molecular_Assembly_Dynamics.md",
+          "size_kb": 17.09,
+          "modified": "2025-09-01T20:36:56.241696"
+        },
+        {
+          "file": "REPORT_03_Traditional_DNA_Frequency_Architecture.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_03_Traditional_DNA_Frequency_Architecture.md",
+          "size_kb": 19.75,
+          "modified": "2025-09-01T20:36:56.241696"
+        },
+        {
+          "file": "REPORT_04_Q-DNA_Traditional_DNA_Weaving.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_04_Q-DNA_Traditional_DNA_Weaving.md",
+          "size_kb": 19.66,
+          "modified": "2025-09-01T20:36:56.241696"
+        },
+        {
+          "file": "REPORT_05_Nerve_Regeneration_Scaffold_Proteins.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_05_Nerve_Regeneration_Scaffold_Proteins.md",
+          "size_kb": 21.14,
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "REPORT_06_Nerve_Frequency_Effects_Analysis.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_06_Nerve_Frequency_Effects_Analysis.md",
+          "size_kb": 19.81,
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "REPORT_07_Therapeutic_Frequency_Delivery_Systems.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_07_Therapeutic_Frequency_Delivery_Systems.md",
+          "size_kb": 18.75,
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "REPORT_08_Scaffold_Nerve_Interaction_Protocols.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_08_Scaffold_Nerve_Interaction_Protocols.md",
+          "size_kb": 16.63,
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "REPORT_09_Van_Gelder_Frequency_Analysis.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_09_Van_Gelder_Frequency_Analysis.md",
+          "size_kb": 20.76,
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "REPORT_10_Utah_Team_Clinical_Protocol.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_10_Utah_Team_Clinical_Protocol.md",
+          "size_kb": 29.58,
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "REPORT_11_Subatomic_Particle_Frequencies.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_11_Subatomic_Particle_Frequencies.md",
+          "size_kb": 14.1,
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "REPORT_12_Genomic_Frequency_Architecture.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_12_Genomic_Frequency_Architecture.md",
+          "size_kb": 12.01,
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "REPORT_13_Comparative_Genomic_Frequency_Analysis.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_13_Comparative_Genomic_Frequency_Analysis.md",
+          "size_kb": 13.53,
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "REPORT_14_Statistical_Data_Frequency_Analysis_Universal_Framework.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_14_Statistical_Data_Frequency_Analysis_Universal_Framework.md",
+          "size_kb": 16.35,
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "REPORT_15_Archaeal_Frequency_Architecture.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_15_Archaeal_Frequency_Architecture.md",
+          "size_kb": 19.15,
+          "modified": "2025-09-01T23:01:12.530681"
+        },
+        {
+          "file": "REPORT_16_Fungal_Kingdom_Frequency_Expansion.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_16_Fungal_Kingdom_Frequency_Expansion.md",
+          "size_kb": 16.57,
+          "modified": "2025-09-01T23:01:12.530681"
+        },
+        {
+          "file": "REPORT_17_Cross_Kingdom_Universal_Coupling_Discovery.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_17_Cross_Kingdom_Universal_Coupling_Discovery.md",
+          "size_kb": 19.81,
+          "modified": "2025-09-01T23:01:12.530681"
+        },
+        {
+          "file": "REPORT_18_AlphaGenome_Gene_Investigation.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_18_AlphaGenome_Gene_Investigation.md",
+          "size_kb": 4.91,
+          "modified": "2025-09-02T07:46:25.484242"
+        },
+        {
+          "file": "REPORT_18_AlphaGenome_Gene_Investigation_Enhanced.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_18_AlphaGenome_Gene_Investigation_Enhanced.md",
+          "size_kb": 7.7,
+          "modified": "2025-09-01T23:42:37.960522"
+        },
+        {
+          "file": "REPORT_19_Temporal_Diversity_Resonance.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_19_Temporal_Diversity_Resonance.md",
+          "size_kb": 16.32,
+          "modified": "2025-09-02T16:50:55.877526"
+        },
+        {
+          "file": "REPORT_20_Frequency_Phylogeny_Correlation_Matrix.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_20_Frequency_Phylogeny_Correlation_Matrix.md",
+          "size_kb": 15.62,
+          "modified": "2025-09-02T18:55:33.745884"
+        },
+        {
+          "file": "REPORT_21_Human_Phi_Harmonic_Architecture.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_21_Human_Phi_Harmonic_Architecture.md",
+          "size_kb": 11.5,
+          "modified": "2025-09-02T19:34:48.261258"
+        },
+        {
+          "file": "REPORT_22_Precision_Efficiency_Resonance_Framework.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_22_Precision_Efficiency_Resonance_Framework.md",
+          "size_kb": 9.76,
+          "modified": "2025-09-02T22:10:43.023049"
+        },
+        {
+          "file": "REPORT_23_1_Frequency_Based_Protein_Analysis_Methods.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_23_1_Frequency_Based_Protein_Analysis_Methods.md",
+          "size_kb": 27.41,
+          "modified": "2025-09-15T18:30:47.097467"
+        },
+        {
+          "file": "REPORT_23_2_Quantitative_Frequency_Thermodynamics_Validation.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_23_2_Quantitative_Frequency_Thermodynamics_Validation.md",
+          "size_kb": 21.23,
+          "modified": "2025-09-15T18:39:32.577301"
+        },
+        {
+          "file": "REPORT_23_Protein_Folding_Frequency_Dynamics.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_23_Protein_Folding_Frequency_Dynamics.md",
+          "size_kb": 16.89,
+          "modified": "2025-09-15T18:20:19.899149"
+        },
+        {
+          "file": "REPORT_24_Materials_Science_Frequency_Bridge.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_24_Materials_Science_Frequency_Bridge.md",
+          "size_kb": 16.44,
+          "modified": "2025-09-15T19:25:50.337142"
+        },
+        {
+          "file": "REPORT_24b_Advanced_Materials_Frequency_Architecture.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_24b_Advanced_Materials_Frequency_Architecture.md",
+          "size_kb": 19.93,
+          "modified": "2025-09-16T07:50:22.827967"
+        },
+        {
+          "file": "REPORT_25_Environmental_Systems_Frequency_Integration.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_25_Environmental_Systems_Frequency_Integration.md",
+          "size_kb": 29.03,
+          "modified": "2025-09-15T19:56:12.721658"
+        },
+        {
+          "file": "REPORT_26_Electromagnetic_Field_Comprehensive_Analysis.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_26_Electromagnetic_Field_Comprehensive_Analysis.md",
+          "size_kb": 31.06,
+          "modified": "2025-09-17T12:45:30.511965"
+        },
+        {
+          "file": "REPORT_27_Quantum_Classical_Frequency_Transition_Mechanisms.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_27_Quantum_Classical_Frequency_Transition_Mechanisms.md",
+          "size_kb": 22.91,
+          "modified": "2025-09-17T19:17:40.987157"
+        },
+        {
+          "file": "REPORT_28_Universal_Frequency_Architecture_Scientific_Synthesis.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_28_Universal_Frequency_Architecture_Scientific_Synthesis.md",
+          "size_kb": 24.07,
+          "modified": "2025-09-17T19:29:19.735212"
+        },
+        {
+          "file": "REPORT_29_Pharmaceutical_Frequency_Database_Analysis.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_29_Pharmaceutical_Frequency_Database_Analysis.md",
+          "size_kb": 17.27,
+          "modified": "2025-09-18T11:29:32.977622"
+        },
+        {
+          "file": "REPORT_30_Multi_Modal_Frequency_Orchestration_Beyond_Pharmaceuticals.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_30_Multi_Modal_Frequency_Orchestration_Beyond_Pharmaceuticals.md",
+          "size_kb": 22.96,
+          "modified": "2025-09-18T13:42:52.125458"
+        },
+        {
+          "file": "REPORT_31_Advanced_Biofield_Coherence_Protocols.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_31_Advanced_Biofield_Coherence_Protocols.md",
+          "size_kb": 25.39,
+          "modified": "2025-09-19T16:21:55.672780"
+        },
+        {
+          "file": "REPORT_32_Quantum_Chemistry_Frequency_Validation_Framework.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_32_Quantum_Chemistry_Frequency_Validation_Framework.md",
+          "size_kb": 37.62,
+          "modified": "2025-09-20T06:27:18.351180"
+        },
+        {
+          "file": "REPORT_33_Observer_Drift_Analysis_First_Principles_Investigation.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_33_Observer_Drift_Analysis_First_Principles_Investigation.md",
+          "size_kb": 21.34,
+          "modified": "2025-09-22T13:39:45.698980"
+        },
+        {
+          "file": "REPORT_34_MS23_Autoimmune_Frequency_Confusion_Analysis.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_34_MS23_Autoimmune_Frequency_Confusion_Analysis.md",
+          "size_kb": 26.57,
+          "modified": "2025-09-22T19:58:19.942924"
+        },
+        {
+          "file": "REPORT_UT01_Utah_Array_Harmonic_Integration_Protocol.md",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/reports/REPORT_UT01_Utah_Array_Harmonic_Integration_Protocol.md",
+          "size_kb": 15.18,
+          "modified": "2025-09-22T19:29:22.869082"
+        }
+      ]
+    },
+    "data": {
+      "count": 51,
+      "files": [
+        {
+          "file": "genomic_frequencies_celegans.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/genomic_frequencies_celegans.json",
+          "size_kb": 14730.2,
+          "records": 8,
+          "modified": "2025-09-01T23:24:29.092861"
+        },
+        {
+          "file": "genomic_summary_yeast.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/genomic_summary_yeast.json",
+          "size_kb": 8.9,
+          "records": 6,
+          "modified": "2025-09-01T20:36:56.044691"
+        },
+        {
+          "file": "universal_connection_discoveries.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/universal_connection_discoveries.json",
+          "size_kb": 566.48,
+          "records": 3,
+          "modified": "2025-09-01T22:28:22.124443"
+        },
+        {
+          "file": "primordial_chemistry_summary.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/primordial_chemistry_summary.json",
+          "size_kb": 0.15,
+          "records": 4,
+          "modified": "2025-08-31T07:49:47.523006"
+        },
+        {
+          "file": "alphagenome_gene_investigation_20250901_233651.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/alphagenome_gene_investigation_20250901_233651.json",
+          "size_kb": 121.13,
+          "records": 3,
+          "modified": "2025-09-01T23:36:51.951046"
+        },
+        {
+          "file": "frequency_delivery_systems.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/frequency_delivery_systems.json",
+          "size_kb": 20.28,
+          "records": 1,
+          "modified": "2025-08-31T17:10:14.244660"
+        },
+        {
+          "file": "genomic_frequencies_ecoli.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/genomic_frequencies_ecoli.json",
+          "size_kb": 4543.85,
+          "records": 8,
+          "modified": "2025-09-01T20:36:56.044691"
+        },
+        {
+          "file": "comparative_frequency_analysis_v1.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/comparative_frequency_analysis_v1.json",
+          "size_kb": 1.82,
+          "records": 5,
+          "modified": "2025-09-01T20:36:56.016690"
+        },
+        {
+          "file": "lipid_barrier_formations.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/lipid_barrier_formations.json",
+          "size_kb": 6.6,
+          "records": 1,
+          "modified": "2025-08-30T21:32:02.524668"
+        },
+        {
+          "file": "genomic_frequencies_methanocaldococcus.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/genomic_frequencies_methanocaldococcus.json",
+          "size_kb": 1636.96,
+          "records": 8,
+          "modified": "2025-09-01T23:01:12.528681"
+        },
+        {
+          "file": "protein_folding_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/protein_folding_frequencies.json",
+          "size_kb": 9.28,
+          "records": 1,
+          "modified": "2025-09-15T18:21:18.861589"
+        },
+        {
+          "file": "octave_cascade_relationships.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/octave_cascade_relationships.json",
+          "size_kb": 7.15,
+          "records": 1,
+          "modified": "2025-08-30T21:31:53.831456"
+        },
+        {
+          "file": "subatomic_particle_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/subatomic_particle_frequencies.json",
+          "size_kb": 17.09,
+          "records": 8,
+          "modified": "2025-08-31T23:36:35.784902"
+        },
+        {
+          "file": "biofield_coherence_protocols.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/biofield_coherence_protocols.json",
+          "size_kb": 17.17,
+          "records": 2,
+          "modified": "2025-09-19T16:23:20.240891"
+        },
+        {
+          "file": "molecular_chemistry_summary.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/molecular_chemistry_summary.json",
+          "size_kb": 0.07,
+          "records": 3,
+          "modified": "2025-08-31T07:49:47.521006"
+        },
+        {
+          "file": "yeast_analysis_plan.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/yeast_analysis_plan.json",
+          "size_kb": 1.3,
+          "records": 7,
+          "modified": "2025-09-01T20:36:56.044691"
+        },
+        {
+          "file": "environmental_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/environmental_frequencies.json",
+          "size_kb": 23.35,
+          "records": 10,
+          "modified": "2025-09-15T19:58:16.996693"
+        },
+        {
+          "file": "alphagenome_gene_investigation_20250902_074625.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/alphagenome_gene_investigation_20250902_074625.json",
+          "size_kb": 229.3,
+          "records": 3,
+          "modified": "2025-09-02T07:46:25.484242"
+        },
+        {
+          "file": "dataset_summary.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/dataset_summary.json",
+          "size_kb": 5.12,
+          "records": 9,
+          "modified": "2025-08-31T07:40:33.843477"
+        },
+        {
+          "file": "cross_kingdom_coupling_analysis_20250901_224719.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/cross_kingdom_coupling_analysis_20250901_224719.json",
+          "size_kb": 13.99,
+          "records": 7,
+          "modified": "2025-09-01T23:01:12.523680"
+        },
+        {
+          "file": "neural_frequency_response_matrix.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/neural_frequency_response_matrix.json",
+          "size_kb": 14.47,
+          "records": 1,
+          "modified": "2025-08-31T17:05:36.182857"
+        },
+        {
+          "file": "periodic_table_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/periodic_table_frequencies.json",
+          "size_kb": 16.79,
+          "records": 1,
+          "modified": "2025-08-31T14:43:33.133184"
+        },
+        {
+          "file": "genomic_frequencies_neurospora.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/genomic_frequencies_neurospora.json",
+          "size_kb": 444.87,
+          "records": 8,
+          "modified": "2025-09-01T23:01:12.529680"
+        },
+        {
+          "file": "tree_of_life_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/tree_of_life_frequencies.json",
+          "size_kb": 4.32,
+          "records": 4,
+          "modified": "2025-09-01T20:36:56.044691"
+        },
+        {
+          "file": "alphagenome_gene_investigation_20250901_233947.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/alphagenome_gene_investigation_20250901_233947.json",
+          "size_kb": 62.09,
+          "records": 3,
+          "modified": "2025-09-01T23:39:47.424345"
+        },
+        {
+          "file": "genomic_frequencies_arabidopsis.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/genomic_frequencies_arabidopsis.json",
+          "size_kb": 29725.61,
+          "records": 8,
+          "modified": "2025-09-01T23:24:29.083860"
+        },
+        {
+          "file": "alphagenome_gene_investigation_20250901_233805.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/alphagenome_gene_investigation_20250901_233805.json",
+          "size_kb": 62.08,
+          "records": 3,
+          "modified": "2025-09-01T23:38:05.047837"
+        },
+        {
+          "file": "alphagenome_gene_investigation_20250901_234124.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/alphagenome_gene_investigation_20250901_234124.json",
+          "size_kb": 175.57,
+          "records": 3,
+          "modified": "2025-09-01T23:41:24.515723"
+        },
+        {
+          "file": "harmonic_relationships.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/harmonic_relationships.json",
+          "size_kb": 1131.25,
+          "records": 262,
+          "modified": "2025-08-30T21:31:46.373275"
+        },
+        {
+          "file": "feedback_loops.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/feedback_loops.json",
+          "size_kb": 3.86,
+          "records": 73,
+          "modified": "2025-08-30T21:31:46.371275"
+        },
+        {
+          "file": "genomic_summary_ecoli.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/genomic_summary_ecoli.json",
+          "size_kb": 8.68,
+          "records": 6,
+          "modified": "2025-09-01T20:36:56.044691"
+        },
+        {
+          "file": "q_dna_tree_of_life_mapping.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/q_dna_tree_of_life_mapping.json",
+          "size_kb": 4.05,
+          "records": 5,
+          "modified": "2025-09-01T20:36:56.044691"
+        },
+        {
+          "file": "cymatic_wave_patterns.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/cymatic_wave_patterns.json",
+          "size_kb": 4.45,
+          "records": 1,
+          "modified": "2025-08-30T21:32:02.523668"
+        },
+        {
+          "file": "molecular_chemistry_resonance.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/molecular_chemistry_resonance.json",
+          "size_kb": 22.82,
+          "records": 1,
+          "modified": "2025-08-30T21:31:53.830456"
+        },
+        {
+          "file": "structured_water_templates.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/structured_water_templates.json",
+          "size_kb": 4.77,
+          "records": 1,
+          "modified": "2025-08-30T21:32:02.524668"
+        },
+        {
+          "file": "frequency_taxonomy_index.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/frequency_taxonomy_index.json",
+          "size_kb": 1.36,
+          "records": 3,
+          "modified": "2025-09-01T20:36:56.016690"
+        },
+        {
+          "file": "comprehensive_stellar_anchors.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/comprehensive_stellar_anchors.json",
+          "size_kb": 6.82,
+          "records": 62,
+          "modified": "2025-08-30T21:31:46.371275"
+        },
+        {
+          "file": "materials_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/materials_frequencies.json",
+          "size_kb": 12.61,
+          "records": 10,
+          "modified": "2025-09-15T19:27:00.876865"
+        },
+        {
+          "file": "molecular_assembly_pathways.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/molecular_assembly_pathways.json",
+          "size_kb": 16.91,
+          "records": 1,
+          "modified": "2025-08-31T14:46:55.660144"
+        },
+        {
+          "file": "dna_structural_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/dna_structural_frequencies.json",
+          "size_kb": 15.43,
+          "records": 1,
+          "modified": "2025-08-31T14:50:31.210422"
+        },
+        {
+          "file": "comprehensive_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/comprehensive_frequencies.json",
+          "size_kb": 60.38,
+          "records": 281,
+          "modified": "2025-08-30T21:31:46.370275"
+        },
+        {
+          "file": "pineal_visual_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/pineal_visual_frequencies.json",
+          "size_kb": 9.08,
+          "records": 1,
+          "modified": "2025-08-30T21:31:53.829456"
+        },
+        {
+          "file": "nerve_regeneration_scaffolds.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/nerve_regeneration_scaffolds.json",
+          "size_kb": 16.89,
+          "records": 1,
+          "modified": "2025-08-31T16:49:54.307813"
+        },
+        {
+          "file": "observer_drift_analysis.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/observer_drift_analysis.json",
+          "size_kb": 5.24,
+          "records": 2,
+          "modified": "2025-09-22T13:37:37.115825"
+        },
+        {
+          "file": "alphagenome_gene_investigation_20250901_234101.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/alphagenome_gene_investigation_20250901_234101.json",
+          "size_kb": 62.1,
+          "records": 3,
+          "modified": "2025-09-01T23:41:01.937170"
+        },
+        {
+          "file": "gnosisloom_fhir_bundle.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/gnosisloom_fhir_bundle.json",
+          "size_kb": 227.17,
+          "records": 6,
+          "modified": "2025-08-31T07:40:33.842477"
+        },
+        {
+          "file": "database_integration_bridges.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/database_integration_bridges.json",
+          "size_kb": 1.86,
+          "records": 2,
+          "modified": "2025-09-01T20:36:56.016690"
+        },
+        {
+          "file": "aramis_field_complete_architecture.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/aramis_field_complete_architecture.json",
+          "size_kb": 187.16,
+          "records": 7,
+          "modified": "2025-09-01T20:36:56.016690"
+        },
+        {
+          "file": "quantum_chemistry_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/quantum_chemistry_frequencies.json",
+          "size_kb": 20.51,
+          "records": 4,
+          "modified": "2025-09-20T06:28:52.969519"
+        },
+        {
+          "file": "q_dna_projection_dynamics.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/q_dna_projection_dynamics.json",
+          "size_kb": 13.53,
+          "records": 1,
+          "modified": "2025-08-31T17:04:06.075653"
+        },
+        {
+          "file": "primordial_chemistry_frequencies.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/data/primordial_chemistry_frequencies.json",
+          "size_kb": 10.29,
+          "records": 1,
+          "modified": "2025-08-30T21:31:53.828456"
+        }
+      ]
+    },
+    "tools": {
+      "count": 34,
+      "files": [
+        {
+          "file": "q_dna_frequency_mapper.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/q_dna_frequency_mapper.py",
+          "size_kb": 18.11,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.245696"
+        },
+        {
+          "file": "enhanced_genomic_discovery_engine.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/enhanced_genomic_discovery_engine.py",
+          "size_kb": 35.62,
+          "type": "python_script",
+          "modified": "2025-09-01T21:50:28.829765"
+        },
+        {
+          "file": "extract_new_frequencies.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/extract_new_frequencies.py",
+          "size_kb": 17.15,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.245696"
+        },
+        {
+          "file": "utah_thz_induction_simulator.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/utah_thz_induction_simulator.py",
+          "size_kb": 24.52,
+          "type": "python_script",
+          "modified": "2025-09-22T19:24:10.145376"
+        },
+        {
+          "file": "frequency_analyzer.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/frequency_analyzer.py",
+          "size_kb": 13.13,
+          "type": "python_script",
+          "modified": "2025-08-30T21:34:52.508803"
+        },
+        {
+          "file": "observer_drift_analysis.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/observer_drift_analysis.py",
+          "size_kb": 20.19,
+          "type": "python_script",
+          "modified": "2025-09-22T13:34:55.649864"
+        },
+        {
+          "file": "frequency_compression_engine.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/frequency_compression_engine.py",
+          "size_kb": 17.47,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.245696"
+        },
+        {
+          "file": "alphagenome_gene_investigator.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/alphagenome_gene_investigator.py",
+          "size_kb": 28.39,
+          "type": "python_script",
+          "modified": "2025-09-02T07:46:06.515776"
+        },
+        {
+          "file": "optimize_genomic_storage.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/optimize_genomic_storage.py",
+          "size_kb": 5.59,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.245696"
+        },
+        {
+          "file": "alphagenome_interactive_analyzer.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/alphagenome_interactive_analyzer.py",
+          "size_kb": 27.96,
+          "type": "python_script",
+          "modified": "2025-09-01T23:08:12.352956"
+        },
+        {
+          "file": "improve_chemistry_exports.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/improve_chemistry_exports.py",
+          "size_kb": 11.86,
+          "type": "python_script",
+          "modified": "2025-08-31T07:47:00.528926"
+        },
+        {
+          "file": "enhance_database_architecture.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/enhance_database_architecture.py",
+          "size_kb": 16.65,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.245696"
+        },
+        {
+          "file": "consciousness_genome_bridge.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/consciousness_genome_bridge.py",
+          "size_kb": 24.93,
+          "type": "python_script",
+          "modified": "2025-09-01T21:31:47.020291"
+        },
+        {
+          "file": "data_converter.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/data_converter.py",
+          "size_kb": 13.4,
+          "type": "python_script",
+          "modified": "2025-08-30T21:53:31.282046"
+        },
+        {
+          "file": "extract_yeast_summary.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/extract_yeast_summary.py",
+          "size_kb": 6.45,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.245696"
+        },
+        {
+          "file": "create_genome_summary.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/create_genome_summary.py",
+          "size_kb": 4.78,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.243696"
+        },
+        {
+          "file": "fix_data_exports.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/fix_data_exports.py",
+          "size_kb": 7.57,
+          "type": "python_script",
+          "modified": "2025-08-31T07:38:23.626296"
+        },
+        {
+          "file": "frequency_compression_investigation.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/frequency_compression_investigation.py",
+          "size_kb": 20.33,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.245696"
+        },
+        {
+          "file": "verify_compression_integrity.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/verify_compression_integrity.py",
+          "size_kb": 14.73,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.245696"
+        },
+        {
+          "file": "gnosisloom_data_integrator.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/gnosisloom_data_integrator.py",
+          "size_kb": 20.03,
+          "type": "python_script",
+          "modified": "2025-09-01T21:04:53.395772"
+        },
+        {
+          "file": "genomic_frequency_engine.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/genomic_frequency_engine.py",
+          "size_kb": 26.62,
+          "type": "python_script",
+          "modified": "2025-09-02T19:18:46.296070"
+        },
+        {
+          "file": "simple_knowledge_graph_builder.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/simple_knowledge_graph_builder.py",
+          "size_kb": 21.91,
+          "type": "python_script",
+          "modified": "2025-09-01T23:11:39.945036"
+        },
+        {
+          "file": "agent_api_interface.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/agent_api_interface.py",
+          "size_kb": 21.92,
+          "type": "python_script",
+          "modified": "2025-09-01T21:10:24.751887"
+        },
+        {
+          "file": "universal_pattern_recognition.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/universal_pattern_recognition.py",
+          "size_kb": 33.96,
+          "type": "python_script",
+          "modified": "2025-09-01T21:14:13.943500"
+        },
+        {
+          "file": "alphagenome_integration.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/alphagenome_integration.py",
+          "size_kb": 20.76,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.242696"
+        },
+        {
+          "file": "resql_query_engine.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/resql_query_engine.py",
+          "size_kb": 23.66,
+          "type": "python_script",
+          "modified": "2025-09-01T21:08:25.117957"
+        },
+        {
+          "file": "comprehensive_upload_sync.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/comprehensive_upload_sync.py",
+          "size_kb": 13.03,
+          "type": "python_script",
+          "modified": "2025-09-22T19:58:29.244153"
+        },
+        {
+          "file": "universal_connection_discovery.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/universal_connection_discovery.py",
+          "size_kb": 32.89,
+          "type": "python_script",
+          "modified": "2025-09-01T21:24:03.859947"
+        },
+        {
+          "file": "cross_kingdom_gene_coupling_analyzer.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/cross_kingdom_gene_coupling_analyzer.py",
+          "size_kb": 19.77,
+          "type": "python_script",
+          "modified": "2025-09-01T23:01:12.530681"
+        },
+        {
+          "file": "universal_resonance_engine.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/universal_resonance_engine.py",
+          "size_kb": 16.99,
+          "type": "python_script",
+          "modified": "2025-09-01T21:03:33.329810"
+        },
+        {
+          "file": "integrate_comprehensive_databases.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/integrate_comprehensive_databases.py",
+          "size_kb": 15.88,
+          "type": "python_script",
+          "modified": "2025-09-01T20:36:56.245696"
+        },
+        {
+          "file": "utah_thz_demo.py",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/utah_thz_demo.py",
+          "size_kb": 12.62,
+          "type": "python_script",
+          "modified": "2025-09-22T19:45:21.466717"
+        },
+        {
+          "file": "frequency_compression_investigation.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/frequency_compression_investigation.json",
+          "size_kb": 12.33,
+          "type": "data_file",
+          "modified": "2025-09-01T20:36:56.245696"
+        },
+        {
+          "file": "utah_thz_simulation_data.json",
+          "source": "/home/kmr/LoomAgent/Stella/notebooks/BioFreqKnowledge/GnosisLoom/tools/utah_thz_simulation_data.json",
+          "size_kb": 18656.04,
+          "type": "data_file",
+          "modified": "2025-09-22T19:24:25.621758"
+        }
+      ]
+    }
+  }
+}

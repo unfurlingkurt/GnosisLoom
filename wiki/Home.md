@@ -51,6 +51,20 @@
   - Second-based examples (illustrative only)
   - Usage guidelines and implementation standards
 
+### 📊 **Research Archive** [`reports` `experimental` `applications`]
+- **[Reports Index](Reports-Index.md)** [`catalog` `navigation` `research-archive`]
+  - Complete catalog of 69+ research investigations
+  - Organized by domain: Chemistry, Biology, Physics, Medicine
+  - Chronological research timeline and cross-connections
+- **[Notation and Conventions](Notation-and-Conventions.md)** [`mathematics` `consistency` `standards`]
+  - Unified notation system across all reports and theory
+  - Mathematical conventions and equation numbering
+  - Reproducibility and quality assurance standards
+- **[Concept Graph](Concept-Graph.md)** [`knowledge-graph` `relationships` `navigation`]
+  - Visual relationship mapping for Obsidian integration
+  - Cross-domain concept bridges and learning pathways
+  - Tag-based organization and automated linking
+
 ---
 
 ## Quick Reference

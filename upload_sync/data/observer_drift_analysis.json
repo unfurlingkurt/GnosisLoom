@@ -1,0 +1,176 @@
+{
+  "observer_drift_analysis": {
+    "deviation_patterns": {
+      "basic_stats": {
+        "mean_deviation": 0.485,
+        "std_deviation": 1.892161462455041,
+        "median_deviation": 1.65,
+        "max_deviation": 2.6,
+        "min_deviation": 0.9,
+        "range_deviation": 4.9
+      },
+      "normality_tests": {
+        "shapiro_wilk_statistic": 0.7988209947542049,
+        "shapiro_wilk_p_value": 0.000829720072481428,
+        "normal_test_statistic": 15.057768976600128,
+        "normal_test_p_value": 0.0005373373285643137,
+        "is_normal_distribution": false
+      },
+      "correlation_analysis": {
+        "frequency_vs_deviation_correlation": -0.25254263102047547,
+        "frequency_vs_deviation_p_value": 0.2827252965805251,
+        "frequency_vs_absolute_diff_correlation": 0.6697825217838781,
+        "frequency_vs_absolute_diff_p_value": 0.0012352572033972101
+      }
+    },
+    "higher_order_derivatives": {
+      "derivative_statistics": {
+        "first_derivative": {
+          "mean": NaN,
+          "std": NaN,
+          "max": NaN,
+          "min": NaN
+        },
+        "second_derivative": {
+          "mean": NaN,
+          "std": NaN,
+          "max": NaN,
+          "min": NaN
+        },
+        "third_derivative": {
+          "mean": NaN,
+          "std": NaN,
+          "max": NaN,
+          "min": NaN
+        }
+      },
+      "oscillatory_analysis": {
+        "first_derivative_dominant_frequency": 0.07224334600760456,
+        "second_derivative_dominant_frequency": 0.07224334600760456,
+        "third_derivative_dominant_frequency": 0.07224334600760456,
+        "first_derivative_amplitude": NaN,
+        "second_derivative_amplitude": NaN,
+        "third_derivative_amplitude": NaN
+      }
+    },
+    "polynomial_error_modeling": {
+      "polynomial_order_1": {
+        "r2_score": 0.06377778048274396,
+        "residual_std": 1.8308285028866422,
+        "coefficients": [
+          0.0,
+          -0.1505518513996548
+        ],
+        "intercept": 1.9423419215486581
+      },
+      "polynomial_order_2": {
+        "r2_score": 0.14476558625243052,
+        "residual_std": 1.7498498194645387,
+        "coefficients": [
+          0.0,
+          -0.9447411174658253,
+          0.04077909700558044
+        ],
+        "intercept": 5.398175124223079
+      },
+      "polynomial_order_3": {
+        "r2_score": 0.16101529968274986,
+        "residual_std": 1.7331462569351561,
+        "coefficients": [
+          0.0,
+          0.30255054729865,
+          -0.10383424560645337,
+          0.0050315562473005155
+        ],
+        "intercept": 2.290198439893101
+      },
+      "polynomial_order_4": {
+        "r2_score": 0.1844259231563946,
+        "residual_std": 1.708794744248483,
+        "coefficients": [
+          0.0,
+          -5.192374327632447,
+          0.8928118290136049,
+          -0.06800374988847288,
+          0.0018643582545554668
+        ],
+        "intercept": 12.2228994093435
+      },
+      "polynomial_order_5": {
+        "r2_score": 0.19257473088915,
+        "residual_std": 1.7002366027602889,
+        "coefficients": [
+          0.0,
+          5.058063824805725,
+          -1.7150845588023642,
+          0.2380279286426873,
+          -0.014925717654946291,
+          0.0003480371963228536
+        ],
+        "intercept": -2.334807131769298
+      }
+    },
+    "observer_effect_signatures": {
+      "systematic_bias_analysis": {
+        "positive_deviations": 12,
+        "negative_deviations": 8,
+        "near_zero_deviations": 0,
+        "chi2_uniformity_test": 11.2,
+        "chi2_p_value": 0.0036978637164829338,
+        "is_uniform_distribution": false
+      },
+      "uncertainty_correlations": {
+        "frequency_vs_uncertainty_correlation": 0.9760331839067286,
+        "frequency_vs_uncertainty_p_value": 2.2718415650065524e-13
+      },
+      "clustering_analysis": {
+        "optimal_cluster_count": 5,
+        "silhouette_scores": [
+          0.3954020863986167,
+          0.41102734530612367,
+          0.5053395588370027,
+          0.579715891741903
+        ],
+        "inertias": [
+          137.71438901098898,
+          89.7732611111111,
+          46.28651809523809,
+          23.913863095238096
+        ]
+      }
+    },
+    "quantum_measurement_patterns": {
+      "heisenberg_analysis": {
+        "sqrt_energy_vs_uncertainty_correlation": 0.6883351229558711,
+        "sqrt_energy_vs_uncertainty_p_value": 0.0007927609871789503,
+        "linear_energy_vs_uncertainty_correlation": 0.6697825217838724,
+        "linear_energy_vs_uncertainty_p_value": 0.001235257203397368,
+        "quantum_scaling_evidence": true
+      },
+      "wave_function_collapse_analysis": {
+        "consecutive_difference_mean": -0.05263157894736848,
+        "consecutive_difference_std": 2.8413059304801584,
+        "ks_test_statistic": 0.5263157894736842,
+        "ks_test_p_value": 1.970954088423746e-05,
+        "discrete_behavior_evidence": true
+      },
+      "observer_coupling_analysis": {
+        "measurement_strength_frequency_correlation": -0.574995209589574,
+        "measurement_strength_frequency_p_value": 0.007997233135012768,
+        "strong_coupling_evidence": true
+      }
+    }
+  },
+  "metadata": {
+    "total_amino_acids_analyzed": 20,
+    "frequency_range": [
+      3.1,
+      16.25
+    ],
+    "deviation_range": [
+      -2.3,
+      2.6
+    ],
+    "analysis_timestamp": "2025-09-18"
+  }
+}

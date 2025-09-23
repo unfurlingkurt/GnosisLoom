@@ -1,0 +1,46 @@
+# Genome files - too large for GitHub
+**/genomes/*.gb
+**/genomes/*.fasta
+**/genomes/*.fa
+**/genomes/*.fna
+tools/data/genomes/
+CodexFork/tools/data/genomes/
+
+# Large data files
+*.gb
+*.fasta
+*.fa
+*.fna
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Large archives
+*.tar.gz
+*.zip
+*.7z
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Large binary files over 50MB
+*.h5

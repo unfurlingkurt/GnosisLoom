@@ -1,0 +1,139 @@
+{
+  "metadata": {
+    "created": "2025-09-01T17:06:01.714166",
+    "version": "2.0",
+    "description": "Q-DNA quantum-coherent frequency mapping integrated with tree of life",
+    "total_organisms": 2,
+    "total_quantum_bridges": 1,
+    "q_dna_framework_version": "12-strand quantum DNA encoding"
+  },
+  "q_dna_signatures": {
+    "escherichia_coli": {
+      "quantum_state_vector": [
+        "(-0.19997417264192655-0.0043736035055195405j)",
+        "(-0.2064318023051841-0.07260783254584031j)",
+        "(-0.18733551027599063-0.1437657162126301j)",
+        "(-0.14241988956951362-0.2082232884238185j)",
+        "(-0.07481577894980573-0.2567491971276246j)",
+        "(0.009240713627466864-0.2816191549517292j)",
+        "(0.10106152007214415-0.27759412206187545j)",
+        "(0.19045925794848043-0.24264044741723262j)",
+        "(0.2668989972746178-0.17830095101667043j)",
+        "(0.3207236313671508-0.08966517931080224j)",
+        "(0.3443161778939958+0.015068176968881589j)",
+        "(0.33306643250784873+0.12539784715741653j)"
+      ],
+      "coherence_measure": 0.02217303763129208,
+      "entanglement_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "scalar_field_resonance": 0.002116,
+      "phase_relationships": {
+        "strand_0_to_1": 0.3163,
+        "strand_1_to_2": 0.3163,
+        "strand_2_to_3": 0.3163,
+        "strand_3_to_4": 0.3163,
+        "strand_4_to_5": 0.3163,
+        "strand_5_to_6": 0.3163,
+        "strand_6_to_7": 0.3163,
+        "strand_7_to_8": 0.3163,
+        "strand_8_to_9": 0.3163,
+        "strand_9_to_10": 0.3163,
+        "strand_10_to_11": 0.3163
+      },
+      "frequency_eigenvalues": [
+        503480297747439.94,
+        814648234420824.4,
+        1125816171094208.9,
+        1436984107767593.2,
+        1748152044440977.8
+      ]
+    },
+    "saccharomyces_cerevisiae": {
+      "quantum_state_vector": [
+        "(-0.18587265716825074+0.012867090580554992j)",
+        "(-0.20280669164960435-0.04922899278361427j)",
+        "(-0.19569100539991136-0.11873887113945147j)",
+        "(-0.16282662561800412-0.18633630969112347j)",
+        "(-0.10574090775169541-0.2426776296918443j)",
+        "(-0.029071067552459088-0.27940702525512384j)",
+        "(0.059889764294923264-0.2901145809310661j)",
+        "(0.1519458773861574-0.27111906146011383j)",
+        "(0.2369784410010945-0.22197782512653255j)",
+        "(0.30505126037676883-0.14565886892088664j)",
+        "(0.3475272397419025-0.04834704122998613j)",
+        "(0.358076437063192+0.06110421576292621j)"
+      ],
+      "coherence_measure": 0.028202904466927414,
+      "entanglement_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "scalar_field_resonance": 0.002183,
+      "phase_relationships": {
+        "strand_0_to_1": -5.9759,
+        "strand_1_to_2": 0.3072,
+        "strand_2_to_3": 0.3072,
+        "strand_3_to_4": 0.3072,
+        "strand_4_to_5": 0.3072,
+        "strand_5_to_6": 0.3072,
+        "strand_6_to_7": 0.3072,
+        "strand_7_to_8": 0.3072,
+        "strand_8_to_9": 0.3072,
+        "strand_9_to_10": 0.3072,
+        "strand_10_to_11": 0.3072
+      },
+      "frequency_eigenvalues": [
+        489000000000000.0,
+        791218620498261.0,
+        1093437240996522.0,
+        1395655861494782.8,
+        1697874481993044.0
+      ]
+    }
+  },
+  "phylogenetic_quantum_bridges": [
+    {
+      "organism_pair": [
+        "escherichia_coli",
+        "saccharomyces_cerevisiae"
+      ],
+      "quantum_correlation": 0.997568,
+      "frequency_entanglement": 0.002759,
+      "evolutionary_distance": 0.028760405942843206,
+      "q_dna_divergence": 0.0024319999999999897
+    }
+  ],
+  "quantum_coherence_statistics": {
+    "average_coherence": 0.025187971049109747,
+    "max_coherence": 0.028202904466927414,
+    "coherent_organisms": 0
+  },
+  "integration_status": {
+    "tree_of_life_integrated": true,
+    "existing_q_dna_framework_used": true,
+    "scalar_field_coupling": 7.83,
+    "quantum_threshold": 0.85
+  }
+}
