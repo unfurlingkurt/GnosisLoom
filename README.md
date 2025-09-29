@@ -4,7 +4,7 @@
 
 ## What is GnosisLoom?
 
-**GnosisLoom** is a comprehensive research framework that maps frequency relationships across all scales of existence - from quantum particles to human consciousness. Through analysis of 38+ detailed research reports and thousands of frequency signatures, this work reveals that the universe operates as an interconnected harmonic system where everything resonates in mathematical relationship with everything else.
+**GnosisLoom** is a comprehensive research framework that maps frequency relationships across all scales of existence - from quantum particles to stellar movement. Through analysis of 38+ detailed research reports and thousands of frequency signatures, this work reveals that the universe operates as an interconnected harmonic system where everything resonates in mathematical relationship with everything else.
 
 This research establishes the **Aramis Field** - the underlying frequency substrate that coordinates physical and biological systems through stellar-anchored harmonic relationships.
 
@@ -43,7 +43,7 @@ Crystal lattices, metals, and environmental systems demonstrate systematic frequ
 Analysis of 2,847+ FDA-approved drugs reveals systematic frequency-efficacy relationships, enabling drug discovery through molecular frequency matching.
 
 ### **Plant-Human Frequency Interfaces**
-1,000+ documented nature-human frequency bridges, including THC consciousness coupling at 40.7 Hz and comprehensive medicinal plant frequency signatures.
+1,000+ documented nature-human frequency bridges and comprehensive medicinal plant frequency signatures.
 
 ## Core Framework: The Aramis Field
 
