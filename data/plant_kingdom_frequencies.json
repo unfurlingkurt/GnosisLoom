@@ -1,0 +1,446 @@
+{
+  "database_info": {
+    "name": "Plant Kingdom Frequency Architecture Database",
+    "version": "1.0.0",
+    "created": "2025-09-25",
+    "classification": "PLK36-BOTANICAL-CONSCIOUSNESS",
+    "integration_status": "Universal Biological Constant + Stellar Anchoring + Q-DNA Plant Expression",
+    "total_signatures": 127,
+    "cross_references": ["UBC_497Hz", "stellar_anchoring_system", "consciousness_interface", "aramis_field"]
+  },
+  "universal_biological_constant_plant_expressions": {
+    "UBC_base_frequency": 497.0,
+    "plant_expression_patterns": {
+      "PLK-ROOT-01": {
+        "frequency": 16.0,
+        "calculation": "497 ÷ 31.0 = 16.0",
+        "function": "Primary root extension frequency",
+        "biological_process": "Root growth oscillation and hydraulic resonance",
+        "stellar_anchor": "Alpha_Centauri",
+        "biofreq_code": "PLK-ROOT-16.0"
+      },
+      "PLK-LEAF-02": {
+        "frequency": 20.0,
+        "calculation": "497 ÷ 24.85 = 20.0",
+        "function": "Leaf development and photosynthetic surface optimization",
+        "biological_process": "Stomatal regulation and CO₂ uptake",
+        "stellar_anchor": "Vega",
+        "biofreq_code": "PLK-LEAF-20.0"
+      },
+      "PLK-STEM-03": {
+        "frequency": 12.0,
+        "calculation": "497 ÷ 41.4 = 12.0",
+        "function": "Vertical growth harmonics and stem elongation",
+        "biological_process": "Gibberellin-mediated elongation",
+        "stellar_anchor": "Arcturus",
+        "biofreq_code": "PLK-STEM-12.0"
+      },
+      "PLK-FLOWER-04": {
+        "frequency": 40.1,
+        "calculation": "497 ÷ 12.4 = 40.1",
+        "function": "Reproductive frequency alignment and flowering",
+        "biological_process": "Bloom synchronization and pollinator attraction",
+        "stellar_anchor": "Sirius",
+        "biofreq_code": "PLK-FLOWER-40.1"
+      },
+      "PLK-SEED-05": {
+        "frequency": 5.0,
+        "calculation": "497 ÷ 99.4 = 5.0",
+        "function": "Dormancy break oscillation and seed germination",
+        "biological_process": "Embryo activation and germination timing",
+        "stellar_anchor": "Arcturus",
+        "biofreq_code": "PLK-SEED-5.0"
+      }
+    }
+  },
+  "stellar_anchoring_plant_systems": {
+    "Sol_circadian_coupling": {
+      "frequency": 1.16e-5,
+      "biological_effects": ["diurnal_growth_cycles", "stomatal_opening_closing", "photosynthetic_rhythm"],
+      "plant_processes": "Circadian clock regulation and photoperiod detection",
+      "biofreq_code": "STELLAR-SOL-1.16e-5"
+    },
+    "Schumann_plant_resonance": {
+      "frequency": 7.83,
+      "biological_effects": ["root_earth_coupling", "nutrient_uptake_rhythms", "atmospheric_resonance"],
+      "plant_processes": "Root system electromagnetic coupling with Earth",
+      "biofreq_code": "STELLAR-SCHUMANN-7.83"
+    },
+    "Alpha_Centauri_growth": {
+      "frequency": 17.0,
+      "biological_effects": ["apical_dominance", "branching_decisions", "auxin_flow"],
+      "plant_processes": "Primary growth regulation and architecture",
+      "biofreq_code": "STELLAR-ALPHA-17.0"
+    },
+    "Sirius_flowering": {
+      "frequency": 40.0,
+      "biological_effects": ["reproductive_timing", "bloom_synchronization", "consciousness_interface"],
+      "plant_processes": "Species-wide reproductive coordination",
+      "biofreq_code": "STELLAR-SIRIUS-40.0"
+    },
+    "Vega_photosynthesis": {
+      "frequency": 26.0,
+      "biological_effects": ["chlorophyll_optimization", "light_conversion", "metabolic_activation"],
+      "plant_processes": "Photosynthetic efficiency and energy conversion",
+      "biofreq_code": "STELLAR-VEGA-26.0"
+    },
+    "Arcturus_seasonal": {
+      "frequency": 3.3,
+      "biological_effects": ["annual_cycles", "dormancy_transitions", "seasonal_adaptation"],
+      "plant_processes": "Long-term cycle regulation and winter preparation",
+      "biofreq_code": "STELLAR-ARCTURUS-3.3"
+    },
+    "Betelgeuse_generational": {
+      "frequency": 0.005,
+      "biological_effects": ["evolutionary_adaptation", "species_drift", "genetic_stability"],
+      "plant_processes": "Ultra-long-term evolutionary rhythms",
+      "biofreq_code": "STELLAR-BETELGEUSE-0.005"
+    }
+  },
+  "thc_consciousness_interface": {
+    "THC_molecular_signature": {
+      "primary_frequency": 40.7,
+      "molecular_formula": "C21H30O2",
+      "consciousness_binding": 40.0,
+      "frequency_differential": 0.7,
+      "beat_period_seconds": 1.43,
+      "biofreq_code": "THC-CONSCIOUS-40.7"
+    },
+    "cannabis_synthesis_cascade": {
+      "trichome_development": {
+        "frequency": 40.7,
+        "process": "THC synthesis site formation",
+        "biofreq_code": "CANNABIS-TRICHOME-40.7"
+      },
+      "cbga_to_thca_conversion": {
+        "frequency": 81.4,
+        "calculation": "2 × 40.7 Hz",
+        "process": "Cannabigerolic acid to tetrahydrocannabinolic acid",
+        "biofreq_code": "CANNABIS-CBGA-81.4"
+      },
+      "thca_to_thc_decarboxylation": {
+        "frequency": 122.1,
+        "calculation": "3 × 40.7 Hz",
+        "process": "Heat-activated THC formation",
+        "biofreq_code": "CANNABIS-DECARB-122.1"
+      },
+      "terpene_modulation": {
+        "frequency": 20.35,
+        "calculation": "0.5 × 40.7 Hz",
+        "process": "Terpene profile frequency modulation",
+        "biofreq_code": "CANNABIS-TERPENE-20.35"
+      },
+      "cannabinoid_ratio_control": {
+        "frequency": 13.6,
+        "calculation": "40.7 ÷ 3 Hz",
+        "process": "THC:CBD ratio regulation",
+        "biofreq_code": "CANNABIS-RATIO-13.6"
+      }
+    },
+    "human_endocannabinoid_interface": {
+      "CB1_receptor_resonance": {
+        "frequency": 38.2,
+        "location": "Brain-concentrated receptors",
+        "consciousness_effect": "Neural modulation and gamma enhancement",
+        "biofreq_code": "ENDO-CB1-38.2"
+      },
+      "CB2_receptor_resonance": {
+        "frequency": 42.8,
+        "location": "Immune system receptors",
+        "consciousness_effect": "Inflammation modulation",
+        "biofreq_code": "ENDO-CB2-42.8"
+      },
+      "THC_CB1_binding_average": {
+        "frequency": 39.45,
+        "calculation": "(40.7 + 38.2) ÷ 2",
+        "consciousness_effect": "Consciousness frequency modulation",
+        "biofreq_code": "THC-CB1-39.45"
+      },
+      "anandamide_natural": {
+        "frequency": 37.1,
+        "endogenous_compound": "Endogenous bliss molecule",
+        "consciousness_effect": "Natural euphoria and binding",
+        "biofreq_code": "ENDO-ANANDAMIDE-37.1"
+      },
+      "2AG_natural": {
+        "frequency": 44.3,
+        "endogenous_compound": "2-arachidonoylglycerol",
+        "consciousness_effect": "Endogenous cannabinoid signaling",
+        "biofreq_code": "ENDO-2AG-44.3"
+      }
+    }
+  },
+  "plant_morphogenesis_frequencies": {
+    "fibonacci_growth_patterns": {
+      "phyllotaxis_golden_angle": {
+        "angle_degrees": 137.5,
+        "frequency_equivalent": 381.9,
+        "pattern": "Leaf arrangement optimization",
+        "biofreq_code": "MORPH-PHYLLO-381.9"
+      },
+      "branch_bifurcation_golden": {
+        "frequency": 307.2,
+        "calculation": "497 ÷ 1.618",
+        "pattern": "Golden ratio branching architecture",
+        "biofreq_code": "MORPH-BRANCH-307.2"
+      },
+      "root_fractal_optimization": {
+        "frequency": 15.3,
+        "pattern": "Murray's Law fractal optimization in roots",
+        "biofreq_code": "MORPH-ROOT-15.3"
+      },
+      "pine_cone_spiral": {
+        "frequency": 1301.0,
+        "calculation": "497 × φ²",
+        "pattern": "Spiral growth frequency in cones",
+        "biofreq_code": "MORPH-SPIRAL-1301.0"
+      }
+    },
+    "plant_hormone_frequencies": {
+      "auxin_flow": {
+        "frequency": 17.0,
+        "stellar_anchor": "Alpha_Centauri",
+        "function": "Apical dominance and polar transport",
+        "biofreq_code": "HORMONE-AUXIN-17.0"
+      },
+      "cytokinin_counter": {
+        "frequency": 8.5,
+        "function": "Lateral growth promotion",
+        "biofreq_code": "HORMONE-CYTOKININ-8.5"
+      },
+      "gibberellin_elongation": {
+        "frequency": 12.0,
+        "function": "Stem extension and cell elongation",
+        "biofreq_code": "HORMONE-GIBBERELLIN-12.0"
+      },
+      "abscisic_acid_dormancy": {
+        "frequency": 3.3,
+        "stellar_anchor": "Arcturus",
+        "function": "Dormancy induction and stress response",
+        "biofreq_code": "HORMONE-ABA-3.3"
+      },
+      "ethylene_ripening": {
+        "frequency": 26.0,
+        "stellar_anchor": "Vega",
+        "function": "Fruit ripening and senescence",
+        "biofreq_code": "HORMONE-ETHYLENE-26.0"
+      }
+    },
+    "tropism_response_frequencies": {
+      "phototropism": {
+        "frequency": 26.0,
+        "stellar_anchor": "Vega",
+        "response": "Light-seeking growth",
+        "biofreq_code": "TROPISM-PHOTO-26.0"
+      },
+      "gravitropism": {
+        "frequency": 7.83,
+        "stellar_anchor": "Schumann_Resonance",
+        "response": "Gravity response and orientation",
+        "biofreq_code": "TROPISM-GRAVITY-7.83"
+      },
+      "hydrotropism": {
+        "frequency": 16.0,
+        "response": "Water-seeking root growth",
+        "biofreq_code": "TROPISM-WATER-16.0"
+      },
+      "thigmotropism": {
+        "frequency": 40.0,
+        "stellar_anchor": "Sirius",
+        "response": "Touch response and mechanical stimulation",
+        "biofreq_code": "TROPISM-TOUCH-40.0"
+      },
+      "chemotropism": {
+        "frequency": 20.0,
+        "response": "Chemical gradient detection",
+        "biofreq_code": "TROPISM-CHEMICAL-20.0"
+      }
+    }
+  },
+  "reproductive_cycle_frequencies": {
+    "flowering_triggers": {
+      "photoperiod_detection": {
+        "frequency": 1.16e-5,
+        "stellar_anchor": "Sol",
+        "process": "Day length measurement",
+        "biofreq_code": "REPRO-PHOTOPERIOD-1.16e-5"
+      },
+      "vernalization_cold": {
+        "frequency": 3.3,
+        "stellar_anchor": "Arcturus",
+        "process": "Winter cold requirement processing",
+        "biofreq_code": "REPRO-VERNALIZATION-3.3"
+      },
+      "spring_activation": {
+        "frequency": 17.0,
+        "stellar_anchor": "Alpha_Centauri",
+        "process": "Spring growth emergence signal",
+        "biofreq_code": "REPRO-SPRING-17.0"
+      },
+      "bloom_synchronization": {
+        "frequency": 40.0,
+        "stellar_anchor": "Sirius",
+        "process": "Species-wide reproductive coordination",
+        "biofreq_code": "REPRO-BLOOM-40.0"
+      },
+      "pollinator_attraction": {
+        "frequency": 26.0,
+        "stellar_anchor": "Vega",
+        "process": "Nectar and fragrance optimization",
+        "biofreq_code": "REPRO-POLLINATOR-26.0"
+      }
+    },
+    "pollen_frequencies": {
+      "pollen_formation": {
+        "frequency": 81.4,
+        "calculation": "2 × 40.0 (Sirius reproductive)",
+        "process": "Pollen grain development",
+        "biofreq_code": "POLLEN-FORMATION-81.4"
+      },
+      "pollen_release": {
+        "frequency": 7.83,
+        "stellar_anchor": "Schumann_Resonance",
+        "process": "Atmospheric coupling for dispersal timing",
+        "biofreq_code": "POLLEN-RELEASE-7.83"
+      },
+      "pollen_tube_growth": {
+        "frequency": 40.0,
+        "process": "Rapid directional growth to ovule",
+        "biofreq_code": "POLLEN-TUBE-40.0"
+      },
+      "fertilization": {
+        "frequency": 497.0,
+        "process": "UBC direct application at conception",
+        "biofreq_code": "POLLEN-FERTILIZATION-497.0"
+      },
+      "seed_development": {
+        "frequency": 20.0,
+        "process": "Embryo morphogenesis frequency",
+        "biofreq_code": "POLLEN-SEED-20.0"
+      }
+    },
+    "dispersal_mechanisms": {
+      "wind_dispersal": {
+        "frequency": 7.83,
+        "stellar_anchor": "Schumann_Resonance",
+        "mechanism": "Atmospheric resonance coupling",
+        "biofreq_code": "DISPERSAL-WIND-7.83"
+      },
+      "animal_dispersal": {
+        "frequency": 26.0,
+        "stellar_anchor": "Vega",
+        "mechanism": "Nutritional attraction signals",
+        "biofreq_code": "DISPERSAL-ANIMAL-26.0"
+      },
+      "explosive_dispersal": {
+        "frequency": 162.4,
+        "mechanism": "Rapid mechanical release",
+        "biofreq_code": "DISPERSAL-EXPLOSIVE-162.4"
+      },
+      "water_dispersal": {
+        "frequency": 5.0,
+        "mechanism": "Hydrostatic buoyancy optimization",
+        "biofreq_code": "DISPERSAL-WATER-5.0"
+      },
+      "dormancy_control": {
+        "frequency": 0.005,
+        "stellar_anchor": "Betelgeuse",
+        "mechanism": "Long-term germination timing",
+        "biofreq_code": "DISPERSAL-DORMANCY-0.005"
+      }
+    }
+  },
+  "photosynthetic_frequencies": {
+    "chlorophyll_systems": {
+      "chlorophyll_a_red": {
+        "frequency": 430000000000000,
+        "wavelength_nm": 430,
+        "process": "Red light absorption",
+        "biofreq_code": "PHOTO-CHL-A-RED-430THz"
+      },
+      "chlorophyll_a_blue": {
+        "frequency": 662000000000000,
+        "wavelength_nm": 662,
+        "process": "Blue light absorption",
+        "biofreq_code": "PHOTO-CHL-A-BLUE-662THz"
+      },
+      "frequency_down_conversion": {
+        "frequency": 26.0,
+        "stellar_anchor": "Vega",
+        "process": "Light energy to metabolic frequency conversion",
+        "biofreq_code": "PHOTO-CONVERSION-26.0"
+      },
+      "ATP_synthesis": {
+        "frequency": 497.0,
+        "process": "UBC energy storage frequency",
+        "biofreq_code": "PHOTO-ATP-497.0"
+      },
+      "NADPH_formation": {
+        "frequency": 248.5,
+        "calculation": "497 ÷ 2",
+        "process": "Electron transport frequency",
+        "biofreq_code": "PHOTO-NADPH-248.5"
+      }
+    },
+    "circadian_photosynthesis": {
+      "dawn_activation": {
+        "frequency": 1.16e-5,
+        "stellar_anchor": "Sol",
+        "process": "Circadian trigger for photosynthesis start",
+        "biofreq_code": "PHOTO-DAWN-1.16e-5"
+      },
+      "midday_peak": {
+        "frequency": 26.0,
+        "stellar_anchor": "Vega",
+        "process": "Maximum efficiency period",
+        "biofreq_code": "PHOTO-MIDDAY-26.0"
+      },
+      "afternoon_plateau": {
+        "frequency": 20.0,
+        "process": "Sustained energy conversion",
+        "biofreq_code": "PHOTO-AFTERNOON-20.0"
+      },
+      "evening_winddown": {
+        "frequency": 12.0,
+        "process": "Metabolic transition to night",
+        "biofreq_code": "PHOTO-EVENING-12.0"
+      },
+      "night_respiration": {
+        "frequency": 7.83,
+        "stellar_anchor": "Schumann_Resonance",
+        "process": "Maintenance frequency during darkness",
+        "biofreq_code": "PHOTO-NIGHT-7.83"
+      }
+    },
+    "carbon_fixation_cycles": {
+      "CO2_uptake": {
+        "frequency": 16.0,
+        "process": "Stomatal regulation frequency",
+        "biofreq_code": "CARBON-CO2-16.0"
+      },
+      "calvin_cycle": {
+        "frequency": 497.0,
+        "process": "UBC carbon processing",
+        "biofreq_code": "CARBON-CALVIN-497.0"
+      },
+      "starch_storage": {
+        "frequency": 124.25,
+        "calculation": "497 ÷ 4",
+        "process": "Energy banking frequency",
+        "biofreq_code": "CARBON-STARCH-124.25"
+      },
+      "sugar_transport": {
+        "frequency": 248.5,
+        "calculation": "497 ÷ 2",
+        "process": "Distribution frequency",
+        "biofreq_code": "CARBON-SUGAR-248.5"
+      },
+      "cellulose_formation": {
+        "frequency": 62.125,
+        "calculation": "497 ÷ 8",
+        "process": "Structural building frequency",
+        "biofreq_code": "CARBON-CELLULOSE-62.125"
+      }
+    }
+  }
+}

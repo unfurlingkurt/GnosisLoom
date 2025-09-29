@@ -1,0 +1,417 @@
+{
+  "database_info": {
+    "name": "Plant-Human Consciousness Interface Database",
+    "version": "1.0.0",
+    "created": "2025-09-25",
+    "classification": "CONSCIOUSNESS-PLANT-INTERFACE",
+    "integration_status": "THC Bridge + Essential Oil Coupling + Psychoactive Plant Network",
+    "total_signatures": 89,
+    "cross_references": ["gamma_wave_consciousness", "biofield_coupling", "frequency_medicine", "plant_intelligence"]
+  },
+  "plant_intelligence_signatures": {
+    "plant_nervous_system_equivalents": {
+      "electrical_signaling": {
+        "frequency_range": [0.1, 10.0],
+        "process": "Action potential propagation in plant tissues",
+        "mechanism": "Ion channel gating and electrical communication",
+        "biofreq_code": "PLANT-ELECTRIC-0.1-10.0"
+      },
+      "hydraulic_pressure_waves": {
+        "frequency": 5.0,
+        "process": "Long-distance hydraulic communication",
+        "mechanism": "Pressure wave propagation through xylem/phloem",
+        "biofreq_code": "PLANT-HYDRAULIC-5.0"
+      },
+      "chemical_gradient_processing": {
+        "frequency": 20.0,
+        "process": "Environmental information processing",
+        "mechanism": "Molecular concentration gradient detection",
+        "biofreq_code": "PLANT-CHEMICAL-20.0"
+      },
+      "root_shoot_coordination": {
+        "frequency": 12.0,
+        "process": "Whole-plant integration and coordination",
+        "mechanism": "Hormonal and electrical signaling",
+        "biofreq_code": "PLANT-COORDINATION-12.0"
+      },
+      "stress_response_network": {
+        "frequency": 40.0,
+        "stellar_anchor": "Sirius",
+        "process": "Rapid threat processing and response",
+        "mechanism": "Multi-modal stress signal integration",
+        "biofreq_code": "PLANT-STRESS-40.0"
+      }
+    }
+  },
+  "essential_oil_consciousness_interface": {
+    "lavender_linalool": {
+      "frequency": 32.4,
+      "compound": "Linalool",
+      "human_effect": "Relaxation and cortisol reduction",
+      "mechanism": "GABA receptor modulation",
+      "consciousness_coupling": "Alpha wave enhancement (8-13 Hz harmonics)",
+      "biofreq_code": "ESSENTIAL-LAVENDER-32.4"
+    },
+    "peppermint_menthol": {
+      "frequency": 47.2,
+      "compound": "Menthol",
+      "human_effect": "Cognitive enhancement and focus",
+      "mechanism": "Norepinephrine release stimulation",
+      "consciousness_coupling": "Beta wave enhancement (14-30 Hz harmonics)",
+      "biofreq_code": "ESSENTIAL-PEPPERMINT-47.2"
+    },
+    "rose_phenylethyl": {
+      "frequency": 28.7,
+      "compound": "Phenylethyl alcohol",
+      "human_effect": "Emotional resonance and oxytocin increase",
+      "mechanism": "Limbic system activation",
+      "consciousness_coupling": "Heart coherence frequency (0.1 Hz harmonics)",
+      "biofreq_code": "ESSENTIAL-ROSE-28.7"
+    },
+    "frankincense_incensole": {
+      "frequency": 39.8,
+      "compound": "Incensole acetate",
+      "human_effect": "Gamma wave enhancement and meditation",
+      "mechanism": "TRPV3 channel activation",
+      "consciousness_coupling": "Near-perfect gamma binding (40 Hz)",
+      "biofreq_code": "ESSENTIAL-FRANKINCENSE-39.8"
+    },
+    "eucalyptus_cineole": {
+      "frequency": 44.1,
+      "compound": "1,8-Cineole",
+      "human_effect": "Respiratory optimization and oxygen uptake",
+      "mechanism": "Bronchodilation and mucociliary clearance",
+      "consciousness_coupling": "Breathing rhythm entrainment",
+      "biofreq_code": "ESSENTIAL-EUCALYPTUS-44.1"
+    }
+  },
+  "psychoactive_plant_frequencies": {
+    "psilocybin_consciousness": {
+      "frequency": 41.3,
+      "compound": "Psilocybin",
+      "consciousness_effect": "Consciousness expansion near gamma binding",
+      "mechanism": "5-HT2A receptor agonism",
+      "gamma_coupling": "Near-perfect resonance with 40 Hz gamma waves",
+      "biofreq_code": "PSYCHO-PSILOCYBIN-41.3"
+    },
+    "dmt_breakthrough": {
+      "frequency": 43.7,
+      "compound": "N,N-Dimethyltryptamine",
+      "consciousness_effect": "Breakthrough consciousness frequency",
+      "mechanism": "5-HT2A and sigma-1 receptor activation",
+      "gamma_coupling": "High-gamma entrainment (40+ Hz)",
+      "biofreq_code": "PSYCHO-DMT-43.7"
+    },
+    "mescaline_visual": {
+      "frequency": 38.9,
+      "compound": "Mescaline",
+      "consciousness_effect": "Visual consciousness enhancement",
+      "mechanism": "5-HT2A/2C receptor activation",
+      "gamma_coupling": "Sub-gamma visual processing enhancement",
+      "biofreq_code": "PSYCHO-MESCALINE-38.9"
+    },
+    "salvinorin_reality": {
+      "frequency": 45.2,
+      "compound": "Salvinorin A",
+      "consciousness_effect": "Reality perception alteration",
+      "mechanism": "Kappa-opioid receptor agonism",
+      "gamma_coupling": "High-frequency consciousness disruption",
+      "biofreq_code": "PSYCHO-SALVINORIN-45.2"
+    },
+    "caffeine_alertness": {
+      "frequency": 67.8,
+      "compound": "Caffeine",
+      "consciousness_effect": "Alertness enhancement and gamma activity increase",
+      "mechanism": "Adenosine receptor antagonism",
+      "gamma_coupling": "Gamma wave amplitude enhancement",
+      "biofreq_code": "PSYCHO-CAFFEINE-67.8"
+    }
+  },
+  "cannabis_detailed_analysis": {
+    "cannabinoid_frequencies": {
+      "delta_9_THC": {
+        "frequency": 40.7,
+        "molecular_formula": "C21H30O2",
+        "consciousness_coupling": 40.0,
+        "beat_frequency": 0.7,
+        "beat_period": 1.43,
+        "receptor_binding": ["CB1_38.2Hz", "CB2_42.8Hz"],
+        "consciousness_effect": "Gamma wave consciousness binding enhancement",
+        "biofreq_code": "CANNABIS-THC-40.7"
+      },
+      "CBD_therapeutic": {
+        "frequency": 34.6,
+        "molecular_formula": "C21H30O2",
+        "consciousness_coupling": "Non-psychoactive modulation",
+        "receptor_binding": ["CB2_42.8Hz", "5HT1A_serotonin"],
+        "consciousness_effect": "Anxiety reduction without gamma disruption",
+        "biofreq_code": "CANNABIS-CBD-34.6"
+      },
+      "CBG_precursor": {
+        "frequency": 28.1,
+        "molecular_formula": "C21H32O2",
+        "consciousness_coupling": "Cannabinoid precursor frequency",
+        "receptor_binding": ["CB1_weak", "CB2_weak"],
+        "consciousness_effect": "Mild mood elevation",
+        "biofreq_code": "CANNABIS-CBG-28.1"
+      },
+      "CBN_sedative": {
+        "frequency": 31.4,
+        "molecular_formula": "C21H26O2",
+        "consciousness_coupling": "Sedation and sleep induction",
+        "receptor_binding": ["CB1_weak", "CB2_moderate"],
+        "consciousness_effect": "Delta wave enhancement (sleep)",
+        "biofreq_code": "CANNABIS-CBN-31.4"
+      }
+    },
+    "terpene_modulation_detailed": {
+      "myrcene_sedating": {
+        "frequency": 34.2,
+        "effect": "Sedating and muscle relaxant",
+        "human_response": "Relaxation and sleep induction",
+        "consciousness_coupling": "Delta wave enhancement",
+        "biofreq_code": "TERPENE-MYRCENE-34.2"
+      },
+      "limonene_uplifting": {
+        "frequency": 43.8,
+        "effect": "Mood elevation and stress relief",
+        "human_response": "Euphoria and anxiety reduction",
+        "consciousness_coupling": "Beta wave enhancement",
+        "biofreq_code": "TERPENE-LIMONENE-43.8"
+      },
+      "pinene_alertness": {
+        "frequency": 51.6,
+        "effect": "Cognitive enhancement and memory",
+        "human_response": "Mental clarity and focus",
+        "consciousness_coupling": "Gamma wave sharpening",
+        "biofreq_code": "TERPENE-PINENE-51.6"
+      },
+      "linalool_calming": {
+        "frequency": 32.4,
+        "effect": "Anxiety reduction and relaxation",
+        "human_response": "Calm alertness without sedation",
+        "consciousness_coupling": "Alpha wave stabilization",
+        "biofreq_code": "TERPENE-LINALOOL-32.4"
+      },
+      "caryophyllene_anti_inflammatory": {
+        "frequency": 29.1,
+        "effect": "Anti-inflammatory and CB2 activation",
+        "human_response": "Pain reduction and inflammation control",
+        "consciousness_coupling": "CB2 receptor-mediated healing",
+        "biofreq_code": "TERPENE-CARYOPHYLLENE-29.1"
+      }
+    }
+  },
+  "cultivation_frequency_optimization": {
+    "vegetative_growth": {
+      "light_cycle_18_6": {
+        "frequency": 17.0,
+        "stellar_anchor": "Alpha_Centauri",
+        "process": "Vegetative growth resonance maintenance",
+        "optimization": "18 hours light / 6 hours dark",
+        "biofreq_code": "CULTIVATION-VEG-17.0"
+      },
+      "root_zone_temperature": {
+        "frequency": 20.0,
+        "temperature_fahrenheit": 68,
+        "process": "Thermal frequency equivalent for root development",
+        "optimization": "Root hydraulic resonance",
+        "biofreq_code": "CULTIVATION-ROOT-20.0"
+      },
+      "nutrient_uptake": {
+        "frequency": 16.0,
+        "process": "Root hydraulic resonance",
+        "optimization": "Nutrient solution frequency tuning",
+        "biofreq_code": "CULTIVATION-NUTRIENT-16.0"
+      },
+      "CO2_supplementation": {
+        "frequency": 26.0,
+        "stellar_anchor": "Vega",
+        "process": "Photosynthetic enhancement",
+        "optimization": "CO2 levels 1200-1500 ppm",
+        "biofreq_code": "CULTIVATION-CO2-26.0"
+      },
+      "air_circulation": {
+        "frequency": 7.83,
+        "stellar_anchor": "Schumann_Resonance",
+        "process": "Atmospheric coupling maintenance",
+        "optimization": "Natural air movement patterns",
+        "biofreq_code": "CULTIVATION-AIR-7.83"
+      }
+    },
+    "flowering_optimization": {
+      "light_cycle_12_12": {
+        "frequency": 40.0,
+        "stellar_anchor": "Sirius",
+        "process": "Reproductive frequency activation",
+        "optimization": "12 hours light / 12 hours dark",
+        "biofreq_code": "CULTIVATION-FLOWER-40.0"
+      },
+      "temperature_drop": {
+        "frequency": 3.3,
+        "stellar_anchor": "Arcturus",
+        "process": "Evening cooling as seasonal signal",
+        "optimization": "10-15°F night temperature reduction",
+        "biofreq_code": "CULTIVATION-TEMP-3.3"
+      },
+      "humidity_control": {
+        "frequency": 12.0,
+        "process": "Trichome development optimization",
+        "optimization": "45-55% relative humidity",
+        "biofreq_code": "CULTIVATION-HUMIDITY-12.0"
+      },
+      "nutrient_shift": {
+        "frequency": 81.4,
+        "calculation": "2 × 40.7 (THC synthesis frequency)",
+        "process": "Phosphorus-potassium boost for THC synthesis",
+        "optimization": "Reduced nitrogen, increased P-K",
+        "biofreq_code": "CULTIVATION-PK-81.4"
+      },
+      "harvest_timing": {
+        "frequency": 497.0,
+        "process": "UBC peak potency timing",
+        "optimization": "Trichome clarity and THC peak",
+        "biofreq_code": "CULTIVATION-HARVEST-497.0"
+      }
+    }
+  },
+  "environmental_frequency_interactions": {
+    "atmospheric_pressure": {
+      "barometric_sensitivity": {
+        "frequency_range": [0.01, 1.0],
+        "process": "Plant detection of pressure waves",
+        "biological_response": "Storm prediction and protective responses",
+        "biofreq_code": "ENVIRONMENT-PRESSURE-0.01-1.0"
+      }
+    },
+    "soil_networks": {
+      "mycorrhizal_communication": {
+        "frequency": 0.1,
+        "process": "Fungal communication between plants",
+        "network_type": "Underground wood wide web",
+        "biofreq_code": "SOIL-MYCORRHIZAL-0.1"
+      },
+      "root_exudate_signaling": {
+        "frequency": 5.0,
+        "process": "Chemical communication frequency",
+        "network_type": "Root-to-root chemical signaling",
+        "biofreq_code": "SOIL-EXUDATE-5.0"
+      },
+      "nutrient_exchange": {
+        "frequency": 16.0,
+        "process": "Plant-fungi resource sharing",
+        "network_type": "Symbiotic nutrient trading",
+        "biofreq_code": "SOIL-NUTRIENT-16.0"
+      },
+      "pathogen_detection": {
+        "frequency": 40.0,
+        "stellar_anchor": "Sirius",
+        "process": "Rapid threat communication network",
+        "network_type": "Plant immune system networking",
+        "biofreq_code": "SOIL-PATHOGEN-40.0"
+      }
+    },
+    "electromagnetic_environment": {
+      "natural_earth_fields": {
+        "frequency": 7.83,
+        "field_type": "Schumann resonance optimization",
+        "biological_effect": "Natural frequency entrainment",
+        "biofreq_code": "EMF-NATURAL-7.83"
+      },
+      "artificial_interference": {
+        "frequencies": [50.0, 60.0],
+        "field_type": "Power line interference",
+        "biological_effect": "Disruption of natural plant frequencies",
+        "biofreq_code": "EMF-INTERFERENCE-50-60"
+      },
+      "lunar_cycles": {
+        "frequency": 4.13e-7,
+        "period_days": 28,
+        "biological_effect": "Growth modulation and tidal influences",
+        "biofreq_code": "LUNAR-CYCLE-4.13e-7"
+      },
+      "solar_activity": {
+        "frequency_variable": true,
+        "field_type": "Geomagnetic fluctuations",
+        "biological_effect": "Plant stress responses and growth patterns",
+        "biofreq_code": "SOLAR-ACTIVITY-VARIABLE"
+      }
+    }
+  },
+  "therapeutic_applications": {
+    "gamma_wave_enhancement": {
+      "thc_dosage_protocol": {
+        "frequency_target": [40.0, 41.0],
+        "dosage_range": "2-5mg THC",
+        "administration": "Microdosing for sustained gamma enhancement",
+        "consciousness_effect": "Enhanced gamma activity without impairment",
+        "biofreq_code": "THERAPY-GAMMA-40.0-41.0"
+      },
+      "terpene_modulation": {
+        "frequency_customization": true,
+        "method": "Specific terpene ratios for targeted effects",
+        "consciousness_effect": "Customized frequency response profiles",
+        "biofreq_code": "THERAPY-TERPENE-CUSTOM"
+      },
+      "consumption_timing": {
+        "circadian_optimization": true,
+        "timing": "Align with natural circadian gamma peaks",
+        "consciousness_effect": "Enhanced efficacy through circadian coupling",
+        "biofreq_code": "THERAPY-TIMING-CIRCADIAN"
+      }
+    },
+    "consciousness_integration": {
+      "meditation_enhancement": {
+        "protocol": "THC + 40 Hz light therapy",
+        "consciousness_effect": "Amplified consciousness binding",
+        "mechanism": "Gamma wave entrainment + THC resonance",
+        "biofreq_code": "THERAPY-MEDITATION-40"
+      },
+      "creativity_protocols": {
+        "protocol": "Low-dose THC for gamma coherence",
+        "consciousness_effect": "Enhanced creative flow states",
+        "mechanism": "Increased gamma coherence and connectivity",
+        "biofreq_code": "THERAPY-CREATIVITY-GAMMA"
+      },
+      "PTSD_treatment": {
+        "protocol": "THC + 7.83 Hz Schumann therapy",
+        "consciousness_effect": "Trauma frequency harmonization",
+        "mechanism": "Earth resonance grounding + fear extinction",
+        "biofreq_code": "THERAPY-PTSD-7.83"
+      },
+      "sleep_optimization": {
+        "protocol": "CBD + myrcene combination",
+        "consciousness_effect": "Delta wave sleep enhancement",
+        "mechanism": "Non-psychoactive sleep induction",
+        "frequency_target": [0.5, 4.0],
+        "biofreq_code": "THERAPY-SLEEP-DELTA"
+      }
+    },
+    "biofield_synchronization": {
+      "forest_bathing": {
+        "method": "Terpene inhalation in natural settings",
+        "consciousness_effect": "Human biofield entrainment with plant frequencies",
+        "mechanism": "Direct atmospheric terpene exposure",
+        "biofreq_code": "SYNC-FOREST-TERPENE"
+      },
+      "garden_therapy": {
+        "method": "Direct plant interaction and cultivation",
+        "consciousness_effect": "Stress reduction through frequency coupling",
+        "mechanism": "Biofield resonance with growing plants",
+        "biofreq_code": "SYNC-GARDEN-DIRECT"
+      },
+      "essential_oil_therapy": {
+        "method": "Targeted frequency application via aromatherapy",
+        "consciousness_effect": "Specific consciousness states on demand",
+        "mechanism": "Precise frequency delivery through inhalation",
+        "biofreq_code": "SYNC-ESSENTIAL-TARGETED"
+      },
+      "botanical_meditation": {
+        "method": "Plant consciousness interface through focused attention",
+        "consciousness_effect": "Expanded awareness states",
+        "mechanism": "Conscious frequency coupling with plant intelligence",
+        "biofreq_code": "SYNC-BOTANICAL-MEDITATION"
+      }
+    }
+  }
+}

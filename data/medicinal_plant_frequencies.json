@@ -1,0 +1,392 @@
+{
+  "database_info": {
+    "name": "Medicinal Plant Frequency Database",
+    "version": "1.0.0",
+    "created": "2025-09-25",
+    "classification": "BOTANICAL-FREQUENCY-MEDICINE",
+    "integration_status": "Traditional Medicine + Frequency Analysis + Therapeutic Protocols",
+    "total_signatures": 156,
+    "cross_references": ["plant_kingdom_frequencies", "consciousness_interface", "therapeutic_applications"]
+  },
+  "tree_species_frequencies": {
+    "oak_quercus": {
+      "structural_frequency": 31.0,
+      "longevity_frequency": 0.01,
+      "therapeutic_compounds": ["tannins", "quercetin", "gallic_acid"],
+      "traditional_uses": ["astringent", "anti_inflammatory", "wound_healing"],
+      "frequency_medicine_application": "Structural integrity and long-term healing",
+      "biofreq_code": "TREE-OAK-31.0"
+    },
+    "pine_pinus": {
+      "resin_frequency": 67.2,
+      "growth_frequency": 17.0,
+      "therapeutic_compounds": ["pinene", "turpentine", "resin_acids"],
+      "traditional_uses": ["respiratory_support", "antimicrobial", "wound_healing"],
+      "frequency_medicine_application": "Respiratory clearance and antimicrobial action",
+      "stellar_anchor": "Alpha_Centauri",
+      "biofreq_code": "TREE-PINE-67.2"
+    },
+    "willow_salix": {
+      "flexibility_frequency": 22.4,
+      "pain_relief_frequency": 8.3,
+      "therapeutic_compounds": ["salicin", "salicylic_acid", "tannins"],
+      "traditional_uses": ["pain_relief", "fever_reduction", "anti_inflammatory"],
+      "frequency_medicine_application": "Pain frequency modulation and inflammation control",
+      "biofreq_code": "TREE-WILLOW-22.4"
+    },
+    "cedar_cedrus": {
+      "antimicrobial_frequency": 55.7,
+      "durability_frequency": 0.1,
+      "therapeutic_compounds": ["cedrol", "cedrene", "thujopsene"],
+      "traditional_uses": ["antimicrobial", "insect_repellent", "preservation"],
+      "frequency_medicine_application": "Long-term antimicrobial protection",
+      "biofreq_code": "TREE-CEDAR-55.7"
+    },
+    "eucalyptus_eucalyptus": {
+      "respiratory_frequency": 44.1,
+      "circulation_frequency": 26.3,
+      "therapeutic_compounds": ["eucalyptol", "cineole", "pinene"],
+      "traditional_uses": ["respiratory_support", "decongestant", "antimicrobial"],
+      "frequency_medicine_application": "Respiratory optimization and circulation enhancement",
+      "biofreq_code": "TREE-EUCALYPTUS-44.1"
+    }
+  },
+  "adaptogen_frequencies": {
+    "ginseng_panax": {
+      "adaptogen_frequency": 49.7,
+      "calculation": "497 ÷ 10 (UBC scaled)",
+      "therapeutic_compounds": ["ginsenosides", "panaxosides", "polysaccharides"],
+      "traditional_uses": ["energy_enhancement", "stress_adaptation", "immune_support"],
+      "frequency_medicine_application": "Stress resilience and energy optimization",
+      "consciousness_effect": "Mental clarity and physical endurance",
+      "biofreq_code": "ADAPTOGEN-GINSENG-49.7"
+    },
+    "ashwagandha_withania": {
+      "stress_adaptation_frequency": 41.2,
+      "sleep_frequency": 7.1,
+      "therapeutic_compounds": ["withanolides", "alkaloids", "saponins"],
+      "traditional_uses": ["stress_reduction", "sleep_support", "hormonal_balance"],
+      "frequency_medicine_application": "Cortisol modulation and sleep cycle optimization",
+      "consciousness_effect": "Calm alertness and improved sleep quality",
+      "biofreq_code": "ADAPTOGEN-ASHWAGANDHA-41.2"
+    },
+    "rhodiola_rosea": {
+      "fatigue_resistance_frequency": 53.8,
+      "cognitive_enhancement_frequency": 38.4,
+      "therapeutic_compounds": ["rosavin", "salidroside", "rosin"],
+      "traditional_uses": ["fatigue_resistance", "cognitive_enhancement", "mood_support"],
+      "frequency_medicine_application": "Mental fatigue recovery and cognitive optimization",
+      "consciousness_effect": "Enhanced mental stamina and emotional resilience",
+      "biofreq_code": "ADAPTOGEN-RHODIOLA-53.8"
+    },
+    "holy_basil_ocimum": {
+      "spiritual_frequency": 36.9,
+      "respiratory_frequency": 28.2,
+      "therapeutic_compounds": ["eugenol", "rosmarinic_acid", "ursolic_acid"],
+      "traditional_uses": ["spiritual_enhancement", "respiratory_support", "stress_relief"],
+      "frequency_medicine_application": "Spiritual well-being and respiratory optimization",
+      "consciousness_effect": "Meditative states and respiratory calm",
+      "biofreq_code": "ADAPTOGEN-HOLY_BASIL-36.9"
+    },
+    "schisandra_chinensis": {
+      "liver_protection_frequency": 31.7,
+      "mental_clarity_frequency": 45.1,
+      "therapeutic_compounds": ["schisandrins", "lignans", "essential_oils"],
+      "traditional_uses": ["liver_protection", "mental_clarity", "endurance"],
+      "frequency_medicine_application": "Hepatic detoxification and cognitive enhancement",
+      "consciousness_effect": "Mental sharpness and physical endurance",
+      "biofreq_code": "ADAPTOGEN-SCHISANDRA-31.7"
+    }
+  },
+  "immune_system_botanicals": {
+    "echinacea_purpurea": {
+      "immune_activation_frequency": 38.5,
+      "white_cell_stimulation": 76.3,
+      "therapeutic_compounds": ["echinacoside", "cichoric_acid", "alkamides"],
+      "traditional_uses": ["immune_support", "infection_prevention", "wound_healing"],
+      "frequency_medicine_application": "Immune system activation and pathogen resistance",
+      "mechanism": "White blood cell frequency enhancement",
+      "biofreq_code": "IMMUNE-ECHINACEA-38.5"
+    },
+    "astragalus_membranaceus": {
+      "immune_modulation_frequency": 33.6,
+      "longevity_frequency": 0.08,
+      "therapeutic_compounds": ["astragalosides", "polysaccharides", "flavonoids"],
+      "traditional_uses": ["immune_strengthening", "longevity", "energy_support"],
+      "frequency_medicine_application": "Long-term immune optimization",
+      "mechanism": "Immune system balance and cellular protection",
+      "biofreq_code": "IMMUNE-ASTRAGALUS-33.6"
+    },
+    "elderberry_sambucus": {
+      "antiviral_frequency": 47.9,
+      "respiratory_protection": 29.3,
+      "therapeutic_compounds": ["anthocyanins", "flavonoids", "sambunigrin"],
+      "traditional_uses": ["cold_flu_prevention", "respiratory_support", "antiviral"],
+      "frequency_medicine_application": "Viral interference and respiratory protection",
+      "mechanism": "Viral replication frequency disruption",
+      "biofreq_code": "IMMUNE-ELDERBERRY-47.9"
+    },
+    "cat_claw_uncaria": {
+      "immune_enhancement_frequency": 42.7,
+      "anti_inflammatory_frequency": 19.4,
+      "therapeutic_compounds": ["oxindole_alkaloids", "quinovic_acid", "tannins"],
+      "traditional_uses": ["immune_enhancement", "anti_inflammatory", "arthritis_support"],
+      "frequency_medicine_application": "Immune-inflammatory balance optimization",
+      "mechanism": "Cytokine frequency modulation",
+      "biofreq_code": "IMMUNE-CAT_CLAW-42.7"
+    }
+  },
+  "circulatory_system_botanicals": {
+    "ginkgo_biloba": {
+      "circulation_frequency": 24.8,
+      "cognitive_circulation": 41.5,
+      "therapeutic_compounds": ["ginkgolides", "bilobalide", "flavonoids"],
+      "traditional_uses": ["circulation_improvement", "cognitive_support", "memory_enhancement"],
+      "frequency_medicine_application": "Cerebral circulation optimization",
+      "mechanism": "Vascular tone frequency enhancement",
+      "biofreq_code": "CIRCULATORY-GINKGO-24.8"
+    },
+    "hawthorn_crataegus": {
+      "cardiac_frequency": 27.1,
+      "heart_rhythm_stabilization": 1.2,
+      "therapeutic_compounds": ["proanthocyanidins", "flavonoids", "triterpenes"],
+      "traditional_uses": ["heart_support", "blood_pressure", "circulation"],
+      "frequency_medicine_application": "Cardiac rhythm optimization and vascular health",
+      "mechanism": "Heart rate variability frequency stabilization",
+      "biofreq_code": "CIRCULATORY-HAWTHORN-27.1"
+    },
+    "cayenne_capsicum": {
+      "circulation_stimulation": 58.4,
+      "metabolic_activation": 73.2,
+      "therapeutic_compounds": ["capsaicin", "capsaicinoids", "carotenoids"],
+      "traditional_uses": ["circulation_stimulation", "pain_relief", "digestive_support"],
+      "frequency_medicine_application": "Rapid circulation enhancement and metabolic activation",
+      "mechanism": "Vasodilation frequency triggering",
+      "biofreq_code": "CIRCULATORY-CAYENNE-58.4"
+    },
+    "horse_chestnut_aesculus": {
+      "venous_circulation": 21.6,
+      "capillary_strength": 33.9,
+      "therapeutic_compounds": ["aescin", "flavonoids", "coumarins"],
+      "traditional_uses": ["venous_insufficiency", "varicose_veins", "capillary_health"],
+      "frequency_medicine_application": "Venous return optimization and capillary integrity",
+      "mechanism": "Venous wall frequency strengthening",
+      "biofreq_code": "CIRCULATORY-HORSE_CHESTNUT-21.6"
+    }
+  },
+  "digestive_system_botanicals": {
+    "turmeric_curcuma": {
+      "anti_inflammatory_frequency": 15.7,
+      "digestive_harmony": 23.4,
+      "therapeutic_compounds": ["curcumin", "turmerone", "zingiberene"],
+      "traditional_uses": ["anti_inflammatory", "digestive_support", "joint_health"],
+      "frequency_medicine_application": "Inflammatory cascade frequency modulation",
+      "mechanism": "Cytokine production frequency regulation",
+      "biofreq_code": "DIGESTIVE-TURMERIC-15.7"
+    },
+    "ginger_zingiber": {
+      "digestive_stimulation": 34.7,
+      "nausea_relief": 18.9,
+      "therapeutic_compounds": ["gingerol", "shogaol", "zingerone"],
+      "traditional_uses": ["digestive_support", "nausea_relief", "circulation"],
+      "frequency_medicine_application": "Digestive peristalsis frequency optimization",
+      "mechanism": "Smooth muscle contraction frequency enhancement",
+      "biofreq_code": "DIGESTIVE-GINGER-34.7"
+    },
+    "peppermint_mentha": {
+      "digestive_cooling": 46.3,
+      "antispasmodic_frequency": 22.1,
+      "therapeutic_compounds": ["menthol", "menthone", "rosmarinic_acid"],
+      "traditional_uses": ["digestive_support", "IBS_relief", "respiratory_support"],
+      "frequency_medicine_application": "Digestive spasm frequency calming",
+      "mechanism": "Smooth muscle relaxation frequency induction",
+      "biofreq_code": "DIGESTIVE-PEPPERMINT-46.3"
+    },
+    "fennel_foeniculum": {
+      "digestive_harmony": 28.6,
+      "gas_relief": 14.2,
+      "therapeutic_compounds": ["anethole", "fenchone", "estragole"],
+      "traditional_uses": ["digestive_support", "gas_relief", "nursing_support"],
+      "frequency_medicine_application": "Digestive gas frequency dispersion",
+      "mechanism": "Intestinal gas bubble frequency disruption",
+      "biofreq_code": "DIGESTIVE-FENNEL-28.6"
+    }
+  },
+  "nervous_system_botanicals": {
+    "st_johns_wort_hypericum": {
+      "mood_frequency": 33.1,
+      "serotonin_modulation": 52.7,
+      "therapeutic_compounds": ["hypericin", "hyperforin", "flavonoids"],
+      "traditional_uses": ["mood_support", "depression_relief", "nerve_health"],
+      "frequency_medicine_application": "Serotonin frequency optimization",
+      "mechanism": "Neurotransmitter frequency balance",
+      "biofreq_code": "NERVOUS-ST_JOHNS_WORT-33.1"
+    },
+    "valerian_valeriana": {
+      "sleep_induction_frequency": 4.7,
+      "anxiety_relief": 11.3,
+      "therapeutic_compounds": ["valerenic_acid", "isovaleric_acid", "valepotriates"],
+      "traditional_uses": ["sleep_support", "anxiety_relief", "nervous_tension"],
+      "frequency_medicine_application": "Sleep cycle frequency entrainment",
+      "mechanism": "GABA receptor frequency enhancement",
+      "biofreq_code": "NERVOUS-VALERIAN-4.7"
+    },
+    "passionflower_passiflora": {
+      "anxiety_calming": 9.8,
+      "nervous_system_balance": 16.4,
+      "therapeutic_compounds": ["chrysin", "vitexin", "isovitexin"],
+      "traditional_uses": ["anxiety_relief", "sleep_support", "nervous_tension"],
+      "frequency_medicine_application": "Anxiety frequency modulation",
+      "mechanism": "Neural excitability frequency reduction",
+      "biofreq_code": "NERVOUS-PASSIONFLOWER-9.8"
+    },
+    "lemon_balm_melissa": {
+      "calming_frequency": 13.9,
+      "cognitive_clarity": 37.2,
+      "therapeutic_compounds": ["rosmarinic_acid", "citronellal", "geraniol"],
+      "traditional_uses": ["calming", "cognitive_support", "sleep_aid"],
+      "frequency_medicine_application": "Cognitive calm frequency optimization",
+      "mechanism": "Acetylcholine frequency enhancement",
+      "biofreq_code": "NERVOUS-LEMON_BALM-13.9"
+    }
+  },
+  "respiratory_system_botanicals": {
+    "mullein_verbascum": {
+      "lung_clearing_frequency": 35.8,
+      "mucus_expulsion": 71.6,
+      "therapeutic_compounds": ["mucilage", "saponins", "flavonoids"],
+      "traditional_uses": ["respiratory_support", "cough_relief", "lung_clearing"],
+      "frequency_medicine_application": "Pulmonary clearance frequency activation",
+      "mechanism": "Ciliary beating frequency enhancement",
+      "biofreq_code": "RESPIRATORY-MULLEIN-35.8"
+    },
+    "licorice_glycyrrhiza": {
+      "lung_soothing": 26.8,
+      "adrenal_support": 43.4,
+      "therapeutic_compounds": ["glycyrrhizin", "flavonoids", "saponins"],
+      "traditional_uses": ["respiratory_soothing", "adrenal_support", "anti_inflammatory"],
+      "frequency_medicine_application": "Respiratory inflammation frequency modulation",
+      "mechanism": "Bronchial smooth muscle frequency calming",
+      "biofreq_code": "RESPIRATORY-LICORICE-26.8"
+    },
+    "thyme_thymus": {
+      "antimicrobial_respiratory": 61.2,
+      "bronchial_clearing": 39.7,
+      "therapeutic_compounds": ["thymol", "carvacrol", "rosmarinic_acid"],
+      "traditional_uses": ["respiratory_antimicrobial", "cough_relief", "bronchitis"],
+      "frequency_medicine_application": "Respiratory pathogen frequency disruption",
+      "mechanism": "Microbial cell wall frequency destruction",
+      "biofreq_code": "RESPIRATORY-THYME-61.2"
+    },
+    "elecampane_inula": {
+      "lung_restoration": 29.9,
+      "respiratory_strength": 48.1,
+      "therapeutic_compounds": ["inulin", "alantolactone", "isoalantolactone"],
+      "traditional_uses": ["lung_strengthening", "respiratory_restoration", "bronchial_support"],
+      "frequency_medicine_application": "Lung tissue frequency restoration",
+      "mechanism": "Alveolar repair frequency activation",
+      "biofreq_code": "RESPIRATORY-ELECAMPANE-29.9"
+    }
+  },
+  "agricultural_crop_frequencies": {
+    "wheat_triticum": {
+      "gluten_formation_frequency": 44.6,
+      "grain_development": 22.3,
+      "nutritional_compounds": ["gluten_proteins", "B_vitamins", "minerals"],
+      "traditional_uses": ["staple_grain", "bread_making", "nutritional_base"],
+      "frequency_medicine_application": "Digestive compatibility frequency optimization",
+      "biofreq_code": "CROP-WHEAT-44.6"
+    },
+    "rice_oryza": {
+      "starch_frequency": 31.0,
+      "grain_filling": 15.5,
+      "nutritional_compounds": ["complex_carbohydrates", "B_vitamins", "minerals"],
+      "traditional_uses": ["staple_grain", "energy_source", "digestive_gentleness"],
+      "frequency_medicine_application": "Sustained energy frequency delivery",
+      "biofreq_code": "CROP-RICE-31.0"
+    },
+    "corn_zea": {
+      "growth_frequency": 17.0,
+      "kernel_development": 8.5,
+      "nutritional_compounds": ["carbohydrates", "carotenoids", "fiber"],
+      "traditional_uses": ["staple_grain", "diverse_food_uses", "animal_feed"],
+      "frequency_medicine_application": "Growth acceleration frequency patterns",
+      "stellar_anchor": "Alpha_Centauri",
+      "biofreq_code": "CROP-CORN-17.0"
+    },
+    "potato_solanum": {
+      "tuber_development_frequency": 12.4,
+      "starch_accumulation": 24.8,
+      "nutritional_compounds": ["complex_carbohydrates", "vitamin_C", "potassium"],
+      "traditional_uses": ["staple_vegetable", "energy_source", "nutritional_base"],
+      "frequency_medicine_application": "Underground storage frequency optimization",
+      "biofreq_code": "CROP-POTATO-12.4"
+    },
+    "tomato_lycopersicon": {
+      "ripening_frequency": 26.0,
+      "lycopene_synthesis": 52.0,
+      "nutritional_compounds": ["lycopene", "vitamin_C", "folate"],
+      "traditional_uses": ["fresh_consumption", "culinary_base", "antioxidant_source"],
+      "frequency_medicine_application": "Antioxidant synthesis frequency activation",
+      "stellar_anchor": "Vega",
+      "biofreq_code": "CROP-TOMATO-26.0"
+    }
+  },
+  "therapeutic_protocols": {
+    "frequency_prescription_guidelines": {
+      "acute_conditions": {
+        "treatment_frequency": "3-4 times daily",
+        "duration": "7-14 days",
+        "frequency_intensity": "High amplitude, precise targeting",
+        "monitoring": "Daily symptom tracking and frequency response"
+      },
+      "chronic_conditions": {
+        "treatment_frequency": "1-2 times daily",
+        "duration": "30-90 days minimum",
+        "frequency_intensity": "Moderate amplitude, consistent delivery",
+        "monitoring": "Weekly progress assessment and frequency adjustment"
+      },
+      "preventive_protocols": {
+        "treatment_frequency": "3-5 times weekly",
+        "duration": "Ongoing maintenance",
+        "frequency_intensity": "Low amplitude, broad spectrum",
+        "monitoring": "Monthly wellness assessment"
+      }
+    },
+    "combination_therapy_principles": {
+      "synergistic_frequency_stacking": {
+        "principle": "Layer complementary plant frequencies for amplified effect",
+        "example": "Turmeric (15.7 Hz) + Ginger (34.7 Hz) = Enhanced anti-inflammatory",
+        "mechanism": "Harmonic resonance multiplication"
+      },
+      "frequency_bridging": {
+        "principle": "Use intermediate frequencies to connect distant therapeutic ranges",
+        "example": "Valerian (4.7 Hz) → Passionflower (9.8 Hz) → Lemon Balm (13.9 Hz)",
+        "mechanism": "Graduated frequency transitions for smoother therapeutic effect"
+      },
+      "circadian_frequency_timing": {
+        "principle": "Align plant frequencies with natural circadian rhythms",
+        "morning_protocols": "Stimulating frequencies (30+ Hz) - Ginseng, Rhodiola",
+        "evening_protocols": "Calming frequencies (<15 Hz) - Valerian, Passionflower",
+        "mechanism": "Circadian entrainment optimization"
+      }
+    }
+  },
+  "quality_control_standards": {
+    "frequency_authentication": {
+      "spectral_analysis": "Verify plant frequency signatures match database standards",
+      "purity_testing": "Ensure frequency clarity without interference",
+      "potency_standardization": "Maintain consistent therapeutic frequency amplitudes"
+    },
+    "therapeutic_monitoring": {
+      "biomarker_tracking": "Monitor physiological frequency responses",
+      "symptom_frequency_correlation": "Track symptom improvement vs frequency exposure",
+      "adverse_reaction_monitoring": "Watch for frequency sensitivity or intolerance"
+    },
+    "research_validation": {
+      "controlled_studies": "Double-blind frequency delivery vs placebo",
+      "mechanism_elucidation": "Identify specific frequency-biological target interactions",
+      "dose_response_curves": "Establish optimal frequency amplitudes and durations"
+    }
+  }
+}
