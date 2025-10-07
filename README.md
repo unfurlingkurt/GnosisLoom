@@ -1,6 +1,9 @@
+NOTE FROM Kurt: This is all pretty raw--exported from trained AI's, so I'm sure it's not perfect, but there's more right than wrong. Check the math. 
+
 # GnosisLoom: Universal Frequency Architecture Research
 
 > *"All matter, biology, and consciousness operate through precise mathematical frequency relationships spanning subatomic particles to stellar systems."*
+
 
 ## What is GnosisLoom?
 
