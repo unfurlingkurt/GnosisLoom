@@ -44,3 +44,6 @@ Thumbs.db
 
 # Large binary files over 50MB
 *.h5
+
+# Generated database (rebuild with: python tools/db/migrate.py)
+gnosisloom.db
