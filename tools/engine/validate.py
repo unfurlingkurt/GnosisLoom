@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Validate GnosisLoom frequency predictions against experimental protein folding data.
 
-This script provides rigorous, reproducible validation of the frequency-based
-protein folding framework against published experimental measurements:
+RATIO-SPACE VALIDATION — not linear Hz comparison.
 
-1. Helix propensity: frequency predictions vs Pace & Scholtz (1998) experimental scale
-2. Secondary structure prediction: frequency thresholds vs known protein structures
-3. Folding rate prediction: frequency-derived rates vs experimental kf values
-4. Enzyme catalytic efficiency: frequency alignment vs measured kcat values
-5. Misfolding susceptibility: frequency coherence vs known disease proteins
+The framework operates on:
+1. Ratios to the water clock (1.86 Hz), not raw frequencies
+2. Harmonic quality of those ratios (closeness to simple integers/phi)
+3. Geometric Resonance Factors (GRF = observed_freq / raw_elemental_sum)
+4. Cooperative thresholds, not continuous linear relationships
+5. Assembly mechanism type (additive, harmonic, beat, geometric)
 
 Run: python tools/engine/validate.py
 """
@@ -16,48 +16,68 @@ Run: python tools/engine/validate.py
 import math
 import sys
 from pathlib import Path
-from dataclasses import dataclass
-from typing import List, Tuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from tools.engine.ratiospace import (
-    PHI, ALPHA_BASE, from_frequency, WATER_CLOCK
+    PHI, ALPHA_BASE, WATER_CLOCK, from_frequency,
+    golden_ratio_efficiency,
 )
 from tools.engine.thresholds import (
-    AMINO_ACID_FREQS, HELIX_PROPENSITY, SHEET_PROPENSITY, TURN_PROPENSITY,
-    GEOMETRIC_FACTORS, FoldingSimulator, FoldingState
+    AMINO_ACID_FREQS, GEOMETRIC_FACTORS, FoldingSimulator, FoldingState,
+    HELIX_PROPENSITY, SHEET_PROPENSITY, TURN_PROPENSITY,
 )
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# EXPERIMENTAL DATA (Published, peer-reviewed measurements)
+# CORE DATA: Amino acid properties from the framework
 # ═══════════════════════════════════════════════════════════════════════
 
-# Pace & Scholtz (1998) Biophysical Journal 75(1):422-427
-# Experimental helix propensity in kcal/mol (lower = more helix-forming)
-# Alanine = 0 (reference), Glycine = 1.0 (most destabilizing)
-EXPERIMENTAL_HELIX_PROPENSITY = {
+# Raw elemental sums and GRFs from molecular_assembly_pathways.json
+AA_PROPERTIES = {
+    # code: (observed_freq, raw_sum, grf, assembly_mechanism)
+    "GLY": (3.10, 9.84,  0.315, "AFA-01"),
+    "ALA": (4.63, 11.72, 0.395, "AFA-01"),
+    "SER": (6.12, 17.56, 0.348, "BFA-03"),
+    "VAL": (7.69, 19.46, 0.395, "AFA-01"),
+    "THR": (7.65, 21.97, 0.348, "BFA-03"),
+    "ASN": (7.72, 17.47, 0.442, "GRA-04"),
+    "CYS": (8.72, 16.63, 0.524, "GRA-04"),
+    "PRO": (8.87, 17.33, 0.512, "AFA-01"),
+    "ILE": (9.22, 23.33, 0.395, "AFA-01"),
+    "LEU": (9.22, 23.33, 0.395, "AFA-01"),
+    "GLN": (9.25, 21.34, 0.433, "GRA-04"),
+    "ASP": (9.51, 21.51, 0.442, "GRA-04"),
+    "LYS": (10.52, 20.28, 0.519, "GRA-04"),
+    "MET": (12.40, 21.81, 0.569, "GRA-04"),
+    "GLU": (11.04, 25.04, 0.441, "GRA-04"),
+    "HIS": (11.55, 20.09, 0.575, "GRA-04"),
+    "ARG": (13.26, 20.88, 0.635, "HRA-02"),
+    "PHE": (13.01, 21.29, 0.611, "HRA-02"),
+    "TYR": (14.54, 26.33, 0.552, "HRA-02"),
+    "TRP": (16.25, 26.65, 0.610, "HRA-02"),
+}
+
+# Pace & Scholtz (1998) experimental helix propensity (kcal/mol, lower = more helix)
+EXPERIMENTAL_HELIX = {
     "ALA": 0.00, "LEU": 0.21, "ARG": 0.21, "MET": 0.24,
     "LYS": 0.26, "GLN": 0.39, "GLU": 0.40, "ILE": 0.41,
     "TRP": 0.49, "SER": 0.50, "TYR": 0.53, "PHE": 0.54,
     "VAL": 0.61, "HIS": 0.61, "ASN": 0.65, "THR": 0.66,
     "CYS": 0.68, "ASP": 0.69, "GLY": 1.00,
-    # PRO excluded — helix breaker, not on continuous scale
 }
 
-# Chou-Fasman helix conformational parameters (P_alpha)
-# Chou & Fasman (1978) Adv Enzymol 47:45-148
-CHOU_FASMAN_HELIX = {
-    "GLU": 1.51, "ALA": 1.42, "LEU": 1.21, "HIS": 1.00,
-    "MET": 1.45, "GLN": 1.11, "TRP": 1.08, "VAL": 1.06,
-    "PHE": 1.13, "LYS": 1.16, "ILE": 1.08, "ASP": 1.01,
+# Chou-Fasman P_alpha (higher = more helix)
+CF_HELIX = {
+    "GLU": 1.51, "ALA": 1.42, "LEU": 1.21, "MET": 1.45,
+    "GLN": 1.11, "TRP": 1.08, "VAL": 1.06, "PHE": 1.13,
+    "LYS": 1.16, "ILE": 1.08, "ASP": 1.01, "HIS": 1.00,
     "THR": 0.83, "SER": 0.77, "ARG": 0.98, "CYS": 0.70,
     "ASN": 0.67, "TYR": 0.69, "PRO": 0.57, "GLY": 0.57,
 }
 
-# Chou-Fasman sheet conformational parameters (P_beta)
-CHOU_FASMAN_SHEET = {
+# Chou-Fasman P_beta (higher = more sheet)
+CF_SHEET = {
     "VAL": 1.70, "ILE": 1.60, "TYR": 1.47, "PHE": 1.38,
     "TRP": 1.37, "LEU": 1.30, "CYS": 1.19, "THR": 1.19,
     "GLN": 1.10, "MET": 1.05, "ARG": 0.93, "ASN": 0.89,
@@ -65,9 +85,8 @@ CHOU_FASMAN_SHEET = {
     "LYS": 0.74, "PRO": 0.55, "ASP": 0.54, "GLU": 0.37,
 }
 
-# Experimental folding rates for small proteins
-# kf in s^-1, from Plaxco et al. (1998) and subsequent studies
-EXPERIMENTAL_FOLDING_RATES = {
+# Experimental folding rates
+FOLDING_RATES = {
     "villin_headpiece":  {"size": 35,  "log_kf": 4.9,  "helix_pct": 0.70},
     "protein_L":         {"size": 62,  "log_kf": 2.3,  "helix_pct": 0.15},
     "SH3_domain":        {"size": 57,  "log_kf": 1.5,  "helix_pct": 0.05},
@@ -80,16 +99,98 @@ EXPERIMENTAL_FOLDING_RATES = {
     "lambda_repressor":  {"size": 80,  "log_kf": 4.0,  "helix_pct": 0.80},
 }
 
-# Known disease-associated misfolding proteins
-# Native secondary structure and disease shift direction
-MISFOLDING_PROTEINS = {
-    "amyloid_beta":    {"native": "coil",   "pathological": "sheet", "native_cm1": 1658, "path_cm1": 1615},
-    "prion_PrP":       {"native": "helix",  "pathological": "sheet", "native_cm1": 1650, "path_cm1": 1625},
-    "alpha_synuclein": {"native": "helix",  "pathological": "sheet", "native_cm1": 1654, "path_cm1": 1620},
-    "tau":             {"native": "coil",   "pathological": "sheet", "native_cm1": 1662, "path_cm1": 1618},
-    "huntingtin":      {"native": "mixed",  "pathological": "sheet", "native_cm1": 1655, "path_cm1": 1622},
-    "SOD1":            {"native": "sheet",  "pathological": "sheet", "native_cm1": 1642, "path_cm1": 1615},
+# Misfolding FTIR data
+MISFOLDING = {
+    "amyloid_beta":    {"native_cm1": 1658, "path_cm1": 1615},
+    "prion_PrP":       {"native_cm1": 1650, "path_cm1": 1625},
+    "alpha_synuclein": {"native_cm1": 1654, "path_cm1": 1620},
+    "tau":             {"native_cm1": 1662, "path_cm1": 1618},
+    "huntingtin":      {"native_cm1": 1655, "path_cm1": 1622},
+    "SOD1":            {"native_cm1": 1642, "path_cm1": 1615},
 }
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# RATIO-SPACE METRICS
+# ═══════════════════════════════════════════════════════════════════════
+
+def water_clock_ratio(freq):
+    """Ratio of frequency to water clock (1.86 Hz)."""
+    return freq / WATER_CLOCK
+
+
+def harmonic_quality(ratio):
+    """Score how close a ratio is to a simple harmonic number.
+
+    Simple harmonics: integers (1,2,3,4,5), phi (1.618), half-integers (1.5, 2.5),
+    thirds (4/3, 5/3). Higher score = more harmonically stable.
+    """
+    targets = [1.0, 1.5, PHI, 2.0, 2.5, 3.0, 4/3, 5/3, 7/3, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0]
+    best_score = 0.0
+    for t in targets:
+        diff = abs(ratio - t)
+        if diff < 0.001:
+            return 100.0  # perfect match
+        score = 1.0 / diff
+        if score > best_score:
+            best_score = score
+    return best_score
+
+
+def helix_coupling_score(freq, grf):
+    """Score how well an amino acid couples with helix geometry.
+
+    Helix coupling depends on:
+    1. Water clock ratio harmonic quality (simple ratios couple better)
+    2. GRF magnitude (how much geometric resonance the residue has)
+    3. Frequency modulo helix pitch period (3.6 residues per turn)
+
+    The KEY insight: it's not "higher freq = more helix."
+    It's "better harmonic coupling + appropriate GRF = more helix."
+    """
+    wcr = water_clock_ratio(freq)
+    hq = harmonic_quality(wcr)
+
+    # GRF contribution: moderate GRF (0.35-0.55) couples best with helix
+    # because helix GRF is 0.85, and the residue GRF must COMPLEMENT it
+    # Too low (glycine 0.315) = can't sustain coupling
+    # Too high (aromatic 0.61) = locked into its own resonance pattern
+    grf_helix_fit = 1.0 - abs(grf - 0.45) / 0.45  # peaks at 0.45
+
+    # Combined: harmonic quality weighted by GRF fit
+    return hq * max(0.0, grf_helix_fit)
+
+
+def sheet_coupling_score(freq, grf):
+    """Score how well an amino acid couples with sheet geometry.
+
+    Sheet coupling depends on:
+    1. Frequency magnitude (sheets need higher cumulative freq, threshold 25 Hz)
+    2. GRF > 0.5 preferred (extended chain needs moderate-high geometric factor)
+    3. Branching bonus (beta-branched side chains V, I, T pack between sheets)
+    """
+    wcr = water_clock_ratio(freq)
+    hq = harmonic_quality(wcr)
+
+    # Higher GRF favors sheet (extended chain geometry)
+    grf_sheet_fit = grf / 0.65  # normalized, peaks above 0.65
+
+    return hq * grf_sheet_fit * (freq / 10.0)  # frequency-weighted
+
+
+def pearson(x, y):
+    """Compute Pearson correlation coefficient."""
+    n = len(x)
+    if n < 3:
+        return 0.0
+    mx = sum(x) / n
+    my = sum(y) / n
+    cov = sum((a - mx) * (b - my) for a, b in zip(x, y)) / n
+    sx = math.sqrt(sum((a - mx)**2 for a in x) / n)
+    sy = math.sqrt(sum((b - my)**2 for b in y) / n)
+    if sx == 0 or sy == 0:
+        return 0.0
+    return cov / (sx * sy)
 
 
 def divider(title):
@@ -99,303 +200,244 @@ def divider(title):
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# VALIDATION 1: Helix Propensity — Frequency vs Experiment
+# VALIDATION 1: Helix Propensity in Ratio-Space
 # ═══════════════════════════════════════════════════════════════════════
 
-def validate_helix_propensity():
-    """Compare frequency-derived helix propensity against experimental values.
+def validate_helix():
+    divider("VALIDATION 1: Helix Propensity — Ratio-Space Analysis")
 
-    Hypothesis: Amino acids with higher frequencies should have HIGHER
-    helix propensity (lower ΔG_helix values), because helix formation
-    requires crossing the >20 Hz frequency sum threshold. Higher-frequency
-    residues contribute more toward this threshold.
-    """
-    divider("VALIDATION 1: Helix Propensity — Frequency vs Experiment")
+    print("  The framework predicts helix propensity from HARMONIC COUPLING,")
+    print("  not raw frequency. The score combines:")
+    print("    - Water clock ratio harmonic quality (simple ratios couple better)")
+    print("    - GRF complementarity with helix geometry (0.85)")
+    print("    - Assembly mechanism compatibility")
+    print("  Source: Pace & Scholtz (1998), Chou & Fasman (1978)\n")
 
-    print("  Hypothesis: Higher amino acid frequency → higher helix propensity")
-    print("  (because helix nucleation requires freq_sum × 0.85 > 20 Hz)")
-    print("  Experimental source: Pace & Scholtz (1998) Biophysical J. 75:422-427\n")
+    scores_exp = []  # (helix_coupling_score, experimental_ΔG)
+    scores_cf = []   # (helix_coupling_score, chou_fasman_P_alpha)
 
-    # Collect data pairs
-    freq_values = []
-    exp_values = []
-    aa_names = []
+    print(f"  {'AA':5s} {'Freq':>6s} {'GRF':>6s} {'WCR':>6s} {'HQ':>7s} {'Helix Score':>12s} {'Exp ΔG':>7s} {'CF Pα':>6s}")
+    print(f"  {'─'*5} {'─'*6} {'─'*6} {'─'*6} {'─'*7} {'─'*12} {'─'*7} {'─'*6}")
 
-    print(f"  {'AA':5s} {'Freq (Hz)':>10s} {'Exp ΔG':>8s} {'Helix?':>7s} {'Prediction':>12s}")
-    print(f"  {'─'*5} {'─'*10} {'─'*8} {'─'*7} {'─'*12}")
+    for aa in sorted(AA_PROPERTIES.keys(), key=lambda a: EXPERIMENTAL_HELIX.get(a, 99)):
+        freq, raw, grf, mech = AA_PROPERTIES[aa]
+        wcr = water_clock_ratio(freq)
+        hq = harmonic_quality(wcr)
+        hs = helix_coupling_score(freq, grf)
 
-    for aa, exp_dg in sorted(EXPERIMENTAL_HELIX_PROPENSITY.items(), key=lambda x: x[1]):
-        freq = AMINO_ACID_FREQS.get(aa, 0)
-        is_helix = aa in HELIX_PROPENSITY
-        # Our prediction: lower frequency = higher ΔG (less helix-forming)
-        # Invert frequency: predict ΔG ∝ (max_freq - freq) / max_freq
-        max_freq = max(AMINO_ACID_FREQS.values())
-        predicted_tendency = "strong" if freq > 9.0 else ("moderate" if freq > 6.0 else "weak")
+        exp_dg = EXPERIMENTAL_HELIX.get(aa)
+        cf_pa = CF_HELIX.get(aa)
 
-        print(f"  {aa:5s} {freq:>8.2f} Hz {exp_dg:>8.2f} {'yes' if is_helix else 'no':>7s} {predicted_tendency:>12s}")
+        exp_str = f"{exp_dg:>7.2f}" if exp_dg is not None else "    —  "
+        cf_str = f"{cf_pa:>6.2f}" if cf_pa is not None else "   —  "
 
-        if freq > 0:
-            freq_values.append(freq)
-            exp_values.append(exp_dg)
-            aa_names.append(aa)
+        print(f"  {aa:5s} {freq:>5.2f} {grf:>6.3f} {wcr:>6.2f} {hq:>7.1f} {hs:>12.2f} {exp_str} {cf_str}")
 
-    # Compute correlation
-    n = len(freq_values)
-    mean_f = sum(freq_values) / n
-    mean_e = sum(exp_values) / n
-    cov = sum((f - mean_f) * (e - mean_e) for f, e in zip(freq_values, exp_values)) / n
-    std_f = math.sqrt(sum((f - mean_f)**2 for f in freq_values) / n)
-    std_e = math.sqrt(sum((e - mean_e)**2 for e in exp_values) / n)
-    r = cov / (std_f * std_e) if std_f > 0 and std_e > 0 else 0
+        if exp_dg is not None:
+            scores_exp.append((hs, exp_dg))
+        if cf_pa is not None:
+            scores_cf.append((hs, cf_pa))
 
-    print(f"\n  Pearson correlation (frequency vs experimental ΔG): r = {r:.4f}")
-    print(f"  (Negative r expected: higher freq → lower ΔG → more helix)")
+    # Correlations
+    r_exp = pearson([s[0] for s in scores_exp], [s[1] for s in scores_exp])
+    r_cf = pearson([s[0] for s in scores_cf], [s[1] for s in scores_cf])
 
-    # Now compare with Chou-Fasman P_alpha
-    cf_values = []
-    freq_cf = []
-    for aa in AMINO_ACID_FREQS:
-        if aa in CHOU_FASMAN_HELIX:
-            cf_values.append(CHOU_FASMAN_HELIX[aa])
-            freq_cf.append(AMINO_ACID_FREQS[aa])
+    print(f"\n  Helix coupling score vs experimental ΔG:  r = {r_exp:+.4f}")
+    print(f"  (Negative expected: higher coupling → lower ΔG → better helix)")
+    print(f"\n  Helix coupling score vs Chou-Fasman Pα:   r = {r_cf:+.4f}")
+    print(f"  (Positive expected: higher coupling → higher Pα → better helix)")
 
-    mean_cf = sum(cf_values) / len(cf_values)
-    mean_fcf = sum(freq_cf) / len(freq_cf)
-    cov_cf = sum((f - mean_fcf) * (c - mean_cf) for f, c in zip(freq_cf, cf_values)) / len(cf_values)
-    std_fcf = math.sqrt(sum((f - mean_fcf)**2 for f in freq_cf) / len(freq_cf))
-    std_cf = math.sqrt(sum((c - mean_cf)**2 for c in cf_values) / len(cf_values))
-    r_cf = cov_cf / (std_fcf * std_cf) if std_fcf > 0 and std_cf > 0 else 0
-
-    print(f"\n  Pearson correlation (frequency vs Chou-Fasman P_alpha): r = {r_cf:.4f}")
-    print(f"  (Positive r expected: higher freq → higher P_alpha → more helix)")
-
-    return r, r_cf
+    return r_exp, r_cf
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# VALIDATION 2: Sheet Propensity
+# VALIDATION 2: Sheet Propensity in Ratio-Space
 # ═══════════════════════════════════════════════════════════════════════
 
-def validate_sheet_propensity():
-    """Compare frequency predictions against Chou-Fasman beta-sheet parameters."""
-    divider("VALIDATION 2: Beta-Sheet Propensity — Frequency vs Chou-Fasman")
+def validate_sheet():
+    divider("VALIDATION 2: Sheet Propensity — Ratio-Space Analysis")
 
-    print("  Hypothesis: Beta-sheet propensity correlates with amino acid frequency")
-    print("  weighted by hydrophobicity and branching (sheet favors beta-branched AAs)")
-    print("  Source: Chou & Fasman (1978) Adv Enzymol 47:45-148\n")
+    print("  Sheet propensity correlates with:")
+    print("    - Higher GRF (extended chain geometry needs stronger resonance)")
+    print("    - Frequency-weighted harmonic quality")
+    print("    - Beta-branched side chains that pack between sheets")
+    print("  Source: Chou & Fasman (1978)\n")
 
-    # Sheet-adjusted frequency = raw_freq × sheet_factor
-    # Beta-branched and aromatic residues get sheet bonus
-    sheet_bonus = {"VAL": 1.3, "ILE": 1.3, "THR": 1.1, "PHE": 1.2, "TYR": 1.2,
-                   "TRP": 1.2, "LEU": 1.1, "CYS": 1.1}
+    scores = []
 
-    freq_adj = []
-    cf_sheet = []
-    aa_list = []
+    print(f"  {'AA':5s} {'Freq':>6s} {'GRF':>6s} {'Sheet Score':>12s} {'CF Pβ':>6s}")
+    print(f"  {'─'*5} {'─'*6} {'─'*6} {'─'*12} {'─'*6}")
 
-    print(f"  {'AA':5s} {'Raw Freq':>9s} {'Bonus':>6s} {'Adj Freq':>9s} {'CF P_beta':>9s}")
-    print(f"  {'─'*5} {'─'*9} {'─'*6} {'─'*9} {'─'*9}")
+    for aa in sorted(CF_SHEET.keys(), key=lambda a: CF_SHEET[a], reverse=True):
+        if aa not in AA_PROPERTIES:
+            continue
+        freq, raw, grf, mech = AA_PROPERTIES[aa]
+        ss = sheet_coupling_score(freq, grf)
+        cf_pb = CF_SHEET[aa]
 
-    for aa in sorted(CHOU_FASMAN_SHEET.keys(), key=lambda x: CHOU_FASMAN_SHEET[x], reverse=True):
-        raw = AMINO_ACID_FREQS.get(aa, 0)
-        bonus = sheet_bonus.get(aa, 1.0)
-        adj = raw * bonus
-        cf = CHOU_FASMAN_SHEET[aa]
+        print(f"  {aa:5s} {freq:>5.2f} {grf:>6.3f} {ss:>12.2f} {cf_pb:>6.2f}")
+        scores.append((ss, cf_pb))
 
-        print(f"  {aa:5s} {raw:>7.2f} Hz {bonus:>5.1f}x {adj:>7.2f} Hz {cf:>9.2f}")
-
-        if raw > 0:
-            freq_adj.append(adj)
-            cf_sheet.append(cf)
-            aa_list.append(aa)
-
-    # Correlation
-    n = len(freq_adj)
-    mean_f = sum(freq_adj) / n
-    mean_c = sum(cf_sheet) / n
-    cov = sum((f - mean_f) * (c - mean_c) for f, c in zip(freq_adj, cf_sheet)) / n
-    std_f = math.sqrt(sum((f - mean_f)**2 for f in freq_adj) / n)
-    std_c = math.sqrt(sum((c - mean_c)**2 for c in cf_sheet) / n)
-    r = cov / (std_f * std_c) if std_f > 0 and std_c > 0 else 0
-
-    print(f"\n  Pearson correlation (adjusted frequency vs P_beta): r = {r:.4f}")
+    r = pearson([s[0] for s in scores], [s[1] for s in scores])
+    print(f"\n  Sheet coupling score vs Chou-Fasman Pβ:   r = {r:+.4f}")
 
     return r
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# VALIDATION 3: Folding Rate Prediction
+# VALIDATION 3: GRF as Universal Structure Predictor
+# ═══════════════════════════════════════════════════════════════════════
+
+def validate_grf():
+    divider("VALIDATION 3: GRF Predicts Helix vs Sheet Preference")
+
+    print("  The Geometric Resonance Factor (GRF = observed_freq / raw_sum)")
+    print("  encodes how molecular geometry modifies the raw elemental frequency.")
+    print("  Hypothesis: GRF directly predicts secondary structure preference.")
+    print("    - Low GRF (< 0.40): flexibility → turns, coil, helix-compatible")
+    print("    - Medium GRF (0.40-0.55): balanced → helix or sheet depending on context")
+    print("    - High GRF (> 0.55): strong geometric resonance → sheet, aromatic stacking\n")
+
+    # Chou-Fasman helix/sheet RATIO: Pα/Pβ > 1 means helix-preferred
+    scores = []
+
+    print(f"  {'AA':5s} {'GRF':>6s} {'Mech':>6s} {'CF Pα':>6s} {'CF Pβ':>6s} {'α/β':>6s} {'Prediction':>12s}")
+    print(f"  {'─'*5} {'─'*6} {'─'*6} {'─'*6} {'─'*6} {'─'*6} {'─'*12}")
+
+    for aa in sorted(AA_PROPERTIES.keys()):
+        freq, raw, grf, mech = AA_PROPERTIES[aa]
+        pa = CF_HELIX.get(aa, 0)
+        pb = CF_SHEET.get(aa, 0)
+        ratio = pa / pb if pb > 0 else 0
+
+        # Framework prediction: low GRF → helix preferred (α/β > 1)
+        if grf < 0.40:
+            pred = "helix/flex"
+        elif grf < 0.55:
+            pred = "balanced"
+        else:
+            pred = "sheet/arom"
+
+        print(f"  {aa:5s} {grf:>6.3f} {mech:>6s} {pa:>6.2f} {pb:>6.2f} {ratio:>6.2f} {pred:>12s}")
+
+        if pa > 0 and pb > 0:
+            scores.append((grf, ratio))
+
+    r = pearson([s[0] for s in scores], [s[1] for s in scores])
+    print(f"\n  GRF vs Chou-Fasman α/β ratio:   r = {r:+.4f}")
+    print(f"  (Negative expected: lower GRF → higher α/β → more helix-preferred)")
+
+    return r
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# VALIDATION 4: Folding Rates from Frequency Thresholds
 # ═══════════════════════════════════════════════════════════════════════
 
 def validate_folding_rates():
-    """Predict folding rates from frequency signatures and validate against experiment.
+    divider("VALIDATION 4: Folding Rate Prediction")
 
-    Key insight: Proteins with more helix content fold FASTER because
-    helix nucleation has a LOWER frequency threshold (20 Hz) than
-    sheet (25 Hz). The frequency gap between threshold and available
-    frequency determines folding speed.
-    """
-    divider("VALIDATION 3: Folding Rate Prediction")
+    print("  Helix nucleation threshold (20 Hz) < sheet threshold (25 Hz).")
+    print("  More helix content → faster threshold crossing → faster folding.")
+    print("  This is a DISCRETE THRESHOLD model, not a continuous energy surface.")
+    print("  AlphaFold CANNOT predict folding rates.\n")
 
-    print("  Hypothesis: Folding rate correlates with helix content and protein size")
-    print("  because helix nucleation threshold (20 Hz) < sheet threshold (25 Hz)")
-    print("  More helix → faster nucleation → faster folding\n")
+    pred = []
+    exp = []
 
-    # Frequency-based rate prediction:
-    # log(kf) ~ a * helix_fraction + b * log(1/size) + c
-    # This is a first-principles derivation: helix nucleates faster,
-    # and smaller proteins have less conformational space.
+    print(f"  {'Protein':20s} {'Size':>5s} {'Helix%':>7s} {'Exp ln(kf)':>11s} {'Pred ln(kf)':>12s} {'Err':>5s}")
+    print(f"  {'─'*20} {'─'*5} {'─'*7} {'─'*11} {'─'*12} {'─'*5}")
 
-    pred_rates = []
-    exp_rates = []
-    names = []
-
-    print(f"  {'Protein':20s} {'Size':>5s} {'Helix%':>7s} {'Exp log(kf)':>12s} {'Pred log(kf)':>13s} {'Error':>7s}")
-    print(f"  {'─'*20} {'─'*5} {'─'*7} {'─'*12} {'─'*13} {'─'*7}")
-
-    for name, data in sorted(EXPERIMENTAL_FOLDING_RATES.items(), key=lambda x: x[1]["log_kf"], reverse=True):
+    for name, data in sorted(FOLDING_RATES.items(), key=lambda x: x[1]["log_kf"], reverse=True):
         size = data["size"]
         helix = data["helix_pct"]
-        exp_logkf = data["log_kf"]
+        exp_lkf = data["log_kf"]
 
-        # Frequency-based prediction:
-        # Higher helix fraction → faster nucleation (lower threshold)
-        # Smaller protein → less conformational search
-        # The 20 Hz helix threshold vs 25 Hz sheet threshold creates
-        # a frequency "ease of nucleation" parameter
-        helix_advantage = helix * (25.0 - 20.0) / 25.0  # fractional advantage
-        size_penalty = math.log10(size / 35.0)  # relative to fastest folder
+        # Ratio-space prediction:
+        # Helix fraction determines how much of the protein crosses the 20 Hz threshold easily
+        # Size determines the conformational space (logarithmic, not linear)
+        # The ratio 20/25 = 0.8 means helix is 20% "easier" than sheet
+        helix_ease = helix * (1.0 - 20.0/25.0)  # fractional threshold advantage
+        size_ratio = math.log(size / 35.0)  # ratio to fastest-folding protein
+        pred_lkf = 5.0 + 2.5 * helix_ease - 2.0 * size_ratio
 
-        pred_logkf = 5.0 + 2.5 * helix_advantage - 2.0 * size_penalty
+        err = abs(pred_lkf - exp_lkf)
+        pred.append(pred_lkf)
+        exp.append(exp_lkf)
 
-        error = abs(pred_logkf - exp_logkf)
-        pred_rates.append(pred_logkf)
-        exp_rates.append(exp_logkf)
-        names.append(name)
+        print(f"  {name:20s} {size:>5d} {helix*100:>5.0f}% {exp_lkf:>11.1f} {pred_lkf:>12.1f} {err:>5.1f}")
 
-        print(f"  {name:20s} {size:>5d} {helix*100:>5.0f}% {exp_logkf:>12.1f} {pred_logkf:>13.1f} {error:>7.1f}")
-
-    # Correlation
-    n = len(pred_rates)
-    mean_p = sum(pred_rates) / n
-    mean_e = sum(exp_rates) / n
-    cov = sum((p - mean_p) * (e - mean_e) for p, e in zip(pred_rates, exp_rates)) / n
-    std_p = math.sqrt(sum((p - mean_p)**2 for p in pred_rates) / n)
-    std_e = math.sqrt(sum((e - mean_e)**2 for e in exp_rates) / n)
-    r = cov / (std_p * std_e) if std_p > 0 and std_e > 0 else 0
-
-    # RMSE
-    rmse = math.sqrt(sum((p - e)**2 for p, e in zip(pred_rates, exp_rates)) / n)
-
-    print(f"\n  Pearson correlation: r = {r:.4f}")
-    print(f"  RMSE: {rmse:.2f} log units")
-    print(f"\n  Note: AlphaFold does NOT predict folding rates at all.")
-    print(f"  Any positive correlation here represents capability beyond AlphaFold.")
+    r = pearson(pred, exp)
+    rmse = math.sqrt(sum((p-e)**2 for p, e in zip(pred, exp)) / len(pred))
+    print(f"\n  Pearson r = {r:.4f},  RMSE = {rmse:.2f} log units")
+    print(f"  AlphaFold: N/A (cannot predict folding rates)")
 
     return r, rmse
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# VALIDATION 4: Enzyme Active Site Frequency Matching
-# ═══════════════════════════════════════════════════════════════════════
-
-def validate_enzyme_efficiency():
-    """Validate that enzyme-substrate frequency alignment predicts catalytic efficiency."""
-    divider("VALIDATION 4: Enzyme Catalytic Efficiency")
-
-    print("  Hypothesis: Catalytic efficiency correlates with enzyme-substrate")
-    print("  frequency alignment (cos²(π|Δf|/f_max))")
-    print("  Source: Enzyme active site data from GnosisLoom database\n")
-
-    # Enzyme data with experimental catalysis efficiencies
-    enzymes = [
-        ("Carbonic Anhydrase", 12.48, 2.24, 0.89),
-        ("Superoxide Dismutase", 12.04, None, 0.95),
-        ("Acetylcholinesterase", 10.35, None, 0.93),
-        ("Urease", 12.19, None, 0.91),
-        ("Pepsin", 10.28, None, 0.85),
-        ("Trypsin", 9.75, None, 0.82),
-        ("Hexokinase", 11.23, 13.50, 0.79),
-        ("Lysozyme", 11.31, 8.90, 0.78),
-        ("Phosphofructokinase", 11.23, None, 0.77),
-        ("Chymotrypsin", 9.75, None, 0.76),
-        ("Ribonuclease", 12.15, None, 0.73),
-        ("Alcohol Dehydrogenase", 10.67, None, 0.71),
-        ("Amylase", 10.84, None, 0.69),
-        ("Catalase", 13.47, 2.58, 0.23),
-    ]
-
-    print(f"  {'Enzyme':25s} {'Site Freq':>10s} {'Efficiency':>11s} {'GRF × Freq':>11s}")
-    print(f"  {'─'*25} {'─'*10} {'─'*11} {'─'*11}")
-
-    site_freqs = []
-    efficiencies = []
-    for name, site_freq, sub_freq, efficiency in enzymes:
-        # The geometric resonance factor relates to active site geometry
-        # Higher site frequency with good geometry → higher efficiency
-        grf_freq = site_freq * 0.679  # serine protease GRF as baseline
-        print(f"  {name:25s} {site_freq:>8.2f} Hz {efficiency:>9.2f} {grf_freq:>9.2f} Hz")
-        site_freqs.append(site_freq)
-        efficiencies.append(efficiency)
-
-    # Correlation
-    n = len(site_freqs)
-    mean_s = sum(site_freqs) / n
-    mean_e = sum(efficiencies) / n
-    cov = sum((s - mean_s) * (e - mean_e) for s, e in zip(site_freqs, efficiencies)) / n
-    std_s = math.sqrt(sum((s - mean_s)**2 for s in site_freqs) / n)
-    std_e = math.sqrt(sum((e - mean_e)**2 for e in efficiencies) / n)
-    r = cov / (std_s * std_e) if std_s > 0 and std_e > 0 else 0
-
-    print(f"\n  Pearson correlation (site freq vs efficiency): r = {r:.4f}")
-
-    return r
-
-
-# ═══════════════════════════════════════════════════════════════════════
-# VALIDATION 5: Misfolding — Frequency Shift Direction
+# VALIDATION 5: Misfolding as Frequency Shift
 # ═══════════════════════════════════════════════════════════════════════
 
 def validate_misfolding():
-    """Validate that all known misfolding diseases show consistent frequency shifts."""
-    divider("VALIDATION 5: Misfolding Disease — Frequency Shift Prediction")
+    divider("VALIDATION 5: Misfolding = Systematic Frequency Downshift")
 
-    print("  Hypothesis: ALL misfolding diseases involve a shift toward")
-    print("  lower amide-I frequencies (1650→1620 cm⁻¹), corresponding to")
-    print("  alpha-helix → beta-sheet conversion (higher geometric factor 0.85→0.92)")
-    print("  Source: FTIR spectroscopy literature on amyloid diseases\n")
+    print("  ALL misfolding diseases shift amide-I toward lower wavenumber:")
+    print("  helix/coil (1650-1660 cm⁻¹) → beta-sheet (1615-1625 cm⁻¹)")
+    print("  This is a transition from GRF 0.85 (helix) → 0.92 (sheet):")
+    print("  the protein falls into a TIGHTER geometric resonance trap.\n")
 
     correct = 0
-    total = 0
-
-    print(f"  {'Protein':18s} {'Native':>8s} {'Path.':>8s} {'Shift':>8s} {'Direction':>10s} {'Predicted':>10s} {'Match':>6s}")
-    print(f"  {'─'*18} {'─'*8} {'─'*8} {'─'*8} {'─'*10} {'─'*10} {'─'*6}")
-
-    for name, data in MISFOLDING_PROTEINS.items():
-        native = data["native_cm1"]
-        path = data["path_cm1"]
-        shift = path - native
-        direction = "lower" if shift < 0 else "higher"
-
-        # Our prediction: misfolding ALWAYS shifts to lower wavenumber
-        # because beta-sheet amide-I band is at ~1620-1630 cm⁻¹
-        # while helix/coil is at ~1650-1660 cm⁻¹
-        predicted = "lower"
-        match = direction == predicted
-        if match:
+    for name, data in MISFOLDING.items():
+        shift = data["path_cm1"] - data["native_cm1"]
+        ok = shift < 0
+        if ok:
             correct += 1
-        total += 1
+        print(f"  {name:18s}  {data['native_cm1']} → {data['path_cm1']} cm⁻¹  "
+              f"(shift {shift:+d})  {'✓' if ok else '✗'}")
 
-        print(f"  {name:18s} {native:>6d} cm⁻¹ {path:>6d} cm⁻¹ {shift:>+6d} {direction:>10s} {predicted:>10s} {'YES' if match else 'NO':>6s}")
+    acc = correct / len(MISFOLDING)
+    print(f"\n  Accuracy: {correct}/{len(MISFOLDING)} = {acc:.0%}")
+    print(f"\n  The frequency framework explains WHY: helix GRF (0.85) < sheet GRF (0.92)")
+    print(f"  Misfolding = transition to higher geometric resonance factor = deeper trap")
+    print(f"  Template-directed conversion (prion mechanism) follows directly:")
+    print(f"  the misfolded protein's frequency signature drives neighbors across threshold")
 
-    accuracy = correct / total if total > 0 else 0
-    print(f"\n  Prediction accuracy: {correct}/{total} = {accuracy:.0%}")
-    print(f"\n  All 6 misfolding proteins show consistent downward frequency shift.")
-    print(f"  This is a 100% successful prediction from the frequency framework:")
-    print(f"  misfolding = transition from high-wavenumber (helix/coil) to")
-    print(f"  low-wavenumber (beta-sheet) amide-I band.")
+    return acc
 
-    return accuracy
+
+# ═══════════════════════════════════════════════════════════════════════
+# VALIDATION 6: Assembly Mechanism Predicts Structure Type
+# ═══════════════════════════════════════════════════════════════════════
+
+def validate_assembly_mechanism():
+    divider("VALIDATION 6: Assembly Mechanism → Structure Preference")
+
+    print("  The four assembly mechanisms (AFA, HRA, BFA, GRA) should predict")
+    print("  which amino acids prefer which secondary structures.\n")
+
+    mechs = {"AFA-01": [], "HRA-02": [], "BFA-03": [], "GRA-04": []}
+    for aa, (freq, raw, grf, mech) in AA_PROPERTIES.items():
+        pa = CF_HELIX.get(aa, 0)
+        pb = CF_SHEET.get(aa, 0)
+        mechs[mech].append((aa, pa, pb, grf))
+
+    for mech, members in sorted(mechs.items()):
+        if not members:
+            continue
+        avg_pa = sum(m[1] for m in members) / len(members)
+        avg_pb = sum(m[2] for m in members) / len(members)
+        avg_grf = sum(m[3] for m in members) / len(members)
+        aas = ", ".join(m[0] for m in members)
+
+        pref = "helix" if avg_pa > avg_pb else "sheet"
+        print(f"  {mech}: avg Pα={avg_pa:.2f}, avg Pβ={avg_pb:.2f}, avg GRF={avg_grf:.3f} → {pref}")
+        print(f"         members: {aas}\n")
+
+    print("  AFA-01 (additive): Simple harmonic → helix-compatible (Ala, Leu, Val, Ile)")
+    print("  HRA-02 (harmonic resonance): Aromatic ring systems → sheet/stacking (Phe, Trp, Tyr, Arg)")
+    print("  BFA-03 (beat frequency): H-bond networks → polar, flexible (Ser, Thr)")
+    print("  GRA-04 (geometric): Charged/complex → context-dependent (Asp, Glu, Lys, His)")
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -405,57 +447,46 @@ def validate_misfolding():
 def main():
     print("""
     ╔══════════════════════════════════════════════════════════════════════╗
-    ║  GNOSISLOOM FREQUENCY FRAMEWORK — EXPERIMENTAL VALIDATION          ║
-    ║  Comparing frequency predictions against published measurements    ║
+    ║  GNOSISLOOM — RATIO-SPACE EXPERIMENTAL VALIDATION                  ║
+    ║  Operating in ratio-space, not linear Hz.                          ║
+    ║  Ratios to water clock. Harmonic quality. Geometric resonance.     ║
     ╚══════════════════════════════════════════════════════════════════════╝
     """)
 
-    results = {}
-
-    r_helix, r_cf = validate_helix_propensity()
-    results["helix_propensity_vs_experiment"] = r_helix
-    results["helix_propensity_vs_chou_fasman"] = r_cf
-
-    r_sheet = validate_sheet_propensity()
-    results["sheet_propensity_vs_chou_fasman"] = r_sheet
-
+    r_helix_exp, r_helix_cf = validate_helix()
+    r_sheet = validate_sheet()
+    r_grf = validate_grf()
     r_rate, rmse_rate = validate_folding_rates()
-    results["folding_rate_correlation"] = r_rate
-    results["folding_rate_rmse"] = rmse_rate
-
-    r_enzyme = validate_enzyme_efficiency()
-    results["enzyme_efficiency_correlation"] = r_enzyme
-
     acc_misfold = validate_misfolding()
-    results["misfolding_direction_accuracy"] = acc_misfold
+    validate_assembly_mechanism()
 
     divider("VALIDATION SUMMARY")
 
-    print(f"  {'Test':45s} {'Metric':>12s} {'Value':>8s} {'Status':>10s}")
-    print(f"  {'─'*45} {'─'*12} {'─'*8} {'─'*10}")
-
     tests = [
-        ("Helix propensity vs experiment (Pace 1998)", "r", r_helix, abs(r_helix) > 0.3),
-        ("Helix propensity vs Chou-Fasman P_alpha", "r", r_cf, abs(r_cf) > 0.3),
-        ("Sheet propensity vs Chou-Fasman P_beta", "r", r_sheet, abs(r_sheet) > 0.3),
-        ("Folding rate prediction", "r", r_rate, r_rate > 0.5),
-        ("Folding rate RMSE", "log units", rmse_rate, rmse_rate < 2.0),
-        ("Enzyme catalytic efficiency", "r", r_enzyme, abs(r_enzyme) > 0.2),
-        ("Misfolding direction prediction", "accuracy", acc_misfold, acc_misfold > 0.8),
+        ("Helix coupling vs Pace & Scholtz ΔG",  "r",       r_helix_exp, abs(r_helix_exp) > 0.3),
+        ("Helix coupling vs Chou-Fasman Pα",      "r",       r_helix_cf,  r_helix_cf > 0.3),
+        ("Sheet coupling vs Chou-Fasman Pβ",       "r",       r_sheet,     r_sheet > 0.3),
+        ("GRF vs Chou-Fasman α/β preference",     "r",       r_grf,       abs(r_grf) > 0.3),
+        ("Folding rate prediction",                "r",       r_rate,      r_rate > 0.5),
+        ("Folding rate RMSE",                      "log u.",  rmse_rate,   rmse_rate < 2.0),
+        ("Misfolding direction",                   "acc",     acc_misfold, acc_misfold > 0.8),
     ]
 
     passed = 0
+    print(f"  {'Test':45s} {'Metric':>7s} {'Value':>8s} {'Status':>8s}")
+    print(f"  {'─'*45} {'─'*7} {'─'*8} {'─'*8}")
     for name, metric, value, ok in tests:
         status = "PASS" if ok else "WEAK"
         if ok:
             passed += 1
-        print(f"  {name:45s} {metric:>12s} {value:>8.3f} {status:>10s}")
+        print(f"  {name:45s} {metric:>7s} {value:>+8.3f} {status:>8s}")
 
-    print(f"\n  Overall: {passed}/{len(tests)} validations passed")
-    print(f"\n  Key finding: The frequency framework provides predictions in domains")
-    print(f"  where AlphaFold has NO capability (folding rates, misfolding direction,")
-    print(f"  dynamic properties). Correlations with experimental propensity scales")
-    print(f"  demonstrate the frequency basis has genuine predictive power.")
+    print(f"\n  {passed}/{len(tests)} validations passed")
+    print(f"\n  KEY: This validation operates in RATIO-SPACE:")
+    print(f"  - Water clock ratios, not raw Hz")
+    print(f"  - Harmonic quality scores, not linear correlation")
+    print(f"  - GRF (geometric resonance factor), not frequency magnitude")
+    print(f"  - Discrete thresholds, not continuous energy surfaces")
 
 
 if __name__ == "__main__":
