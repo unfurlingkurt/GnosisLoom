@@ -9,8 +9,13 @@ replacing the sequential-phase architecture. Each cycle:
   Step 3 — COHERE:   Coupling analysis (CF[0] = 1 on self-tension ratios)
   Step 4 — TENSE:    Curvature from sequential ratios
   Step 5 — LOCK:     Commit positions meeting crystallization criteria
-  Step 6 — ADJUST:   Propagate from locked to unlocked neighbors
-  Step 7 — OUTPUT:   Update state array
+  Step 6 — ADJUST:   Propagate helix + evolve field via mediant diffusion
+  Step 7 — OUTPUT:   Update state, check convergence
+
+The field (ratio at each position) evolves through mediant diffusion:
+unlocked positions blend toward locked neighbors via mediant (the Aramis
+Field iterator's diffusion mechanism). As structure crystallizes, the
+local field changes, creating conditions for further crystallization.
 
 Convergence: field has crystallized when no position changes state
 in a full 7-step cycle.
@@ -149,29 +154,19 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     seq = seq.upper().replace(" ", "").replace("\n", "")
     n = len(seq)
 
-    # === STEP 1: SAMPLE — compute all static field quantities ===
+    # === STEP 1: SAMPLE — initialize the field ===
 
-    # Raw backbone ratios and tensions (for boundaries + hairpins)
-    raw_ratios = [aa_ratio(c) for c in seq]
+    # The field: ratio at each position. Evolves through mediant diffusion.
+    field = [aa_ratio(c) for c in seq]
+    hyd_field = [hydrated_ratio(c) for c in seq]
+
+    # Static backbone quantities (computed once from initial ratios)
     raw_tensions = tension_sequence(seq)
     raw_cfs = [t["cf"] for t in raw_tensions]
     raw_costs = [t["cost"] for t in raw_tensions]
     raw_depths = [len(t["cf"]) for t in raw_tensions]
 
-    # Hydrated ratios and tensions (for CF motif analysis)
-    hyd_ratios = [hydrated_ratio(c) for c in seq]
-    hyd_tensions = []
-    for i in range(n - 1):
-        product = hyd_ratios[i] * hyd_ratios[i + 1]
-        cf = to_cf(product)
-        hyd_tensions.append({"cf": cf, "cost": cf_length(cf), "depth": len(cf)})
-    hyd_cfs = [t["cf"] for t in hyd_tensions]
-
-    # Sequential ratio curvature
-    seq_ratios = sequential_ratios(seq)
-    curvatures = [r["signed_curvature"] for r in seq_ratios]
-
-    # Self-tensions
+    # Self-tensions (static — property of amino acid identity)
     self_t = [SELF_TENSION.get(c, 50) for c in seq]
 
     # State arrays
@@ -192,6 +187,22 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     while True:
         cycle += 1
         changed = False
+
+        # --- Step 1 (per-cycle): Recompute field-derived quantities ---
+        # Hydrated pair CFs (evolve as field evolves)
+        hyd_cfs = []
+        for i in range(n - 1):
+            product = hyd_field[i] * hyd_field[i + 1]
+            hyd_cfs.append(to_cf(product))
+
+        # Curvature from current field (evolves with field)
+        curvatures = []
+        for i in range(n - 1):
+            ratio = field[i + 1] / field[i]
+            cf = to_cf(ratio)
+            mag = cf_length(cf)
+            sign = 1 if float(ratio) >= 1.0 else -1
+            curvatures.append(sign * mag)
 
         # --- Step 2: DETECT — identify boundary candidates ---
         for i in range(len(raw_depths)):
@@ -368,6 +379,29 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                             cf_next[0] <= INTER_GROUND_DEPTH):
                         if commit(i, SS.HELIX):
                             changed = True
+
+        # --- Step 6c: ADJUST — field evolution via mediant diffusion ---
+        # Unlocked positions blend toward locked neighbors through mediant.
+        # This is the Aramis Field iterator's diffusion mechanism:
+        # the local field evolves as the structure crystallizes, creating
+        # conditions for further crystallization in adjacent positions.
+        new_field = list(field)
+        new_hyd = list(hyd_field)
+        for i in range(n):
+            if locked[i]:
+                continue
+            locked_nbrs_raw = []
+            locked_nbrs_hyd = []
+            for offset in (-1, 1):
+                j = i + offset
+                if 0 <= j < n and locked[j]:
+                    locked_nbrs_raw.append(field[j])
+                    locked_nbrs_hyd.append(hyd_field[j])
+            if locked_nbrs_raw:
+                new_field[i] = mediant(field[i], *locked_nbrs_raw)
+                new_hyd[i] = mediant(hyd_field[i], *locked_nbrs_hyd)
+        field = new_field
+        hyd_field = new_hyd
 
         # --- Step 7: OUTPUT — check convergence ---
         if not changed:
