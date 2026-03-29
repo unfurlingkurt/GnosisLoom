@@ -40,13 +40,16 @@ Additional false attractors from v4 now eliminated in v5:
 15. ~~inter_ground_depth × 3 for cross-strand~~ → igd² (= 4, framework-derived)
 16. ~~Sequential phase ordering~~ → all operations each 7-step cycle
 
-## Best Result: Lysozyme Q3 = 68.5% (ZERO thresholds, v5.1 Fibonacci-scaled)
+## Best Result: Lysozyme Q3 = 70.9% (ZERO thresholds, v5.2 Winding Returns)
 
 Previous bests:
 - v2 (10+ thresholds): 61.4%
 - v4 (0 thresholds, sequential): 66.9%
 - v5 (0 thresholds, 7-step iterative): 67.7%
-- v5.1 (0 thresholds, Fibonacci-scaled step windows): 68.5% ← NEW BEST
+- v5.1 (0 thresholds, Fibonacci-scaled step windows): 68.5%
+- v5.2 (0 thresholds, winding returns for sheet): 70.9% ← NEW BEST
+  - Sheet F1: 0.00 → 0.84 (8/8 DSSP sheet positions correct)
+  - Ubiquitin: 39.5% → 43.4%
 
 ### v5.1 Change: Fibonacci-Scaled Step Windows
 
@@ -82,11 +85,32 @@ The 4 amino acid denominator classes:
 
 This hierarchy is structural, not degenerate. 153 = 3² × 17 = 17th triangular number.
 
+## v5.2 Change: Winding Returns for Sheet Detection
+
+Activated the dormant winding_returns() machinery from curvature.py:
+
+1. **Hairpin markers seed SHEET** (not TURN): CF depth=1, non-square product (ST/TS only)
+2. **Winding returns spanning hairpin**: exact winding return pairs that span a hairpin
+   marker confirm strand positions. Both endpoints checked for sheet character via
+   static curvature regularity (depth > igd = irregular = sheet).
+3. **Sheet extension**: adjacent to locked sheet + pair not a turn marker + static
+   curvature regularity > igd. The STATIC regularity (from initial ratios, not
+   the evolving field) is the framework's own geometry controlling strand extent.
+4. **No artificial distance limits**: strand length is controlled by the curvature
+   geometry itself, not by imposed caps.
+
+Key insight (from Kurt): "the number is structural" — winding return separations
+encode loop geometry, not just distance. Artificial limits suppress the framework.
+
 ## Remaining Blocks
 
-1. **Sheet detection**: requires long-range information not available from local geometry
+1. **~~Sheet detection~~** ✓ SOLVED: winding returns + static regularity gives F1=0.84
 2. **Helix coupling gap**: backbone helices with diverse side-chain tensions (ubiquitin)
-3. **7-step process deepening**: current implementation is iterative but the 7 steps
+   - K(156) doesn't couple with A(38): ratio > 4:1, CF[0] ≥ 2
+   - May need cross-domain coupling from the Aramis Field
+3. **False helix**: 25 coil positions predicted as helix (main remaining error source)
+   - Need a POSITIVE coil criterion, not just "absence of helix"
+4. **7-step process deepening**: current implementation is iterative but the 7 steps
    map to Sample/Detect/Cohere/Tense/Lock/Adjust/Output — need to study whether
    the Aramis Field 7-step iterator with convergence criterion maps to a different
    (possibly better) field evolution

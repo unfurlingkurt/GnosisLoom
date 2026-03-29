@@ -182,6 +182,24 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             return True
         return False
 
+    # === PRE-COMPUTE: Static curvature regularity (from initial ratios) ===
+    # The curvature from initial sequential ratios is a STATIC property of the
+    # sequence — it doesn't change with mediant diffusion. This is used for
+    # sheet extension decisions because sheet curvature is NEVER regular
+    # (depth ≤ igd). The evolving curvature (from the field) is used for
+    # helix decisions, which DO benefit from field evolution.
+    static_curvatures = []
+    for i in range(n - 1):
+        ratio = field[i + 1] / field[i]  # initial field = original ratios
+        cf = to_cf(ratio)
+        mag = cf_length(cf)
+        sign = 1 if float(ratio) >= 1.0 else -1
+        static_curvatures.append(sign * mag)
+
+    static_regularity = [99] * n
+    for i in range(n):
+        static_regularity[i] = _curvature_regularity(i, static_curvatures, [False] * n)
+
     # === PRE-COMPUTE: Winding returns (topological sheet contacts) ===
     # Winding returns detect positions where the accumulated geometric
     # curvature (from sequential ratios) returns to a previously visited
@@ -300,34 +318,35 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 
         # --- Step 2c: DETECT — winding-return sheet contacts ---
         # Positions with exact winding returns that SPAN a hairpin marker
-        # confirm strand positions in a β-hairpin. Only the position
-        # NEAR the hairpin is confirmed as sheet — the distant partner
-        # may be in a different structural context.
+        # are topologically adjacent across a chain reversal — both
+        # positions are part of the β-sheet structure. The winding return
+        # separation is itself a structural number (its CF encodes the
+        # loop geometry), not just a distance to be capped artificially.
         for r in wr:
             i_pos, j_pos = r["pos_i"], r["pos_j"]
             if i_pos >= n or j_pos >= n:
                 continue
 
             # Only consider returns that span a hairpin marker
-            for h in hairpin_pairs:
-                if i_pos <= h <= j_pos:
-                    # i_pos is upstream of hairpin, j_pos is downstream
-                    # Both positions NEAR the hairpin are strand candidates
-                    # "Near" = within igd² positions of the hairpin
-                    max_dist = INTER_GROUND_DEPTH * INTER_GROUND_DEPTH
-                    if h - i_pos <= max_dist and not locked[i_pos]:
-                        if commit(i_pos, SS.SHEET):
-                            changed = True
-                            if verbose:
-                                print(f"  [{cycle}] SHEET (winding) at {i_pos+1} ({seq[i_pos]}) "
-                                      f"partner={j_pos+1} dist={h - i_pos}")
-                    if j_pos - h <= max_dist and not locked[j_pos]:
-                        if commit(j_pos, SS.SHEET):
-                            changed = True
-                            if verbose:
-                                print(f"  [{cycle}] SHEET (winding) at {j_pos+1} ({seq[j_pos]}) "
-                                      f"partner={i_pos+1} dist={j_pos - h}")
-                    break  # only process once per hairpin
+            spans_hairpin = any(i_pos <= h <= j_pos for h in hairpin_pairs)
+            if not spans_hairpin:
+                continue
+
+            # Both positions of the return are sheet candidates.
+            # The curvature regularity at each position determines whether
+            # it's actually in a strand (irregular, depth > igd) or in a
+            # helix-like region that happens to be topologically connected.
+            for pos in (i_pos, j_pos):
+                if locked[pos]:
+                    continue
+                reg = static_regularity[pos]
+                if reg > INTER_GROUND_DEPTH:
+                    if commit(pos, SS.SHEET):
+                        changed = True
+                        if verbose:
+                            partner = j_pos if pos == i_pos else i_pos
+                            print(f"  [{cycle}] SHEET (winding) at {pos+1} ({seq[pos]}) "
+                                  f"partner={partner+1} reg={reg}")
 
         # --- Step 3: COHERE — coupling analysis ---
         # (coupling is a static property, computed once but used each cycle)
@@ -390,19 +409,18 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 
         # --- Step 5b: LOCK — extend sheet strands ---
         # Sheet strands propagate from locked sheet positions along the
-        # chain. Extension requires: adjacent to locked sheet, the
-        # connecting pair is NOT a turn marker (depth > igd), and the
-        # position is within igd² of a hairpin marker (strands have
-        # finite length bounded by the lattice scale).
-        max_strand_dist = INTER_GROUND_DEPTH * INTER_GROUND_DEPTH  # = 4
+        # chain. The strand continues while:
+        #   1. Adjacent to locked sheet
+        #   2. Connecting pair is NOT a turn marker (depth > igd)
+        #   3. STATIC curvature regularity > igd (irregular = sheet character)
+        # The STATIC regularity (from initial ratios, not the evolving field)
+        # is the framework's own geometry: sheet curvature is NEVER regular.
+        # Helix-like regions (regular curvature) naturally terminate strands.
         for i in range(n):
             if locked[i]:
                 continue
-            # Check distance to nearest hairpin
-            near_hairpin = any(abs(i - h) <= max_strand_dist + INTER_GROUND_DEPTH
-                               or abs(i - (h + 1)) <= max_strand_dist + INTER_GROUND_DEPTH
-                               for h in hairpin_pairs)
-            if not near_hairpin:
+            # Static curvature must be irregular (sheet character)
+            if static_regularity[i] <= INTER_GROUND_DEPTH:
                 continue
             has_sheet_neighbor = False
             for offset in (-1, 1):
@@ -418,7 +436,7 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                 if commit(i, SS.SHEET):
                     changed = True
                     if verbose:
-                        print(f"  [{cycle}] SHEET EXT at {i+1} ({seq[i]})")
+                        print(f"  [{cycle}] SHEET EXT at {i+1} ({seq[i]}) reg={regularity[i]}")
 
         # --- Step 6: ADJUST — propagate helix through coupled neighbors ---
         # Locked helix positions influence adjacent unlocked positions.
