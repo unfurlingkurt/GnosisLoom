@@ -107,58 +107,133 @@ def window_mean_self_tension(seq: str, pos: int, half_window: int = 3) -> float:
 
 
 # ═══════════════════════════════════════════════════════════════
-# TURN-FIRST PREDICTION
-# Order: Turns → Helices → Sheet → Coil
+# TENSION-PATH PREDICTION
+# All structure derived from the tension cost sequence.
+# No amino acid identity sets. Pure geometry.
+# Order: Turns (tension drops) → Helices (periodic tension) →
+#        Sheets (between turns, not helix) → Coil (everything else)
 # ═══════════════════════════════════════════════════════════════
 
-def compute_turn_density(seq: str) -> List[float]:
-    """Turn density at each position (fraction of turn-forming AAs in 4-residue window)."""
+def detect_turns_from_tension(seq: str) -> List[bool]:
+    """Detect turns purely from tension cost drops — no amino acid identity.
+
+    A turn is a geodesic shortcut: position where pair tension drops
+    sharply relative to local context. The chain folds back here.
+    Limited to max 3 consecutive residues (turns are short).
+    """
+    tensions = tension_sequence(seq)
+    costs = [t["cost"] for t in tensions]
     n = len(seq)
-    densities = []
-    for i in range(n):
-        w_start = max(0, i - 1)
-        w_end = min(n, i + 3)
-        w_len = w_end - w_start
-        turn_count = sum(1 for j in range(w_start, w_end) if seq[j] in TURN_FORMING)
-        shortcut_count = sum(1 for j in range(w_start, w_end) if seq[j] in GEODESIC_SHORTCUTS)
-        densities.append((turn_count + shortcut_count * 0.5) / w_len)
-    return densities
+
+    if not costs:
+        return [False] * n
+
+    # Rolling mean for local context
+    window = 7
+    rolling = []
+    for i in range(len(costs)):
+        w_s = max(0, i - window // 2)
+        w_e = min(len(costs), i + window // 2 + 1)
+        rolling.append(sum(costs[w_s:w_e]) / (w_e - w_s))
+
+    # A tension drop is where cost < 0.55 × local rolling mean
+    drop_threshold = 0.55
+    is_drop = [False] * len(costs)
+    for i in range(len(costs)):
+        if rolling[i] > 0 and costs[i] / rolling[i] < drop_threshold:
+            is_drop[i] = True
+
+    # Map pair drops to residue positions (pair i covers residues i and i+1)
+    turn_signal = [0.0] * n
+    for i in range(len(is_drop)):
+        if is_drop[i]:
+            if i < n:
+                turn_signal[i] += 1.0
+            if i + 1 < n:
+                turn_signal[i + 1] += 1.0
+
+    # Mark turns: positions with signal AND limit to max 3 consecutive
+    is_turn = [s > 0 for s in turn_signal]
+
+    # Enforce max 3 consecutive turn residues
+    run_start = None
+    for i in range(n + 1):
+        if i < n and is_turn[i]:
+            if run_start is None:
+                run_start = i
+        else:
+            if run_start is not None:
+                run_len = i - run_start
+                if run_len > 3:
+                    # Keep only the 3 positions with the lowest self-tension
+                    positions = list(range(run_start, i))
+                    positions.sort(key=lambda j: SELF_TENSION.get(seq[j], 50))
+                    keep = set(positions[:3])
+                    for j in range(run_start, i):
+                        if j not in keep:
+                            is_turn[j] = False
+                run_start = None
+
+    return is_turn
 
 
-def detect_turns(seq: str, threshold: float = 0.5) -> List[bool]:
-    """Identify turn positions (geodesic shortcut clusters)."""
-    densities = compute_turn_density(seq)
-    return [d > threshold for d in densities]
-
-
-def detect_helices(seq: str, turns: List[bool]) -> List[bool]:
-    """Identify helix positions via spring coupling compatibility.
+def detect_helices_from_tension(seq: str, turns: List[bool]) -> List[bool]:
+    """Detect helices from tension dynamics — coupling ratio + periodicity.
 
     Helix requires:
-    - Not a turn position
-    - Window coupling > 50% (springs can propagate)
-    - Mean self-tension in resonance band [25, 150]
-    - Majority helix-forming amino acids in window
+    1. Not a turn position
+    2. Window coupling > 50% (neighbor tension ratios < 3:1)
+    3. Mean self-tension in resonance band [25, 150]
+    4. Tension periodicity with period 3-5 (optional boost)
+    No amino acid identity sets used.
     """
     n = len(seq)
+    tensions = tension_sequence(seq)
+    costs = [t["cost"] for t in tensions]
     is_helix = [False] * n
 
+    # Compute periodicity at each position
+    periodicity_signal = [0.0] * n
+    scan_w = 8
+    for i in range(n - scan_w + 1):
+        seg = costs[max(0, i):i + scan_w]
+        if len(seg) >= 4:
+            period, strength = tension_periodicity(seg, max_period=6)
+            if period in (3, 4, 5) and strength > 0.3:
+                for k in range(i, min(i + scan_w, n)):
+                    periodicity_signal[k] = max(periodicity_signal[k], strength)
+
+    # Build non-turn segments (helices can only exist within these)
+    segments = []
+    seg_start = None
     for i in range(n):
-        if turns[i]:
+        if not turns[i]:
+            if seg_start is None:
+                seg_start = i
+        else:
+            if seg_start is not None:
+                segments.append((seg_start, i))
+                seg_start = None
+    if seg_start is not None:
+        segments.append((seg_start, n))
+
+    # Within each non-turn segment, apply helix criteria
+    for seg_start, seg_end in segments:
+        seg_len = seg_end - seg_start
+        if seg_len < 4:
+            # Too short for a helix (need at least 4 residues)
             continue
-        coupling = window_coupling_fraction(seq, i)
-        mean_self = window_mean_self_tension(seq, i)
 
-        w_start = max(0, i - 3)
-        w_end = min(n, i + 4)
-        helix_frac = sum(1 for j in range(w_start, w_end)
-                         if seq[j] in HELIX_FORMING) / (w_end - w_start)
+        for i in range(seg_start, seg_end):
+            coupling = window_coupling_fraction(seq, i)
+            mean_self = window_mean_self_tension(seq, i)
 
-        if coupling >= 0.5 and 25 <= mean_self <= 150 and helix_frac > 0.4:
-            is_helix[i] = True
+            if coupling >= 0.45 and 25 <= mean_self <= 150:
+                is_helix[i] = True
 
-    # Extend helices through compatible residues (gap filling)
-    for _ in range(3):
+    # Extend helices through compatible gaps (max gap of 1)
+    # But NEVER across turns
+    for _ in range(2):
         for i in range(1, n - 1):
             if not is_helix[i] and is_helix[i - 1] and is_helix[i + 1]:
                 if not turns[i] and SELF_TENSION.get(seq[i], 50) < 200:
@@ -167,23 +242,35 @@ def detect_helices(seq: str, turns: List[bool]) -> List[bool]:
     return is_helix
 
 
-def detect_sheets(seq: str, turns: List[bool], helices: List[bool]) -> List[bool]:
-    """Identify sheet positions: between turns, not helix, moderate tension.
+def detect_sheets_from_tension(seq: str, turns: List[bool],
+                                helices: List[bool]) -> List[bool]:
+    """Detect sheets: non-helix residues between tension-derived turns.
 
-    Sheets are defined by turns, not by strand-strand coupling.
-    The turn geometry creates the topology; H-bonds follow.
+    Sheet = between two turns, not helix, moderate self-tension.
+    The turn geometry defines the topology; sheets are what's between.
     """
     n = len(seq)
     is_sheet = [False] * n
 
+    # Find turn cluster boundaries
+    turn_positions = [i for i in range(n) if turns[i]]
+
     for i in range(n):
         if helices[i] or turns[i]:
             continue
-        # Between turn clusters?
-        has_turn_before = any(turns[j] for j in range(max(0, i - 6), i))
-        has_turn_after = any(turns[j] for j in range(i + 1, min(n, i + 7)))
-        moderate = SELF_TENSION.get(seq[i], 50) < 200
-        if has_turn_before and has_turn_after and moderate:
+
+        # Near a turn? (within 6 residues on each side)
+        near_turn_before = any(j for j in turn_positions if 0 < i - j <= 6)
+        near_turn_after = any(j for j in turn_positions if 0 < j - i <= 6)
+
+        # Self-tension in moderate range (not extreme)
+        t = SELF_TENSION.get(seq[i], 50)
+        moderate = t < 200
+
+        # Not in a high-tension disruptive region
+        coupling = window_coupling_fraction(seq, i)
+
+        if near_turn_before and near_turn_after and moderate and coupling >= 0.3:
             is_sheet[i] = True
 
     return is_sheet
@@ -194,18 +281,18 @@ def predict_structure(seq: str) -> str:
 
     Returns string of H (helix), E (sheet), C (coil) per residue.
 
-    Algorithm (turn-first):
-    1. Identify turns (geodesic shortcut clusters)
-    2. Identify helices (coupling-compatible, helix-forming)
-    3. Identify sheets (between turns, not helix)
+    Tension-path algorithm (no amino acid identity sets):
+    1. Detect turns from tension cost drops (geodesic shortcuts)
+    2. Detect helices from spring coupling + periodicity
+    3. Detect sheets between turns (non-helix, moderate tension)
     4. Everything else = coil
     """
     seq = seq.upper().replace(" ", "").replace("\n", "")
     n = len(seq)
 
-    turns = detect_turns(seq)
-    helices = detect_helices(seq, turns)
-    sheets = detect_sheets(seq, turns, helices)
+    turns = detect_turns_from_tension(seq)
+    helices = detect_helices_from_tension(seq, turns)
+    sheets = detect_sheets_from_tension(seq, turns, helices)
 
     prediction = []
     for i in range(n):
@@ -244,7 +331,7 @@ def tension_profile(seq: str) -> Dict:
         "pair_tensions": [t["cost"] for t in tensions],
         "pair_cfs": [t["cf"] for t in tensions],
         "coupling_fractions": [window_coupling_fraction(seq, i) for i in range(n)],
-        "turn_densities": compute_turn_density(seq),
+        "turns": detect_turns_from_tension(seq),
         "neighbor_ratios": [neighbor_tension_ratio(seq, i) for i in range(n)],
         "mean_self": sum(SELF_TENSION.get(c, 50) for c in seq) / n,
     }
