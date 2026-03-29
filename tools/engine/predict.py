@@ -136,8 +136,9 @@ def detect_turns_from_tension(seq: str) -> List[bool]:
         w_e = min(len(costs), i + window // 2 + 1)
         rolling.append(sum(costs[w_s:w_e]) / (w_e - w_s))
 
-    # A tension drop is where cost < 0.55 × local rolling mean
-    drop_threshold = 0.55
+    # A tension drop is where cost < 0.60 × local rolling mean
+    # (geodesic shortcuts show as sharp cost drops)
+    drop_threshold = 0.60
     is_drop = [False] * len(costs)
     for i in range(len(costs)):
         if rolling[i] > 0 and costs[i] / rolling[i] < drop_threshold:
@@ -203,7 +204,7 @@ def detect_helices_from_tension(seq: str, turns: List[bool]) -> List[bool]:
                 for k in range(i, min(i + scan_w, n)):
                     periodicity_signal[k] = max(periodicity_signal[k], strength)
 
-    # Build non-turn segments (helices can only exist within these)
+    # Build non-turn segments (structure can only exist within these)
     segments = []
     seg_start = None
     for i in range(n):
@@ -217,26 +218,33 @@ def detect_helices_from_tension(seq: str, turns: List[bool]) -> List[bool]:
     if seg_start is not None:
         segments.append((seg_start, n))
 
-    # Within each non-turn segment, apply helix criteria
+    # KEY GEOMETRIC CONSTRAINT:
+    # A helix needs at least ~2 full turns (3.6 res/turn × 2 = 7.2 ≈ 7 residues)
+    # Shorter segments between turns are sheet strand candidates, not helices.
+    MIN_HELIX_LENGTH = 7
+
     for seg_start, seg_end in segments:
         seg_len = seg_end - seg_start
         if seg_len < 4:
-            # Too short for a helix (need at least 4 residues)
             continue
 
         for i in range(seg_start, seg_end):
             coupling = window_coupling_fraction(seq, i)
             mean_self = window_mean_self_tension(seq, i)
 
-            if coupling >= 0.45 and 25 <= mean_self <= 150:
-                is_helix[i] = True
+            # Helix: coupling-compatible + resonance band
+            # (ceiling raised to 180 to include K=156, W=155, F=161)
+            if coupling >= 0.45 and 25 <= mean_self <= 180:
+                if seg_len >= MIN_HELIX_LENGTH:
+                    is_helix[i] = True
+                # Short segments (< MIN_HELIX_LENGTH) between turns → NOT helix
+                # These will be picked up by detect_sheets_from_tension()
 
     # Extend helices through compatible gaps (max gap of 1)
-    # But NEVER across turns
     for _ in range(2):
         for i in range(1, n - 1):
             if not is_helix[i] and is_helix[i - 1] and is_helix[i + 1]:
-                if not turns[i] and SELF_TENSION.get(seq[i], 50) < 200:
+                if not turns[i] and SELF_TENSION.get(seq[i], 50) < 256:
                     is_helix[i] = True
 
     return is_helix
@@ -244,34 +252,52 @@ def detect_helices_from_tension(seq: str, turns: List[bool]) -> List[bool]:
 
 def detect_sheets_from_tension(seq: str, turns: List[bool],
                                 helices: List[bool]) -> List[bool]:
-    """Detect sheets: non-helix residues between tension-derived turns.
+    """Detect sheets: short non-turn segments between turns that aren't helix.
 
-    Sheet = between two turns, not helix, moderate self-tension.
-    The turn geometry defines the topology; sheets are what's between.
+    The geometric constraint: helices need >= 7 residues (2 full turns).
+    Segments of 3-6 residues between turns with good coupling are sheet strands.
+    The turn topology defines where sheets can form.
     """
     n = len(seq)
     is_sheet = [False] * n
 
-    # Find turn cluster boundaries
-    turn_positions = [i for i in range(n) if turns[i]]
-
+    # Build non-turn, non-helix segments
+    segments = []
+    seg_start = None
     for i in range(n):
-        if helices[i] or turns[i]:
+        if not turns[i] and not helices[i]:
+            if seg_start is None:
+                seg_start = i
+        else:
+            if seg_start is not None:
+                segments.append((seg_start, i))
+                seg_start = None
+    if seg_start is not None:
+        segments.append((seg_start, n))
+
+    # Short segments between turns with decent coupling → sheet
+    turn_positions = set(i for i in range(n) if turns[i])
+
+    for seg_start, seg_end in segments:
+        seg_len = seg_end - seg_start
+        if seg_len < 2 or seg_len > 8:
+            continue  # Too short or too long for a sheet strand
+
+        # Must be flanked by turns (within 3 residues of a turn on each side)
+        has_turn_before = any(j in turn_positions
+                              for j in range(max(0, seg_start - 3), seg_start))
+        has_turn_after = any(j in turn_positions
+                             for j in range(seg_end, min(n, seg_end + 3)))
+
+        if not (has_turn_before or seg_start == 0) or not (has_turn_after or seg_end == n):
             continue
 
-        # Near a turn? (within 6 residues on each side)
-        near_turn_before = any(j for j in turn_positions if 0 < i - j <= 6)
-        near_turn_after = any(j for j in turn_positions if 0 < j - i <= 6)
-
-        # Self-tension in moderate range (not extreme)
-        t = SELF_TENSION.get(seq[i], 50)
-        moderate = t < 200
-
-        # Not in a high-tension disruptive region
-        coupling = window_coupling_fraction(seq, i)
-
-        if near_turn_before and near_turn_after and moderate and coupling >= 0.3:
-            is_sheet[i] = True
+        # Check coupling in the segment
+        seg_coupling = sum(window_coupling_fraction(seq, i)
+                          for i in range(seg_start, seg_end)) / seg_len
+        if seg_coupling >= 0.3:
+            for i in range(seg_start, seg_end):
+                is_sheet[i] = True
 
     return is_sheet
 
