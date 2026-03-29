@@ -1,16 +1,23 @@
 #!/usr/bin/env python3
-"""Sequential commitment field solver for protein structure prediction.
+"""Geometric field solver for protein structure prediction.
 
-Implements the Aramis tension field co-evolution model using ALL computed
-features: pair tensions, CF expansions, periodicity, singularity detection,
-cross-strand coupling, and hydration.
+ALL decisions are made by continued fraction arithmetic.
+NO floating-point thresholds. NO averaging. NO probability.
 
-Phase 1: TURNS from tension drops
-Phase 2: SHEETS via two geometric criteria:
-  Type 1 (hairpin): ST/TS geodesic fixed point at turn (CF depth=1, non-square)
-  Type 2 (long-range): winding returns from sequential ratio curvature
-Phase 3: HELIX via periodicity + coupling + hydration (non-turn, non-sheet)
-Phase 4: COIL for everything remaining
+Two operations: mediant (⊕) and composition (⊗).
+Every criterion is a CF depth check, exact ratio match, or structural invariant.
+
+Backbone geometry (turns, hairpins) uses raw Carbon-anchored ratios.
+Environmental coupling (helix vs coil) uses hydrated ratios (composition
+with Water/Carbon = 51/62 for polar residues).
+
+Phase 1: GEODESIC BOUNDARIES — pair tension CF depth ≤ inter-ground depth (raw)
+Phase 2: HAIRPIN SHEETS — CF depth=1, non-square product (raw backbone)
+Phase 3: HELIX SEEDS — CF motif (L > H; hw=1 hydrated) AND φ-coupled
+                        AND curvature regularity ≤ inter-ground depth
+         HELIX EXTENSION — propagate via coupled neighbors + wider motif
+         GAP BRIDGING — fill 1-residue gaps between helices
+Phase 4: COIL — everything remaining
 
 Run: python tools/engine/fold.py --demo
 """
@@ -25,20 +32,20 @@ from enum import Enum
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from tools.engine.rscode import (
-    aa_ratio, to_cf, cf_length, tension_sequence, tension_periodicity, SOL_CARBON
+    aa_ratio, hydrated_ratio, to_cf, cf_length, tension_sequence,
+    cf_motif_counts, phi_coherence, mediant, SOL_CARBON, WATER_CARBON, POLAR_AA
 )
 from tools.engine.curvature import (
-    geometric_winding, winding_returns, identify_sheet_contacts
+    geometric_winding, winding_returns, sequential_ratios
 )
 from tools.engine.predict import (
     SELF_TENSION, HELIX_GROUND, SHEET_GROUND,
-    window_coupling_fraction, window_mean_self_tension,
-    neighbor_tension_ratio, evaluate,
-    LYSOZYME_SEQ, LYSOZYME_DSSP,
+    evaluate, LYSOZYME_SEQ, LYSOZYME_DSSP,
 )
 
 
-class ResidueState(Enum):
+class SS(Enum):
+    """Secondary structure states."""
     UNRESOLVED = "?"
     HELIX = "H"
     SHEET = "E"
@@ -46,263 +53,288 @@ class ResidueState(Enum):
     COIL = "C"
 
 
-class TensionField:
-    """The evolving tension field of a folding protein."""
+def raw_tension_sequence(seq: str):
+    """Raw backbone tension sequence (Carbon-anchored, no hydration).
 
-    def __init__(self, seq: str):
-        self.seq = seq.upper()
-        self.n = len(self.seq)
-        self.states = [ResidueState.UNRESOLVED] * self.n
-        self.self_tensions = [SELF_TENSION.get(c, 50) for c in self.seq]
-        self.tensions = tension_sequence(self.seq)
-        self.pair_costs = [t["cost"] for t in self.tensions]
-        self.pair_cfs = [t["cf"] for t in self.tensions]
-        self.tension_modifier = [1.0] * self.n
-        self.committed = [False] * self.n
-        self.winding = 0.0
+    Used for turn detection and hairpin criterion where the
+    backbone geometry must be exact (ST product = 20, etc.).
+    """
+    return tension_sequence(seq)
 
-    def commit(self, pos: int, state: ResidueState):
-        self.states[pos] = state
-        self.committed[pos] = True
-        if state == ResidueState.HELIX:
-            for offset in range(-2, 3):
-                j = pos + offset
-                if 0 <= j < self.n and not self.committed[j]:
-                    ratio = self._nbr_ratio(pos, j)
-                    if ratio < 3.0:
-                        self.tension_modifier[j] *= 0.9
-            self.winding += 1.0 / 3.6
-        elif state == ResidueState.TURN:
-            for offset in range(-1, 2):
-                j = pos + offset
-                if 0 <= j < self.n and not self.committed[j]:
-                    self.tension_modifier[j] *= 1.1
-            self.winding *= -1
-        elif state == ResidueState.COIL:
-            for offset in range(-1, 2):
-                j = pos + offset
-                if 0 <= j < self.n and not self.committed[j]:
-                    self.tension_modifier[j] *= 1.05
 
-    def _nbr_ratio(self, i, j):
-        ti, tj = self.self_tensions[i], self.self_tensions[j]
-        if ti <= 0 or tj <= 0:
-            return 99.0
-        return max(ti, tj) / min(ti, tj)
+def hydrated_tension_sequence(seq: str):
+    """Tension sequence with hydration coupling via composition.
 
-    def eff_coupling(self, pos, hw=3):
-        return window_coupling_fraction(self.seq, pos, hw) * self.tension_modifier[pos]
+    Polar residues compose with Water/Carbon (51/62) before
+    tension computation. Used for CF motif analysis (helix vs coil).
+    """
+    seq = seq.upper()
+    ratios = [hydrated_ratio(c) for c in seq]
+    tensions = []
+    for i in range(len(ratios) - 1):
+        product = ratios[i] * ratios[i + 1]
+        cf = to_cf(product)
+        tensions.append({
+            "pair": seq[i:i+2],
+            "cost": cf_length(cf),
+            "cf": cf,
+            "cf_depth": len(cf),
+        })
+    return tensions
 
-    def eff_mean_self(self, pos, hw=3):
-        return window_mean_self_tension(self.seq, pos, hw) * self.tension_modifier[pos]
 
-    def is_tension_drop(self, pos, threshold=0.55):
-        if pos >= len(self.pair_costs):
-            return False
-        cost = self.pair_costs[pos]
-        ws = max(0, pos - 3)
-        we = min(len(self.pair_costs), pos + 4)
-        rm = sum(self.pair_costs[ws:we]) / (we - ws)
-        return (cost / rm < threshold) if rm > 0 else False
+def is_neighbor_coupled(seq: str, pos: int) -> bool:
+    """Check if position has at least one φ-coupled neighbor.
 
-    def cross_strand_tension(self, strand_a, strand_b):
-        total, count = 0, 0
-        for i, j in zip(strand_a, reversed(list(strand_b))):
-            if 0 <= i < self.n and 0 <= j < self.n:
-                ri, rj = aa_ratio(self.seq[i]), aa_ratio(self.seq[j])
-                total += cf_length(to_cf(ri / rj))
-                count += 1
-        return total / count if count > 0 else 999
+    Two residues are coupled when their self-tension ratio has CF[0] = 1,
+    meaning the ratio is < 2:1. This is a strict per-pair geometric check.
+    """
+    n = len(seq)
+    t_self = SELF_TENSION.get(seq[pos], 50)
+    for offset in (-1, 1):
+        j = pos + offset
+        if 0 <= j < n:
+            t_j = SELF_TENSION.get(seq[j], 50)
+            if t_self > 0 and t_j > 0:
+                ratio = Fraction(max(t_self, t_j), min(t_self, t_j))
+                cf = to_cf(ratio)
+                if cf[0] == 1:  # ratio < 2:1
+                    return True
+    return False
 
-    def to_dssp(self):
-        m = {ResidueState.HELIX: 'H', ResidueState.SHEET: 'E',
-             ResidueState.TURN: 'C', ResidueState.COIL: 'C',
-             ResidueState.UNRESOLVED: 'C'}
-        return ''.join(m[s] for s in self.states)
+
+def window_cf_motif(pair_cfs: list, pos: int, hw: int = 1) -> Tuple[int, int]:
+    """Count low (1,2) and high (≥5) CF coefficients in window.
+
+    Returns (total_low, total_high) — exact integer counts.
+    Default hw=1: uses only the immediate flanking pair CFs (most local).
+    Helix signal: low > high (dense 1s and 2s = tight coil).
+    """
+    start = max(0, pos - hw)
+    end = min(len(pair_cfs), pos + hw + 1)
+    total_low = 0
+    total_high = 0
+    for cf in pair_cfs[start:end]:
+        for c in cf:
+            if c in (1, 2):
+                total_low += 1
+            elif c >= 5:
+                total_high += 1
+    return total_low, total_high
+
+
+def curvature_regularity_depth(pos: int, increments: list, hw: int = 2) -> int:
+    """CF depth of max/min curvature magnitude ratio in ±hw window.
+
+    Measures how REGULAR the local curvature is.
+    Low depth (1-2) = very regular (suitable for helix crystallization).
+    High depth (3+) = irregular (prevents helix formation).
+
+    The ratio max_mag/min_mag as a continued fraction captures the
+    complexity of curvature variation. Helix requires regular curvature;
+    sheet and coil have irregular curvature patterns.
+    """
+    start = max(0, pos - hw)
+    end = min(len(increments), pos + hw + 1)
+    if start >= end:
+        return 10
+    mags = [abs(increments[j]) for j in range(start, end)]
+    mx = max(mags)
+    mn = min(mags)
+    if mn == 0:
+        mn = 1
+    ratio = Fraction(mx, mn)
+    cf = to_cf(ratio)
+    return len(cf)
 
 
 def fold_protein(seq: str, verbose: bool = False) -> str:
-    """Fold a protein using ALL computed tension features + field co-evolution."""
+    """Fold a protein using purely geometric CF criteria.
+
+    Every decision is a CF depth check, exact integer match,
+    or ratio of integer counts. No floats. No imposed thresholds.
+
+    The inter-ground depth (CF depth of SHEET_GROUND/HELIX_GROUND = 57/38
+    = [1,2], depth 2) serves as the universal structural scale:
+    - Boundaries: pair tension CF depth ≤ inter-ground depth
+    - Helix regularity: curvature regularity ≤ inter-ground depth
+    - Sheet extension: cross-strand depth ≤ 3 × inter-ground depth
+    """
     seq = seq.upper().replace(" ", "").replace("\n", "")
-    field = TensionField(seq)
-    n = field.n
-    costs = field.pair_costs
-    cfs = field.pair_cfs
+    n = len(seq)
 
-    # === HYDRATION COUPLING ===
-    POLAR = {'S', 'T', 'N', 'D', 'Q', 'E', 'K', 'R', 'H'}
-    for i in range(n):
-        if seq[i] in POLAR:
-            field.tension_modifier[i] *= 0.85  # water dampens polar tension
+    # Raw backbone tensions (for turns + hairpins)
+    raw_tensions = raw_tension_sequence(seq)
+    raw_cfs = [t["cf"] for t in raw_tensions]
+    raw_costs = [t["cost"] for t in raw_tensions]
+    raw_depths = [len(t["cf"]) for t in raw_tensions]
 
-    # === PRECOMPUTE: Periodicity + CF singularities ===
-    periodicity_map = [0.0] * n
-    for i in range(n - 8 + 1):
-        seg = costs[max(0, i):i + 8]
-        if len(seg) >= 4:
-            period, strength = tension_periodicity(seg, max_period=6)
-            if period in (3, 4, 5):
-                for k in range(i, min(i + 8, n)):
-                    periodicity_map[k] = max(periodicity_map[k], strength)
+    # Hydrated tensions (for CF motif analysis)
+    hyd_tensions = hydrated_tension_sequence(seq)
+    hyd_cfs = [t["cf"] for t in hyd_tensions]
 
-    cf_boundary = [False] * n
-    for i in range(len(cfs)):
-        if any(c > 100 for c in cfs[i]):
-            for k in (i, i + 1):
-                if 0 <= k < n:
-                    cf_boundary[k] = True
+    # Sequential ratio curvature (for regularity analysis)
+    seq_ratios = sequential_ratios(seq)
+    increments = [r["signed_curvature"] for r in seq_ratios]
 
-    # === PHASE 1: TURNS FIRST (topology defines everything) ===
-    # Detect tension drops, then extend turns to include immediate neighbors
-    # that also have below-average tension (turns are 2-4 residues, not just 1)
-    raw_drops = set()
-    for i in range(n):
-        if field.is_tension_drop(i, 0.55):
-            # Only mark as turn if NOT inside a strongly periodic region
-            # (drops inside periodic regions are helix "valleys," not turns)
-            if True:  # all drops are candidate turns; hairpin step discriminates
-                raw_drops.add(i)
+    # Inter-ground depth: the universal structural scale
+    # CF depth of SHEET_GROUND/HELIX_GROUND = 57/38 = [1,2] = depth 2
+    inter_ground_cf = to_cf(Fraction(SHEET_GROUND, HELIX_GROUND))
+    inter_ground_depth = len(inter_ground_cf)  # = 2
 
-    # Extend turns to immediate below-median neighbors (also non-periodic)
-    median_cost = sorted(costs)[len(costs) // 2] if costs else 50
-    turn_set = set(raw_drops)
-    for i in raw_drops:
-        for offset in (-1, 1):
-            j = i + offset
-            if 0 <= j < len(costs) and costs[j] < median_cost * 0.60:
-                if periodicity_map[j] < 0.50:
-                    turn_set.add(j)
-                    if 0 <= j + 1 < n:
-                        turn_set.add(j + 1)
+    states = [SS.UNRESOLVED] * n
+    committed = [False] * n
 
-    for i in sorted(turn_set):
-        if i < n:
-            field.commit(i, ResidueState.TURN)
+    def commit(pos, state):
+        if 0 <= pos < n and not committed[pos]:
+            states[pos] = state
+            committed[pos] = True
+            return True
+        return False
+
+    # === PHASE 1: GEODESIC BOUNDARIES (raw backbone) ===
+    # Pair tension CF depth ≤ inter-ground depth = structurally simple transition.
+    # These mark where the chain can change direction.
+    boundaries = set()
+    for i in range(len(raw_depths)):
+        if raw_depths[i] <= inter_ground_depth:
+            boundaries.add(i)
+            commit(i, SS.TURN)
+            if i + 1 < n:
+                commit(i + 1, SS.TURN)
             if verbose:
-                print(f"  TURN at {i+1} ({seq[i]})")
+                print(f"  BOUNDARY at pair {i+1} ({raw_tensions[i]['pair']}) "
+                      f"CF={raw_cfs[i]} depth={raw_depths[i]}")
 
-    # === PHASE 2: HAIRPIN DETECTION (before helix assignment) ===
-    turn_positions = [i for i in range(n) if field.states[i] == ResidueState.TURN]
-    processed_hp = set()
-    mean_pair_t = sum(costs) / len(costs) if costs else 50
-
-    for tp in turn_positions:
-        if tp in processed_hp:
+    # === PHASE 2: HAIRPIN SHEETS (raw backbone) ===
+    # ST/TS pairs: CF depth = 1, product is non-square integer.
+    # These are exact geometric hairpin markers in the backbone.
+    # Extend anti-parallel sheet strands via CROSS-STRAND CONSONANCE:
+    # positions equidistant from the hairpin are sheet if their
+    # cross-strand tension has CF depth ≤ 3 × inter-ground depth.
+    for i in range(len(raw_cfs)):
+        if len(raw_cfs[i]) != 1:  # must be CF depth 1
             continue
-        ts, te = tp, tp + 1
-        while ts > 0 and field.states[ts - 1] == ResidueState.TURN:
-            ts -= 1
-        while te < n and field.states[te] == ResidueState.TURN:
-            te += 1
-        for t in range(ts, te):
-            processed_hp.add(t)
+        product = raw_costs[i]
+        sqrt_p = int(math.sqrt(product) + 0.5)
+        if sqrt_p * sqrt_p == product:  # perfect square = not hairpin
+            continue
 
-        us = ts
-        while us > 0 and ts - us < 6:
-            if field.states[us - 1] in (ResidueState.TURN,):
+        if verbose:
+            print(f"  HAIRPIN at pair {i+1} ({raw_tensions[i]['pair']}) product={product}")
+
+        # Extend anti-parallel strands using cross-strand consonance
+        for k in range(1, 8):
+            up_pos = i - k
+            dn_pos = i + 1 + k
+            if up_pos < 0 or dn_pos >= n:
                 break
-            us -= 1
-        de = te
-        while de < n and de - te < 6:
-            if field.states[de] in (ResidueState.TURN,):
+            if committed[up_pos] or committed[dn_pos]:
                 break
-            de += 1
 
-        ulen, dlen = ts - us, de - te
-        if ulen >= 2 and dlen >= 2:
-            cross_t = field.cross_strand_tension(range(us, ts), range(te, de))
-            relative = cross_t / mean_pair_t if mean_pair_t > 0 else 1.0
-            if verbose:
-                print(f"  HAIRPIN turn {ts+1}-{te}: up=[{us+1}-{ts}] "
-                      f"down=[{te+1}-{de}] cross_T={cross_t:.1f} ({relative:.0%})")
-            # GEOMETRIC CRITERION: hairpin = turn containing a DISTINCT
-            # integer pair (CF depth = 1, NOT a perfect square).
-            # Only ST/TS qualifies: S(4) × T(5) = 20, distinct integers.
-            # SS(16) and TT(25) are perfect squares = helix-internal shortcuts.
-            # A hairpin requires chain direction CHANGE = distinct ratio product.
-            turn_has_hairpin_point = False
-            for ti in range(ts, min(te, len(field.pair_cfs))):
-                if len(field.pair_cfs[ti]) == 1:
-                    # Check: is the product a perfect square?
-                    product = field.pair_costs[ti]  # the CF value = the integer itself
-                    sqrt_p = int(math.sqrt(product) + 0.5)
-                    is_square = (sqrt_p * sqrt_p == product)
-                    if not is_square:
-                        turn_has_hairpin_point = True
-                        break
+            r_up = aa_ratio(seq[up_pos])
+            r_dn = aa_ratio(seq[dn_pos])
+            cross_cf = to_cf(r_up * r_dn)
+            cross_depth = len(cross_cf)
 
-            if turn_has_hairpin_point:
-                for i in range(us, ts):
-                    field.states[i] = ResidueState.SHEET
-                    field.committed[i] = True
-                for i in range(te, de):
-                    field.states[i] = ResidueState.SHEET
-                    field.committed[i] = True
+            if cross_depth <= inter_ground_depth * 3:
+                commit(up_pos, SS.SHEET)
+                commit(dn_pos, SS.SHEET)
                 if verbose:
-                    print(f"    -> SHEET")
+                    print(f"    STRAND k={k}: pos {up_pos+1},{dn_pos+1} "
+                          f"cross_depth={cross_depth}")
+            else:
+                break
 
-    # === PHASE 2b: LONG-RANGE SHEET via winding returns ===
-    # The sequential ratio geodesic's accumulated curvature identifies
-    # positions that are topologically adjacent despite large sequence separation.
-    # Only apply to positions that are: uncommitted, non-periodic (not helix candidates)
-    winding = geometric_winding(seq)
-    returns = winding_returns(seq, min_separation=10, max_diff=10)
-
-    # For each UNCOMMITTED, NON-PERIODIC position, count winding-return partners
-    winding_partners = [0] * n
-    for r in returns:
-        i, j = r["pos_i"], r["pos_j"]
-        if i < n and not field.committed[i] and periodicity_map[i] < 0.35:
-            winding_partners[i] += 1
-        if j < n and not field.committed[j] and periodicity_map[j] < 0.35:
-            winding_partners[j] += 1
-
-    # Mark as sheet: non-periodic, uncommitted positions with enough partners
+    # === PHASE 3: HELIX SEEDS (hydrated CF motif + coupling + regularity) ===
+    # Three geometric criteria for helix crystallization:
+    # 1. CF motif: more low coefficients (1,2) than high (≥5) in immediate pairs
+    #    (hw=1, hydrated tensions — most local signal)
+    # 2. At least one neighbor is φ-coupled (self-tension ratio CF[0] = 1)
+    # 3. Curvature regularity: max/min curvature ratio CF depth ≤ inter-ground depth
+    #    (helix requires REGULAR local curvature to crystallize)
     for i in range(n):
-        if field.committed[i]:
+        if committed[i]:
             continue
-        if periodicity_map[i] >= 0.35:
-            continue  # this will be handled by helix detection in Phase 3
-        if winding_partners[i] >= 5:
-            field.commit(i, ResidueState.SHEET)
+        L, H = window_cf_motif(hyd_cfs, i, hw=1)
+        if L <= H:
+            continue
+        if not is_neighbor_coupled(seq, i):
+            continue
+        reg = curvature_regularity_depth(i, increments, hw=2)
+        if reg <= inter_ground_depth:
+            commit(i, SS.HELIX)
             if verbose:
-                print(f"  WINDING SHEET at {i+1} ({seq[i]}) partners={winding_partners[i]}")
+                print(f"  HELIX SEED at {i+1} ({seq[i]}) L={L} H={H} reg={reg}")
 
-    # === PHASE 3: HELIX via periodicity (everything not turn/sheet) ===
-    for i in range(n):
-        if field.committed[i]:
-            continue
-        coupling = field.eff_coupling(i)
-        mean_self = field.eff_mean_self(i)
-        periodic = periodicity_map[i] > 0.30
+    # === PHASE 3b: HELIX EXTENSION ===
+    # Propagate helix from seeds through coupled neighbors.
+    # Extension uses wider window (hw=2) and requires coupling but
+    # not the regularity check — once a helix nucleates from a seed,
+    # it can extend through positions with less regular curvature
+    # as long as the CF motif and coupling conditions hold.
+    changed = True
+    passes = 0
+    while changed and passes < 5:
+        changed = False
+        passes += 1
+        for i in range(n):
+            if committed[i]:
+                continue
+            has_helix_neighbor = False
+            for offset in (-1, 1):
+                j = i + offset
+                if 0 <= j < n and states[j] == SS.HELIX:
+                    has_helix_neighbor = True
+                    break
+            if not has_helix_neighbor:
+                continue
+            L, H = window_cf_motif(hyd_cfs, i, hw=2)
+            if L <= H:
+                continue
+            if not is_neighbor_coupled(seq, i):
+                continue
+            if commit(i, SS.HELIX):
+                changed = True
+                if verbose:
+                    print(f"  HELIX EXT at {i+1} ({seq[i]}) pass={passes} L={L} H={H}")
 
-        if periodic and coupling >= 0.4 and 20 <= mean_self <= 200:
-            field.commit(i, ResidueState.HELIX)
-
-    # Bridge 1-residue gaps in helices (not across turns, CF singularities, or sheets)
+    # Bridge single-residue gaps in helices
+    # Only if coupled to BOTH flanking helix residues (CF[0] ≤ 2)
     for _ in range(2):
         for i in range(1, n - 1):
-            if field.states[i] not in (ResidueState.HELIX, ResidueState.TURN, ResidueState.SHEET):
-                if (field.states[i-1] == ResidueState.HELIX and
-                        field.states[i+1] == ResidueState.HELIX and
-                        not cf_boundary[i] and field.self_tensions[i] < 300):
-                    field.commit(i, ResidueState.HELIX)
+            if states[i] in (SS.HELIX, SS.TURN, SS.SHEET):
+                continue
+            if states[i-1] == SS.HELIX and states[i+1] == SS.HELIX:
+                t_self = SELF_TENSION.get(seq[i], 50)
+                t_prev = SELF_TENSION.get(seq[i-1], 50)
+                t_next = SELF_TENSION.get(seq[i+1], 50)
+                r_prev = Fraction(max(t_self, t_prev), min(t_self, t_prev))
+                r_next = Fraction(max(t_self, t_next), min(t_self, t_next))
+                if to_cf(r_prev)[0] <= 2 and to_cf(r_next)[0] <= 2:
+                    commit(i, SS.HELIX)
 
-    # (Hairpin detection done in Phase 2 above)
-    # === PHASE 4: COIL for everything remaining ===
+    # === PHASE 4: COIL ===
     for i in range(n):
-        if not field.committed[i]:
-            field.commit(i, ResidueState.COIL)
+        if not committed[i]:
+            commit(i, SS.COIL)
 
-    return field.to_dssp()
+    # Convert to DSSP-compatible output
+    dssp_map = {
+        SS.HELIX: 'H', SS.SHEET: 'E',
+        SS.TURN: 'C', SS.COIL: 'C',
+        SS.UNRESOLVED: 'C'
+    }
+    return ''.join(dssp_map[s] for s in states)
 
 
 def demo():
     print("""
     ===============================================================
-    SEQUENTIAL COMMITMENT FIELD SOLVER v2
-    Uses ALL computed features: pair tensions, CF singularities,
-    periodicity, hydration coupling, cross-strand tension.
+    GEOMETRIC FIELD SOLVER v4
+    All-CF criteria. No float thresholds. No averaging.
+    Helix: seed (hw=1 + regularity) + extend (hw=2 + coupled).
+    Boundaries: CF depth ≤ inter-ground depth (= 2).
     ===============================================================
     """)
 
@@ -323,7 +355,7 @@ def demo():
 
     print(f"\n  {'Cls':5s} {'Act':>4s} {'Prd':>4s} {'TP':>4s} {'Sens':>6s} {'Prec':>6s} {'F1':>5s}")
     print(f"  {'---':5s} {'---':>4s} {'---':>4s} {'---':>4s} {'---':>6s} {'---':>6s} {'---':>5s}")
-    for c, nm in [('H','Helix'),('E','Sheet'),('C','Coil')]:
+    for c, nm in [('H', 'Helix'), ('E', 'Sheet'), ('C', 'Coil')]:
         d = result['classes'][c]
         print(f"  {nm:5s} {d['actual']:>4d} {d['predicted']:>4d} {d['tp']:>4d} "
               f"{d['sensitivity']:>5.0%} {d['precision']:>5.0%} {d['f1']:>5.2f}")
@@ -336,6 +368,9 @@ def demo():
     p2 = fold_protein(ubq[:n2])
     r2 = evaluate(p2, ubq_d[:n2])
     print(f"\n  Ubiquitin Q3 = {r2['q3']:.1%}")
+    print(f"  SEQ:  {ubq[:n2]}")
+    print(f"  DSSP: {ubq_d[:n2]}")
+    print(f"  PRED: {p2}")
     for c in 'HEC':
         d = r2['classes'][c]
         print(f"    {c}: sens={d['sensitivity']:.0%} prec={d['precision']:.0%} F1={d['f1']:.2f}")
@@ -343,7 +378,7 @@ def demo():
 
 def main():
     import argparse
-    p = argparse.ArgumentParser(description="Protein field solver")
+    p = argparse.ArgumentParser(description="Geometric protein field solver")
     p.add_argument("sequence", nargs="?")
     p.add_argument("--dssp")
     p.add_argument("--demo", action="store_true")

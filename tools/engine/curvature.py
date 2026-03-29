@@ -68,11 +68,15 @@ def geometric_winding(seq: str) -> List[float]:
 
 
 def winding_returns(seq: str, min_separation: int = 10,
-                    max_diff: float = 10.0) -> List[Dict]:
+                    max_diff: float = 0) -> List[Dict]:
     """Find positions where winding returns to a previously visited value.
 
-    When winding(j) ≈ winding(i) with |j - i| > min_separation,
+    When winding(j) == winding(i) with |j - i| > min_separation,
     positions i and j are topologically adjacent (long-range contact).
+
+    max_diff=0 enforces EXACT integer match — the only valid proof
+    of a topologically closed loop in RatioSpace (Axiom: combinatorial
+    curvature is defined by exact integer angle deficits).
 
     Returns list of (pos_i, pos_j, winding_diff) sorted by diff.
     """

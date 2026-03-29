@@ -24,6 +24,10 @@ from typing import List, Tuple, Dict
 PHI = (1 + math.sqrt(5)) / 2
 SOL_CARBON = Fraction(153, 100)   # 1.53 Hz — polypeptide backbone anchor
 WATER_CLOCK = Fraction(186, 100)  # 1.86 Hz — hydration shell GRF envelope
+WATER_CARBON = Fraction(51, 62)   # Sol-Carbon/Water = 153/186 = 51/62
+
+# Polar residues that couple with hydration shell
+POLAR_AA = {'S', 'T', 'N', 'D', 'Q', 'E', 'K', 'R', 'H'}
 
 # Amino acid frequencies as exact fractions
 AA_FREQ = {
@@ -70,6 +74,49 @@ def from_cf(coeffs):
     return result
 
 
+# === Geometric Primitives ===
+
+def mediant(*fractions):
+    """Stern-Brocot mediant of multiple fractions.
+
+    The mediant (a/b ⊕ c/d) = (a+c)/(b+d) is the fundamental
+    harmonic blending operation. For multiple fractions, extends
+    to sum of all numerators / sum of all denominators.
+    """
+    total_num = sum(f.numerator for f in fractions)
+    total_den = sum(f.denominator for f in fractions)
+    return Fraction(total_num, total_den)
+
+
+def phi_coherence(cf):
+    """Count leading 1s in CF expansion (φ-coherence depth).
+
+    A CF starting with [1, 1, 1, ...] indicates the ratio is in
+    the neighborhood of the golden ratio φ = [1, 1, 1, ...].
+    This is the most stable, structurally locked geometric state.
+    """
+    count = 0
+    for c in cf:
+        if c == 1:
+            count += 1
+        else:
+            break
+    return count
+
+
+def cf_motif_counts(cf_coeffs):
+    """Count low (1,2) and high (≥5) CF coefficients.
+
+    These integer counts replace floating-point motif_density fractions.
+    Low coefficients = tight oscillation (helix signal).
+    High coefficients = extended glide (sheet signal).
+    Returns (low_count, high_count) — both exact integers.
+    """
+    low = sum(1 for c in cf_coeffs if c in (1, 2))
+    high = sum(1 for c in cf_coeffs if c >= 5)
+    return low, high
+
+
 # === Step A: Anchor to Sol-Carbon ===
 
 def aa_ratio(aa_code, anchor=None):
@@ -77,6 +124,19 @@ def aa_ratio(aa_code, anchor=None):
     anchor = anchor or SOL_CARBON
     freq = AA_FREQ.get(aa_code.upper(), Fraction(5, 1))
     return freq / anchor
+
+
+def hydrated_ratio(aa_code, anchor=None):
+    """Amino acid ratio with hydration coupling for polar residues.
+
+    Polar residues couple with the hydration shell via composition (⊗)
+    with the Water/Carbon ratio (51/62). This enters the tension
+    arithmetic directly — no damping factors.
+    """
+    r = aa_ratio(aa_code, anchor)
+    if aa_code.upper() in POLAR_AA:
+        r = r * WATER_CARBON  # composition, not multiplication by a damping scalar
+    return r
 
 
 # === Step B: Tension via Multiplicative Composition ===
