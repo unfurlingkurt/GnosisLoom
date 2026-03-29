@@ -5,9 +5,11 @@ Implements the Aramis tension field co-evolution model using ALL computed
 features: pair tensions, CF expansions, periodicity, singularity detection,
 cross-strand coupling, and hydration.
 
-Phase 1: HELIX via pair tension periodicity + coupling + hydration
-Phase 2: TURNS from tension drops in non-helix regions
-Phase 3: SHEETS via hairpin snapping at turns
+Phase 1: TURNS from tension drops
+Phase 2: SHEETS via two geometric criteria:
+  Type 1 (hairpin): ST/TS geodesic fixed point at turn (CF depth=1, non-square)
+  Type 2 (long-range): winding returns from sequential ratio curvature
+Phase 3: HELIX via periodicity + coupling + hydration (non-turn, non-sheet)
 Phase 4: COIL for everything remaining
 
 Run: python tools/engine/fold.py --demo
@@ -24,6 +26,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from tools.engine.rscode import (
     aa_ratio, to_cf, cf_length, tension_sequence, tension_periodicity, SOL_CARBON
+)
+from tools.engine.curvature import (
+    geometric_winding, winding_returns, identify_sheet_contacts
 )
 from tools.engine.predict import (
     SELF_TENSION, HELIX_GROUND, SHEET_GROUND,
@@ -235,6 +240,33 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                     field.committed[i] = True
                 if verbose:
                     print(f"    -> SHEET")
+
+    # === PHASE 2b: LONG-RANGE SHEET via winding returns ===
+    # The sequential ratio geodesic's accumulated curvature identifies
+    # positions that are topologically adjacent despite large sequence separation.
+    # Only apply to positions that are: uncommitted, non-periodic (not helix candidates)
+    winding = geometric_winding(seq)
+    returns = winding_returns(seq, min_separation=10, max_diff=10)
+
+    # For each UNCOMMITTED, NON-PERIODIC position, count winding-return partners
+    winding_partners = [0] * n
+    for r in returns:
+        i, j = r["pos_i"], r["pos_j"]
+        if i < n and not field.committed[i] and periodicity_map[i] < 0.35:
+            winding_partners[i] += 1
+        if j < n and not field.committed[j] and periodicity_map[j] < 0.35:
+            winding_partners[j] += 1
+
+    # Mark as sheet: non-periodic, uncommitted positions with enough partners
+    for i in range(n):
+        if field.committed[i]:
+            continue
+        if periodicity_map[i] >= 0.35:
+            continue  # this will be handled by helix detection in Phase 3
+        if winding_partners[i] >= 5:
+            field.commit(i, ResidueState.SHEET)
+            if verbose:
+                print(f"  WINDING SHEET at {i+1} ({seq[i]}) partners={winding_partners[i]}")
 
     # === PHASE 3: HELIX via periodicity (everything not turn/sheet) ===
     for i in range(n):
