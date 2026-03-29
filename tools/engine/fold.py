@@ -207,7 +207,16 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             if verbose:
                 print(f"  HAIRPIN turn {ts+1}-{te}: up=[{us+1}-{ts}] "
                       f"down=[{te+1}-{de}] cross_T={cross_t:.1f} ({relative:.0%})")
-            if relative < 0.38:
+            # GEOMETRIC CRITERION: hairpin forms when the turn contains
+            # a pair with CF depth = 1 (exact integer product = geodesic fixed point)
+            # This is a structural invariant, not a threshold.
+            turn_has_fixed_point = False
+            for ti in range(ts, min(te, len(field.pair_cfs))):
+                if len(field.pair_cfs[ti]) == 1:  # single-term CF = exact integer
+                    turn_has_fixed_point = True
+                    break
+
+            if turn_has_fixed_point:
                 for i in range(us, ts):
                     field.states[i] = ResidueState.SHEET
                     field.committed[i] = True
