@@ -9,11 +9,14 @@
 5. Accumulated geometric winding from signed curvatures
 6. Inter-ground depth: CF(57/38) = [1,2], depth 2 — universal structural scale
 7. Hydration coupling: composition with Water/Carbon = 51/62 (exact)
-8. CF motif counting: low (1,2) vs high (≥5) coefficients — exact integers
+8. CF motif counting: φ-coherent (≤ igd=2) vs φ-incoherent (≥ igd+cost=5)
 9. φ-coupling: self-tension ratio CF[0] = 1 (ratio < 2:1)
 10. Curvature regularity: CF depth of max/min curvature magnitude ratio
-11. Helix seed-and-extend: nucleate at strict criteria, propagate via coupling
-12. Gap bridging: fill 1-residue gaps if coupled to both sides (CF[0] ≤ 2)
+11. 7-step iterative crystallization: Sample → Detect → Cohere → Tense → Lock → Adjust → Output
+12. Convergence: iterate until no position changes state (no pass limit)
+13. Gap bridging: fill 1-residue gaps if coupled to both sides (CF[0] ≤ igd)
+14. Denominator lattice: all pair products have denominators 3^a × 17^b (9 levels)
+15. CF coefficient boundaries: ≤ igd (=2) coherent, ≥ cf_cost + igd (=5) incoherent
 
 ## Parameters Imposed (NOT from geometry) — ZERO REMAINING
 
@@ -29,13 +32,40 @@ All 10 previously imposed thresholds have been replaced:
 9. ~~hydration damping: 0.85~~ → composition with 51/62
 10. ~~CF singularity > 100~~ → eliminated
 
-## Best Result: Lysozyme Q3 = 66.9% (ZERO thresholds)
+Additional false attractors from v4 now eliminated in v5:
+11. ~~hw=1 for helix seeds~~ → immediate neighbors, grows through iteration
+12. ~~hw=2 for helix extension~~ → ±1 extension from locked helices
+13. ~~passes < 5~~ → iterate to convergence
+14. ~~range(1, 8) for hairpin extension~~ → iterate until CF structure breaks
+15. ~~inter_ground_depth × 3 for cross-strand~~ → igd² (= 4, framework-derived)
+16. ~~Sequential phase ordering~~ → all operations each 7-step cycle
 
-Previous best with thresholds: 61.4%
-Improvement: +5.5% with FEWER parameters (0 vs 10+)
+## Best Result: Lysozyme Q3 = 67.7% (ZERO thresholds, v5 iterative)
+
+Previous bests:
+- v2 (10+ thresholds): 61.4%
+- v4 (0 thresholds, sequential): 66.9%
+- v5 (0 thresholds, 7-step iterative): 67.7% ← NEW BEST
+
+## Denominator Lattice Discovery
+
+All amino acid ratios r = freq/SOL_CARBON have denominators from {1, 3, 51, 153} = {3^a × 17^b}.
+All pair products r_i × r_{i+1} have denominators from exactly 9 lattice levels:
+{1, 3, 9, 51, 153, 459, 2601, 7803, 23409} — all 3^a × 17^b.
+
+The 4 amino acid denominator classes:
+- {1}: S, T (exact Carbon harmonics)
+- {3}: R
+- {51}: D, E, H
+- {153}: G, A, C, P, I, L, V, N, Q, K, M, F, Y, W (14 others)
+
+This hierarchy is structural, not degenerate. 153 = 3² × 17 = 17th triangular number.
 
 ## Remaining Blocks
 
 1. **Sheet detection**: requires long-range information not available from local geometry
-2. **Helix coupling gap**: backbone helices with diverse side-chain tensions
-3. **Single-ratio crystallization**: mediant degenerates, need alternative composition
+2. **Helix coupling gap**: backbone helices with diverse side-chain tensions (ubiquitin)
+3. **7-step process deepening**: current implementation is iterative but the 7 steps
+   map to Sample/Detect/Cohere/Tense/Lock/Adjust/Output — need to study whether
+   the Aramis Field 7-step iterator with convergence criterion maps to a different
+   (possibly better) field evolution
