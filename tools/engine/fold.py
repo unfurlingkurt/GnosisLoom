@@ -182,6 +182,35 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             return True
         return False
 
+    # === PRE-COMPUTE: Winding returns (topological sheet contacts) ===
+    # Winding returns detect positions where the accumulated geometric
+    # curvature (from sequential ratios) returns to a previously visited
+    # value. This means the chain has LOOPED — positions i and j are
+    # topologically adjacent despite being far apart in sequence.
+    # max_diff=0 enforces EXACT integer match: the only valid proof
+    # of a closed loop in RatioSpace (combinatorial curvature axiom).
+    wr = winding_returns(seq, min_separation=INTER_GROUND_DEPTH + 1, max_diff=0)
+
+    # Build winding return adjacency: which positions are topologically connected?
+    wr_partners = [set() for _ in range(n)]
+    for r in wr:
+        i_pos, j_pos = r["pos_i"], r["pos_j"]
+        if i_pos < n and j_pos < n:
+            wr_partners[i_pos].add(j_pos)
+            wr_partners[j_pos].add(i_pos)
+
+    # Identify hairpin markers (CF depth=1, non-square product)
+    # These are structural SHEET seeds, not turns — they mark where
+    # the chain reverses direction in a β-hairpin.
+    hairpin_pairs = set()
+    for i in range(len(raw_cfs)):
+        if len(raw_cfs[i]) != 1:
+            continue
+        product = raw_costs[i]
+        sqrt_p = int(math.sqrt(product) + 0.5)
+        if sqrt_p * sqrt_p != product:
+            hairpin_pairs.add(i)
+
     # === ITERATIVE 7-STEP CYCLE ===
 
     cycle = 0
@@ -206,8 +235,14 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             curvatures.append(sign * mag)
 
         # --- Step 2: DETECT — identify boundary candidates ---
+        # Pairs with CF depth ≤ inter_ground_depth are structural boundaries.
+        # EXCEPT: hairpin markers (CF depth=1, non-square) are sheet seeds,
+        # not turns. The hairpin is where the chain reverses in a β-hairpin;
+        # the positions AT the marker are part of the sheet structure.
         for i in range(len(raw_depths)):
             if raw_depths[i] <= INTER_GROUND_DEPTH:
+                if i in hairpin_pairs:
+                    continue  # handled in Step 2b as sheet seed
                 if commit(i, SS.TURN):
                     changed = True
                     if verbose:
@@ -216,21 +251,26 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                 if i + 1 < n and commit(i + 1, SS.TURN):
                     changed = True
 
-        # --- Step 2b: DETECT — hairpin markers (CF depth=1, non-square) ---
-        for i in range(len(raw_cfs)):
-            if len(raw_cfs[i]) != 1:
-                continue
-            product = raw_costs[i]
-            sqrt_p = int(math.sqrt(product) + 0.5)
-            if sqrt_p * sqrt_p == product:
-                continue  # perfect square = not hairpin
-
+        # --- Step 2b: DETECT — hairpin sheet seeds ---
+        # Hairpin markers (CF depth=1, non-square product) are the ONLY
+        # amino acid pairs where the tension product is an exact non-square
+        # integer. This is unique to ST/TS (4×5=20). These seed sheet
+        # strands that extend outward from the hairpin turn.
+        for i in sorted(hairpin_pairs):
             if verbose and cycle == 1:
-                print(f"  [{cycle}] HAIRPIN at pair {i+1} ({raw_tensions[i]['pair']}) product={product}")
+                print(f"  [{cycle}] HAIRPIN at pair {i+1} ({raw_tensions[i]['pair']}) product={raw_costs[i]}")
 
-            # Extend anti-parallel strands from hairpin
-            # Iterate outward until the cross-strand CF depth exceeds
-            # the lattice scale (pair denominator leaves the current level)
+            # The hairpin positions themselves are sheet structure
+            if commit(i, SS.SHEET):
+                changed = True
+                if verbose:
+                    print(f"    [{cycle}] SHEET SEED at {i+1} ({seq[i]})")
+            if i + 1 < n and commit(i + 1, SS.SHEET):
+                changed = True
+                if verbose:
+                    print(f"    [{cycle}] SHEET SEED at {i+2} ({seq[i+1]})")
+
+            # Extend anti-parallel strands outward from hairpin
             k = 1
             while True:
                 up_pos = i - k
@@ -243,17 +283,9 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                 r_up = aa_ratio(seq[up_pos])
                 r_dn = aa_ratio(seq[dn_pos])
                 cross_product = r_up * r_dn
-                cross_cf = to_cf(cross_product)
-                cross_depth = len(cross_cf)
+                cross_depth = len(to_cf(cross_product))
 
-                # Cross-strand must be structurally consonant:
-                # CF depth within the lattice scale. The lattice has
-                # 9 levels; inter_ground_depth * (9//2) = 2*4 = 8
-                # captures the lower half of the lattice.
-                # Actually, use the product denominator's lattice position:
-                # if the cross product simplifies (low denominator), it's consonant.
-                cross_den = cross_product.denominator
-                # Consonant if denominator level is ≤ the pair's own level
+                # Cross-strand consonance: CF depth within lattice scale
                 if cross_depth <= INTER_GROUND_DEPTH * INTER_GROUND_DEPTH:
                     if commit(up_pos, SS.SHEET):
                         changed = True
@@ -265,6 +297,37 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                     k += 1
                 else:
                     break
+
+        # --- Step 2c: DETECT — winding-return sheet contacts ---
+        # Positions with exact winding returns that SPAN a hairpin marker
+        # confirm strand positions in a β-hairpin. Only the position
+        # NEAR the hairpin is confirmed as sheet — the distant partner
+        # may be in a different structural context.
+        for r in wr:
+            i_pos, j_pos = r["pos_i"], r["pos_j"]
+            if i_pos >= n or j_pos >= n:
+                continue
+
+            # Only consider returns that span a hairpin marker
+            for h in hairpin_pairs:
+                if i_pos <= h <= j_pos:
+                    # i_pos is upstream of hairpin, j_pos is downstream
+                    # Both positions NEAR the hairpin are strand candidates
+                    # "Near" = within igd² positions of the hairpin
+                    max_dist = INTER_GROUND_DEPTH * INTER_GROUND_DEPTH
+                    if h - i_pos <= max_dist and not locked[i_pos]:
+                        if commit(i_pos, SS.SHEET):
+                            changed = True
+                            if verbose:
+                                print(f"  [{cycle}] SHEET (winding) at {i_pos+1} ({seq[i_pos]}) "
+                                      f"partner={j_pos+1} dist={h - i_pos}")
+                    if j_pos - h <= max_dist and not locked[j_pos]:
+                        if commit(j_pos, SS.SHEET):
+                            changed = True
+                            if verbose:
+                                print(f"  [{cycle}] SHEET (winding) at {j_pos+1} ({seq[j_pos]}) "
+                                      f"partner={i_pos+1} dist={j_pos - h}")
+                    break  # only process once per hairpin
 
         # --- Step 3: COHERE — coupling analysis ---
         # (coupling is a static property, computed once but used each cycle)
@@ -324,6 +387,38 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                     if verbose:
                         print(f"  [{cycle}] HELIX SEED at {i+1} ({seq[i]}) "
                               f"coh={total_coh} inc={total_inc} reg={regularity[i]}")
+
+        # --- Step 5b: LOCK — extend sheet strands ---
+        # Sheet strands propagate from locked sheet positions along the
+        # chain. Extension requires: adjacent to locked sheet, the
+        # connecting pair is NOT a turn marker (depth > igd), and the
+        # position is within igd² of a hairpin marker (strands have
+        # finite length bounded by the lattice scale).
+        max_strand_dist = INTER_GROUND_DEPTH * INTER_GROUND_DEPTH  # = 4
+        for i in range(n):
+            if locked[i]:
+                continue
+            # Check distance to nearest hairpin
+            near_hairpin = any(abs(i - h) <= max_strand_dist + INTER_GROUND_DEPTH
+                               or abs(i - (h + 1)) <= max_strand_dist + INTER_GROUND_DEPTH
+                               for h in hairpin_pairs)
+            if not near_hairpin:
+                continue
+            has_sheet_neighbor = False
+            for offset in (-1, 1):
+                j = i + offset
+                if 0 <= j < n and states[j] == SS.SHEET and locked[j]:
+                    # Check that the pair connecting them is not a boundary
+                    pair_idx = min(i, j)
+                    if pair_idx < len(raw_depths):
+                        if raw_depths[pair_idx] > INTER_GROUND_DEPTH:
+                            has_sheet_neighbor = True
+                            break
+            if has_sheet_neighbor:
+                if commit(i, SS.SHEET):
+                    changed = True
+                    if verbose:
+                        print(f"  [{cycle}] SHEET EXT at {i+1} ({seq[i]})")
 
         # --- Step 6: ADJUST — propagate helix through coupled neighbors ---
         # Locked helix positions influence adjacent unlocked positions.
