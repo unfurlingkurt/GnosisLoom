@@ -207,16 +207,23 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             if verbose:
                 print(f"  HAIRPIN turn {ts+1}-{te}: up=[{us+1}-{ts}] "
                       f"down=[{te+1}-{de}] cross_T={cross_t:.1f} ({relative:.0%})")
-            # GEOMETRIC CRITERION: hairpin forms when the turn contains
-            # a pair with CF depth = 1 (exact integer product = geodesic fixed point)
-            # This is a structural invariant, not a threshold.
-            turn_has_fixed_point = False
+            # GEOMETRIC CRITERION: hairpin = turn containing a DISTINCT
+            # integer pair (CF depth = 1, NOT a perfect square).
+            # Only ST/TS qualifies: S(4) × T(5) = 20, distinct integers.
+            # SS(16) and TT(25) are perfect squares = helix-internal shortcuts.
+            # A hairpin requires chain direction CHANGE = distinct ratio product.
+            turn_has_hairpin_point = False
             for ti in range(ts, min(te, len(field.pair_cfs))):
-                if len(field.pair_cfs[ti]) == 1:  # single-term CF = exact integer
-                    turn_has_fixed_point = True
-                    break
+                if len(field.pair_cfs[ti]) == 1:
+                    # Check: is the product a perfect square?
+                    product = field.pair_costs[ti]  # the CF value = the integer itself
+                    sqrt_p = int(math.sqrt(product) + 0.5)
+                    is_square = (sqrt_p * sqrt_p == product)
+                    if not is_square:
+                        turn_has_hairpin_point = True
+                        break
 
-            if turn_has_fixed_point:
+            if turn_has_hairpin_point:
                 for i in range(us, ts):
                     field.states[i] = ResidueState.SHEET
                     field.committed[i] = True
