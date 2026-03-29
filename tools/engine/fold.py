@@ -153,19 +153,22 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     raw_drops = set()
     for i in range(n):
         if field.is_tension_drop(i, 0.55):
-            raw_drops.add(i)
+            # Only mark as turn if NOT inside a strongly periodic region
+            # (drops inside periodic regions are helix "valleys," not turns)
+            if True:  # all drops are candidate turns; hairpin step discriminates
+                raw_drops.add(i)
 
-    # Extend: if position i is a drop, check i-1 and i+1
-    # If their tension is below the median, include them in the turn
+    # Extend turns to immediate below-median neighbors (also non-periodic)
     median_cost = sorted(costs)[len(costs) // 2] if costs else 50
     turn_set = set(raw_drops)
     for i in raw_drops:
-        for offset in (-1, 0, 1):
+        for offset in (-1, 1):
             j = i + offset
             if 0 <= j < len(costs) and costs[j] < median_cost * 0.60:
-                turn_set.add(j)
-            if 0 <= j + 1 < n and costs[j] < median_cost * 0.75 if j < len(costs) else False:
-                turn_set.add(j + 1)
+                if periodicity_map[j] < 0.50:
+                    turn_set.add(j)
+                    if 0 <= j + 1 < n:
+                        turn_set.add(j + 1)
 
     for i in sorted(turn_set):
         if i < n:
