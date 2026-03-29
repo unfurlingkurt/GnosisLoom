@@ -1,22 +1,16 @@
 #!/usr/bin/env python3
 """Sequential commitment field solver for protein structure prediction.
 
-This module implements the Aramis tension field co-evolution model:
+Implements the Aramis tension field co-evolution model using ALL computed
+features: pair tensions, CF expansions, periodicity, singularity detection,
+cross-strand coupling, and hydration.
 
-1. Process the chain N→C terminal, assigning TENTATIVE states
-2. When a turn is committed, trigger constraint satisfaction:
-   - Re-evaluate upstream segments for cross-strand coupling
-   - If antiparallel coupling creates a phi-coherent lock,
-     snap upstream residues from tentative-helix to sheet
-3. The tension field updates with each commitment, constraining
-   what's accessible downstream
+Phase 1: HELIX via pair tension periodicity + coupling + hydration
+Phase 2: TURNS from tension drops in non-helix regions
+Phase 3: SHEETS via hairpin snapping at turns
+Phase 4: COIL for everything remaining
 
-This is not a pattern matcher — it's a field solver that builds
-proteins the same way the substrate does: through global geometric
-constraint satisfaction.
-
-Run: python tools/engine/fold.py KVFGRCELAAAMKRH...
-  or: python tools/engine/fold.py --demo
+Run: python tools/engine/fold.py --demo
 """
 
 import math
@@ -40,301 +34,225 @@ from tools.engine.predict import (
 
 
 class ResidueState(Enum):
-    UNRESOLVED = "?"    # not yet committed
-    HELIX = "H"        # committed helix
-    SHEET = "E"        # committed sheet
-    TURN = "T"         # committed turn (maps to C in DSSP output)
-    COIL = "C"         # committed coil
+    UNRESOLVED = "?"
+    HELIX = "H"
+    SHEET = "E"
+    TURN = "T"
+    COIL = "C"
 
 
 class TensionField:
-    """The evolving tension field of a folding protein.
-
-    Each commitment (helix/sheet/turn/coil) changes the field
-    for all remaining unresolved residues.
-    """
+    """The evolving tension field of a folding protein."""
 
     def __init__(self, seq: str):
         self.seq = seq.upper()
         self.n = len(self.seq)
         self.states = [ResidueState.UNRESOLVED] * self.n
         self.self_tensions = [SELF_TENSION.get(c, 50) for c in self.seq]
-
-        # Precompute pair tensions
         self.tensions = tension_sequence(self.seq)
         self.pair_costs = [t["cost"] for t in self.tensions]
         self.pair_cfs = [t["cf"] for t in self.tensions]
-
-        # Effective tension modifier: starts at 1.0, changes with commitments
         self.tension_modifier = [1.0] * self.n
-
-        # Track which segments have been committed
         self.committed = [False] * self.n
-
-        # Winding number (topological charge)
         self.winding = 0.0
 
     def commit(self, pos: int, state: ResidueState):
-        """Commit a residue to a structural state and update the field."""
         self.states[pos] = state
         self.committed[pos] = True
-
-        # Update tension modifiers for neighbors based on commitment type
         if state == ResidueState.HELIX:
-            # Helix commitment: lower effective tension for compatible downstream
-            # (spring coupling established → easier for next residue to join)
             for offset in range(-2, 3):
                 j = pos + offset
                 if 0 <= j < self.n and not self.committed[j]:
-                    # Coupling established: reduce effective tension
-                    ratio = self._neighbor_ratio(pos, j)
+                    ratio = self._nbr_ratio(pos, j)
                     if ratio < 3.0:
-                        self.tension_modifier[j] *= 0.9  # 10% easier
-
-            # Accumulate winding
-            self.winding += 1.0 / 3.6  # ~0.28 per helix residue
-
+                        self.tension_modifier[j] *= 0.9
+            self.winding += 1.0 / 3.6
         elif state == ResidueState.TURN:
-            # Turn commitment: create coupling barrier + enable cross-strand
             for offset in range(-1, 2):
                 j = pos + offset
                 if 0 <= j < self.n and not self.committed[j]:
-                    self.tension_modifier[j] *= 1.1  # 10% harder (barrier)
-
-            # Reverse winding direction (hairpin)
+                    self.tension_modifier[j] *= 1.1
             self.winding *= -1
-
         elif state == ResidueState.COIL:
-            # Coil commitment: break the spring chain
             for offset in range(-1, 2):
                 j = pos + offset
                 if 0 <= j < self.n and not self.committed[j]:
-                    self.tension_modifier[j] *= 1.05  # slight barrier
+                    self.tension_modifier[j] *= 1.05
 
-    def _neighbor_ratio(self, i: int, j: int) -> float:
-        """Self-tension ratio between two positions."""
-        ti = self.self_tensions[i]
-        tj = self.self_tensions[j]
+    def _nbr_ratio(self, i, j):
+        ti, tj = self.self_tensions[i], self.self_tensions[j]
         if ti <= 0 or tj <= 0:
             return 99.0
         return max(ti, tj) / min(ti, tj)
 
-    def effective_coupling(self, pos: int, half_w: int = 3) -> float:
-        """Window coupling fraction modified by committed field state."""
-        base = window_coupling_fraction(self.seq, pos, half_w)
-        return base * self.tension_modifier[pos]
+    def eff_coupling(self, pos, hw=3):
+        return window_coupling_fraction(self.seq, pos, hw) * self.tension_modifier[pos]
 
-    def effective_mean_self(self, pos: int, half_w: int = 3) -> float:
-        """Mean self-tension modified by field state."""
-        base = window_mean_self_tension(self.seq, pos, half_w)
-        return base * self.tension_modifier[pos]
+    def eff_mean_self(self, pos, hw=3):
+        return window_mean_self_tension(self.seq, pos, hw) * self.tension_modifier[pos]
 
-    def is_tension_drop(self, pos: int, threshold: float = 0.55) -> bool:
-        """Is this position a tension cost drop (geodesic shortcut)?"""
+    def is_tension_drop(self, pos, threshold=0.55):
         if pos >= len(self.pair_costs):
             return False
         cost = self.pair_costs[pos]
-        # Rolling mean for context
-        w_s = max(0, pos - 3)
-        w_e = min(len(self.pair_costs), pos + 4)
-        rm = sum(self.pair_costs[w_s:w_e]) / (w_e - w_s)
-        if rm <= 0:
-            return False
-        return cost / rm < threshold
+        ws = max(0, pos - 3)
+        we = min(len(self.pair_costs), pos + 4)
+        rm = sum(self.pair_costs[ws:we]) / (we - ws)
+        return (cost / rm < threshold) if rm > 0 else False
 
-    def cross_strand_tension(self, strand_a: range, strand_b: range) -> float:
-        """Compute cross-strand tension between two position ranges.
-
-        Uses antiparallel coupling (strand B reversed).
-        """
-        total = 0
-        count = 0
-        for k, (i, j) in enumerate(zip(strand_a, reversed(list(strand_b)))):
+    def cross_strand_tension(self, strand_a, strand_b):
+        total, count = 0, 0
+        for i, j in zip(strand_a, reversed(list(strand_b))):
             if 0 <= i < self.n and 0 <= j < self.n:
-                ri = aa_ratio(self.seq[i])
-                rj = aa_ratio(self.seq[j])
-                cf = to_cf(ri / rj)
-                total += cf_length(cf)
+                ri, rj = aa_ratio(self.seq[i]), aa_ratio(self.seq[j])
+                total += cf_length(to_cf(ri / rj))
                 count += 1
         return total / count if count > 0 else 999
 
-    def to_dssp_string(self) -> str:
-        """Convert internal states to DSSP-compatible string."""
-        mapping = {
-            ResidueState.HELIX: 'H',
-            ResidueState.SHEET: 'E',
-            ResidueState.TURN: 'C',   # DSSP doesn't have a turn state; map to C
-            ResidueState.COIL: 'C',
-            ResidueState.UNRESOLVED: 'C',
-        }
-        return ''.join(mapping[s] for s in self.states)
+    def to_dssp(self):
+        m = {ResidueState.HELIX: 'H', ResidueState.SHEET: 'E',
+             ResidueState.TURN: 'C', ResidueState.COIL: 'C',
+             ResidueState.UNRESOLVED: 'C'}
+        return ''.join(m[s] for s in self.states)
 
 
 def fold_protein(seq: str, verbose: bool = False) -> str:
-    """Fold a protein using sequential commitment with field co-evolution.
-
-    Phase 1: Forward pass — assign tentative states based on local tension
-    Phase 2: Constraint satisfaction — when turns are found, check if
-             upstream segments should snap to sheet
-    Phase 3: Resolve remaining unresolved states
-
-    Returns DSSP-compatible string (H/E/C).
-    """
+    """Fold a protein using ALL computed tension features + field co-evolution."""
     seq = seq.upper().replace(" ", "").replace("\n", "")
     field = TensionField(seq)
     n = field.n
+    costs = field.pair_costs
+    cfs = field.pair_cfs
 
-    # ═══ PHASE 1: Forward Pass — Tentative Assignment ═══
-
-    # First: identify definite turns (tension drops)
+    # === HYDRATION COUPLING ===
+    POLAR = {'S', 'T', 'N', 'D', 'Q', 'E', 'K', 'R', 'H'}
     for i in range(n):
-        if field.is_tension_drop(i, threshold=0.55):
+        if seq[i] in POLAR:
+            field.tension_modifier[i] *= 0.85  # water dampens polar tension
+
+    # === PRECOMPUTE: Periodicity + CF singularities ===
+    periodicity_map = [0.0] * n
+    for i in range(n - 8 + 1):
+        seg = costs[max(0, i):i + 8]
+        if len(seg) >= 4:
+            period, strength = tension_periodicity(seg, max_period=6)
+            if period in (3, 4, 5):
+                for k in range(i, min(i + 8, n)):
+                    periodicity_map[k] = max(periodicity_map[k], strength)
+
+    cf_boundary = [False] * n
+    for i in range(len(cfs)):
+        if any(c > 100 for c in cfs[i]):
+            for k in (i, i + 1):
+                if 0 <= k < n:
+                    cf_boundary[k] = True
+
+    # === PHASE 1: TURNS FIRST (topology defines everything) ===
+    # Detect tension drops, then extend turns to include immediate neighbors
+    # that also have below-average tension (turns are 2-4 residues, not just 1)
+    raw_drops = set()
+    for i in range(n):
+        if field.is_tension_drop(i, 0.55):
+            raw_drops.add(i)
+
+    # Extend: if position i is a drop, check i-1 and i+1
+    # If their tension is below the median, include them in the turn
+    median_cost = sorted(costs)[len(costs) // 2] if costs else 50
+    turn_set = set(raw_drops)
+    for i in raw_drops:
+        for offset in (-1, 0, 1):
+            j = i + offset
+            if 0 <= j < len(costs) and costs[j] < median_cost * 0.60:
+                turn_set.add(j)
+            if 0 <= j + 1 < n and costs[j] < median_cost * 0.75 if j < len(costs) else False:
+                turn_set.add(j + 1)
+
+    for i in sorted(turn_set):
+        if i < n:
             field.commit(i, ResidueState.TURN)
             if verbose:
-                print(f"  TURN committed at {i+1} ({seq[i]})")
+                print(f"  TURN at {i+1} ({seq[i]})")
 
-    # Second: identify definite helices (long coupling-compatible segments)
-    # Build non-turn segments
-    segments = []
-    seg_start = None
-    for i in range(n):
-        if field.states[i] != ResidueState.TURN:
-            if seg_start is None:
-                seg_start = i
-        else:
-            if seg_start is not None:
-                segments.append((seg_start, i))
-                seg_start = None
-    if seg_start is not None:
-        segments.append((seg_start, n))
-
-    # Assign helices in long segments (>= 7 residues = 2 full turns)
-    for seg_start, seg_end in segments:
-        seg_len = seg_end - seg_start
-        if seg_len >= 7:
-            # Check helix viability
-            viable_count = 0
-            for i in range(seg_start, seg_end):
-                coupling = field.effective_coupling(i)
-                mean_self = field.effective_mean_self(i)
-                if coupling >= 0.4 and 20 <= mean_self <= 200:
-                    viable_count += 1
-
-            if viable_count >= seg_len * 0.6:
-                for i in range(seg_start, seg_end):
-                    coupling = field.effective_coupling(i)
-                    mean_self = field.effective_mean_self(i)
-                    if coupling >= 0.4 and 20 <= mean_self <= 200:
-                        field.commit(i, ResidueState.HELIX)
-
-    # ═══ PHASE 2: Constraint Satisfaction — Hairpin Detection ═══
-
-    # For each turn, check if the segments on either side should form
-    # a beta-hairpin (sheet strand + turn + sheet strand)
+    # === PHASE 2: HAIRPIN DETECTION (before helix assignment) ===
     turn_positions = [i for i in range(n) if field.states[i] == ResidueState.TURN]
+    processed_hp = set()
+    mean_pair_t = sum(costs) / len(costs) if costs else 50
 
-    for turn_pos in turn_positions:
-        # Find the extent of this turn cluster
-        turn_start = turn_pos
-        turn_end = turn_pos + 1
-        while turn_start > 0 and field.states[turn_start - 1] == ResidueState.TURN:
-            turn_start -= 1
-        while turn_end < n and field.states[turn_end] == ResidueState.TURN:
-            turn_end += 1
+    for tp in turn_positions:
+        if tp in processed_hp:
+            continue
+        ts, te = tp, tp + 1
+        while ts > 0 and field.states[ts - 1] == ResidueState.TURN:
+            ts -= 1
+        while te < n and field.states[te] == ResidueState.TURN:
+            te += 1
+        for t in range(ts, te):
+            processed_hp.add(t)
 
-        # Look at segments BEFORE and AFTER this turn
-        # Upstream: find the nearest non-turn residues before the turn
-        # Look back from the turn, skipping already-committed helices,
-        # to find the nearest UNRESOLVED or short helix stretch
-        upstream_end = turn_start
-        upstream_start = upstream_end
-        # Walk back through unresolved/short-helix residues (max 6 residues)
-        steps_back = 0
-        while upstream_start > 0 and steps_back < 6:
-            prev = upstream_start - 1
-            if field.states[prev] == ResidueState.TURN:
-                break  # hit another turn — this is the upstream boundary
-            upstream_start -= 1
-            steps_back += 1
-
-        upstream_len = upstream_end - upstream_start
-
-        # Downstream: find the nearest non-turn residues after the turn
-        downstream_start = turn_end
-        downstream_end = downstream_start
-        steps_fwd = 0
-        while downstream_end < n and steps_fwd < 6:
-            nxt = downstream_end
-            if field.states[nxt] == ResidueState.TURN:
+        us = ts
+        while us > 0 and ts - us < 6:
+            if field.states[us - 1] in (ResidueState.TURN,):
                 break
-            downstream_end += 1
-            steps_fwd += 1
+            us -= 1
+        de = te
+        while de < n and de - te < 6:
+            if field.states[de] in (ResidueState.TURN,):
+                break
+            de += 1
 
-        downstream_len = downstream_end - downstream_start
-
-        # Hairpin condition: both flanking segments are SHORT (2-6 residues)
-        # and have decent cross-strand coupling
-        if 2 <= upstream_len <= 6 and 2 <= downstream_len <= 6:
-            # Check cross-strand tension
-            strand_a = range(upstream_start, upstream_end)
-            strand_b = range(downstream_start, downstream_end)
-
-            cross_t = field.cross_strand_tension(strand_a, strand_b)
-
-            # Compare to what they'd cost as helix
-            helix_cost = sum(field.self_tensions[i] for i in strand_a) / upstream_len
-
+        ulen, dlen = ts - us, de - te
+        if ulen >= 2 and dlen >= 2:
+            cross_t = field.cross_strand_tension(range(us, ts), range(te, de))
+            relative = cross_t / mean_pair_t if mean_pair_t > 0 else 1.0
             if verbose:
-                print(f"  HAIRPIN CHECK at turn {turn_start+1}-{turn_end}:")
-                print(f"    upstream [{upstream_start+1}-{upstream_end}] len={upstream_len} "
-                      f"'{seq[upstream_start:upstream_end]}'")
-                print(f"    downstream [{downstream_start+1}-{downstream_end}] len={downstream_len} "
-                      f"'{seq[downstream_start:downstream_end]}'")
-                print(f"    cross_strand_T = {cross_t:.1f}, helix_cost = {helix_cost:.1f}")
-
-            # Snap to sheet ONLY if:
-            # 1. Cross-strand tension is LOW (strong geometric coupling)
-            # 2. Both segments are SHORT (2-5 residues — real sheet strands)
-            # 3. The upstream segment wasn't already a strong helix candidate
-            #    (strong helix = long segment with high periodicity)
-            upstream_was_helix = any(field.states[i] == ResidueState.HELIX
-                                     for i in range(upstream_start, upstream_end))
-
-            short_enough = upstream_len <= 6 and downstream_len <= 6
-            # Cross-strand tension must be significantly below mean pair tension
-            mean_pair_t = sum(field.pair_costs) / len(field.pair_costs) if field.pair_costs else 50
-            strong_coupling = cross_t < mean_pair_t * 0.32  # below 32% of mean
-
-            if short_enough and strong_coupling:
-                for i in range(upstream_start, upstream_end):
+                print(f"  HAIRPIN turn {ts+1}-{te}: up=[{us+1}-{ts}] "
+                      f"down=[{te+1}-{de}] cross_T={cross_t:.1f} ({relative:.0%})")
+            if relative < 0.38:
+                for i in range(us, ts):
                     field.states[i] = ResidueState.SHEET
                     field.committed[i] = True
-                for i in range(downstream_start, downstream_end):
+                for i in range(te, de):
                     field.states[i] = ResidueState.SHEET
                     field.committed[i] = True
                 if verbose:
-                    print(f"    → SNAPPED to SHEET")
+                    print(f"    -> SHEET")
 
-    # ═══ PHASE 3: Resolve Remaining — Everything Uncommitted is Coil ═══
+    # === PHASE 3: HELIX via periodicity (everything not turn/sheet) ===
+    for i in range(n):
+        if field.committed[i]:
+            continue
+        coupling = field.eff_coupling(i)
+        mean_self = field.eff_mean_self(i)
+        periodic = periodicity_map[i] > 0.30
 
+        if periodic and coupling >= 0.4 and 20 <= mean_self <= 200:
+            field.commit(i, ResidueState.HELIX)
+
+    # Bridge 1-residue gaps in helices (not across turns, CF singularities, or sheets)
+    for _ in range(2):
+        for i in range(1, n - 1):
+            if field.states[i] not in (ResidueState.HELIX, ResidueState.TURN, ResidueState.SHEET):
+                if (field.states[i-1] == ResidueState.HELIX and
+                        field.states[i+1] == ResidueState.HELIX and
+                        not cf_boundary[i] and field.self_tensions[i] < 300):
+                    field.commit(i, ResidueState.HELIX)
+
+    # (Hairpin detection done in Phase 2 above)
+    # === PHASE 4: COIL for everything remaining ===
     for i in range(n):
         if not field.committed[i]:
             field.commit(i, ResidueState.COIL)
 
-    return field.to_dssp_string()
+    return field.to_dssp()
 
-
-# ═══════════════════════════════════════════════════════════════
-# CLI AND DEMO
-# ═══════════════════════════════════════════════════════════════
 
 def demo():
     print("""
-    ╔══════════════════════════════════════════════════════════════════════╗
-    ║  SEQUENTIAL COMMITMENT FIELD SOLVER                                ║
-    ║  Tension field co-evolves with structural commitments.             ║
-    ║  Turns trigger retroactive hairpin snapping.                       ║
-    ╚══════════════════════════════════════════════════════════════════════╝
+    ===============================================================
+    SEQUENTIAL COMMITMENT FIELD SOLVER v2
+    Uses ALL computed features: pair tensions, CF singularities,
+    periodicity, hydration coupling, cross-strand tension.
+    ===============================================================
     """)
 
     seq = LYSOZYME_SEQ
@@ -342,71 +260,56 @@ def demo():
     n = min(len(seq), len(dssp))
     seq, dssp = seq[:n], dssp[:n]
 
-    print(f"  === LYSOZYME ({n} residues) ===\n")
-    print(f"  Phase 1: Forward pass (turns + helices)")
-    print(f"  Phase 2: Constraint satisfaction (hairpin snapping)")
-    print(f"  Phase 3: Resolve remaining → coil\n")
-
     pred = fold_protein(seq, verbose=True)
     result = evaluate(pred, dssp)
 
-    print(f"\n  === PREDICTION ===\n")
-    block = 65
-    for start in range(0, n, block):
-        end = min(start + block, n)
-        print(f"  SEQ:  {seq[start:end]}")
-        print(f"  DSSP: {dssp[start:end]}")
-        print(f"  PRED: {pred[start:end]}")
-        match = ''.join('·' if dssp[i] == pred[i] else ' ' for i in range(start, end))
-        print(f"  MATCH:{match}")
-        print()
+    print(f"\n  SEQ:  {seq[:65]}")
+    print(f"  DSSP: {dssp[:65]}")
+    print(f"  PRED: {pred[:65]}")
+    print(f"\n  SEQ:  {seq[65:]}")
+    print(f"  DSSP: {dssp[65:]}")
+    print(f"  PRED: {pred[65:]}")
 
-    print(f"  === RESULTS ===\n")
-    print(f"  {'Class':8s} {'Actual':>7s} {'Pred':>7s} {'TP':>5s} {'Sens':>7s} {'Prec':>7s} {'F1':>6s}")
-    print(f"  {'─'*8} {'─'*7} {'─'*7} {'─'*5} {'─'*7} {'─'*7} {'─'*6}")
-    for cls, name in [('H', 'Helix'), ('E', 'Sheet'), ('C', 'Coil')]:
-        c = result["classes"][cls]
-        print(f"  {name:8s} {c['actual']:>7d} {c['predicted']:>7d} {c['tp']:>5d} "
-              f"{c['sensitivity']:>6.0%} {c['precision']:>6.0%} {c['f1']:>6.2f}")
-    print(f"\n  Q3 = {result['q3']:.1%} ({result['correct']}/{result['total']})")
-    print(f"  Chou-Fasman: ~57%")
+    print(f"\n  {'Cls':5s} {'Act':>4s} {'Prd':>4s} {'TP':>4s} {'Sens':>6s} {'Prec':>6s} {'F1':>5s}")
+    print(f"  {'---':5s} {'---':>4s} {'---':>4s} {'---':>4s} {'---':>6s} {'---':>6s} {'---':>5s}")
+    for c, nm in [('H','Helix'),('E','Sheet'),('C','Coil')]:
+        d = result['classes'][c]
+        print(f"  {nm:5s} {d['actual']:>4d} {d['predicted']:>4d} {d['tp']:>4d} "
+              f"{d['sensitivity']:>5.0%} {d['precision']:>5.0%} {d['f1']:>5.2f}")
+    print(f"\n  Q3 = {result['q3']:.1%}")
 
-    # Also test ubiquitin
-    print(f"\n  === UBIQUITIN (76 residues) ===\n")
-    ubq_seq = 'MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG'
-    ubq_dssp = 'EEEEEECCCCCCEEEECCCCCCCHHHHHHHHHHHCCCCEEEEEECCCCCCCCHHHHHHHHHHCCCCEEEEEECCCC'
-    n2 = min(len(ubq_seq), len(ubq_dssp))
-    ubq_pred = fold_protein(ubq_seq[:n2])
-    ubq_result = evaluate(ubq_pred, ubq_dssp[:n2])
-    print(f"  SEQ:  {ubq_seq[:n2]}")
-    print(f"  DSSP: {ubq_dssp[:n2]}")
-    print(f"  PRED: {ubq_pred}")
-    print(f"\n  Q3 = {ubq_result['q3']:.1%}")
-    for cls in 'HEC':
-        c = ubq_result['classes'][cls]
-        print(f"  {cls}: sens={c['sensitivity']:.0%} prec={c['precision']:.0%} F1={c['f1']:.2f}")
+    # Ubiquitin
+    ubq = 'MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG'
+    ubq_d = 'EEEEEECCCCCCEEEECCCCCCCHHHHHHHHHHHCCCCEEEEEECCCCCCCCHHHHHHHHHHCCCCEEEEEECCCC'
+    n2 = min(len(ubq), len(ubq_d))
+    p2 = fold_protein(ubq[:n2])
+    r2 = evaluate(p2, ubq_d[:n2])
+    print(f"\n  Ubiquitin Q3 = {r2['q3']:.1%}")
+    for c in 'HEC':
+        d = r2['classes'][c]
+        print(f"    {c}: sens={d['sensitivity']:.0%} prec={d['precision']:.0%} F1={d['f1']:.2f}")
 
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="Sequential commitment protein folder")
-    parser.add_argument("sequence", nargs="?", help="Amino acid sequence")
-    parser.add_argument("--dssp", help="DSSP reference for evaluation")
-    parser.add_argument("--demo", action="store_true", help="Run lysozyme + ubiquitin demo")
-    parser.add_argument("--verbose", "-v", action="store_true", help="Show commitment steps")
-    args = parser.parse_args()
+    p = argparse.ArgumentParser(description="Protein field solver")
+    p.add_argument("sequence", nargs="?")
+    p.add_argument("--dssp")
+    p.add_argument("--demo", action="store_true")
+    p.add_argument("-v", "--verbose", action="store_true")
+    args = p.parse_args()
 
     if args.demo:
         demo()
     elif args.sequence:
-        pred = fold_protein(args.sequence, verbose=args.verbose)
+        pred = fold_protein(args.sequence, args.verbose)
         print(f"  SEQ:  {args.sequence.upper()}")
         print(f"  PRED: {pred}")
         if args.dssp:
-            result = evaluate(pred, args.dssp)
-            print(f"\n  Q3 = {result['q3']:.1%}")
+            r = evaluate(pred, args.dssp)
+            print(f"  Q3 = {r['q3']:.1%}")
     else:
-        parser.print_help()
+        p.print_help()
 
 
 if __name__ == "__main__":
