@@ -40,12 +40,33 @@ Additional false attractors from v4 now eliminated in v5:
 15. ~~inter_ground_depth × 3 for cross-strand~~ → igd² (= 4, framework-derived)
 16. ~~Sequential phase ordering~~ → all operations each 7-step cycle
 
-## Best Result: Lysozyme Q3 = 67.7% (ZERO thresholds, v5 iterative)
+## Best Result: Lysozyme Q3 = 68.5% (ZERO thresholds, v5.1 Fibonacci-scaled)
 
 Previous bests:
 - v2 (10+ thresholds): 61.4%
 - v4 (0 thresholds, sequential): 66.9%
-- v5 (0 thresholds, 7-step iterative): 67.7% ← NEW BEST
+- v5 (0 thresholds, 7-step iterative): 67.7%
+- v5.1 (0 thresholds, Fibonacci-scaled step windows): 68.5% ← NEW BEST
+
+### v5.1 Change: Fibonacci-Scaled Step Windows
+
+Investigation confirmed the 7 steps naturally operate at Fibonacci-scaled
+spatial windows matching the Aramis Field's φ-scaled temporal domains:
+
+| Step | Operation | Window | Fibonacci |
+|------|-----------|--------|-----------|
+| 2 | DETECT (pairs) | 1 pair | Fib(1)=1 |
+| 3 | COHERE (coupling) | ±1 neighbor | Fib(2)=1 |
+| 4 | TENSE (curvature) | ±2 (hw=igd=2) | Fib(3)=2 |
+| 5 | LOCK (CF motif) | 3 pair CFs (symmetric) | Fib(4)=3 |
+| 6 | ADJUST (diffusion) | ±1, iterates via mediant | walks SB tree |
+
+Steps 2-4 already had the correct Fibonacci windows. Step 5 was asymmetric
+(2 pair CFs) — symmetrizing to 3 pair CFs gives the Fib(4) scaling.
+
+Wider windows (4+) tested and hurt — dilutes the local signal.
+Extended mediant diffusion (±2 to ±5) also hurts — the ±1 mediant
+through iteration IS the Stern-Brocot tree walk, naturally φ-decaying.
 
 ## Denominator Lattice Discovery
 

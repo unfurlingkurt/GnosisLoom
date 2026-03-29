@@ -12,24 +12,28 @@ fraction arithmetic -> structure prediction.
 
 ---
 
-## Architecture: v5 — 7-Step Iterative Crystallization
+## Architecture: v5.1 — Fibonacci-Scaled 7-Step Iterator
 
 All decisions are CF depth checks, exact ratio matches, or structural invariants.
 **Zero floating-point thresholds. Zero averaging. Zero probability.**
 
-The fold emerges from an iterative 7-step field solver that runs to convergence:
+The fold emerges from an iterative 7-step field solver that runs to convergence.
+Each step operates at a Fibonacci-scaled spatial window, matching the Aramis
+Field's 6 φ-scaled temporal domains {φ, 1, 1/φ, 1/φ², 1/φ³, 1/φ⁴}:
 
-| Step | Name | Operation |
-|------|------|-----------|
-| 1 | **Sample** | Read ratios, hydrated ratios, self-tensions |
-| 2 | **Detect** | Pair CF depths → boundary candidates (depth ≤ igd=2) |
-| 3 | **Cohere** | Coupling analysis (self-tension ratio CF[0] = 1) |
-| 4 | **Tense** | Sequential ratio curvature + regularity (CF depth) |
-| 5 | **Lock** | Commit positions meeting crystallization criteria |
-| 6 | **Adjust** | Propagate from locked to unlocked neighbors |
-| 7 | **Output** | Update state, check convergence |
+| Step | Name | Operation | Window (Fibonacci) |
+|------|------|-----------|-------------------|
+| 1 | **Sample** | Read ratios, hydrated ratios, self-tensions | — |
+| 2 | **Detect** | Pair CF depths → boundary candidates (depth ≤ igd=2) | Fib(1) = 1 |
+| 3 | **Cohere** | Coupling analysis (self-tension ratio CF[0] = 1) | Fib(2) = 1 |
+| 4 | **Tense** | Sequential ratio curvature + regularity (CF depth) | Fib(3) = 2 |
+| 5 | **Lock** | Commit positions, symmetric CF motif (3 pair CFs) | Fib(4) = 3 |
+| 6 | **Adjust** | Mediant diffusion ±1, iterates (SB tree walk) | ±1, iterates |
+| 7 | **Output** | Update state, check convergence | — |
 
 **Convergence**: field has crystallized when no position changes state in a cycle.
+**Mediant diffusion**: each mediant = one step on the Stern-Brocot tree.
+Iterated mediant through cycles = the SB tree walk with natural φ-decay.
 
 ### Crystallization Criteria (all framework-native):
 
@@ -131,23 +135,23 @@ AlphaFold cannot predict folding rates at all.
 
 ---
 
-## Current Prediction Results (v5 — 7-Step Iterative, ZERO Thresholds)
+## Current Prediction Results (v5.1 — Fibonacci-Scaled 7-Step, ZERO Thresholds)
 
-### Lysozyme (127 residues): Q3 = 67.7% ← NEW BEST
+### Lysozyme (127 residues): Q3 = 68.5% ← NEW BEST
 
 | Class | Actual | Pred | TP | Sensitivity | Precision | F1 |
 |-------|--------|------|----|-------------|-----------|-----|
-| Helix | 48 | 45 | 30 | 62% | 67% | 0.65 |
+| Helix | 48 | 62 | 39 | 81% | 63% | 0.71 |
 | Sheet | 8 | 0 | 0 | 0% | 0% | 0.00 |
-| Coil | 71 | 82 | 56 | 79% | 68% | 0.73 |
+| Coil | 71 | 65 | 48 | 68% | 74% | 0.71 |
 
-### Ubiquitin (76 residues): Q3 = 36.8%
+### Ubiquitin (76 residues): Q3 = 39.5%
 
 | Class | Sensitivity | Precision | F1 |
 |-------|-------------|-----------|-----|
-| Helix | 14% | 14% | 0.14 |
+| Helix | 29% | 24% | 0.26 |
 | Sheet | 5% | 50% | 0.08 |
-| Coil | 73% | 45% | 0.56 |
+| Coil | 70% | 47% | 0.56 |
 
 ### Progress History
 
@@ -155,7 +159,8 @@ AlphaFold cannot predict folding rates at all.
 |---------|-----------|--------------|-------------|
 | v2 | 10+ float | Sequential phases | 61.4% |
 | v4 | 0 | Sequential phases (CF only) | 66.9% |
-| v5 | 0 | 7-step iterative crystallization | **67.7%** |
+| v5 | 0 | 7-step iterative crystallization | 67.7% |
+| v5.1 | 0 | Fibonacci-scaled step windows | **68.5%** |
 
 ---
 

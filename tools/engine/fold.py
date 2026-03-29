@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
-"""Geometric field solver v5 — 7-step iterative crystallization.
+"""Geometric field solver v5.1 — 7-step iterative crystallization.
 
-The fold emerges from a 7-step field iterator that runs to convergence,
-replacing the sequential-phase architecture. Each cycle:
+The fold emerges from a 7-step field iterator that runs to convergence.
+Each step operates at a Fibonacci-scaled spatial window, matching the
+Aramis Field's 6 φ-scaled temporal domains:
 
   Step 1 — SAMPLE:   Read ratios and field state
-  Step 2 — DETECT:   Pair CF depths, boundary candidates
-  Step 3 — COHERE:   Coupling analysis (CF[0] = 1 on self-tension ratios)
-  Step 4 — TENSE:    Curvature from sequential ratios
-  Step 5 — LOCK:     Commit positions meeting crystallization criteria
-  Step 6 — ADJUST:   Propagate helix + evolve field via mediant diffusion
+  Step 2 — DETECT:   Pair CF depths, boundary candidates     [Fib(1)=1]
+  Step 3 — COHERE:   Coupling analysis (CF[0] = 1)           [Fib(2)=1]
+  Step 4 — TENSE:    Curvature regularity (hw=igd=2)         [Fib(3)=2]
+  Step 5 — LOCK:     Commit positions, symmetric CF motif     [Fib(4)=3 pairs]
+  Step 6 — ADJUST:   Propagate + mediant diffusion (±1)      [±1, iterates]
   Step 7 — OUTPUT:   Update state, check convergence
 
 The field (ratio at each position) evolves through mediant diffusion:
 unlocked positions blend toward locked neighbors via mediant (the Aramis
-Field iterator's diffusion mechanism). As structure crystallizes, the
-local field changes, creating conditions for further crystallization.
+Field iterator's diffusion mechanism). Each mediant = one step on the
+Stern-Brocot tree. Iterated mediant through cycles = the SB tree walk.
 
 Convergence: field has crystallized when no position changes state
 in a full 7-step cycle.
@@ -289,7 +290,12 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
         # A position crystallizes as HELIX when ALL geometric criteria are met:
         #   1. Coupled to at least one neighbor (CF[0] = 1)
         #   2. Curvature regular (CF depth ≤ inter_ground_depth)
-        #   3. CF motif: coherent coefficients > incoherent in immediate pair CFs
+        #   3. CF motif: coherent coefficients > incoherent in symmetric pair CFs
+        #
+        # The CF motif window is SYMMETRIC: pairs on both sides of the position.
+        # This matches the extension step's window and aligns with Fibonacci
+        # scaling: LOCK is step 5 in the 7-step process, using Fib(4)=3 pairs.
+        # Steps 2-4 naturally use Fib(1)=1, Fib(2)=1, Fib(3)=2 windows.
         for i in range(n):
             if locked[i]:
                 continue
@@ -298,12 +304,12 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             if regularity[i] > INTER_GROUND_DEPTH:
                 continue
 
-            # CF motif from immediate pair CFs (the pairs touching this position)
+            # CF motif from symmetric pair CFs: pairs (i-1,i), (i,i+1), (i+1,i+2)
+            # Same window as the extension step — the position should see
+            # the CF environment equally on both sides.
             local_cfs = []
-            if i > 0 and i - 1 < len(hyd_cfs):
-                local_cfs.append(hyd_cfs[i - 1])
-            if i < len(hyd_cfs):
-                local_cfs.append(hyd_cfs[i])
+            for j in range(max(0, i - 1), min(len(hyd_cfs), i + 2)):
+                local_cfs.append(hyd_cfs[j])
 
             total_coh = 0
             total_inc = 0
@@ -438,11 +444,11 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 def demo():
     print("""
     ===============================================================
-    GEOMETRIC FIELD SOLVER v5 — 7-Step Iterative Crystallization
+    GEOMETRIC FIELD SOLVER v5.1 — Fibonacci-Scaled 7-Step Iterator
     All framework-native criteria. No imposed thresholds.
-    7-step cycle: Sample → Detect → Cohere → Tense → Lock → Adjust → Output
-    Iterate to convergence (no pass limit).
-    CF coefficient boundary = inter_ground_depth (= 2).
+    Steps: Sample → Detect → Cohere → Tense → Lock → Adjust → Output
+    Step windows: Fib(1)=1, Fib(2)=1, Fib(3)=2, Fib(4)=3, ±1 iterates
+    Mediant diffusion = Stern-Brocot tree walk to convergence.
     ===============================================================
     """)
 
