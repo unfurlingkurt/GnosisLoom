@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Geometric field solver v7.0 — Temporal gearing with minimum helix length.
+"""Geometric field solver v8.0 — φ-native topology and domain-scaled mediant.
 
 Amino acids occupy φ-scaled temporal domains based on log_φ(ST/38):
   Domain -2: S(16)           Domain 0: A,V,D,N,P       Domain 2: M,H,W,K
@@ -62,7 +62,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from tools.engine.rscode import (
     aa_ratio, hydrated_ratio, to_cf, cf_length, tension_sequence,
-    cf_motif_counts, phi_coherence, mediant, SOL_CARBON, WATER_CARBON, POLAR_AA
+    cf_motif_counts, phi_coherence, mediant, SOL_CARBON, WATER_CARBON, POLAR_AA, PHI
 )
 from tools.engine.curvature import (
     geometric_winding, winding_returns, sequential_ratios,
@@ -184,6 +184,20 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     # Self-tensions (static — property of amino acid identity)
     self_t = [SELF_TENSION.get(c, 50) for c in seq]
 
+    # Framework-derived helix constants
+    MIN_HELIX_LEN = INTER_GROUND_DEPTH + INTER_GROUND_DEPTH  # = 4
+    MAX_INTERNAL_GAP = INTER_GROUND_DEPTH * INTER_GROUND_DEPTH  # = 4
+
+    # φ-domains: floor(log_φ(ST/HELIX_GROUND)) — temporal scaling tier
+    aa_domains = []
+    for c in seq:
+        st = SELF_TENSION.get(c, 50)
+        if st <= 0:
+            aa_domains.append(0)
+        else:
+            aa_domains.append(int(math.floor(math.log(st / HELIX_GROUND)
+                                             / math.log(PHI))))
+
     # State arrays
     states = [SS.UNRESOLVED] * n
     locked = [False] * n
@@ -235,8 +249,12 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     # curvature (from sequential ratios) returns to a previously visited
     # value. This means the chain has LOOPED — positions i and j are
     # topologically adjacent despite being far apart in sequence.
-    # max_diff=0 enforces EXACT integer match: the only valid proof
-    # of a closed loop in RatioSpace (combinatorial curvature axiom).
+    #
+    # max_diff=0: exact winding closure only. When winding(i) == winding(j),
+    # the chain has traced a geometrically exact closed loop — the curvature
+    # accumulated from i to j sums to exactly zero. This is the framework's
+    # own proof of topological adjacency: positions i and j are at the same
+    # geometric orientation despite being far apart in sequence.
     wr = winding_returns(seq, min_separation=INTER_GROUND_DEPTH + 1, max_diff=0)
 
     # Build winding return adjacency: which positions are topologically connected?
@@ -347,36 +365,40 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                     break
 
         # --- Step 2c: DETECT — winding-return sheet contacts ---
-        # Positions with exact winding returns that SPAN a hairpin marker
-        # are topologically adjacent across a chain reversal — both
-        # positions are part of the β-sheet structure. The winding return
-        # separation is itself a structural number (its CF encodes the
-        # loop geometry), not just a distance to be capped artificially.
+        # Winding returns prove topological adjacency: when winding(i) ≈
+        # winding(j), positions i and j are at the same geometric
+        # orientation despite being far apart in sequence. This IS sheet
+        # geometry — the framework's own proof, not requiring hairpin.
+        #
+        # Two modes:
+        # A) Hairpin-spanning WR: both positions are sheet (original logic)
+        # B) Non-hairpin WR: positions are sheet IF they don't qualify as
+        #    helix (CF0 > 1 to neighbors = not directly coupled = sheet regime)
         for r in wr:
             i_pos, j_pos = r["pos_i"], r["pos_j"]
             if i_pos >= n or j_pos >= n:
                 continue
 
-            # Only consider returns that span a hairpin marker
             spans_hairpin = any(i_pos <= h <= j_pos for h in hairpin_pairs)
-            if not spans_hairpin:
-                continue
 
-            # Both positions of the return are sheet candidates.
-            # The curvature regularity at each position determines whether
-            # it's actually in a strand (irregular, depth > igd) or in a
-            # helix-like region that happens to be topologically connected.
             for pos in (i_pos, j_pos):
                 if locked[pos]:
                     continue
                 reg = static_regularity[pos]
-                if reg > INTER_GROUND_DEPTH:
-                    if commit(pos, SS.SHEET):
-                        changed = True
-                        if verbose:
-                            partner = j_pos if pos == i_pos else i_pos
-                            print(f"  [{cycle}] SHEET (winding) at {pos+1} ({seq[pos]}) "
-                                  f"partner={partner+1} reg={reg}")
+
+                if spans_hairpin:
+                    # Mode A: hairpin-spanning — irregular curvature → sheet
+                    if reg > INTER_GROUND_DEPTH:
+                        if commit(pos, SS.SHEET):
+                            changed = True
+                            if verbose:
+                                partner = j_pos if pos == i_pos else i_pos
+                                print(f"  [{cycle}] SHEET (wr+hp) at {pos+1} ({seq[pos]}) "
+                                      f"partner={partner+1} reg={reg}")
+                    # Mode B (non-hairpin WR) handled post-convergence
+                    # in Phase 1d, where helix positions are already locked
+                    # and won't be overwritten by sheet cascade.
+                    pass
 
         # --- Step 3: COHERE — coupling analysis ---
         # (coupling is a static property, computed once but used each cycle)
@@ -470,28 +492,41 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 
         # --- Step 6: ADJUST — propagate helix through coupled neighbors ---
         # Locked helix positions influence adjacent unlocked positions.
-        # Extension requires coupling + CF motif. The curvature regularity
-        # check is NOT applied here — the field evolution itself regularizes
-        # the curvatures through mediant diffusion, and positions that
-        # become coherent through this process should be allowed to
-        # crystallize. Requiring regularity on extensions blocks valid
-        # helix propagation (tested: loses 0.8% Q3 and 0.03 F1).
+        # Extension requires coupling + CF motif + far-side boundary check.
+        #
+        # The boundary check prevents helix overshoot: if the far-side
+        # neighbor (away from the locked helix) has CF0 ≥ igd+1 (= 3),
+        # the position is at a φ-domain boundary (2+ domain separation)
+        # and helix cannot extend through it. This is the framework's
+        # own boundary detection — not an imposed threshold.
         for i in range(n):
             if locked[i]:
                 continue
 
             # Must be adjacent to a locked helix
-            has_helix_neighbor = False
+            helix_side = None
             for offset in (-1, 1):
                 j = i + offset
                 if 0 <= j < n and states[j] == SS.HELIX and locked[j]:
-                    has_helix_neighbor = True
+                    helix_side = offset
                     break
-            if not has_helix_neighbor:
+            if helix_side is None:
                 continue
 
             if not coupled[i]:
                 continue
+
+            # Far-side boundary check: is there a domain break on the
+            # non-helix side? CF0 ≥ igd+1 means 2+ domain separation.
+            far_side = i - helix_side  # opposite direction from helix
+            if 0 <= far_side < n:
+                if self_t[i] > 0 and self_t[far_side] > 0:
+                    r_far = Fraction(max(self_t[i], self_t[far_side]),
+                                     min(self_t[i], self_t[far_side]))
+                    cf_far = to_cf(r_far)
+                    if cf_far[0] >= INTER_GROUND_DEPTH + 1:
+                        # Domain boundary on far side — don't extend
+                        continue
 
             # CF motif over immediate + adjacent pair CFs
             local_cfs = []
@@ -532,11 +567,14 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                         if commit(i, SS.HELIX):
                             changed = True
 
-        # --- Step 6c: ADJUST — field evolution via mediant diffusion ---
+        # --- Step 6c: ADJUST — domain-scaled mediant diffusion ---
         # Unlocked positions blend toward locked neighbors through mediant.
-        # This is the Aramis Field iterator's diffusion mechanism:
-        # the local field evolves as the structure crystallizes, creating
-        # conditions for further crystallization in adjacent positions.
+        # Each position gets ceil(φ^(|domain|/2)) mediant steps per cycle,
+        # because higher φ-domains crystallize on slower timescales.
+        # Domain 0: 1 step. Domain ±1: 1 step. Domain ±2: 2 steps.
+        # Domain ±3: 2 steps. Domain +5 (G): 4 steps.
+        # This IS the temporal gearing: different φ-domains tick at
+        # different rates, and the mediant iterator respects this.
         new_field = list(field)
         new_hyd = list(hyd_field)
         for i in range(n):
@@ -550,8 +588,16 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                     locked_nbrs_raw.append(field[j])
                     locked_nbrs_hyd.append(hyd_field[j])
             if locked_nbrs_raw:
-                new_field[i] = mediant(field[i], *locked_nbrs_raw)
-                new_hyd[i] = mediant(hyd_field[i], *locked_nbrs_hyd)
+                # Domain-scaled: more mediant steps for higher domains
+                dom = aa_domains[i]
+                steps = max(1, math.ceil(PHI ** (abs(dom) / 2.0)))
+                f_val = new_field[i]
+                h_val = new_hyd[i]
+                for _ in range(steps):
+                    f_val = mediant(f_val, *locked_nbrs_raw)
+                    h_val = mediant(h_val, *locked_nbrs_hyd)
+                new_field[i] = f_val
+                new_hyd[i] = h_val
         field = new_field
         hyd_field = new_hyd
 
@@ -582,8 +628,6 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     # gap means positions in radically different φ-domains (e.g., G at domain+5)
     # were grouped by coincidence, not structural coupling.
     # Applied BEFORE Phase 2 to prevent false sheet from wind-down of orphan helices.
-    MIN_HELIX_LEN = INTER_GROUND_DEPTH + INTER_GROUND_DEPTH  # = 4 (framework-derived)
-    MAX_INTERNAL_GAP = INTER_GROUND_DEPTH * INTER_GROUND_DEPTH  # = 4
 
     def _max_pair_cf0(start, end):
         """Maximum CF[0] between any consecutive pair in seq[start:end]."""
@@ -681,30 +725,139 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             if not _is_coupled(self_t[j], self_t[k]):
                 continue
 
-            # Curvature regularity required (compensates for relaxed coupling)
-            # Threshold is IGD + 1 (= 3): one step more lenient than helix seed,
-            # justified because the proven helix context provides structural evidence
-            # that the strict threshold would over-penalize domain boundary positions.
+            # Curvature regularity threshold scales with mediation CF0:
+            # CF0=1 → threshold = 1×IGD+1 = 3 (normal helix)
+            # CF0=2 → threshold = 2×IGD+1 = 5 (one gear shift)
+            # Each gear shift adds IGD of expected curvature variation.
             reg = _curvature_regularity(i, conv_curvatures, locked)
-            if reg > INTER_GROUND_DEPTH + 1:
+            reg_threshold = cf_ij[0] * INTER_GROUND_DEPTH + 1
+            if reg > reg_threshold:
                 continue
 
-            # CF motif check
-            local_cfs = [conv_hyd_cfs[m] for m in range(max(0, i - 1),
-                         min(len(conv_hyd_cfs), i + 2))]
-            total_coh = sum(_cf_coherent_count(cf)[0] for cf in local_cfs)
-            total_inc = sum(_cf_coherent_count(cf)[1] for cf in local_cfs)
-            if total_coh > total_inc:
-                mediated_positions.append(i)
-                if verbose:
-                    print(f"  [P1c] MEDIATED HELIX at {i+1} ({seq[i]}) "
-                          f"via {j+1}({seq[j]})-{k+1}({seq[k]}) "
-                          f"CF[0]={cf_ij[0]} coh={total_coh} inc={total_inc}")
-                break
+            # For mediated positions, the proven helix context on the far
+            # side IS the structural evidence — the local CF motif is expected
+            # to be atypical at domain boundaries (that's WHY mediation is needed).
+            # The guards (CF0 ≤ IGD, proven context, scaled regularity) suffice.
+            mediated_positions.append(i)
+            if verbose:
+                print(f"  [P1c] MEDIATED HELIX at {i+1} ({seq[i]}) "
+                      f"via {j+1}({seq[j]})-{k+1}({seq[k]}) "
+                      f"CF[0]={cf_ij[0]} reg={reg}")
+            break
 
     for pos in mediated_positions:
         states[pos] = SS.HELIX
         locked[pos] = True
+
+    # Bridge single-residue helix gaps between two MEDIATED positions.
+    # Only mediated-to-mediated bridges are safe — general helix gaps
+    # might create runs that hit gap checks and cascade demotion.
+    mediated_set = set(mediated_positions)
+    for i in range(1, n - 1):
+        if states[i] == SS.COIL:
+            if ((i-1) in mediated_set and (i+1) in mediated_set and
+                    states[i-1] == SS.HELIX and states[i+1] == SS.HELIX):
+                states[i] = SS.HELIX
+                locked[i] = True
+                if verbose:
+                    print(f"  [P1c] BRIDGE at {i+1} ({seq[i]}) "
+                          f"flanked by {i}({seq[i-1]})-{i+2}({seq[i+1]})")
+
+    # === PHASE 1d: WR-TOPOLOGY SHEET SEEDING (post-convergence) ===
+    # After Phase 1 locks helices, seed sheet at COIL positions with
+    # exact winding returns. The WR proves topological adjacency — two
+    # distant chain segments at the same geometric orientation. This IS
+    # sheet geometry: the framework's own proof, not requiring a hairpin.
+    #
+    # Criteria (all framework-native):
+    # 1. Position is COIL (not helix, not turn, not already sheet)
+    # 2. Exact winding return (diff=0) with separation > MIN_HELIX_LEN * IGD
+    # 3. No CF0=1 coupling to any neighbor (not helix-qualified)
+    # 4. Static curvature irregular (reg > IGD — sheet character)
+    #
+    # Seeded positions then extend along coil neighbors via sheet extension.
+    # Long-range WR must span at least a full structural unit + buffer.
+    # MIN_HELIX_LEN * (IGD + 1) = 4 * 3 = 12 residues minimum.
+    min_topo_sep = MIN_HELIX_LEN * (INTER_GROUND_DEPTH + 1)  # = 12
+    wr_topo_seeds = set()
+    for r in wr:
+        if r["diff"] > 0:
+            continue  # exact WR only
+        i_pos, j_pos = r["pos_i"], r["pos_j"]
+        if i_pos >= n or j_pos >= n:
+            continue
+        # Must not span a hairpin (those handled in Phase 1 loop)
+        spans_hairpin = any(i_pos <= h <= j_pos for h in hairpin_pairs)
+        if spans_hairpin:
+            continue
+        if r["separation"] <= min_topo_sep:
+            continue
+
+        for pos in (i_pos, j_pos):
+            # This position must be COIL to seed sheet here
+            if states[pos] != SS.COIL:
+                continue
+            # Partner must be STRUCTURED (helix/sheet/turn).
+            # WR connecting coil↔structured = topological evidence.
+            # WR connecting coil↔coil = coincidental winding match.
+            partner = j_pos if pos == i_pos else i_pos
+            if states[partner] == SS.COIL:
+                continue
+            # Domain distance between seed and partner must be ≤ IGD.
+            # Cross-domain WR beyond this range can't form sheet contacts.
+            if abs(aa_domains[pos] - aa_domains[partner]) > INTER_GROUND_DEPTH:
+                continue
+            # No CF0=1 coupling to any neighbor
+            has_coupling = False
+            for offset in (-1, 1):
+                nb = pos + offset
+                if 0 <= nb < n and _is_coupled(self_t[pos], self_t[nb]):
+                    has_coupling = True
+                    break
+            if has_coupling:
+                continue
+            # Not adjacent to locked helix (helix boundary ≠ sheet seed)
+            adjacent_helix = False
+            for offset in (-1, 1):
+                nb = pos + offset
+                if 0 <= nb < n and states[nb] == SS.HELIX:
+                    adjacent_helix = True
+                    break
+            if adjacent_helix:
+                continue
+            # Irregular curvature (sheet character)
+            if static_regularity[pos] <= INTER_GROUND_DEPTH:
+                continue
+            wr_topo_seeds.add(pos)
+            if verbose:
+                partner = j_pos if pos == i_pos else i_pos
+                print(f"  [P1d] SHEET (wr-topo) at {pos+1} ({seq[pos]}) "
+                      f"partner={partner+1} sep={r['separation']}")
+
+    # Seed and extend WR-topo positions
+    for seed in sorted(wr_topo_seeds):
+        states[seed] = SS.SHEET
+        locked[seed] = True
+    # Extend from seeds — max IGD positions per direction
+    max_ext = INTER_GROUND_DEPTH
+    for seed in sorted(wr_topo_seeds):
+        for direction in (-1, 1):
+            pos = seed + direction
+            ext_count = 0
+            while 0 <= pos < n and ext_count < max_ext:
+                if states[pos] != SS.COIL:
+                    break
+                pair_idx = min(pos, pos - direction)
+                if pair_idx < len(raw_depths) and raw_depths[pair_idx] <= INTER_GROUND_DEPTH:
+                    break
+                if static_regularity[pos] <= INTER_GROUND_DEPTH:
+                    break
+                states[pos] = SS.SHEET
+                locked[pos] = True
+                ext_count += 1
+                if verbose:
+                    print(f"  [P1d] SHEET EXT (topo) at {pos+1} ({seq[pos]})")
+                pos += direction
 
     # === PHASE 2: WIND-DOWN — non-local topology overrides local structure ===
     #
@@ -817,7 +970,7 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 def demo():
     print("""
     ===============================================================
-    GEOMETRIC FIELD SOLVER v7.0 — Temporal Gearing
+    GEOMETRIC FIELD SOLVER v8.0 — φ-native topology + domain-scaled mediant
     Phase 1 (wind-up): Local 7-step iterator to convergence
     Phase 2 (wind-down): Non-local topology overrides via winding returns
     φ-domain structure: CF[0] of tension ratio = domain separation
