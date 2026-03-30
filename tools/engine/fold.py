@@ -575,13 +575,28 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     if verbose:
         print(f"  Phase 1 converged after {cycle} cycles")
 
-    # === PHASE 1b: MINIMUM HELIX LENGTH (pre-wind-down) ===
+    # === PHASE 1b: MINIMUM HELIX LENGTH + EXTREME GAP CHECK ===
     # A helix requires at least one complete turn: the i→i+4 backbone H-bond
-    # pattern needs 4 residues minimum. The LOCK step (Step 5) uses a window
-    # of Fib(4) = 3 pairs = 4 residues, confirming this as the framework's
-    # natural minimum. Short helix runs (< 4) are demoted to coil.
+    # pattern needs 4 residues minimum. Additionally, a helix run with an
+    # EXTREME coupling gap (CF[0] > 2*IGD = 4) anywhere is demoted — such a
+    # gap means positions in radically different φ-domains (e.g., G at domain+5)
+    # were grouped by coincidence, not structural coupling.
     # Applied BEFORE Phase 2 to prevent false sheet from wind-down of orphan helices.
     MIN_HELIX_LEN = INTER_GROUND_DEPTH + INTER_GROUND_DEPTH  # = 4 (framework-derived)
+    MAX_INTERNAL_GAP = INTER_GROUND_DEPTH * INTER_GROUND_DEPTH  # = 4
+
+    def _max_pair_cf0(start, end):
+        """Maximum CF[0] between any consecutive pair in seq[start:end]."""
+        max_cf0 = 0
+        for j in range(start, end - 1):
+            if self_t[j] > 0 and self_t[j + 1] > 0:
+                ratio = Fraction(max(self_t[j], self_t[j + 1]),
+                                 min(self_t[j], self_t[j + 1]))
+                cf = to_cf(ratio)
+                if cf[0] > max_cf0:
+                    max_cf0 = cf[0]
+        return max_cf0
+
     i = 0
     while i < n:
         if states[i] == SS.HELIX:
@@ -589,13 +604,23 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             while i < n and states[i] == SS.HELIX:
                 i += 1
             run_len = i - run_start
+            demote = False
+            reason = ""
             if run_len < MIN_HELIX_LEN:
+                demote = True
+                reason = f"len={run_len}"
+            else:
+                max_gap = _max_pair_cf0(run_start, i)
+                if max_gap > MAX_INTERNAL_GAP:
+                    demote = True
+                    reason = f"gap CF[0]={max_gap}"
+            if demote:
                 for j in range(run_start, i):
                     states[j] = SS.COIL
                     locked[j] = True
                 if verbose:
-                    print(f"  [P1b] Demote short helix {run_start+1}-{i} "
-                          f"(len={run_len} < {MIN_HELIX_LEN})")
+                    print(f"  [P1b] Demote helix {run_start+1}-{i} "
+                          f"({reason})")
         else:
             i += 1
 
@@ -752,13 +777,8 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             else:
                 break
 
-    # === PHASE 3: MINIMUM HELIX LENGTH ===
-    # A helix requires at least one complete turn: the i→i+4 backbone H-bond
-    # pattern needs 4 residues minimum. The LOCK step (Step 5) uses a window
-    # of Fib(4) = 3 pairs = 4 residues, confirming this as the framework's
-    # natural minimum. Short helix runs (< 4) are demoted to coil.
-    # Applied AFTER Phase 2 because wind-down can split helix runs.
-    MIN_HELIX_LEN = INTER_GROUND_DEPTH + INTER_GROUND_DEPTH  # = 4 (framework-derived)
+    # === PHASE 3: MINIMUM HELIX LENGTH + EXTREME GAP (post-wind-down) ===
+    # Same criteria as Phase 1b, re-applied after wind-down can split helix runs.
     i = 0
     while i < n:
         if states[i] == SS.HELIX:
@@ -766,12 +786,22 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             while i < n and states[i] == SS.HELIX:
                 i += 1
             run_len = i - run_start
+            demote = False
+            reason = ""
             if run_len < MIN_HELIX_LEN:
+                demote = True
+                reason = f"len={run_len}"
+            else:
+                max_gap = _max_pair_cf0(run_start, i)
+                if max_gap > MAX_INTERNAL_GAP:
+                    demote = True
+                    reason = f"gap CF[0]={max_gap}"
+            if demote:
                 for j in range(run_start, i):
                     states[j] = SS.COIL
                 if verbose:
-                    print(f"  [P3] Demote short helix {run_start+1}-{i} "
-                          f"(len={run_len} < {MIN_HELIX_LEN})")
+                    print(f"  [P3] Demote helix {run_start+1}-{i} "
+                          f"({reason})")
         else:
             i += 1
 
