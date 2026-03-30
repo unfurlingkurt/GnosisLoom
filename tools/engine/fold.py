@@ -1,25 +1,38 @@
 #!/usr/bin/env python3
-"""Geometric field solver v5.1 — 7-step iterative crystallization.
+"""Geometric field solver v6.0 — Two-phase temporal crystallization.
 
-The fold emerges from a 7-step field iterator that runs to convergence.
-Each step operates at a Fibonacci-scaled spatial window, matching the
-Aramis Field's 6 φ-scaled temporal domains:
+Amino acids occupy φ-scaled temporal domains based on log_φ(ST/38):
+  Domain -2: S(16)           Domain 0: A,V,D,N,P       Domain 2: M,H,W,K
+  Domain -1: T(25)           Domain 1: Q,I,L,C,E,R     Domain 3: F,Y
+  Domain  5: G(632)
 
-  Step 1 — SAMPLE:   Read ratios and field state
-  Step 2 — DETECT:   Pair CF depths, boundary candidates     [Fib(1)=1]
-  Step 3 — COHERE:   Coupling analysis (CF[0] = 1)           [Fib(2)=1]
-  Step 4 — TENSE:    Curvature regularity (hw=igd=2)         [Fib(3)=2]
-  Step 5 — LOCK:     Commit positions, symmetric CF motif     [Fib(4)=3 pairs]
-  Step 6 — ADJUST:   Propagate + mediant diffusion (±1)      [±1, iterates]
-  Step 7 — OUTPUT:   Update state, check convergence
+CF[0] of the tension ratio encodes domain separation:
+  CF[0]=1 → within φ¹ → same temporal window (coupled)
+  CF[0]=2 → within φ² → one gear up/down
+  CF[0]=4 → within φ³ → two gears up/down
+
+The fold proceeds in two temporal phases:
+
+  PHASE 1 — WIND-UP: Local structure crystallizes via 7-step field iterator.
+    Step 1 — SAMPLE:   Read ratios and field state
+    Step 2 — DETECT:   Pair CF depths, boundary candidates     [Fib(1)=1]
+    Step 3 — COHERE:   Coupling analysis (CF[0] = 1)           [Fib(2)=1]
+    Step 4 — TENSE:    Curvature regularity (hw=igd=2)         [Fib(3)=2]
+    Step 5 — LOCK:     Commit positions, symmetric CF motif     [Fib(4)=3 pairs]
+    Step 6 — ADJUST:   Propagate + mediant diffusion (±1)      [±1, iterates]
+    Step 7 — OUTPUT:   Update state, check convergence
+
+  PHASE 2 — WIND-DOWN: Non-local topology overrides local structure.
+    Winding returns spanning hairpin markers connect distant positions
+    topologically. When a helix position is connected to a Phase-1 sheet
+    position, the slower temporal gear (non-local contacts) overrides the
+    faster gear (local helix coupling), reassigning helix → sheet.
+    Extension proceeds directionally TOWARD the nearest hairpin.
 
 The field (ratio at each position) evolves through mediant diffusion:
 unlocked positions blend toward locked neighbors via mediant (the Aramis
 Field iterator's diffusion mechanism). Each mediant = one step on the
 Stern-Brocot tree. Iterated mediant through cycles = the SB tree walk.
-
-Convergence: field has crystallized when no position changes state
-in a full 7-step cycle.
 
 ALL criteria are CF depth checks, exact ratio matches, or structural
 invariants. The only constants are framework-native:
@@ -543,7 +556,78 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             break
 
     if verbose:
-        print(f"  Converged after {cycle} cycles")
+        print(f"  Phase 1 converged after {cycle} cycles")
+
+    # === PHASE 2: WIND-DOWN — non-local topology overrides local structure ===
+    #
+    # The "gears" of the Aramis Field operate on φ-scaled timescales.
+    # Phase 1 (wind-up) establishes LOCAL structure via coupling and CF motifs.
+    # Phase 2 (wind-down) applies NON-LOCAL topology: winding returns that
+    # span hairpin markers prove topological adjacency between distant positions.
+    # When a helix position is connected to a Phase-1 sheet position, the
+    # slower temporal gear overrides the faster one — reassigning H → E.
+    #
+    # This models the physical reality that β-sheet formation (inter-strand
+    # H-bonds) operates on a slower timescale than α-helix formation
+    # (local backbone H-bonds), and can override local helix tendency.
+
+    # Freeze Phase 1 states for decision-making
+    phase1_states = list(states)
+
+    # Find nearest hairpin for directional extension
+    nearest_hp = [None] * n
+    for i in range(n):
+        best_dist = n + 1
+        for hp in hairpin_pairs:
+            d = abs(i - hp)
+            if d < best_dist:
+                best_dist = d
+                nearest_hp[i] = hp
+
+    # Step 1: Identify reassignment candidates from hairpin-spanning winding returns
+    # Only reassign when the partner was SHEET in Phase 1 (frozen states),
+    # preventing cascading reassignments from wind-down-modified states.
+    wr_seeds = set()
+    for r in wr:
+        i_pos, j_pos = r["pos_i"], r["pos_j"]
+        if i_pos >= n or j_pos >= n:
+            continue
+        # Must span a hairpin
+        spans_hairpin = any(i_pos <= h <= j_pos for h in hairpin_pairs)
+        if not spans_hairpin:
+            continue
+        for a, b in [(i_pos, j_pos), (j_pos, i_pos)]:
+            if phase1_states[a] == SS.HELIX and phase1_states[b] == SS.SHEET:
+                wr_seeds.add(a)
+                if verbose:
+                    print(f"  [P2] WIND-DOWN: {a+1}({seq[a]}) H→E "
+                          f"(wr to Phase-1 sheet {b+1})")
+
+    # Apply direct reassignments
+    for s in wr_seeds:
+        states[s] = SS.SHEET
+
+    # Step 2: Directional extension TOWARD nearest hairpin
+    # The extension follows the chain toward the structural reversal point,
+    # stopping at turn markers (pair depth ≤ igd) or non-helix positions.
+    for seed in sorted(wr_seeds):
+        hp = nearest_hp[seed]
+        if hp is None:
+            continue
+        direction = 1 if hp > seed else -1
+        pos = seed + direction
+        while 0 <= pos < n:
+            if states[pos] != SS.HELIX:
+                break
+            pair_idx = min(pos, pos - direction)
+            if pair_idx < len(raw_depths) and raw_depths[pair_idx] > INTER_GROUND_DEPTH:
+                states[pos] = SS.SHEET
+                if verbose:
+                    print(f"  [P2] WIND-DOWN EXT: {pos+1}({seq[pos]}) H→E "
+                          f"(toward hairpin {hp+1})")
+                pos += direction
+            else:
+                break
 
     # Convert to DSSP-compatible output
     dssp_map = {
@@ -557,11 +641,11 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 def demo():
     print("""
     ===============================================================
-    GEOMETRIC FIELD SOLVER v5.1 — Fibonacci-Scaled 7-Step Iterator
+    GEOMETRIC FIELD SOLVER v6.0 — Two-Phase Temporal Crystallization
+    Phase 1 (wind-up): Local 7-step iterator to convergence
+    Phase 2 (wind-down): Non-local topology overrides via winding returns
+    φ-domain structure: CF[0] of tension ratio = domain separation
     All framework-native criteria. No imposed thresholds.
-    Steps: Sample → Detect → Cohere → Tense → Lock → Adjust → Output
-    Step windows: Fib(1)=1, Fib(2)=1, Fib(3)=2, Fib(4)=3, ±1 iterates
-    Mediant diffusion = Stern-Brocot tree walk to convergence.
     ===============================================================
     """)
 
