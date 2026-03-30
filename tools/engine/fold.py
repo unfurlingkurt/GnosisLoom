@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Geometric field solver v6.0 — Two-phase temporal crystallization.
+"""Geometric field solver v7.0 — Temporal gearing with minimum helix length.
 
 Amino acids occupy φ-scaled temporal domains based on log_φ(ST/38):
   Domain -2: S(16)           Domain 0: A,V,D,N,P       Domain 2: M,H,W,K
@@ -65,7 +65,8 @@ from tools.engine.rscode import (
     cf_motif_counts, phi_coherence, mediant, SOL_CARBON, WATER_CARBON, POLAR_AA
 )
 from tools.engine.curvature import (
-    geometric_winding, winding_returns, sequential_ratios
+    geometric_winding, winding_returns, sequential_ratios,
+    curvature_acceleration,
 )
 from tools.engine.predict import (
     SELF_TENSION, HELIX_GROUND, SHEET_GROUND,
@@ -212,6 +213,22 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     static_regularity = [99] * n
     for i in range(n):
         static_regularity[i] = _curvature_regularity(i, static_curvatures, [False] * n)
+
+    # === PRE-COMPUTE: Curvature acceleration (2nd derivative) ===
+    # The acceleration of geometric curvature along the chain is a STATIC
+    # property (computed from initial ratios). It detects structural transitions:
+    # high |acceleration| = boundary/turn, low |acceleration| = stable interior.
+    # Used as anti-false-helix signal: helix interiors have stable curvature.
+    static_accel = curvature_acceleration(seq)
+    # Pad to length n for easy indexing (positions 0 and n-1 get max acceleration
+    # since they're at chain boundaries where structure is inherently unstable)
+    accel_magnitude = [0.0] * n
+    for i in range(len(static_accel)):
+        accel_magnitude[i + 1] = abs(static_accel[i])
+    # Boundaries: first and last positions get high acceleration (no stable structure)
+    if n > 0:
+        accel_magnitude[0] = max(accel_magnitude) if accel_magnitude else 0
+        accel_magnitude[n - 1] = accel_magnitude[0]
 
     # === PRE-COMPUTE: Winding returns (topological sheet contacts) ===
     # Winding returns detect positions where the accumulated geometric
@@ -558,6 +575,112 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     if verbose:
         print(f"  Phase 1 converged after {cycle} cycles")
 
+    # === PHASE 1b: MINIMUM HELIX LENGTH (pre-wind-down) ===
+    # A helix requires at least one complete turn: the i→i+4 backbone H-bond
+    # pattern needs 4 residues minimum. The LOCK step (Step 5) uses a window
+    # of Fib(4) = 3 pairs = 4 residues, confirming this as the framework's
+    # natural minimum. Short helix runs (< 4) are demoted to coil.
+    # Applied BEFORE Phase 2 to prevent false sheet from wind-down of orphan helices.
+    MIN_HELIX_LEN = INTER_GROUND_DEPTH + INTER_GROUND_DEPTH  # = 4 (framework-derived)
+    i = 0
+    while i < n:
+        if states[i] == SS.HELIX:
+            run_start = i
+            while i < n and states[i] == SS.HELIX:
+                i += 1
+            run_len = i - run_start
+            if run_len < MIN_HELIX_LEN:
+                for j in range(run_start, i):
+                    states[j] = SS.COIL
+                    locked[j] = True
+                if verbose:
+                    print(f"  [P1b] Demote short helix {run_start+1}-{i} "
+                          f"(len={run_len} < {MIN_HELIX_LEN})")
+        else:
+            i += 1
+
+    # === PHASE 1c: MEDIATED HELIX EXTENSION (single pass, no cascade) ===
+    # After Phase 1 convergence, positions adjacent to locked helices can
+    # extend with relaxed coupling (CF[0] ≤ igd = 2 instead of 1) IF the
+    # locked helix neighbor has a "proven" context: CF[0]=1 coupling to
+    # another locked helix on the far side. This models temporal gearing:
+    # the proven helix context mediates across a φ-domain boundary.
+    # Single pass prevents cascading false helices.
+
+    # Recompute curvatures and hyd_cfs at convergence state
+    conv_curvatures = []
+    for i_pos in range(n - 1):
+        ratio = field[i_pos + 1] / field[i_pos]
+        cf = to_cf(ratio)
+        mag = cf_length(cf)
+        sign = 1 if float(ratio) >= 1.0 else -1
+        conv_curvatures.append(sign * mag)
+
+    conv_hyd_cfs = []
+    for i_pos in range(n - 1):
+        product = hyd_field[i_pos] * hyd_field[i_pos + 1]
+        conv_hyd_cfs.append(to_cf(product))
+
+    mediated_positions = []
+    for i in range(n):
+        if states[i] != SS.COIL:
+            continue  # only upgrade coil positions
+        # Must NOT already be coupled (those were handled in Phase 1)
+        has_coupling = False
+        for offset in (-1, 1):
+            nb = i + offset
+            if 0 <= nb < n and _is_coupled(self_t[i], self_t[nb]):
+                has_coupling = True
+                break
+        if has_coupling:
+            continue
+
+        for offset in (-1, 1):
+            j = i + offset  # mediator (locked helix neighbor)
+            if not (0 <= j < n and states[j] == SS.HELIX and locked[j]):
+                continue
+
+            # i-j coupling within one gear shift
+            if self_t[i] <= 0 or self_t[j] <= 0:
+                continue
+            r_ij = Fraction(max(self_t[i], self_t[j]),
+                            min(self_t[i], self_t[j]))
+            cf_ij = to_cf(r_ij)
+            if cf_ij[0] > INTER_GROUND_DEPTH:
+                continue
+
+            # Mediator j has proven helix neighbor k (coupled with CF[0]=1)
+            k = j + offset  # far side of j from i
+            if not (0 <= k < n and states[k] == SS.HELIX and locked[k]):
+                continue
+            if not _is_coupled(self_t[j], self_t[k]):
+                continue
+
+            # Curvature regularity required (compensates for relaxed coupling)
+            # Threshold is IGD + 1 (= 3): one step more lenient than helix seed,
+            # justified because the proven helix context provides structural evidence
+            # that the strict threshold would over-penalize domain boundary positions.
+            reg = _curvature_regularity(i, conv_curvatures, locked)
+            if reg > INTER_GROUND_DEPTH + 1:
+                continue
+
+            # CF motif check
+            local_cfs = [conv_hyd_cfs[m] for m in range(max(0, i - 1),
+                         min(len(conv_hyd_cfs), i + 2))]
+            total_coh = sum(_cf_coherent_count(cf)[0] for cf in local_cfs)
+            total_inc = sum(_cf_coherent_count(cf)[1] for cf in local_cfs)
+            if total_coh > total_inc:
+                mediated_positions.append(i)
+                if verbose:
+                    print(f"  [P1c] MEDIATED HELIX at {i+1} ({seq[i]}) "
+                          f"via {j+1}({seq[j]})-{k+1}({seq[k]}) "
+                          f"CF[0]={cf_ij[0]} coh={total_coh} inc={total_inc}")
+                break
+
+    for pos in mediated_positions:
+        states[pos] = SS.HELIX
+        locked[pos] = True
+
     # === PHASE 2: WIND-DOWN — non-local topology overrides local structure ===
     #
     # The "gears" of the Aramis Field operate on φ-scaled timescales.
@@ -629,6 +752,29 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             else:
                 break
 
+    # === PHASE 3: MINIMUM HELIX LENGTH ===
+    # A helix requires at least one complete turn: the i→i+4 backbone H-bond
+    # pattern needs 4 residues minimum. The LOCK step (Step 5) uses a window
+    # of Fib(4) = 3 pairs = 4 residues, confirming this as the framework's
+    # natural minimum. Short helix runs (< 4) are demoted to coil.
+    # Applied AFTER Phase 2 because wind-down can split helix runs.
+    MIN_HELIX_LEN = INTER_GROUND_DEPTH + INTER_GROUND_DEPTH  # = 4 (framework-derived)
+    i = 0
+    while i < n:
+        if states[i] == SS.HELIX:
+            run_start = i
+            while i < n and states[i] == SS.HELIX:
+                i += 1
+            run_len = i - run_start
+            if run_len < MIN_HELIX_LEN:
+                for j in range(run_start, i):
+                    states[j] = SS.COIL
+                if verbose:
+                    print(f"  [P3] Demote short helix {run_start+1}-{i} "
+                          f"(len={run_len} < {MIN_HELIX_LEN})")
+        else:
+            i += 1
+
     # Convert to DSSP-compatible output
     dssp_map = {
         SS.HELIX: 'H', SS.SHEET: 'E',
@@ -641,7 +787,7 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 def demo():
     print("""
     ===============================================================
-    GEOMETRIC FIELD SOLVER v6.0 — Two-Phase Temporal Crystallization
+    GEOMETRIC FIELD SOLVER v7.0 — Temporal Gearing
     Phase 1 (wind-up): Local 7-step iterator to convergence
     Phase 2 (wind-down): Non-local topology overrides via winding returns
     φ-domain structure: CF[0] of tension ratio = domain separation
