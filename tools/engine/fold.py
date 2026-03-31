@@ -244,6 +244,22 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
         accel_magnitude[0] = max(accel_magnitude) if accel_magnitude else 0
         accel_magnitude[n - 1] = accel_magnitude[0]
 
+    # === PRE-COMPUTE: Pairwise CF0 (tension ratio first coefficient) ===
+    # CF0 of max(ST_i, ST_j) / min(ST_i, ST_j) encodes domain separation:
+    #   CF0=1 → same or adjacent domain (helix coupling)
+    #   CF0=2 → one gear shift (sheet coupling range)
+    #   CF0≥IGD+1 → domain boundary
+    # A run of consecutive pairs ALL with CF0 ≤ IGD = consistent coupling window.
+    pair_cf0 = []
+    for i in range(n - 1):
+        if self_t[i] > 0 and self_t[i + 1] > 0:
+            r = Fraction(max(self_t[i], self_t[i + 1]),
+                         min(self_t[i], self_t[i + 1]))
+            cf = to_cf(r)
+            pair_cf0.append(cf[0])
+        else:
+            pair_cf0.append(99)
+
     # === PRE-COMPUTE: Winding returns (topological sheet contacts) ===
     # Winding returns detect positions where the accumulated geometric
     # curvature (from sequential ratios) returns to a previously visited
@@ -838,26 +854,107 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     for seed in sorted(wr_topo_seeds):
         states[seed] = SS.SHEET
         locked[seed] = True
-    # Extend from seeds — max IGD positions per direction
-    max_ext = INTER_GROUND_DEPTH
+    # Extend from seeds — stop at framework-native boundaries:
+    # 1. CF0 > IGD between current and next position (domain boundary)
+    # 2. Pair CF depth ≤ IGD (structural boundary / turn)
+    # 3. Non-COIL state (already structured)
+    # No arbitrary max_ext — the framework's own geometry defines the strand.
     for seed in sorted(wr_topo_seeds):
         for direction in (-1, 1):
             pos = seed + direction
-            ext_count = 0
-            while 0 <= pos < n and ext_count < max_ext:
+            while 0 <= pos < n:
                 if states[pos] != SS.COIL:
                     break
+                # CF0 boundary: domain separation exceeds coupling window
+                connecting_pair = min(pos, pos - direction)
+                if connecting_pair < len(pair_cf0) and pair_cf0[connecting_pair] > INTER_GROUND_DEPTH:
+                    break
+                # Structural boundary (turn marker)
                 pair_idx = min(pos, pos - direction)
                 if pair_idx < len(raw_depths) and raw_depths[pair_idx] <= INTER_GROUND_DEPTH:
                     break
-                if static_regularity[pos] <= INTER_GROUND_DEPTH:
-                    break
                 states[pos] = SS.SHEET
                 locked[pos] = True
-                ext_count += 1
                 if verbose:
                     print(f"  [P1d] SHEET EXT (topo) at {pos+1} ({seq[pos]})")
                 pos += direction
+
+    # === PHASE 1e: SEP-2 WINDING OSCILLATION SHEET SEEDING ===
+    #
+    # β-strands have a specific backbone oscillation: the winding returns
+    # to the same value every 2 positions (extended backbone zig-zag).
+    # Sheet positions show 3x the rate of sep-2 WR compared to helix or coil.
+    #
+    # Combined criteria (all framework-native):
+    #   1. Sep-2 exact winding return: w(i) == w(i+2), both positions COIL
+    #   2. CF0≤IGD consistency: positions are in a run of ≥ MIN_HELIX_LEN
+    #      consecutive positions where ALL pair CF0 ≤ IGD
+    #   3. Irregular curvature: reg > IGD (not helix-like)
+    #
+    # The CF0≤IGD run boundaries are framework-native: the run starts and
+    # ends where CF0 crosses IGD. No arbitrary length limits.
+
+    winding = geometric_winding(seq)
+
+    # Find CF0≤IGD runs among COIL positions
+    cf0_runs = []  # list of (start, end) inclusive
+    run_start = None
+    for i in range(n):
+        if states[i] != SS.COIL:
+            if run_start is not None and i - run_start >= MIN_HELIX_LEN:
+                cf0_runs.append((run_start, i - 1))
+            run_start = None
+            continue
+        if run_start is None:
+            run_start = i
+        elif pair_cf0[i - 1] > INTER_GROUND_DEPTH:
+            if i - run_start >= MIN_HELIX_LEN:
+                cf0_runs.append((run_start, i - 1))
+            run_start = i
+    if run_start is not None and n - run_start >= MIN_HELIX_LEN:
+        cf0_runs.append((run_start, n - 1))
+
+    # Build set of positions in valid CF0≤IGD runs
+    cf0_run_positions = set()
+    for rs, re in cf0_runs:
+        for j in range(rs, re + 1):
+            cf0_run_positions.add(j)
+
+    # Find sep-2 WR seeds within CF0≤IGD runs
+    sep2_seeds = set()
+    for i in range(n - 2):
+        if i not in cf0_run_positions or (i + 2) not in cf0_run_positions:
+            continue
+        if states[i] != SS.COIL or states[i + 2] != SS.COIL:
+            continue
+        if winding[i] != winding[i + 2]:
+            continue
+        # Both positions must have irregular curvature
+        if static_regularity[i] <= INTER_GROUND_DEPTH:
+            continue
+        if static_regularity[i + 2] <= INTER_GROUND_DEPTH:
+            continue
+        # Neither position can be at a CF0>IGD boundary (run edge).
+        # Run edges are transition zones, not stable strand interiors.
+        for pos in (i, i + 2):
+            boundary = False
+            if pos > 0 and pair_cf0[pos - 1] > INTER_GROUND_DEPTH:
+                boundary = True
+            if pos < n - 1 and pair_cf0[pos] > INTER_GROUND_DEPTH:
+                boundary = True
+            if not boundary:
+                sep2_seeds.add(pos)
+
+    # Seed only (no extension — the CF0 boundaries define the strand geometry,
+    # and the seeds themselves mark the oscillation pattern)
+    for seed in sorted(sep2_seeds):
+        if states[seed] != SS.COIL:
+            continue
+        states[seed] = SS.SHEET
+        locked[seed] = True
+        if verbose:
+            print(f"  [P1e] SHEET (sep2-wr) at {seed+1} ({seq[seed]}) "
+                  f"w={winding[seed]:.0f}")
 
     # === PHASE 2: WIND-DOWN — non-local topology overrides local structure ===
     #
