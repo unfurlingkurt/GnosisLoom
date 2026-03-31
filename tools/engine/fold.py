@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Geometric field solver v8.0 — φ-native topology and domain-scaled mediant.
+"""Geometric field solver v8.1 — near-WR helix seeding and gap-fill.
 
 Amino acids occupy φ-scaled temporal domains based on log_φ(ST/38):
   Domain -2: S(16)           Domain 0: A,V,D,N,P       Domain 2: M,H,W,K
@@ -956,6 +956,147 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             print(f"  [P1e] SHEET (sep2-wr) at {seed+1} ({seq[seed]}) "
                   f"w={winding[seed]:.0f}")
 
+    # === PHASE 1f: NEAR-WR HELIX SEEDING ===
+    #
+    # Near-winding-returns (diff ≤ IGD) to locked HELIX positions provide
+    # topological helix evidence. When a COIL position's winding nearly
+    # returns to a locked helix position's value (within one gear shift),
+    # the geometric loop is almost closed — the position is topologically
+    # adjacent to helix structure.
+    #
+    # This is the near-WR analog of Phase 1c mediation: the near-WR proves
+    # topological adjacency (bypassing the sequential path), and the locked
+    # helix partner provides proven structural context.
+    #
+    # Criteria (all framework-native):
+    #   1. Near-WR: diff ≤ 1 (winding-space CF0=1 coupling)
+    #   2. The seed position is COIL or TURN (TURN is local, near-WR overrides)
+    #   3. Not CF0=1 coupled to any sequential neighbor (Phase 1 handled those)
+    #   4. Curvature regularity ≤ MAX_INTERNAL_GAP (= IGD² = 4)
+    #   5. Pair CF0 with adjacent HELIX ≤ MAX_INTERNAL_GAP (P3 consistency)
+    #   6. Not adjacent to sheet (structural boundary)
+    #   7. Separation ≥ MIN_HELIX_LEN
+    #
+    # Iterative: newly seeded helix positions can enable further near-WR seeds.
+    # This models helix propagation through topological space.
+
+    # max_diff=1: the winding return is within 1 step of exact closure.
+    # This is the winding-space analog of CF0=1 coupling — the same
+    # criterion Phase 1 uses for helix seeding. diff=2 (at the IGD
+    # boundary) provides weaker evidence and risks false positives.
+    near_wr = winding_returns(seq, min_separation=MIN_HELIX_LEN,
+                              max_diff=1)
+
+    # Build near-WR adjacency: for each position, which locked HELIX positions
+    # does it have near-WR connections to?
+    near_wr_changed = True
+    while near_wr_changed:
+        near_wr_changed = False
+        for r in near_wr:
+            i_pos, j_pos = r["pos_i"], r["pos_j"]
+            diff = r["diff"]
+            if i_pos >= n or j_pos >= n:
+                continue
+
+            for pos, partner in ((i_pos, j_pos), (j_pos, i_pos)):
+                # Allow COIL and TURN → HELIX via near-WR.
+                # TURN is a LOCAL pair property (CF depth ≤ IGD).
+                # Near-WR is NON-LOCAL topology — when it says helix,
+                # it overrides the local turn assignment (same principle
+                # as Phase 2 wind-down overriding helix with sheet).
+                if states[pos] not in (SS.COIL, SS.TURN):
+                    continue
+                if states[partner] != SS.HELIX or not locked[partner]:
+                    continue
+
+                # Not sequentially coupled (those handled in Phase 1)
+                has_coupling = False
+                for offset in (-1, 1):
+                    nb = pos + offset
+                    if 0 <= nb < n and _is_coupled(self_t[pos], self_t[nb]):
+                        has_coupling = True
+                        break
+                if has_coupling:
+                    continue
+
+                # Curvature regularity ≤ MAX_INTERNAL_GAP (= IGD² = 4).
+                # This is framework-native: MAX_INTERNAL_GAP is the maximum
+                # CF0 gap tolerated within a helix run (used by P3 validation).
+                # Near-WR helix seeds must meet the same local consistency.
+                reg = _curvature_regularity(pos, conv_curvatures, locked)
+                if reg > MAX_INTERNAL_GAP:
+                    continue
+
+                # Pair CF0 with adjacent HELIX must not exceed MAX_INTERNAL_GAP.
+                # This is the same constraint P3 uses: if seeding this position
+                # would create a pair CF0 > IGD² within the helix run, the run
+                # would be demoted anyway. Catch it at seed time.
+                helix_gap_violation = False
+                for offset in (-1, 1):
+                    nb = pos + offset
+                    if 0 <= nb < n and states[nb] == SS.HELIX:
+                        pidx = min(pos, nb)
+                        if pidx < len(pair_cf0) and pair_cf0[pidx] > MAX_INTERNAL_GAP:
+                            helix_gap_violation = True
+                            break
+                if helix_gap_violation:
+                    continue
+
+                # Not adjacent to locked sheet (sheet boundary ≠ helix seed)
+                adjacent_sheet = False
+                for offset in (-1, 1):
+                    nb = pos + offset
+                    if 0 <= nb < n and states[nb] == SS.SHEET:
+                        adjacent_sheet = True
+                        break
+                if adjacent_sheet:
+                    continue
+
+                states[pos] = SS.HELIX
+                locked[pos] = True
+                near_wr_changed = True
+                if verbose:
+                    print(f"  [P1f] HELIX (near-wr) at {pos+1} ({seq[pos]}) "
+                          f"partner={partner+1}({seq[partner]}) "
+                          f"diff={diff:.0f} sep={r['separation']} "
+                          f"reg={reg}")
+                break  # done with this position
+
+    # Post-P1f: fill short COIL gaps between adjacent helix segments.
+    # When a near-WR seeded helix is close to existing helix and the merged
+    # run's max pair CF0 ≤ MAX_INTERNAL_GAP, the gap positions are filled.
+    # The gap length limit IS MAX_INTERNAL_GAP — the same framework constant
+    # that defines the maximum tolerable domain shift within a helix run.
+    for i in range(n):
+        if states[i] != SS.HELIX:
+            continue
+        # Find end of this helix run
+        j = i
+        while j < n and states[j] == SS.HELIX:
+            j += 1
+        # j is first non-HELIX after run. Check for a COIL gap followed by HELIX.
+        gap_start = j
+        gap_end = j
+        while gap_end < n and states[gap_end] in (SS.COIL, SS.TURN):
+            gap_end += 1
+        gap_len = gap_end - gap_start
+        if gap_len == 0 or gap_len > MAX_INTERNAL_GAP:
+            continue
+        if gap_end >= n or states[gap_end] != SS.HELIX:
+            continue
+        # Check max CF0 across the entire merged run (i to gap_end+run2)
+        run2_end = gap_end
+        while run2_end < n and states[run2_end] == SS.HELIX:
+            run2_end += 1
+        max_gap = _max_pair_cf0(i, run2_end)
+        if max_gap <= MAX_INTERNAL_GAP:
+            for k in range(gap_start, gap_end):
+                states[k] = SS.HELIX
+                locked[k] = True
+                if verbose:
+                    print(f"  [P1f] HELIX FILL at {k+1} ({seq[k]}) "
+                          f"gap={gap_len}")
+
     # === PHASE 2: WIND-DOWN — non-local topology overrides local structure ===
     #
     # The "gears" of the Aramis Field operate on φ-scaled timescales.
@@ -1067,7 +1208,7 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 def demo():
     print("""
     ===============================================================
-    GEOMETRIC FIELD SOLVER v8.0 — φ-native topology + domain-scaled mediant
+    GEOMETRIC FIELD SOLVER v8.1 — near-WR helix seeding + gap-fill
     Phase 1 (wind-up): Local 7-step iterator to convergence
     Phase 2 (wind-down): Non-local topology overrides via winding returns
     φ-domain structure: CF[0] of tension ratio = domain separation
