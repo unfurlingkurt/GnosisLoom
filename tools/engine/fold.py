@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Geometric field solver v8.1 — near-WR helix seeding and gap-fill.
+"""Geometric field solver v8.2 — multi-scale curvature acceleration.
 
 Amino acids occupy φ-scaled temporal domains based on log_φ(ST/38):
   Domain -2: S(16)           Domain 0: A,V,D,N,P       Domain 2: M,H,W,K
@@ -228,21 +228,61 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     for i in range(n):
         static_regularity[i] = _curvature_regularity(i, static_curvatures, [False] * n)
 
-    # === PRE-COMPUTE: Curvature acceleration (2nd derivative) ===
-    # The acceleration of geometric curvature along the chain is a STATIC
-    # property (computed from initial ratios). It detects structural transitions:
-    # high |acceleration| = boundary/turn, low |acceleration| = stable interior.
-    # Used as anti-false-helix signal: helix interiors have stable curvature.
+    # === PRE-COMPUTE: Multi-scale curvature acceleration (2nd derivative) ===
+    # The acceleration of geometric curvature is a STATIC property (from initial
+    # ratios). At scale k, it measures the curvature change over k positions:
+    #   accel_k[i] = signed_curvature[i+k] - signed_curvature[i]
+    #
+    # Multi-scale acceleration reveals the TIME/SUBSTRATE relation natively:
+    #   k=1:              local curvature change (fastest gear)
+    #   k=IGD=2:          sheet-period curvature change
+    #   k=MIN_HELIX_LEN=4: helix-period curvature change (slowest local gear)
+    #
+    # Positions with high acceleration at ANY scale are geometrically "unstable" —
+    # the curvature is changing rapidly at that temporal scale. These positions
+    # need more mediant diffusion steps to reach their structural ground state.
+    # The 2nd derivative thus MODULATES the field dynamics: unstable positions
+    # evolve faster (more mediant steps), allowing the field to naturally resolve
+    # structural ambiguities that the 1st derivative (curvature) alone cannot.
+
+    # k=1 acceleration (consecutive curvature change)
     static_accel = curvature_acceleration(seq)
-    # Pad to length n for easy indexing (positions 0 and n-1 get max acceleration
-    # since they're at chain boundaries where structure is inherently unstable)
-    accel_magnitude = [0.0] * n
+    accel_k1 = [0.0] * n
     for i in range(len(static_accel)):
-        accel_magnitude[i + 1] = abs(static_accel[i])
-    # Boundaries: first and last positions get high acceleration (no stable structure)
+        accel_k1[i + 1] = abs(static_accel[i])
     if n > 0:
-        accel_magnitude[0] = max(accel_magnitude) if accel_magnitude else 0
-        accel_magnitude[n - 1] = accel_magnitude[0]
+        accel_k1[0] = max(accel_k1) if accel_k1 else 0
+        accel_k1[n - 1] = accel_k1[0]
+
+    # k=IGD acceleration (sheet-period curvature change)
+    accel_k_igd = [0.0] * n
+    for i in range(len(static_curvatures) - INTER_GROUND_DEPTH):
+        val = abs(static_curvatures[i + INTER_GROUND_DEPTH] - static_curvatures[i])
+        pos = i + 1  # center of span
+        if pos < n:
+            accel_k_igd[pos] = val
+    if n > 0:
+        max_igd = max(accel_k_igd) if any(v > 0 for v in accel_k_igd) else 0
+        accel_k_igd[0] = max_igd
+        accel_k_igd[n - 1] = max_igd
+
+    # k=MIN_HELIX_LEN acceleration (helix-period curvature change)
+    accel_k_helix = [0.0] * n
+    for i in range(len(static_curvatures) - MIN_HELIX_LEN):
+        val = abs(static_curvatures[i + MIN_HELIX_LEN] - static_curvatures[i])
+        pos = i + MIN_HELIX_LEN // 2  # center of span
+        if pos < n:
+            accel_k_helix[pos] = val
+    if n > 0:
+        max_hlx = max(accel_k_helix) if any(v > 0 for v in accel_k_helix) else 0
+        accel_k_helix[0] = max_hlx
+        accel_k_helix[n - 1] = max_hlx
+
+    # Combined multi-scale acceleration: max across all scales.
+    # The dominant instability at any temporal scale drives the diffusion rate.
+    accel_magnitude = [0.0] * n
+    for i in range(n):
+        accel_magnitude[i] = max(accel_k1[i], accel_k_igd[i], accel_k_helix[i])
 
     # === PRE-COMPUTE: Pairwise CF0 (tension ratio first coefficient) ===
     # CF0 of max(ST_i, ST_j) / min(ST_i, ST_j) encodes domain separation:
@@ -473,7 +513,9 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                     changed = True
                     if verbose:
                         print(f"  [{cycle}] HELIX SEED at {i+1} ({seq[i]}) "
-                              f"coh={total_coh} inc={total_inc} reg={regularity[i]}")
+                              f"coh={total_coh} inc={total_inc} reg={regularity[i]} "
+                              f"a[1,{INTER_GROUND_DEPTH},{MIN_HELIX_LEN}]="
+                              f"{accel_k1[i]:.0f},{accel_k_igd[i]:.0f},{accel_k_helix[i]:.0f}")
 
         # --- Step 5b: LOCK — extend sheet strands ---
         # Sheet strands propagate from locked sheet positions along the
@@ -561,7 +603,9 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                     changed = True
                     if verbose:
                         print(f"  [{cycle}] HELIX EXT at {i+1} ({seq[i]}) "
-                              f"coh={total_coh} inc={total_inc}")
+                              f"coh={total_coh} inc={total_inc} "
+                              f"a[1,{INTER_GROUND_DEPTH},{MIN_HELIX_LEN}]="
+                              f"{accel_k1[i]:.0f},{accel_k_igd[i]:.0f},{accel_k_helix[i]:.0f}")
 
         # --- Step 6b: ADJUST — bridge single-residue helix gaps ---
         # If a position is flanked by locked helices and coupled to both,
@@ -1208,7 +1252,7 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 def demo():
     print("""
     ===============================================================
-    GEOMETRIC FIELD SOLVER v8.1 — near-WR helix seeding + gap-fill
+    GEOMETRIC FIELD SOLVER v8.2 — multi-scale curvature acceleration
     Phase 1 (wind-up): Local 7-step iterator to convergence
     Phase 2 (wind-down): Non-local topology overrides via winding returns
     φ-domain structure: CF[0] of tension ratio = domain separation
