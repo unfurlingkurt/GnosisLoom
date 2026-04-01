@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Geometric field solver v8.2 — multi-scale curvature acceleration.
+"""Geometric field solver v8.3 — dynamic acceleration tracking.
 
 Amino acids occupy φ-scaled temporal domains based on log_φ(ST/38):
   Domain -2: S(16)           Domain 0: A,V,D,N,P       Domain 2: M,H,W,K
@@ -66,7 +66,6 @@ from tools.engine.rscode import (
 )
 from tools.engine.curvature import (
     geometric_winding, winding_returns, sequential_ratios,
-    curvature_acceleration,
 )
 from tools.engine.predict import (
     SELF_TENSION, HELIX_GROUND, SHEET_GROUND,
@@ -129,6 +128,52 @@ def _is_coupled(t1: int, t2: int) -> bool:
     ratio = Fraction(max(t1, t2), min(t1, t2))
     cf = to_cf(ratio)
     return cf[0] == 1
+
+
+def _multi_scale_accel(curvatures: list, n: int, igd: int, min_h: int):
+    """Compute multi-scale acceleration from a curvature array.
+
+    Returns (accel_k1, accel_k_igd, accel_k_helix, accel_magnitude) —
+    four lists of length n.  Each accel_k[pos] = |curvatures[i+k] - curvatures[i]|
+    centered on position pos.  accel_magnitude = max across all three scales.
+
+    This is called each iteration cycle so the acceleration EVOLVES with the
+    field — it is not a static property.  As mediant diffusion smooths the
+    field, curvatures converge and acceleration decays.  The 2nd derivative
+    thereby reveals how far each position is from its structural ground state.
+    """
+    # k=1: consecutive curvature change
+    ak1 = [0.0] * n
+    for i in range(len(curvatures) - 1):
+        pos = i + 1  # centered between curvatures[i] and curvatures[i+1]
+        if pos < n:
+            ak1[pos] = abs(curvatures[i + 1] - curvatures[i])
+
+    # k=igd: sheet-period curvature change
+    ak_igd = [0.0] * n
+    for i in range(len(curvatures) - igd):
+        pos = i + 1  # center of span
+        if pos < n:
+            ak_igd[pos] = abs(curvatures[i + igd] - curvatures[i])
+
+    # k=min_helix_len: helix-period curvature change
+    ak_helix = [0.0] * n
+    for i in range(len(curvatures) - min_h):
+        pos = i + min_h // 2  # center of span
+        if pos < n:
+            ak_helix[pos] = abs(curvatures[i + min_h] - curvatures[i])
+
+    # Boundaries: first/last get max (no stable structure at chain ends)
+    for arr in (ak1, ak_igd, ak_helix):
+        mx = max(arr) if any(v > 0 for v in arr) else 0
+        if n > 0:
+            arr[0] = mx
+            arr[n - 1] = mx
+
+    # Combined: max across scales
+    a_mag = [max(ak1[i], ak_igd[i], ak_helix[i]) for i in range(n)]
+
+    return ak1, ak_igd, ak_helix, a_mag
 
 
 def _curvature_regularity(pos: int, curvatures: list, locked: list) -> int:
@@ -228,61 +273,18 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
     for i in range(n):
         static_regularity[i] = _curvature_regularity(i, static_curvatures, [False] * n)
 
-    # === PRE-COMPUTE: Multi-scale curvature acceleration (2nd derivative) ===
-    # The acceleration of geometric curvature is a STATIC property (from initial
-    # ratios). At scale k, it measures the curvature change over k positions:
-    #   accel_k[i] = signed_curvature[i+k] - signed_curvature[i]
-    #
-    # Multi-scale acceleration reveals the TIME/SUBSTRATE relation natively:
+    # === INITIAL: Multi-scale curvature acceleration (2nd derivative) ===
+    # Computed from the initial field curvatures — but this is just the
+    # STARTING STATE. The acceleration is RECOMPUTED each cycle from the
+    # evolving field (see Step 1b inside the loop). As mediant diffusion
+    # smooths the field, curvatures converge and acceleration decays.
+    # The 2nd derivative tracks how far each position is from its structural
+    # ground state at each temporal scale:
     #   k=1:              local curvature change (fastest gear)
     #   k=IGD=2:          sheet-period curvature change
     #   k=MIN_HELIX_LEN=4: helix-period curvature change (slowest local gear)
-    #
-    # Positions with high acceleration at ANY scale are geometrically "unstable" —
-    # the curvature is changing rapidly at that temporal scale. These positions
-    # need more mediant diffusion steps to reach their structural ground state.
-    # The 2nd derivative thus MODULATES the field dynamics: unstable positions
-    # evolve faster (more mediant steps), allowing the field to naturally resolve
-    # structural ambiguities that the 1st derivative (curvature) alone cannot.
-
-    # k=1 acceleration (consecutive curvature change)
-    static_accel = curvature_acceleration(seq)
-    accel_k1 = [0.0] * n
-    for i in range(len(static_accel)):
-        accel_k1[i + 1] = abs(static_accel[i])
-    if n > 0:
-        accel_k1[0] = max(accel_k1) if accel_k1 else 0
-        accel_k1[n - 1] = accel_k1[0]
-
-    # k=IGD acceleration (sheet-period curvature change)
-    accel_k_igd = [0.0] * n
-    for i in range(len(static_curvatures) - INTER_GROUND_DEPTH):
-        val = abs(static_curvatures[i + INTER_GROUND_DEPTH] - static_curvatures[i])
-        pos = i + 1  # center of span
-        if pos < n:
-            accel_k_igd[pos] = val
-    if n > 0:
-        max_igd = max(accel_k_igd) if any(v > 0 for v in accel_k_igd) else 0
-        accel_k_igd[0] = max_igd
-        accel_k_igd[n - 1] = max_igd
-
-    # k=MIN_HELIX_LEN acceleration (helix-period curvature change)
-    accel_k_helix = [0.0] * n
-    for i in range(len(static_curvatures) - MIN_HELIX_LEN):
-        val = abs(static_curvatures[i + MIN_HELIX_LEN] - static_curvatures[i])
-        pos = i + MIN_HELIX_LEN // 2  # center of span
-        if pos < n:
-            accel_k_helix[pos] = val
-    if n > 0:
-        max_hlx = max(accel_k_helix) if any(v > 0 for v in accel_k_helix) else 0
-        accel_k_helix[0] = max_hlx
-        accel_k_helix[n - 1] = max_hlx
-
-    # Combined multi-scale acceleration: max across all scales.
-    # The dominant instability at any temporal scale drives the diffusion rate.
-    accel_magnitude = [0.0] * n
-    for i in range(n):
-        accel_magnitude[i] = max(accel_k1[i], accel_k_igd[i], accel_k_helix[i])
+    accel_k1, accel_k_igd, accel_k_helix, accel_magnitude = \
+        _multi_scale_accel(static_curvatures, n, INTER_GROUND_DEPTH, MIN_HELIX_LEN)
 
     # === PRE-COMPUTE: Pairwise CF0 (tension ratio first coefficient) ===
     # CF0 of max(ST_i, ST_j) / min(ST_i, ST_j) encodes domain separation:
@@ -335,6 +337,8 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 
     # === ITERATIVE 7-STEP CYCLE ===
 
+    accel_rise = [0] * n  # consecutive cycles of helix-scale accel increase
+
     cycle = 0
     while True:
         cycle += 1
@@ -355,6 +359,25 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             mag = cf_length(cf)
             sign = 1 if float(ratio) >= 1.0 else -1
             curvatures.append(sign * mag)
+
+        # --- Step 1b: Recompute multi-scale acceleration from evolving field ---
+        # The 2nd derivative evolves with the field. Track the helix-scale
+        # acceleration rise count: consecutive cycles where acceleration at
+        # position i increases rather than decays. At convergence, accel_rise
+        # shows which positions the field was still "fighting" vs settling.
+        # This is diagnostic for now — gating was explored but the field
+        # evolution is too short (6 cycles) for reliable discrimination,
+        # and the gate self-interferes (blocking a seed changes the field).
+        prev_accel_k_helix = list(accel_k_helix)
+        dyn_ak1, dyn_ak_igd, dyn_ak_helix, dyn_ak_mag = \
+            _multi_scale_accel(curvatures, n, INTER_GROUND_DEPTH, MIN_HELIX_LEN)
+        if cycle > 1:
+            for i in range(n):
+                if dyn_ak_helix[i] > prev_accel_k_helix[i]:
+                    accel_rise[i] += 1
+                else:
+                    accel_rise[i] = 0
+        accel_k_helix = list(dyn_ak_helix)
 
         # --- Step 2: DETECT — identify boundary candidates ---
         # Pairs with CF depth ≤ inter_ground_depth are structural boundaries.
@@ -493,7 +516,6 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                 continue
             if regularity[i] > INTER_GROUND_DEPTH:
                 continue
-
             # CF motif from symmetric pair CFs: pairs (i-1,i), (i,i+1), (i+1,i+2)
             # Same window as the extension step — the position should see
             # the CF environment equally on both sides.
@@ -515,7 +537,7 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                         print(f"  [{cycle}] HELIX SEED at {i+1} ({seq[i]}) "
                               f"coh={total_coh} inc={total_inc} reg={regularity[i]} "
                               f"a[1,{INTER_GROUND_DEPTH},{MIN_HELIX_LEN}]="
-                              f"{accel_k1[i]:.0f},{accel_k_igd[i]:.0f},{accel_k_helix[i]:.0f}")
+                              f"{dyn_ak1[i]:.0f},{dyn_ak_igd[i]:.0f},{dyn_ak_helix[i]:.0f}")
 
         # --- Step 5b: LOCK — extend sheet strands ---
         # Sheet strands propagate from locked sheet positions along the
@@ -605,7 +627,7 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                         print(f"  [{cycle}] HELIX EXT at {i+1} ({seq[i]}) "
                               f"coh={total_coh} inc={total_inc} "
                               f"a[1,{INTER_GROUND_DEPTH},{MIN_HELIX_LEN}]="
-                              f"{accel_k1[i]:.0f},{accel_k_igd[i]:.0f},{accel_k_helix[i]:.0f}")
+                              f"{dyn_ak1[i]:.0f},{dyn_ak_igd[i]:.0f},{dyn_ak_helix[i]:.0f}")
 
         # --- Step 6b: ADJUST — bridge single-residue helix gaps ---
         # If a position is flanked by locked helices and coupled to both,
@@ -680,6 +702,11 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 
     if verbose:
         print(f"  Phase 1 converged after {cycle} cycles")
+        # Show positions where acceleration was still rising at convergence
+        rising = [(i, accel_rise[i]) for i in range(n) if accel_rise[i] > 0]
+        if rising:
+            parts = [f"{i+1}({seq[i]})={r}" for i, r in rising]
+            print(f"  Accel still rising at: {', '.join(parts)}")
 
     # === PHASE 1b: MINIMUM HELIX LENGTH + EXTREME GAP CHECK ===
     # A helix requires at least one complete turn: the i→i+4 backbone H-bond
@@ -885,7 +912,9 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
                     break
             if adjacent_helix:
                 continue
-            # Irregular curvature (sheet character)
+            # Irregular curvature (sheet character) — from initial field.
+            # Sheet regularity is intrinsic to amino acid properties, not
+            # field evolution (mediant diffusion washes out the signal).
             if static_regularity[pos] <= INTER_GROUND_DEPTH:
                 continue
             wr_topo_seeds.add(pos)
@@ -973,7 +1002,9 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
             continue
         if winding[i] != winding[i + 2]:
             continue
-        # Both positions must have irregular curvature
+        # Both positions must have irregular curvature — from initial field.
+        # Sheet regularity is intrinsic to amino acid properties, not
+        # field evolution (mediant diffusion washes out the signal).
         if static_regularity[i] <= INTER_GROUND_DEPTH:
             continue
         if static_regularity[i + 2] <= INTER_GROUND_DEPTH:
