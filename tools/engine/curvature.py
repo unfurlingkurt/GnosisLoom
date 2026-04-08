@@ -68,11 +68,15 @@ def geometric_winding(seq: str) -> List[float]:
 
 
 def winding_returns(seq: str, min_separation: int = 10,
-                    max_diff: float = 10.0) -> List[Dict]:
+                    max_diff: float = 0) -> List[Dict]:
     """Find positions where winding returns to a previously visited value.
 
-    When winding(j) ≈ winding(i) with |j - i| > min_separation,
+    When winding(j) == winding(i) with |j - i| > min_separation,
     positions i and j are topologically adjacent (long-range contact).
+
+    max_diff=0 enforces EXACT integer match — the only valid proof
+    of a topologically closed loop in RatioSpace (Axiom: combinatorial
+    curvature is defined by exact integer angle deficits).
 
     Returns list of (pos_i, pos_j, winding_diff) sorted by diff.
     """
@@ -140,6 +144,26 @@ def identify_sheet_contacts(seq: str, dssp: str = None,
         "contact_partners": contact_partners,
         "sheet_candidates": sheet_candidates,
     }
+
+
+def curvature_acceleration(seq: str) -> List[float]:
+    """Compute curvature acceleration (2nd derivative) at each position.
+
+    acceleration[i] = signed_curvature[i+1] - signed_curvature[i]
+
+    This is the rate of change of the geodesic curvature along the chain:
+      - Near zero: stable structure (mid-helix, mid-sheet)
+      - Large positive: curvature increasing (approaching turn/hairpin)
+      - Large negative: curvature decreasing (entering regular region)
+
+    Returns n-2 values for a sequence of length n (positions 0..n-3,
+    corresponding to the acceleration between steps i and i+1).
+    """
+    ratios = sequential_ratios(seq)
+    if len(ratios) < 2:
+        return []
+    return [ratios[i + 1]["signed_curvature"] - ratios[i]["signed_curvature"]
+            for i in range(len(ratios) - 1)]
 
 
 def zero_curvature_positions(seq: str) -> List[int]:
