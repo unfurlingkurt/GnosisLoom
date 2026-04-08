@@ -772,6 +772,86 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
         sign = 1 if float(ratio) >= 1.0 else -1
         conv_curvatures.append(sign * mag)
 
+    # === MEDOID TENSION — distance from structural ground state ===
+    # The converged field curvatures encode how far each position settled
+    # from its ideal CF configuration.  The helix-scale acceleration of
+    # these converged curvatures is the MEDOID TENSION: the geometric
+    # distance between each position's actual state and the medoid
+    # (the most central, physically valid state in the CF tree).
+    #
+    # The medoid of all helix-assigned positions' tensions sets the
+    # Gold Standard Baseline Tension (GSBT) — the "rock-solid medoid"
+    # that a healthy helix should cluster around.  Positions far from
+    # the GSBT are geometric outliers: the field pushed them there, but
+    # they don't genuinely belong to the helix population.
+    conv_ak1, conv_ak_igd, conv_ak_helix, conv_ak_mag = \
+        _multi_scale_accel(conv_curvatures, n, INTER_GROUND_DEPTH, MIN_HELIX_LEN)
+
+    # Medoid tension per position: helix-scale acceleration from the
+    # converged field.  This specifically asks whether the helix-period
+    # curvature settled.  Using ONLY the helix scale (k=MIN_HELIX_LEN=4)
+    # avoids false positives from high k=1 acceleration at structure
+    # boundaries (which is a natural feature, not a quality signal).
+    medoid_tension = conv_ak_helix  # k=helix-period only
+
+    # Per-run medoid analysis: within each helix run, find the medoid
+    # tension (median).  Edge positions whose tension exceeds the run's
+    # medoid by more than φ^MAX_INTERNAL_GAP (= φ^4 ≈ 6.85) times are
+    # geometric outliers — the field settled them far from the run's
+    # medoid.  This is a high bar (φ⁴, not φ²) because edges naturally
+    # have elevated tension from the structure boundary.
+    phi_mig = PHI ** MAX_INTERNAL_GAP  # φ^IGD² — framework outlier threshold
+
+    if verbose:
+        h_vals = sorted([medoid_tension[i] for i in range(n) if states[i] == SS.HELIX])
+        c_vals = sorted([medoid_tension[i] for i in range(n) if states[i] == SS.COIL])
+        h_med = h_vals[len(h_vals) // 2] if h_vals else 0
+        c_med = c_vals[len(c_vals) // 2] if c_vals else 0
+        print(f"  Medoid tension — helix: {h_med:.1f} (n={len(h_vals)})  "
+              f"coil: {c_med:.1f} (n={len(c_vals)})")
+
+    i = 0
+    while i < n:
+        if states[i] == SS.HELIX:
+            run_start = i
+            while i < n and states[i] == SS.HELIX:
+                i += 1
+            run_end = i  # exclusive
+            run_len = run_end - run_start
+            if run_len < 2:
+                continue
+            # Run medoid = median tension within this run
+            run_tensions = sorted([medoid_tension[j] for j in range(run_start, run_end)])
+            run_medoid = run_tensions[len(run_tensions) // 2]
+            if run_medoid == 0:
+                continue  # avoid division issues
+            # Trim edges where tension > φ^IGD² × run medoid
+            threshold = phi_mig * run_medoid
+            trimmed = []
+            # Left edge
+            for j in range(run_start, run_end):
+                if medoid_tension[j] > threshold:
+                    trimmed.append(j)
+                else:
+                    break
+            # Right edge
+            for j in range(run_end - 1, run_start - 1, -1):
+                if j in [t for t in trimmed]:
+                    break
+                if medoid_tension[j] > threshold:
+                    trimmed.append(j)
+                else:
+                    break
+            for j in trimmed:
+                states[j] = SS.COIL
+                if verbose:
+                    print(f"  [MEDOID] Trim {j+1} ({seq[j]}) "
+                          f"tension={medoid_tension[j]:.0f} > "
+                          f"φ⁴×medoid={threshold:.0f} "
+                          f"(run medoid={run_medoid:.0f})")
+        else:
+            i += 1
+
     conv_hyd_cfs = []
     for i_pos in range(n - 1):
         product = hyd_field[i_pos] * hyd_field[i_pos + 1]
@@ -1271,6 +1351,47 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
         else:
             i += 1
 
+    # === PHASE 3 MEDOID TRIM — same logic as post-P1b, applied to ===
+    # wind-down survivors.  Wind-down can split helix runs, exposing new
+    # edges that are geometric outliers.  Recompute medoid tension from
+    # the converged curvatures (unchanged since pre-P1c) and trim.
+    i = 0
+    while i < n:
+        if states[i] == SS.HELIX:
+            run_start = i
+            while i < n and states[i] == SS.HELIX:
+                i += 1
+            run_end = i
+            run_len = run_end - run_start
+            if run_len < 2:
+                continue
+            run_tensions = sorted([medoid_tension[j] for j in range(run_start, run_end)])
+            run_medoid = run_tensions[len(run_tensions) // 2]
+            if run_medoid == 0:
+                continue
+            threshold = phi_mig * run_medoid
+            trimmed = []
+            for j in range(run_start, run_end):
+                if medoid_tension[j] > threshold:
+                    trimmed.append(j)
+                else:
+                    break
+            for j in range(run_end - 1, run_start - 1, -1):
+                if j in trimmed:
+                    break
+                if medoid_tension[j] > threshold:
+                    trimmed.append(j)
+                else:
+                    break
+            for j in trimmed:
+                states[j] = SS.COIL
+                if verbose:
+                    print(f"  [P3-MEDOID] Trim {j+1} ({seq[j]}) "
+                          f"tension={medoid_tension[j]:.0f} > "
+                          f"φ⁴×medoid={threshold:.0f}")
+        else:
+            i += 1
+
     # Convert to DSSP-compatible output
     dssp_map = {
         SS.HELIX: 'H', SS.SHEET: 'E',
@@ -1283,7 +1404,7 @@ def fold_protein(seq: str, verbose: bool = False) -> str:
 def demo():
     print("""
     ===============================================================
-    GEOMETRIC FIELD SOLVER v8.2 — multi-scale curvature acceleration
+    GEOMETRIC FIELD SOLVER v8.3 — medoid tension + dynamic acceleration
     Phase 1 (wind-up): Local 7-step iterator to convergence
     Phase 2 (wind-down): Non-local topology overrides via winding returns
     φ-domain structure: CF[0] of tension ratio = domain separation
